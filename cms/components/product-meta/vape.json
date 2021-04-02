@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_meta_vapes",
+  "info": {
+    "name": "Vape",
+    "icon": "pen",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "flavor": {
+      "model": "flavors"
+    }
+  }
+}

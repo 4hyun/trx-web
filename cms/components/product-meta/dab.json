@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_meta_dabs",
+  "info": {
+    "name": "Dab",
+    "icon": "drumstick-bite"
+  },
+  "options": {},
+  "attributes": {
+    "flavor": {
+      "model": "flavors"
+    }
+  }
+}

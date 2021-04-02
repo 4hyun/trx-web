@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "flavors",
+  "info": {
+    "name": "Flavors"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
