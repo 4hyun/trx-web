@@ -2,12 +2,18 @@
   "collectionName": "components_meta_dabs",
   "info": {
     "name": "Dab",
-    "icon": "drumstick-bite"
+    "icon": "drumstick-bite",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "flavor": {
-      "model": "flavors"
+    "potency_range": {
+      "type": "string"
+    },
+    "experience": {
+      "type": "component",
+      "repeatable": false,
+      "component": "product-meta.experience"
     }
   }
 }

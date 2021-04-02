@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "flavors",
   "info": {
-    "name": "Flavors"
+    "name": "Flavors",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -12,6 +13,24 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "main_img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "featured_menu_img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

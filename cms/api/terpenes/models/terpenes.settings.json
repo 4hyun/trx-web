@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "product_categories",
+  "collectionName": "terpenes",
   "info": {
-    "name": "Product Category",
+    "name": "Terpenes",
     "description": ""
   },
   "options": {
@@ -13,6 +13,9 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

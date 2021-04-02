@@ -9,6 +9,15 @@
   "attributes": {
     "flavor": {
       "model": "flavors"
+    },
+    "potency_range": {
+      "type": "string"
+    },
+    "terpenes": {
+      "collection": "terpenes"
+    },
+    "vape_cat": {
+      "collection": "vape-categories"
     }
   }
 }

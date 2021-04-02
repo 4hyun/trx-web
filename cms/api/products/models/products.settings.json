@@ -17,7 +17,7 @@
     "product_category": {
       "model": "product-category"
     },
-    "cover": {
+    "cover_img": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -27,6 +27,14 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "Meta": {
+      "type": "dynamiczone",
+      "components": [
+        "product-meta.dab",
+        "product-meta.experience",
+        "product-meta.vape"
+      ]
     }
   }
 }
