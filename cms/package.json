@@ -4,12 +4,14 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "develop": "cross-env ENV_PATH=.env.dev strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "yup": "^0.27.0"
+  },
   "dependencies": {
     "strapi": "3.5.4",
     "strapi-admin": "3.5.4",
@@ -17,6 +19,7 @@
     "strapi-plugin-content-manager": "3.5.4",
     "strapi-plugin-content-type-builder": "3.5.4",
     "strapi-plugin-email": "3.5.4",
+    "strapi-plugin-graphql": "^3.5.4",
     "strapi-plugin-upload": "3.5.4",
     "strapi-plugin-users-permissions": "3.5.4",
     "strapi-provider-upload-google-cloud-storage": "^3.4.6",
