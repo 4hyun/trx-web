@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, { useState, useCallback } from "react";
-=======
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
->>>>>>> feat/age-gate-v1
 import styled from "styled-components";
 import tw from "twin.macro";
 import { LogoCircleWhiteTransparent } from "components/Icons";
@@ -11,10 +7,7 @@ import messages, {
   handleMessageAction,
   getAgeCheckValue,
   getMessageById,
-<<<<<<< HEAD
-=======
   setAgeCheckValue,
->>>>>>> feat/age-gate-v1
 } from "./messages";
 
 const Logo = styled(LogoCircleWhiteTransparent)`
@@ -26,11 +19,7 @@ const Content = styled.div`
   ${tw`fixed inset-0 z-20`}
 `;
 
-<<<<<<< HEAD
-const Container = styled.div`
-=======
 const GridLayout = styled.div`
->>>>>>> feat/age-gate-v1
   ${tw`w-full h-full grid grid-cols-12`}
 `;
 
@@ -57,30 +46,6 @@ const Button = styled.button`
   ${tw`focus:outline-none`}
   ${tw`transform hover:-translate-y-2 transition-transform outline-none`}
 `;
-<<<<<<< HEAD
-
-const AgeGatePage = () => {
-  const [currentMessage, setMessage] = useState(getMessageById(1));
-  return (
-    <Content>
-      <Container>
-        <MessageContainer>
-          <MessageHeader>
-            <Logo />
-          </MessageHeader>
-          <Message>{currentMessage.message}</Message>
-          <MessageFooter>
-            {currentMessage?.actions?.length > 0 && (
-              <ButtonGroup>
-                {currentMessage.actions.map((action) => (
-                  <Button>{action.label}</Button>
-                ))}
-              </ButtonGroup>
-            )}
-          </MessageFooter>
-        </MessageContainer>
-      </Container>
-=======
 
 const processNewAgeCheck = async () => {
   let ageCheckValue = await setAgeCheckValue();
@@ -155,7 +120,6 @@ const AgeGatePage = () => {
           </MessageContainer>
         )}
       </GridLayout>
->>>>>>> feat/age-gate-v1
     </Content>
   );
 };
