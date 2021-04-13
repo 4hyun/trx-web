@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { AGE_GATE_LS_KEY } from "./constants";
 
 const messages = [
@@ -93,10 +92,6 @@ export const setAgeCheckValue = async () => {
 };
 
 export const handleMessageAction = async (action, cbBeforeNextMessage) => {
-  if (action.next.pass) {
-    const router = useRouter();
-    return router.replace("/");
-  }
   let {
     a_id,
     next: { m_id, pass },
