@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       accent: ["Oswald", "sans-serif"],
+      "accent-2": ["Anton", "sans-serif"],
     },
     extend: {
       colors: {

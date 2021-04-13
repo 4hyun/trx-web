@@ -31,6 +31,7 @@ const HeaderContainer = styled.div`
     left: 0;
     top: 0;
     bottom: 0;
+    ${({ desktopStyles }) => desktopStyles && desktopStyles}
   }
 `;
 
@@ -59,7 +60,7 @@ const initState = {
   },
 };
 
-const Header = () => {
+const Header = ({ desktopStyles }) => {
   const [state, dispatch] = useReducer(reducer, initState);
   const toggleDesktopMenu = useCallback(() => {
     const { menuOpen } = state;
@@ -78,7 +79,11 @@ const Header = () => {
     }
   };
   return (
-    <HeaderContainer onTransitionEnd={transitionEnd} menuOpen={state.menuOpen}>
+    <HeaderContainer
+      onTransitionEnd={transitionEnd}
+      menuOpen={state.menuOpen}
+      desktopStyles={desktopStyles}
+    >
       <Navbar
         width={navbarStyles.width}
         menuButton={() => (
