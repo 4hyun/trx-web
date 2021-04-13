@@ -107,7 +107,6 @@ const AgeGatePage = () => {
                           action,
                           cbBeforeNextMessage(action.a_id)
                         );
-                        console.log("Button.onClick, message : ", message);
                         setMessage(message);
                       }}
                     >

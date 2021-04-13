@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React, { useEffect } from "react";
+import styled from "styled-components";
 import tw from "twin.macro";
 import { navbarStyles } from "components/Header/styles";
 import Accordion, { AccordionToggleIcon } from "components/Common/Accordion";
@@ -45,6 +45,9 @@ const AccordionSummary = styled(Item)`
 `;
 
 const Content = ({ transitionEnd }) => {
+  useEffect(() => {
+    console.log("Content rendered");
+  });
   return (
     <Container transitionEnd={transitionEnd}>
       <List>
