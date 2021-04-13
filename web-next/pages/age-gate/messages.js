@@ -1,51 +1,118 @@
-import { AGE_CHECK_SUCCESS, AGE_CHECK_FAIL } from "pages/age-gate/constants";
+import { useRouter } from "next/router";
+import { AGE_GATE_LS_KEY } from "./constants";
 
 const messages = [
   {
-    mid: 1,
+    m_id: 1,
     title: "verify",
     message: "Are you of age?",
-    options: [
+    actions: [
       {
-        opt_id: 1,
+        a_id: 1,
         label: "Yes",
-        action: {
-          next: { type: AGE_CHECK_SUCCESS, payload: { next_mid: 2 } },
-          error: { type: AGE_CHECK_FAIL, payload: { next_mid: 3 } },
-        },
+        next: { m_id: 2, pass: null },
+        error: { m_id: 3 },
       },
       {
-        opt_id: 2,
+        a_id: 2,
         label: "No",
-        action: {
-          next: { type: AGE_CHECK_FAIL },
-          payload: { next_mid: 3 },
-          error: null,
-        },
+        next: { m_id: 3, pass: null },
+        error: null,
       },
     ],
   },
   {
-    mid: 2,
+    m_id: 2,
     title: "welcome",
     message: "Welcome!",
-    options: [
+    actions: [
       {
-        opt_id: 3,
+        a_id: 3,
         label: "Remember me",
-        action: {
-          next: { type: AGE_CHECK_SET_SETTINGS, payload: { next_mid: "done" } },
-        },
+        next: { m_id: null, pass: true },
+        error: null,
       },
-      { opt_id: 4, label: "Go without it" },
+      {
+        a_id: 4,
+        label: "Go without it",
+        next: { m_id: null, pass: true },
+        error: null,
+      },
     ],
   },
   {
-    mid: 3,
+    m_id: 3,
     title: "reject",
     message: "Sorry you must be of age!",
-    options: [{ opt_id: 5, label: "Try again" }],
+    actions: [
+      {
+        a_id: 5,
+        label: "Try again",
+        next: { m_id: 1, pass: null },
+        error: null,
+      },
+    ],
   },
 ];
+
+const messagesMap = messages.reduce((map, _message) => {
+  let { title, message, actions } = _message;
+  map[_message.m_id] = { title, message, actions };
+  return map;
+}, {});
+
+const handleMessageActionError = (action_error) => {
+  console.log("action.error : ", action_error);
+  return;
+};
+
+export const getMessageById = (id) => {
+  return messagesMap[id];
+};
+
+// May use async logic in the future (eg. server side age verification)
+export const getAgeCheckValue = async () => {
+  try {
+    let { localStorage } = window;
+    let ageCheckValue = localStorage.getItem(AGE_GATE_LS_KEY);
+    return ageCheckValue;
+  } catch (error) {
+    console.warn("[Error] getAgeCheckValue", error);
+  }
+};
+
+export const setAgeCheckValue = async () => {
+  try {
+    let { localStorage } = window;
+    let newAgeCheckValue = new Date().getTime();
+    localStorage.setItem(AGE_GATE_LS_KEY, newAgeCheckValue);
+    return newAgeCheckValue;
+  } catch (error) {
+    console.warn("[Error] setAgeCheckValue", error);
+  }
+};
+
+export const handleMessageAction = async (action, cbBeforeNextMessage) => {
+  if (action.next.pass) {
+    const router = useRouter();
+    return router.replace("/");
+  }
+  let {
+    a_id,
+    next: { m_id, pass },
+    error: action_error,
+  } = action;
+  let response;
+  try {
+    if (cbBeforeNextMessage) {
+      response = await cbBeforeNextMessage();
+    }
+    let nextMessage = getMessageById(m_id);
+    return nextMessage;
+  } catch (error) {
+    if (action_error) handleMessageActionError(action_error);
+    console.warn(`[Error] handleMessageAction actionId:${a_id}`, error);
+  }
+};
 
 export default messages;

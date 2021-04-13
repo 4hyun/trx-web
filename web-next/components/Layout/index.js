@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "next/router";
 import { paths } from "paths";
-import { AGE_KEY } from "pages/age-gate/constants";
+import { AGE_GATE_LS_KEY } from "pages/age-gate/constants";
 import Header from "components/Header/index";
 import MainBackgroundVideo from "components/Common/MainBackgroundVideo";
 import Footer from "components/Layout/Footer";
@@ -38,32 +38,8 @@ const FixedBackgroundVideo = () => {
   );
 };
 
-const test = {
-  ageVerifiedValue: "somevalue",
-  verifyAge: (fn) => {
-    fn();
-  },
-};
-
-const setAgeVerified = (v) => {
-  let { localStorage } = window;
-  localStorage.setItem(AGE_KEY, v);
-  return v;
-};
-
-const checkAgeVerified = () => {
-  let { localStorage } = window;
-  return localStorage.getItem(AGE_KEY);
-};
-
 const Layout = ({ children, router }) => {
   const [showHeader, setShowHeader] = useState(true);
-  useEffect(() => {
-    let ageVerified = checkAgeVerified();
-    if (!ageVerified) {
-      test.verifyAge(() => setAgeVerified(test.ageVerifiedValue));
-    }
-  }, []);
   useEffect(() => {
     // console.group("Layout.useEffect [this will run once]");
     // console.log("router", router);
@@ -72,8 +48,10 @@ const Layout = ({ children, router }) => {
     // console.group("localStorage");
     // console.log("localStorage", localStorage);
     // console.groupEnd();
-    if (router.pathname === paths.ageGate) setShowHeader(false);
-  }, []);
+    if (router.pathname === paths.ageGate) return setShowHeader(false);
+    if (showHeader) return;
+    setShowHeader(true);
+  }, [router.pathname]);
   return (
     <Wrapper showHeader={showHeader}>
       {showHeader && (

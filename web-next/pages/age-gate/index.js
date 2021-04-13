@@ -1,8 +1,14 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { LogoCircleWhiteTransparent } from "components/Icons";
-import story from "./messages";
+import messages, {
+  handleMessageAction,
+  getAgeCheckValue,
+  getMessageById,
+  setAgeCheckValue,
+} from "./messages";
 
 const Logo = styled(LogoCircleWhiteTransparent)`
   width: 96px;
@@ -13,7 +19,7 @@ const Content = styled.div`
   ${tw`fixed inset-0 z-20`}
 `;
 
-const Container = styled.div`
+const GridLayout = styled.div`
   ${tw`w-full h-full grid grid-cols-12`}
 `;
 
@@ -41,34 +47,79 @@ const Button = styled.button`
   ${tw`transform hover:-translate-y-2 transition-transform outline-none`}
 `;
 
+const processNewAgeCheck = async () => {
+  let ageCheckValue = await setAgeCheckValue();
+  return ageCheckValue;
+};
+
+const cbBeforeNextMessage = (actionId) => async () => {
+  switch (actionId) {
+    case 1: {
+      console.log("cbBeforeNextMessage triggered");
+      let ageCheckValue = processNewAgeCheck();
+      return ageCheckValue;
+    }
+    case 2: {
+      return;
+    }
+    case 3: {
+      return;
+    }
+    case 4: {
+      return;
+    }
+    case 5: {
+      return;
+    }
+  }
+};
+
 const AgeGatePage = () => {
-  const findMessageById = useCallback((messageId) => {
-    if (!story) throw '"story" must be defined.';
-    let message = story.find((message) => message.mid === messageId);
-    console.log("story : ", story);
-    console.log("message : ", message);
-    return message;
-  });
-  const [currentMessage, setMessage] = useState(findMessageById(1));
+  const router = useRouter();
+  const [currentMessage, setMessage] = useState(null);
+  const [ageCheckValue, setAgeCheckValue] = useState(null);
+  const enterHome = () => {
+    router.replace("/");
+  };
+  useEffect(async () => {
+    let ageCheckValue = await getAgeCheckValue();
+    if (ageCheckValue) return router.replace("/");
+    if (!ageCheckValue && !currentMessage) setMessage(getMessageById(1));
+  }, []);
   return (
     <Content>
-      <Container>
-        <MessageContainer>
-          <MessageHeader>
-            <Logo />
-          </MessageHeader>
-          <Message>{currentMessage.message}</Message>
-          <MessageFooter>
-            {currentMessage.options.length > 0 && (
-              <ButtonGroup>
-                {currentMessage.options.map((option) => (
-                  <Button>{option.label}</Button>
-                ))}
-              </ButtonGroup>
-            )}
-          </MessageFooter>
-        </MessageContainer>
-      </Container>
+      <GridLayout>
+        {currentMessage && (
+          <MessageContainer>
+            <MessageHeader>
+              <Logo />
+            </MessageHeader>
+            <Message>{currentMessage.message}</Message>
+            <MessageFooter>
+              {currentMessage && currentMessage.actions.length > 0 && (
+                <ButtonGroup>
+                  {currentMessage.actions.map((action) => (
+                    <Button
+                      key={action.a_id}
+                      onClick={async () => {
+                        if (action.next.pass) return enterHome();
+                        let message = await handleMessageAction(
+                          action,
+                          cbBeforeNextMessage(action.a_id)
+                        );
+                        console.log("Button.onClick, message : ", message);
+                        setMessage(message);
+                      }}
+                    >
+                      {action.label}
+                    </Button>
+                  ))}
+                </ButtonGroup>
+              )}
+            </MessageFooter>
+          </MessageContainer>
+        )}
+      </GridLayout>
     </Content>
   );
 };

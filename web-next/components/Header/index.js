@@ -1,5 +1,5 @@
 import React, { useState, useReducer, useCallback } from "react";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import tw from "twin.macro";
 import {
   OPEN_DESKTOP_MENU,
@@ -19,7 +19,24 @@ import SocialButtonGroup from "components/Header/Social";
 import MenuButton from "components/Navbar/MenuButton";
 import DesktopMenuButton from "components/Navbar/DesktopMenuButton";
 
+const headerFadeIn = keyframes`
+  from {
+    opacity:0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const HeaderContainer = styled.div`
+  &,
+  & * {
+    ${tw`select-none`}
+  }
+  animation-name: ${headerFadeIn};
+  animation-duration: 0.6s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
   @media (min-width: 1024px) {
     ${tw`bg-tr-white`};
     width: ${({ menuOpen }) =>
