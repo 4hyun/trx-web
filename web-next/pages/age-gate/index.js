@@ -56,10 +56,10 @@ const AgeGatePage = () => {
           </MessageHeader>
           <Message>{currentMessage.message}</Message>
           <MessageFooter>
-            {currentMessage.options.length > 0 && (
+            {currentMessage?.actions?.length > 0 && (
               <ButtonGroup>
-                {currentMessage.options.map((option) => (
-                  <Button>{option.label}</Button>
+                {currentMessage.actions.map((action) => (
+                  <Button>{action.label}</Button>
                 ))}
               </ButtonGroup>
             )}
