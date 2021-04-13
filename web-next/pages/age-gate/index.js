@@ -2,7 +2,11 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { LogoCircleWhiteTransparent } from "components/Icons";
-import story from "./messages";
+import messages, {
+  handleMessageAction,
+  getAgeCheckValue,
+  getMessageById,
+} from "./messages";
 
 const Logo = styled(LogoCircleWhiteTransparent)`
   width: 96px;
@@ -42,14 +46,7 @@ const Button = styled.button`
 `;
 
 const AgeGatePage = () => {
-  const findMessageById = useCallback((messageId) => {
-    if (!story) throw '"story" must be defined.';
-    let message = story.find((message) => message.mid === messageId);
-    console.log("story : ", story);
-    console.log("message : ", message);
-    return message;
-  });
-  const [currentMessage, setMessage] = useState(findMessageById(1));
+  const [currentMessage, setMessage] = useState(getMessageById(1));
   return (
     <Content>
       <Container>

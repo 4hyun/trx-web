@@ -1,4 +1,4 @@
-const AGEGATE_PASS_ID = "pass";
+import { AGE_CHECK_KEY } from "./constants";
 
 const messages = [
   {
@@ -9,13 +9,13 @@ const messages = [
       {
         a_id: 1,
         label: "Yes",
-        next: { m_id: 2 },
+        next: { m_id: 2 , pass:},
         error: { m_id: 3 },
       },
       {
         a_id: 2,
         label: "No",
-        next: { m_id: 3 },
+        next: { m_id: 3 , pass: null},
         error: null,
       },
     ],
@@ -28,13 +28,13 @@ const messages = [
       {
         a_id: 3,
         label: "Remember me",
-        next: { m_id: AGEGATE_PASS_ID },
+        next: { m_id: null ,pass:true},
         error: null,
       },
       {
         a_id: 4,
         label: "Go without it",
-        next: { m_id: AGEGATE_PASS_ID },
+        next: { m_id: null ,pass:true},
         error: null,
       },
     ],
@@ -43,7 +43,7 @@ const messages = [
     m_id: 3,
     title: "reject",
     message: "Sorry you must be of age!",
-    action: [{ a_id: 5, label: "Try again", next: { m_id: 1 }, error: null }],
+    action: [{ a_id: 5, label: "Try again", next: { m_id: 1 , pass: null}, error: null }],
   },
 ];
 
@@ -62,19 +62,31 @@ const handleMessageActionError = (action_error) => {
   return;
 };
 
-const getMessageById = (id) => {
+export const getMessageById = (id) => {
   return messagesMap[id];
 };
 
+// May use async logic in the future (eg. server side age verification)
+export const getAgeCheckValue = async() => {
+  try {
+    let {localStorage} = window
+    let ageCheckValue = localStorage.getItem(AGE_CHECK_KEY)
+    return ageCheckValue
+  } catch (error) {
+    console.warn('[Error] getAgeCheckValue', error)
+  }
+  
+};
+
 export const handleMessageAction = async (action, cbBeforeNextMessage) => {
-  let { next, error: action_error } = action;
+  let { a_id,next, error: action_error } = action;
   try {
     let response = await cbBeforeNextMessage();
     console.log("handleMessageAction response : ", response);
     return getMessageById(next.m_id);
   } catch (error) {
     if (action_error) handleMessageActionError(action_error);
-    throw error;
+    console.warn(`[Error] handleMessageAction actionId:${a_id}`,error) ;
   }
 };
 
