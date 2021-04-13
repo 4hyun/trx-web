@@ -1,1 +1,1 @@
-export const AGE_CHECK_KEY = "trx-age-check-js";
+export const AGE_GATE_LS_KEY = "trx-age-check-js";
