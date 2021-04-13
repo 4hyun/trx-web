@@ -19,23 +19,23 @@ export const AccordionToggleIcon = styled(IconAngleDown)`
   ${({ open }) => open && tw`transform rotate-180`};
   &,
   & path {
-    ${({ mouseOver }) => mouseOver && tw`text-tr-white fill-current`}
+    ${({ mouseover }) => mouseover && tw`text-tr-white fill-current`}
   }
   ${tw`transition-transform`};
 `;
 
 const Accordion = (props) => {
   const [open, setOpen] = useState(false);
-  const [mouseOver, setMouseOver] = useState(null);
+  const [mouseOver, setMouseOver] = useState(0);
   const toggleAccordion = () => {
     console.log("toggleAccordion()");
     setOpen(!open);
   };
   const onMouseOver = () => {
-    setMouseOver(true);
+    setMouseOver(1);
   };
   const onMouseLeave = () => {
-    setMouseOver(false);
+    setMouseOver(0);
   };
   return (
     <Container onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
@@ -48,7 +48,7 @@ const Accordion = (props) => {
           })) || (
           <DefaultAccordionSummary onClick={toggleAccordion}>
             Accordion Summary
-            <AccordionToggleIcon open={open} mouseOver={mouseOver} />
+            <AccordionToggleIcon open={open} mouseover={mouseOver} />
           </DefaultAccordionSummary>
         )}
       </AccordionSummaryContainer>

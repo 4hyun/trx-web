@@ -56,7 +56,7 @@ const Content = ({ transitionEnd }) => {
               Feature
               <AccordionToggleIcon
                 open={open}
-                mouseOver={mouseOver}
+                mouseover={mouseOver}
                 size={"32px"}
               />
             </AccordionSummary>

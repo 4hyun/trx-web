@@ -22,14 +22,14 @@ const STYLE_BY_MENU_STATE = {
     transform: translateY(-50%);
     transform: scale(0.5);
     :hover #BG {
-      fill: rgb(35, 35, 35, 0.6);
+      fill: rgb(104, 104, 104);
     }
   `,
   close: css`
     top: 50%;
     transform: translateY(-50%);
     :hover #Circle {
-      fill: rgb(35, 35, 35, 0.6);
+      fill: rgb(104, 104, 104);
     }
   `,
 };

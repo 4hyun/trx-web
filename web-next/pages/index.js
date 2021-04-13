@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import HomeContent from "./HomeContent";
 import styled from "styled-components";
@@ -16,7 +17,9 @@ const Flavor = ({ flavor }) => {
 };
 
 export default function Home({ flavors, preview }) {
-  console.log("Home props.flavors : ", flavors);
+  useEffect(() => {
+    console.log("Home rendered");
+  });
 
   return (
     <div className="HomePage">
@@ -28,7 +31,7 @@ export default function Home({ flavors, preview }) {
         {flavors && (
           <FlavorsGallery>
             {flavors.map((flavor) => (
-              <FlavorWrapper>
+              <FlavorWrapper key={flavor.id}>
                 <Flavor flavor={flavor}></Flavor>
               </FlavorWrapper>
             ))}
