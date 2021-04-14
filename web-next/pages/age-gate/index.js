@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import tw from "twin.macro";
@@ -19,7 +19,7 @@ const Content = styled.div`
   ${tw`fixed inset-0 z-20`}
 `;
 
-const GridLayout = styled.div`
+export const GridLayout = styled.div`
   ${tw`w-full h-full grid grid-cols-12`}
 `;
 
@@ -76,6 +76,14 @@ const cbBeforeNextMessage = (actionId) => async () => {
 
 const AgeGatePage = () => {
   const router = useRouter();
+  const handleActionButtonClick = useCallback(async (action) => {
+    if (action.next.pass) return enterHome();
+    let message = await handleMessageAction(
+      action,
+      cbBeforeNextMessage(action.a_id)
+    );
+    setMessage(message);
+  });
   const [currentMessage, setMessage] = useState(null);
   const [ageCheckValue, setAgeCheckValue] = useState(null);
   const enterHome = () => {
@@ -101,14 +109,7 @@ const AgeGatePage = () => {
                   {currentMessage.actions.map((action) => (
                     <Button
                       key={action.a_id}
-                      onClick={async () => {
-                        if (action.next.pass) return enterHome();
-                        let message = await handleMessageAction(
-                          action,
-                          cbBeforeNextMessage(action.a_id)
-                        );
-                        setMessage(message);
-                      }}
+                      onClick={() => handleActionButtonClick(action)}
                     >
                       {action.label}
                     </Button>

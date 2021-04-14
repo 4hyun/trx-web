@@ -2,13 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 
-const defaultStyles = {
-  width: "100px",
-};
-
 const Container = styled.div`
   @media (min-width: 1024px) {
-    width: ${({ width }) => width || defaultStyles.width};
+    width: ${({ width }) => width || "var(--DesktopNavbarWidth)"};
     max-width: 100px;
     height: 100vh;
     position: fixed;

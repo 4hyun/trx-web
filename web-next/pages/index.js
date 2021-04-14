@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import Head from "next/head";
+import { GridLayout } from "pages/age-gate";
 import HomeContent from "./HomeContent";
+import Collection from "components/Collection";
 import styled from "styled-components";
+import tw from "twin.macro";
 import { fetchAPI } from "lib/api";
 
 const FlavorsGallery = styled.ul``;
@@ -28,15 +31,19 @@ export default function Home({ flavors, preview }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeContent>
-        {flavors && (
-          <FlavorsGallery>
-            {flavors.map((flavor) => (
-              <FlavorWrapper key={flavor.id}>
-                <Flavor flavor={flavor}></Flavor>
-              </FlavorWrapper>
-            ))}
-          </FlavorsGallery>
-        )}
+        <GridLayout>
+          <Collection>
+            {flavors && (
+              <FlavorsGallery>
+                {flavors.map((flavor) => (
+                  <FlavorWrapper key={flavor.id}>
+                    <Flavor flavor={flavor}></Flavor>
+                  </FlavorWrapper>
+                ))}
+              </FlavorsGallery>
+            )}
+          </Collection>
+        </GridLayout>
       </HomeContent>
     </div>
   );
