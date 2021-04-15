@@ -28,7 +28,7 @@
       "plugin": "upload",
       "required": false
     },
-    "Meta": {
+    "meta": {
       "type": "dynamiczone",
       "components": [
         "product-meta.dab",

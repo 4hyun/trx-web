@@ -31,6 +31,12 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "collection_card_footer_content": {
+      "type": "dynamiczone",
+      "components": [
+        "collection-card-footer-content.footer-content"
+      ]
     }
   }
 }

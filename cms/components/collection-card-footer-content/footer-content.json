@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_collection_card_footer_contents",
+  "info": {
+    "name": "IndicaSativaIndicator",
+    "icon": "square",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "indica": {
+      "type": "integer",
+      "min": 0,
+      "max": 5
+    },
+    "sativa": {
+      "type": "integer",
+      "max": 5,
+      "min": 0
+    }
+  }
+}

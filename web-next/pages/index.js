@@ -32,17 +32,7 @@ export default function Home({ flavors, preview }) {
       </Head>
       <HomeContent>
         <GridLayout>
-          <Collection>
-            {flavors && (
-              <FlavorsGallery>
-                {flavors.map((flavor) => (
-                  <FlavorWrapper key={flavor.id}>
-                    <Flavor flavor={flavor}></Flavor>
-                  </FlavorWrapper>
-                ))}
-              </FlavorsGallery>
-            )}
-          </Collection>
+          <Collection collection={flavors} />
         </GridLayout>
       </HomeContent>
     </div>
@@ -55,7 +45,17 @@ export const getStaticProps = async ({ preview = null }) => {
     query Flavors {
       flavors(publicationState:PREVIEW) {
         id,
-        name
+        name,
+        main_img {
+          id,
+          formats
+        },
+        collection_card_footer_content {
+            ... on ComponentCollectionCardFooterContentFooterContent {
+                indica,
+                sativa
+            }
+        }
       }
     }
     `,
