@@ -9,9 +9,10 @@ const styles = {
   header: { fontSize: "2rem" },
 };
 
+/* TODO: possibly rename to LayoutContainer to 
+keep consistency with CollectionSingleView's LayoutContainer */
 const Container = styled.div`
-  ${tw`flex flex-col justify-center space-y-7`}
-  ${tw`col-start-2 col-end-6`}
+  ${tw`flex flex-col justify-center space-y-7 col-start-2 col-end-6`}
 `;
 
 const HeaderContainer = styled.div`
@@ -22,8 +23,7 @@ const HeaderContainer = styled.div`
 `;
 
 const Header = styled.div`
-  ${tw`flex items-start`}
-  ${tw`uppercase font-accent font-bold text-tr-white leading-none tracking-wider`}
+  ${tw`flex items-start uppercase font-accent font-bold text-tr-white leading-none tracking-wider`}
   font-size: ${styles.header.fontSize};
 `;
 
@@ -57,6 +57,7 @@ const Collection = ({ collection }) => {
         {collection.map((flavor) => {
           return (
             <CollectionCard
+              key={flavor.id}
               item={flavor}
               renderFooterContentProp={flavor.collection_card_footer_content}
               renderFooterContent={CollectionCardFooterContent}

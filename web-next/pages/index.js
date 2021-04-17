@@ -3,6 +3,9 @@ import Head from "next/head";
 import { GridLayout } from "pages/age-gate";
 import HomeContent from "./HomeContent";
 import Collection from "components/Collection";
+import CollectionSingleView, {
+  LayoutContainer as CollectionViewColumn,
+} from "components/CollectionSingleView";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { fetchAPI } from "lib/api";
@@ -33,6 +36,9 @@ export default function Home({ flavors, preview }) {
       <HomeContent>
         <GridLayout>
           <Collection collection={flavors} />
+          <CollectionViewColumn>
+            <CollectionSingleView />
+          </CollectionViewColumn>
         </GridLayout>
       </HomeContent>
     </div>

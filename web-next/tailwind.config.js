@@ -12,6 +12,7 @@ module.exports = {
         "tr-black": "#232323",
         "tr-white": "#F9F9FB",
         "tr-gray": "#C4C4C4",
+        "hover-green": { 100: "#96D9A3" },
       },
       transitionProperty: {
         height: "height",
@@ -24,6 +25,7 @@ module.exports = {
     extend: {
       transitionProperty: ["hover", "focus"],
       fill: ["hover", "focus"],
+      transform: ["hover", "focus"],
     },
   },
   plugins: [],
