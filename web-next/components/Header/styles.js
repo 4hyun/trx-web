@@ -16,8 +16,8 @@ const navbarStyles = {
   },
 };
 
-const desktopMenuButtonStyles = {
+const menuLogoButtonStyles = {
   transitionDelay: headerContainerStyles.transitionDuration,
 };
 
-export { headerContainerStyles, navbarStyles, desktopMenuButtonStyles };
+export { headerContainerStyles, navbarStyles, menuLogoButtonStyles };

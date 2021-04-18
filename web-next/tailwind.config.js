@@ -3,7 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      screen: { xs: "475px" },
+      screens: { xs: "475px" },
       fontFamily: {
         primary: ["ABeeZee", "sans-serif"],
         accent: ["Oswald", "sans-serif"],

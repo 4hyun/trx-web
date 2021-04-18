@@ -22,7 +22,7 @@ const Flavor = ({ flavor }) => {
 };
 
 const HomeContentGrid = styled.div`
-  ${tw`h-full grid grid-cols-12 auto-rows-fr gap-y-4 lg:(grid-rows-none)`};
+  ${tw`h-full grid grid-cols-12 auto-rows-max xs:(auto-rows-fr) gap-y-4 lg:(grid-rows-none)`};
   /* grid-auto-columns: minmax(1fr, 1fr); */
 `;
 

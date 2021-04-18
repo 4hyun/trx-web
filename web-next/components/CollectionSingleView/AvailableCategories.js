@@ -27,14 +27,14 @@ const BlockTitle = styled.p`
 `;
 
 const List = styled.div`
-  ${tw`grid grid-cols-3 gap-6 pb-10 md:(grid-rows-2)`}
+  ${tw`grid grid-rows-2 grid-cols-3 xs:grid-cols-4 gap-6 pb-10 md:(grid-cols-3)`}
   @media (min-width: 768px) {
     height: 150px;
   }
 `;
 
-const Wrapper = styled.div`
-  ${tw`flex justify-center items-center rounded-full bg-tr-white font-accent text-sm py-1`}
+const CategoryWrapper = styled.div`
+  ${tw`flex justify-center items-center rounded-full bg-tr-white font-accent text-sm xs:(text-base) py-1`}
   @media (min-width: 768px) {
     /* height: 100px; */
     ${tw`font-bold text-xl py-2`}
@@ -42,7 +42,7 @@ const Wrapper = styled.div`
 `;
 
 const Category = ({ data }) => {
-  return <Wrapper>{data.name}</Wrapper>;
+  return <CategoryWrapper>{data.name}</CategoryWrapper>;
 };
 
 const AvailableCategories = ({ categories }) => {

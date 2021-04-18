@@ -18,10 +18,10 @@ const Container = styled.div`
   }
 `;
 
-const Navbar = ({ renderSocialButtonGroup, renderMenuButton }) => {
+const Navbar = ({ renderSocialButtonGroup, renderDesktopMenuButton }) => {
   return (
     <Container>
-      {renderMenuButton && renderMenuButton()}
+      {renderDesktopMenuButton && renderDesktopMenuButton()}
       {renderSocialButtonGroup && renderSocialButtonGroup()}
     </Container>
   );

@@ -10,14 +10,17 @@ import {
 import {
   headerContainerStyles,
   navbarStyles,
-  desktopMenuButtonStyles,
+  menuLogoButtonStyles,
 } from "./styles";
 import reducer from "./reducer";
 import Content from "components/Navbar/Content";
 import Navbar from "components/Navbar";
 import SocialButtonGroup from "components/Header/Social";
-import MenuButton from "components/Navbar/MenuButton";
-import DesktopMenuButton from "components/Navbar/DesktopMenuButton";
+import DesktopMenuButton from "components/Navbar/MenuButton";
+import {
+  DesktopMenuLogoButton,
+  MobileMenuLogoButton,
+} from "components/Navbar/MenuLogoButton";
 
 const headerFadeIn = keyframes`
   from {
@@ -37,7 +40,7 @@ const HeaderContainer = styled.div`
   animation-duration: 0.6s;
   animation-fill-mode: both;
   animation-delay: 1s;
-  ${tw`w-screen lg:(w-full) bg-tr-white`};
+  ${tw`relative w-screen lg:(w-full) bg-tr-white`};
   height: 60px;
   @media (min-width: 1024px) {
     width: ${({ menuOpen }) =>
@@ -77,6 +80,12 @@ const initState = {
   },
 };
 
+const MobileMenuIGHashtagLink = styled.a`
+  ${tw`font-bungee text-tr-black text-sm no-underline hover:underline`}
+`;
+const MobileMenuIGHashtagContainer = styled.div`
+  ${tw`flex items-center pl-4 absolute top-0 left-0 w-1/2 h-full lg:hidden`}
+`;
 const Header = ({ desktopStyles }) => {
   const [state, dispatch] = useReducer(reducer, initState);
   const toggleDesktopMenu = useCallback(() => {
@@ -93,12 +102,12 @@ const Header = ({ desktopStyles }) => {
       <SocialButtonGroup stylesheet={socialButtonGroupStylesheet} />
     </NavbarRow>
   ));
-  const renderMenuButton = useCallback(() => (
+  const renderDesktopMenuButton = useCallback(() => (
     <NavbarRow
-      tw="flex flex-1 items-start lg:(pt-6)"
+      tw="hidden lg:(flex flex-1 items-start pt-6)"
       onClick={toggleDesktopMenu}
     >
-      <MenuButton />
+      <DesktopMenuButton />
     </NavbarRow>
   ));
 
@@ -119,14 +128,22 @@ const Header = ({ desktopStyles }) => {
     
     When breakpoint is Mobile | Tablet,
     pass null */}
+      <MobileMenuIGHashtagContainer>
+        <MobileMenuIGHashtagLink>#TunaaaaMoonAndBack</MobileMenuIGHashtagLink>
+      </MobileMenuIGHashtagContainer>
       <Navbar
         width={navbarStyles.width}
-        renderMenuButton={renderMenuButton}
+        renderDesktopMenuButton={renderDesktopMenuButton}
         renderSocialButtonGroup={renderSocialButtonGroup}
       ></Navbar>
       <Content transitionEnd={state.transitionEnd} />
-      <DesktopMenuButton
-        styles={desktopMenuButtonStyles}
+      <DesktopMenuLogoButton
+        styles={menuLogoButtonStyles}
+        menuOpen={state.menuOpen}
+        toggleMenu={toggleDesktopMenu}
+      />
+      <MobileMenuLogoButton
+        styles={menuLogoButtonStyles}
         menuOpen={state.menuOpen}
         toggleMenu={toggleDesktopMenu}
       />

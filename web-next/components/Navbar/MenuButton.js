@@ -1,11 +1,11 @@
 import React from "react";
 import { TRXMenuIconClose, TRXMenuIconOpen } from "components/Icons";
 
-const MenuButton = ({ menuOpen }) =>
+export const DesktopMenuButton = ({ menuOpen }) =>
   menuOpen ? (
     <TRXMenuIconOpen></TRXMenuIconOpen>
   ) : (
     <TRXMenuIconClose></TRXMenuIconClose>
   );
 
-export default MenuButton;
+export default DesktopMenuButton;
