@@ -28,16 +28,16 @@ const GridLayout = styled.div`
 export default function Home({ flavors, preview }) {
   const [selectedCollection, setSelectedCollection] = useState();
   const handleCollectionClick = (collection) => {
-    console.log("handleCollectionClick", collection);
+    // console.log("handleCollectionClick", collection);
     setSelectedCollection(collection);
   };
   useEffect(() => {
     console.log("Home rendered");
-    console.log("selectedCollection : ", selectedCollection);
+    // console.log("selectedCollection : ", selectedCollection);
   });
 
   return (
-    <div className="HomePage">
+    <>
       <Head>
         <title>Tunaaaa Room Xtracts</title>
         <link rel="icon" href="/favicon.ico" />
@@ -56,7 +56,7 @@ export default function Home({ flavors, preview }) {
           </CollectionViewColumn>
         </GridLayout>
       </HomeContent>
-    </div>
+    </>
   );
 }
 
