@@ -1,11 +1,10 @@
 import NextLink from "next/link";
-import NextImage from "next/image";
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 
 const Wrapper = styled.footer`
-  ${tw`flex flex-col justify-center items-center w-full bg-tr-black bg-opacity-80 text-tr-white font-bungee select-none`}
+  ${tw`flex flex-col justify-center items-center w-full bg-tr-black bg-opacity-90 text-tr-white font-bungee select-none`}
   /* Temp Styles */
   top: 100vh;
   min-height: 200px;
@@ -16,11 +15,11 @@ const Grid = styled.div`
 `;
 
 const Column = styled.div`
-  ${tw`flex flex-col justify-center items-center`}
+  ${tw`flex flex-col justify-center items-center space-y-2`}
 `;
 
 const StyledLink = styled.a`
-  ${tw`cursor-pointer text-tr-white text-opacity-70 text-xs xs:text-base`}
+  ${tw`cursor-pointer text-tr-white text-opacity-70 text-xs xs:text-base hover:text-opacity-100`}
 `;
 
 const Link = ({ href, name }) => {
@@ -31,7 +30,7 @@ const Link = ({ href, name }) => {
   );
 };
 
-const TRLogo = styled(NextImage)`
+const TRLogo = styled.img`
   opacity: 0.7;
   :hover {
     opacity: 1;
