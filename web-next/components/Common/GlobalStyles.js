@@ -5,9 +5,9 @@ const CustomStyles = createGlobalStyle`
   :root {
     --DesktopNavbarWidth: 100px;
   }
-  body {
-    -webkit-tap-highlight-color: ${theme`colors.purple.500`};
-    ${tw`antialiased`}
+  * {  
+    -webkit-tap-highlight-color: transparent;
+    ${tw`antialiased`};
   }
 `;
 
