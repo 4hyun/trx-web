@@ -13,7 +13,7 @@ const styles = {
 /* TODO: possibly rename to LayoutContainer to 
 keep consistency with CollectionSingleView's LayoutContainer */
 const Container = styled.div`
-  ${tw`col-span-full space-y-4 row-span-3 lg:(flex flex-col justify-center space-y-7 col-start-2 col-end-6 row-span-full)`}
+  ${tw`col-span-full space-y-4 lg:(flex flex-col justify-center space-y-7 col-start-2 col-end-6 row-span-full)`}
 `;
 
 const HeaderContainer = styled.div`

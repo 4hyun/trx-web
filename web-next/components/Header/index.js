@@ -37,7 +37,8 @@ const HeaderContainer = styled.div`
   animation-duration: 0.6s;
   animation-fill-mode: both;
   animation-delay: 1s;
-  ${tw`absolute top-0 left-0 w-full bg-tr-white`};
+  ${tw`w-screen lg:(w-full) bg-tr-white`};
+  height: 60px;
   @media (min-width: 1024px) {
     width: ${({ menuOpen }) =>
       (menuOpen && headerContainerStyles.menuOpen.open.width) ||
@@ -88,12 +89,15 @@ const Header = ({ desktopStyles }) => {
     return dispatch({ type: OPEN_DESKTOP_MENU });
   });
   const renderSocialButtonGroup = useCallback(() => (
-    <NavbarRow tw="hidden md:(flex flex-1 items-end pb-6)">
+    <NavbarRow tw="hidden lg:(flex flex-1 items-end pb-6)">
       <SocialButtonGroup stylesheet={socialButtonGroupStylesheet} />
     </NavbarRow>
   ));
   const renderMenuButton = useCallback(() => (
-    <NavbarRow tw="flex flex-1 items-start pt-6" onClick={toggleDesktopMenu}>
+    <NavbarRow
+      tw="flex flex-1 items-start lg:(pt-6)"
+      onClick={toggleDesktopMenu}
+    >
       <MenuButton />
     </NavbarRow>
   ));

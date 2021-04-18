@@ -22,8 +22,8 @@ const Flavor = ({ flavor }) => {
 };
 
 const HomeContentGrid = styled.div`
-  ${tw`h-full grid grid-cols-12 grid-rows-6 lg:(grid-rows-none)`};
-  grid-auto-columns: minmax(1fr, 1fr);
+  ${tw`h-full grid grid-cols-12 auto-rows-fr gap-y-4 lg:(grid-rows-none)`};
+  /* grid-auto-columns: minmax(1fr, 1fr); */
 `;
 
 export default function Home({ flavors, preview }) {

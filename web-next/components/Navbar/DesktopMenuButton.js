@@ -7,8 +7,10 @@ import {
 import tw from "twin.macro";
 
 const Container = styled.div`
-  ${tw`absolute bottom-0 top-0 right-0 flex justify-center`}
-  width: 1px;
+  ${tw`hidden lg:(absolute bottom-0 top-0 right-0 flex justify-center)`}
+  @media(min-width: 768px) {
+    width: 1px;
+  }
 `;
 
 const STYLE_BY_MENU_STATE = {

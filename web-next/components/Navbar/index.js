@@ -3,7 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 
 const Container = styled.div`
-  ${tw`flex`}
+  ${tw`flex h-full`}
   @media (min-width: 1024px) {
     width: ${({ width }) => width || "var(--DesktopNavbarWidth)"};
     max-width: 100px;

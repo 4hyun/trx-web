@@ -34,9 +34,10 @@ const List = styled.div`
 `;
 
 const Wrapper = styled.div`
+  ${tw`flex justify-center items-center rounded-full bg-tr-white font-accent text-sm py-1`}
   @media (min-width: 768px) {
     /* height: 100px; */
-    ${tw`flex justify-center items-center rounded-full bg-tr-white font-accent font-bold text-xl py-2`}
+    ${tw`font-bold text-xl py-2`}
   }
 `;
 

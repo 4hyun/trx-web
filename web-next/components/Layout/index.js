@@ -20,12 +20,16 @@ const styles = {
 };
 
 const Wrapper = styled.div`
-  ${tw`fixed top-0 left-0 right-0 w-screen overflow-x-hidden`}
   @media (min-width: 1024px) {
+    ${tw`fixed top-0 left-0 right-0 w-screen overflow-x-hidden`}
     padding-right: 0;
     padding-left: ${({ showHeader }) =>
       showHeader ? styles.desktop.header.width : "none"};
   }
+`;
+
+const Container = styled.div`
+  ${tw`absolute z-20 w-min h-auto auto-rows-min`}
 `;
 
 const BackgroundVideoWrapper = styled.div`
@@ -40,7 +44,7 @@ const FixedBackgroundVideo = () => {
   );
 };
 
-const Layout = ({ children, router }) => {
+const Layout = ({ children: mainContent, router }) => {
   const [showHeader, setShowHeader] = useState(true);
   useEffect(() => {
     // console.group("Layout.useEffect [this will run once]");
@@ -56,11 +60,13 @@ const Layout = ({ children, router }) => {
   }, [router.pathname]);
   return (
     <Wrapper showHeader={showHeader}>
-      {showHeader && (
-        <Header desktopStyles={styles.desktop.header.styles}></Header>
-      )}
-      {children}
-      <Footer></Footer>
+      <Container>
+        {showHeader && (
+          <Header desktopStyles={styles.desktop.header.styles}></Header>
+        )}
+        {mainContent}
+        <Footer></Footer>
+      </Container>
       <FixedBackgroundVideo />
     </Wrapper>
   );

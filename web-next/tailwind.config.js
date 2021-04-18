@@ -3,10 +3,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      screen: { xs: "475px" },
       fontFamily: {
         primary: ["ABeeZee", "sans-serif"],
         accent: ["Oswald", "sans-serif"],
         "accent-2": ["Anton", "sans-serif"],
+        bungee: ["Bungee", "cursive"],
       },
       colors: {
         "tr-green": "#1F6D37",
