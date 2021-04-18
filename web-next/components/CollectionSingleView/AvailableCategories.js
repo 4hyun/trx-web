@@ -27,17 +27,18 @@ const BlockTitle = styled.p`
 `;
 
 const List = styled.div`
-  ${tw`grid grid-rows-2 grid-cols-3 xs:grid-cols-4 gap-6 pb-10 md:(grid-cols-3)`}
+  ${tw`grid grid-rows-2 grid-cols-3 xs:grid-cols-4 gap-6 pb-10 `}
+  ${tw`md:grid-cols-3`}
   @media (min-width: 768px) {
     height: 150px;
   }
 `;
 
 const CategoryWrapper = styled.div`
-  ${tw`flex justify-center items-center rounded-full bg-tr-white font-accent text-sm xs:(text-base) py-1`}
+  ${tw`flex justify-center items-center rounded-full bg-tr-white font-accent font-bold text-sm xs:(text-base) py-2`}
   @media (min-width: 768px) {
     /* height: 100px; */
-    ${tw`font-bold text-xl py-2`}
+    ${tw`text-xl py-2`}
   }
 `;
 
@@ -46,14 +47,13 @@ const Category = ({ data }) => {
 };
 
 const AvailableCategories = ({ categories }) => {
-  console.log("AvailableCategories.props.categories : ", categories);
   return (
     <Column>
       <BlockTitle>Available as:</BlockTitle>
       <ScrollContainer>
         <List>
           {categories.map((categoryData) => (
-            <Category data={categoryData} />
+            <Category key={categoryData.id} data={categoryData} />
           ))}
         </List>
       </ScrollContainer>

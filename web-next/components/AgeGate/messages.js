@@ -53,6 +53,7 @@ const messages = [
     ],
   },
 ];
+/* TODO: refactor functions to "lib" */
 
 const messagesMap = messages.reduce((map, _message) => {
   let { title, message, actions } = _message;

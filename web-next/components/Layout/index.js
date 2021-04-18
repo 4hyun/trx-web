@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "next/router";
 import { paths } from "paths";
-import { AGE_GATE_LS_KEY } from "pages/age-gate/constants";
 import Header from "components/Header/index";
 import MainBackgroundVideo from "components/Common/MainBackgroundVideo";
 import Footer from "components/Layout/Footer";
@@ -45,7 +44,8 @@ const FixedBackgroundVideo = () => {
 };
 
 const Layout = ({ children: mainContent, router }) => {
-  const [showHeader, setShowHeader] = useState(true);
+  const [showLayout, setShowLayout] = useState(true);
+
   useEffect(() => {
     // console.group("Layout.useEffect [this will run once]");
     // console.log("router", router);
@@ -54,18 +54,18 @@ const Layout = ({ children: mainContent, router }) => {
     // console.group("localStorage");
     // console.log("localStorage", localStorage);
     // console.groupEnd();
-    if (router.pathname === paths.ageGate) return setShowHeader(false);
-    if (showHeader) return;
-    setShowHeader(true);
+    if (router.pathname === paths.ageGate) return setShowLayout(false);
+    if (showLayout) return;
+    setShowLayout(true);
   }, [router.pathname]);
   return (
-    <Wrapper showHeader={showHeader}>
+    <Wrapper showHeader={showLayout}>
       <Container>
-        {showHeader && (
+        {showLayout && (
           <Header desktopStyles={styles.desktop.header.styles}></Header>
         )}
         {mainContent}
-        <Footer></Footer>
+        {showLayout && <Footer></Footer>}
       </Container>
       <FixedBackgroundVideo />
     </Wrapper>

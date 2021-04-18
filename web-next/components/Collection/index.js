@@ -29,9 +29,10 @@ const Header = styled.div`
 `;
 
 const CollectionGallery = styled.div`
-  ${tw`grid grid-cols-3 gap-3 auto-rows-fr md:(grid-cols-5 gap-x-4 gap-y-6 overflow-y-auto p-2) lg:(grid-cols-2 gap-x-4 gap-y-6 auto-rows-min) xl:(grid-cols-3)`}
+  grid-auto-rows: 1fr;
+  ${tw`grid grid-cols-3 gap-3 md:(grid-cols-5 gap-x-4 gap-y-6 overflow-y-auto p-2) lg:(grid-cols-2 gap-x-4 gap-y-6 auto-rows-min) xl:(grid-cols-3)`}
   @media (min-width: 768px) {
-    height: 460px;
+    height: auto;
     & {
       ${scrollbarHideStyles}
     }

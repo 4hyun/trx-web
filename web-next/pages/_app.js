@@ -1,9 +1,27 @@
-// import "../styles/globals.css";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import GlobalStyles from "components/Common/GlobalStyles";
 import Layout from "components/Layout/index";
+import AgeGateContext from "components/AgeGate/context";
+import { AGE_GATE_LS_KEY } from "components/AgeGate/constants";
 
 function MyApp({ Component, pageProps }) {
+  const [ageCheckedValue, setAgeChecked] = useState(null);
+  const ageGateContextValue = { ageCheckedValue, setAgeChecked };
+  const router = useRouter();
+  useEffect(() => {
+    // console.log("router ", router);
+    if (router.pathname === "/") {
+      const ageCheckValue = localStorage.getItem(AGE_GATE_LS_KEY);
+      if (ageCheckValue) {
+        setAgeChecked(ageCheckValue);
+        return;
+      } else {
+        router.replace("age-gate");
+      }
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -14,9 +32,11 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <GlobalStyles />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <AgeGateContext.Provider value={ageGateContextValue}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AgeGateContext.Provider>
     </>
   );
 }

@@ -39,11 +39,15 @@ const CollectionSingleView = ({ selected, tempLoadCollection }) => {
     if (selected.isDefaultProps) tempLoadCollection();
   }, []);
   return (
-    <Container>
-      <Title>{`Tunaaaa\n${selected.name}`}</Title>
-      <Description>{selected.description}</Description>
-      <AvailableCategories categories={selected.available_categories} />
-    </Container>
+    <>
+      {!selected.isDefaultProps && (
+        <Container>
+          <Title>{`Tunaaaa\n${selected.name}`}</Title>
+          <Description>{selected.description}</Description>
+          <AvailableCategories categories={selected.available_categories} />
+        </Container>
+      )}
+    </>
   );
 };
 

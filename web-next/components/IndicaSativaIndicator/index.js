@@ -26,8 +26,8 @@ const IndicaSativaIndicator = ({ indica, sativa }) => {
   }
   return (
     <Container>
-      {leaves.map((leafType) => (
-        <Leaf leafType={leafType} />
+      {leaves.map((leafType, i) => (
+        <Leaf key={i} leafType={leafType} />
       ))}
     </Container>
   );

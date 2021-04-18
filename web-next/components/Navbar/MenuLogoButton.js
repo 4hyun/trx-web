@@ -25,7 +25,10 @@ const STYLE_BY_MENU_STATE = {
     @media (min-width: 768px) {
       right: 10%;
     }
-    ${tw`cursor-pointer lg:right-0`}
+    @media (min-width: 1024px) {
+      right: initial;
+    }
+    ${tw`cursor-pointer`}
     transition: top 0.3s, transform 0.3s;
   `,
   desktop: {

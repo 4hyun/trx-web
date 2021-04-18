@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Head from "next/head";
-import HomeContentContainer from "./HomeContentContainer";
+import { AgeGateContext } from "components/AgeGate/context";
+import HomeContentContainer from "components/HomePage/HomeContentContainer";
 import Collection from "components/Collection";
 import CollectionSingleView, {
   LayoutContainer as CollectionViewColumn,
@@ -28,6 +29,7 @@ const HomeContentGrid = styled.div`
 
 export default function Home({ flavors, preview }) {
   const [selectedCollection, setSelectedCollection] = useState();
+  const { ageCheckedValue } = useContext(AgeGateContext);
   const handleCollectionClick = (collection) => {
     // console.log("handleCollectionClick", collection);
     setSelectedCollection(collection);
@@ -43,20 +45,22 @@ export default function Home({ flavors, preview }) {
         <title>Tunaaaa Room Xtracts</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HomeContentContainer>
-        <HomeContentGrid>
-          <Collection
-            collection={flavors}
-            onItemClick={handleCollectionClick}
-          />
-          <CollectionViewColumn>
-            <CollectionSingleView
-              selected={selectedCollection}
-              tempLoadCollection={() => handleCollectionClick(flavors[0])}
+      {ageCheckedValue && (
+        <HomeContentContainer>
+          <HomeContentGrid>
+            <Collection
+              collection={flavors}
+              onItemClick={handleCollectionClick}
             />
-          </CollectionViewColumn>
-        </HomeContentGrid>
-      </HomeContentContainer>
+            <CollectionViewColumn>
+              <CollectionSingleView
+                selected={selectedCollection}
+                tempLoadCollection={() => handleCollectionClick(flavors[0])}
+              />
+            </CollectionViewColumn>
+          </HomeContentGrid>
+        </HomeContentContainer>
+      )}
     </>
   );
 }
@@ -75,6 +79,7 @@ export const getStaticProps = async ({ preview = null }) => {
         description,
         available_categories {
           ... on ProductCategory {
+            id,
             name
           }
         }
