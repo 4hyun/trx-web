@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import HomeContent from "./HomeContent";
+import HomeContentContainer from "./HomeContentContainer";
 import Collection from "components/Collection";
 import CollectionSingleView, {
   LayoutContainer as CollectionViewColumn,
@@ -21,8 +21,9 @@ const Flavor = ({ flavor }) => {
   );
 };
 
-const GridLayout = styled.div`
-  ${tw`w-full h-full grid grid-cols-12 grid-rows-6 lg:(grid-rows-none)`}
+const HomeContentGrid = styled.div`
+  ${tw`h-full grid grid-cols-12 grid-rows-6 lg:(grid-rows-none)`};
+  grid-auto-columns: minmax(1fr, 1fr);
 `;
 
 export default function Home({ flavors, preview }) {
@@ -42,8 +43,8 @@ export default function Home({ flavors, preview }) {
         <title>Tunaaaa Room Xtracts</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HomeContent>
-        <GridLayout>
+      <HomeContentContainer>
+        <HomeContentGrid>
           <Collection
             collection={flavors}
             onItemClick={handleCollectionClick}
@@ -54,8 +55,8 @@ export default function Home({ flavors, preview }) {
               tempLoadCollection={() => handleCollectionClick(flavors[0])}
             />
           </CollectionViewColumn>
-        </GridLayout>
-      </HomeContent>
+        </HomeContentGrid>
+      </HomeContentContainer>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useCallback } from "react";
+import React, { useReducer, useCallback } from "react";
 import styled, { css, keyframes } from "styled-components";
 import tw from "twin.macro";
 import {
@@ -37,8 +37,8 @@ const HeaderContainer = styled.div`
   animation-duration: 0.6s;
   animation-fill-mode: both;
   animation-delay: 1s;
+  ${tw`absolute top-0 left-0 w-full bg-tr-white`};
   @media (min-width: 1024px) {
-    ${tw`bg-tr-white`};
     width: ${({ menuOpen }) =>
       (menuOpen && headerContainerStyles.menuOpen.open.width) ||
       headerContainerStyles.menuOpen.close.width};
@@ -65,7 +65,6 @@ const socialButtonGroupStylesheet = css`
 `;
 
 const NavbarRow = styled.div`
-  ${tw`flex flex-1`}
   ${navbarElementSharedStyles}
 `;
 
@@ -88,6 +87,16 @@ const Header = ({ desktopStyles }) => {
     }
     return dispatch({ type: OPEN_DESKTOP_MENU });
   });
+  const renderSocialButtonGroup = useCallback(() => (
+    <NavbarRow tw="hidden md:(flex flex-1 items-end pb-6)">
+      <SocialButtonGroup stylesheet={socialButtonGroupStylesheet} />
+    </NavbarRow>
+  ));
+  const renderMenuButton = useCallback(() => (
+    <NavbarRow tw="flex flex-1 items-start pt-6" onClick={toggleDesktopMenu}>
+      <MenuButton />
+    </NavbarRow>
+  ));
 
   const transitionEnd = (e) => {
     const { menuOpen } = state;
@@ -101,18 +110,15 @@ const Header = ({ desktopStyles }) => {
       menuOpen={state.menuOpen}
       desktopStyles={desktopStyles}
     >
+      {/***
+    TODO: Add condition to socialButtonGroup prop.
+    
+    When breakpoint is Mobile | Tablet,
+    pass null */}
       <Navbar
         width={navbarStyles.width}
-        menuButton={() => (
-          <NavbarRow tw="items-start pt-6" onClick={toggleDesktopMenu}>
-            <MenuButton />
-          </NavbarRow>
-        )}
-        socialButtonGroup={() => (
-          <NavbarRow tw="items-end pb-6">
-            <SocialButtonGroup stylesheet={socialButtonGroupStylesheet} />
-          </NavbarRow>
-        )}
+        renderMenuButton={renderMenuButton}
+        renderSocialButtonGroup={renderSocialButtonGroup}
       ></Navbar>
       <Content transitionEnd={state.transitionEnd} />
       <DesktopMenuButton

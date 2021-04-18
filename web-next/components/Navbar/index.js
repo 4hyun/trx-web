@@ -3,6 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 
 const Container = styled.div`
+  ${tw`flex`}
   @media (min-width: 1024px) {
     width: ${({ width }) => width || "var(--DesktopNavbarWidth)"};
     max-width: 100px;
@@ -12,16 +13,16 @@ const Container = styled.div`
     top: 0;
     bottom: 0;
     /* DEV: remove temp background style */
-    ${tw`flex flex-col items-center`}
+    ${tw`flex-col items-center`}
     ${tw`bg-tr-white`}
   }
 `;
 
-const Navbar = ({ socialButtonGroup, menuButton }) => {
+const Navbar = ({ renderSocialButtonGroup, renderMenuButton }) => {
   return (
     <Container>
-      {menuButton && menuButton()}
-      {socialButtonGroup && socialButtonGroup()}
+      {renderMenuButton && renderMenuButton()}
+      {renderSocialButtonGroup && renderSocialButtonGroup()}
     </Container>
   );
 };

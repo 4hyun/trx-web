@@ -20,7 +20,7 @@ const styles = {
 };
 
 const Wrapper = styled.div`
-  ${tw`px-6`}
+  ${tw`fixed top-0 left-0 right-0 w-screen overflow-x-hidden`}
   @media (min-width: 1024px) {
     padding-right: 0;
     padding-left: ${({ showHeader }) =>
