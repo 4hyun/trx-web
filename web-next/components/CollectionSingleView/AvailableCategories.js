@@ -12,11 +12,11 @@ const Column = styled.div`
 
 const ScrollContainer = styled.div`
   @media (min-width: 768px) {
-    height: 286.5px;
+    /* height: 286.5px; */
     /* space between scrollbar */
     padding-right: 1rem;
   }
-  ${tw`overflow-y-auto`}
+  /* ${tw`overflow-y-auto`} */
   & {
     ${scrollbarStyles}
   }
@@ -27,13 +27,16 @@ const BlockTitle = styled.p`
 `;
 
 const List = styled.div`
-  ${tw`grid grid-cols-3 gap-6 pb-10`}
+  ${tw`grid grid-cols-3 gap-6 pb-10 md:(grid-rows-2)`}
+  @media (min-width: 768px) {
+    height: 150px;
+  }
 `;
 
 const Wrapper = styled.div`
   @media (min-width: 768px) {
-    height: 100px;
-    ${tw`flex justify-center items-center rounded-3xl bg-tr-white font-accent font-bold text-xl`}
+    /* height: 100px; */
+    ${tw`flex justify-center items-center rounded-full bg-tr-white font-accent font-bold text-xl py-2`}
   }
 `;
 
