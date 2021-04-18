@@ -20,7 +20,9 @@ const styles = {
 };
 
 const Wrapper = styled.div`
-  @media (min-width: 768px) {
+  ${tw`px-6`}
+  @media (min-width: 1024px) {
+    padding-right: 0;
     padding-left: ${({ showHeader }) =>
       showHeader ? styles.desktop.header.width : "none"};
   }

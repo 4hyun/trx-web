@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
-import { GridLayout } from "pages/age-gate";
 import HomeContent from "./HomeContent";
 import Collection from "components/Collection";
 import CollectionSingleView, {
@@ -22,9 +21,19 @@ const Flavor = ({ flavor }) => {
   );
 };
 
+const GridLayout = styled.div`
+  ${tw`w-full h-full grid grid-cols-12 grid-rows-6 lg:(grid-rows-none)`}
+`;
+
 export default function Home({ flavors, preview }) {
+  const [selectedCollection, setSelectedCollection] = useState();
+  const handleCollectionClick = (collection) => {
+    console.log("handleCollectionClick", collection);
+    setSelectedCollection(collection);
+  };
   useEffect(() => {
     console.log("Home rendered");
+    console.log("selectedCollection : ", selectedCollection);
   });
 
   return (
@@ -35,9 +44,15 @@ export default function Home({ flavors, preview }) {
       </Head>
       <HomeContent>
         <GridLayout>
-          <Collection collection={flavors} />
+          <Collection
+            collection={flavors}
+            onItemClick={handleCollectionClick}
+          />
           <CollectionViewColumn>
-            <CollectionSingleView />
+            <CollectionSingleView
+              selected={selectedCollection}
+              tempLoadCollection={() => handleCollectionClick(flavors[0])}
+            />
           </CollectionViewColumn>
         </GridLayout>
       </HomeContent>
@@ -48,7 +63,7 @@ export default function Home({ flavors, preview }) {
 export const getStaticProps = async ({ preview = null }) => {
   const data = await fetchAPI(
     `
-    query Flavors {
+    query {
       flavors(publicationState:PREVIEW) {
         id,
         name,
@@ -56,6 +71,12 @@ export const getStaticProps = async ({ preview = null }) => {
           id,
           formats
         },
+        description,
+        available_categories {
+          ... on ProductCategory {
+            name
+          }
+        }
         collection_card_footer_content {
             ... on ComponentCollectionCardFooterContentFooterContent {
                 indica,

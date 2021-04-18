@@ -2,11 +2,12 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    fontFamily: {
-      accent: ["Oswald", "sans-serif"],
-      "accent-2": ["Anton", "sans-serif"],
-    },
     extend: {
+      fontFamily: {
+        primary: ["ABeeZee", "sans-serif"],
+        accent: ["Oswald", "sans-serif"],
+        "accent-2": ["Anton", "sans-serif"],
+      },
       colors: {
         "tr-green": "#1F6D37",
         "tr-black": "#232323",

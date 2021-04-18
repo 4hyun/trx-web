@@ -37,7 +37,7 @@ const FeatureContent = styled.div`
 `;
 
 const FeatureItem = styled.div`
-  ${tw`font-accent font-bold text-base`}
+  ${tw`font-accent font-bold text-xl pl-2`}
 `;
 
 const AccordionSummary = styled(Item)`
@@ -56,7 +56,7 @@ const Content = ({ transitionEnd }) => {
         <Accordion
           renderAccordionSummary={({ toggleAccordion, open, mouseOver }) => (
             <AccordionSummary onClick={toggleAccordion}>
-              Feature
+              Featured
               <AccordionToggleIcon
                 open={open}
                 mouseover={mouseOver}
@@ -66,7 +66,7 @@ const Content = ({ transitionEnd }) => {
           )}
           renderAccordionContent={({ open }) => (
             <FeatureContent open={open}>
-              <FeatureItem>Some Feature Content here</FeatureItem>
+              <FeatureItem>coming soon!</FeatureItem>
             </FeatureContent>
           )}
         />

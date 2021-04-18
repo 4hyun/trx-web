@@ -37,6 +37,12 @@
       "components": [
         "collection-card-footer-content.footer-content"
       ]
+    },
+    "available_categories": {
+      "collection": "product-category"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

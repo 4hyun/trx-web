@@ -3,6 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import CollectionCard from "components/CollectionCard";
 import IndicaSativaIndicator from "components/IndicaSativaIndicator";
+import { scrollbarHideStyles } from "components/Common/Styles";
 
 const styles = {
   borderGap: "26px",
@@ -12,7 +13,7 @@ const styles = {
 /* TODO: possibly rename to LayoutContainer to 
 keep consistency with CollectionSingleView's LayoutContainer */
 const Container = styled.div`
-  ${tw`flex flex-col justify-center space-y-7 col-start-2 col-end-6`}
+  ${tw`col-span-full space-y-4 row-span-3 lg:(flex flex-col justify-center space-y-7 col-start-2 col-end-6 row-span-full)`}
 `;
 
 const HeaderContainer = styled.div`
@@ -28,13 +29,20 @@ const Header = styled.div`
 `;
 
 const CollectionGallery = styled.div`
-  ${tw`grid grid-cols-3 gap-4`}
+  ${tw`grid grid-cols-3 gap-3 auto-rows-fr md:(grid-cols-5 gap-x-4 gap-y-6 overflow-y-auto p-2) lg:(grid-cols-2 gap-x-4 gap-y-6) xl:(grid-cols-3)`}
+  @media (min-width: 768px) {
+    height: 460px;
+    & {
+      ${scrollbarHideStyles}
+    }
+  }
 `;
 
 const FooterContainer = styled.div`
+  ${tw`hidden`}
   @media (min-width: 768px) {
     padding-top: ${styles.borderGap};
-    ${tw`border-t-2 border-tr-white`};
+    ${tw`block border-t-2 border-tr-white`};
   }
 `;
 
@@ -47,7 +55,7 @@ const CollectionCardFooterContent = ({ renderFooterContentProp }) => {
   return <IndicaSativaIndicator indica={indica} sativa={sativa} />;
 };
 
-const Collection = ({ collection }) => {
+const Collection = ({ collection, onItemClick }) => {
   return (
     <Container>
       <HeaderContainer>
@@ -61,6 +69,7 @@ const Collection = ({ collection }) => {
               item={flavor}
               renderFooterContentProp={flavor.collection_card_footer_content}
               renderFooterContent={CollectionCardFooterContent}
+              onClick={() => onItemClick(flavor)}
             />
           );
         })}

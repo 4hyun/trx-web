@@ -8,7 +8,7 @@ import DesktopMenuIconClose from "../../public/icons/desktopMenuIcon-close-v1.sv
 import LogoCircleWhiteTransparent from "../../public/logo/logoCircleWhiteTransparent.svg";
 import IconAngleDown from "../../public/icons/IconAngleDown.svg";
 import IndicaLeaf from "../../public/svg/indica-leaf.svg";
-import SativaLeaf from "../../public/svg/sativa-leaf.svg";
+import SativaLeaf from "../../public/svg/sativa-leaf-v2.svg";
 
 export const FacebookIcon = styled(Facebook)``;
 export const TwitterIcon = styled(Twitter)``;
