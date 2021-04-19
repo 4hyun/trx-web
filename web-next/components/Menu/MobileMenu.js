@@ -18,14 +18,13 @@ const styles = {
 
 const MobileMenuContainer = styled.div`
   /* test styles */
-  height: 300px;
   transition: transform 0.5s, opacity 0.3s;
   ${tw`absolute w-full lg:hidden bg-tr-white`}
   ${({ menuOpen }) => (menuOpen && styles.menuOpen) || styles.menuClose}
 `;
 
 const MobileMenuList = styled.ul`
-  ${tw`flex flex-col justify-center items-center`}
+  ${tw`flex flex-col justify-center items-center py-12 space-y-4`}
 `;
 
 const Link = styled.a`

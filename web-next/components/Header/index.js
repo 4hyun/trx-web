@@ -16,8 +16,8 @@ import reducer from "./reducer";
 import Navbar from "components/Navbar";
 import SocialButtonGroup from "components/Header/Social";
 import DesktopMenuButton from "components/Navbar/MenuButton";
-import { MobileMenu,DesktopMenu } from "components/Menu";
-import {defaultMenuList} from "components/Menu/data";
+import { MobileMenu, DesktopMenu } from "components/Menu";
+import { defaultMenuList } from "components/Menu/data";
 import {
   DesktopMenuLogoButton,
   MobileMenuLogoButton,
@@ -47,6 +47,7 @@ const HeaderContainer = styled.div`
     width: ${({ menuOpen }) =>
       (menuOpen && headerContainerStyles.menuOpen.open.width) ||
       headerContainerStyles.menuOpen.close.width};
+    /* TODO: refactor to transition transform:scale */
     transition: width ${headerContainerStyles.transitionDuration};
     height: 100vh;
     position: fixed;
@@ -88,9 +89,12 @@ const MobileMenuIGHashtagContainer = styled.div`
   ${tw`flex items-center pl-4 absolute top-0 left-0 w-1/2 h-full lg:hidden`}
 `;
 const Header = ({ desktopStyles }) => {
-  const [state, dispatch] = useReducer(reducer, initState);
+  const [{ menuOpen, transitionEnd }, dispatch] = useReducer(
+    reducer,
+    initState
+  );
+
   const toggleDesktopMenu = useCallback(() => {
-    const { menuOpen } = state;
     if (menuOpen) {
       dispatch({ type: CLOSE_DESKTOP_MENU });
       dispatch({ type: HIDE_MENU_CONTENT });
@@ -98,11 +102,13 @@ const Header = ({ desktopStyles }) => {
     }
     return dispatch({ type: OPEN_DESKTOP_MENU });
   });
+
   const renderSocialButtonGroup = useCallback(() => (
     <NavbarRow tw="hidden lg:(flex flex-1 items-end pb-6)">
       <SocialButtonGroup stylesheet={socialButtonGroupStylesheet} />
     </NavbarRow>
   ));
+
   const renderDesktopMenuButton = useCallback(() => (
     <NavbarRow
       tw="hidden lg:(flex flex-1 items-start pt-6)"
@@ -112,16 +118,16 @@ const Header = ({ desktopStyles }) => {
     </NavbarRow>
   ));
 
-  const transitionEnd = (e) => {
-    const { menuOpen } = state;
+  const handleTransitionEnd = useCallback((e) => {
     if (menuOpen) {
       dispatch({ type: SHOW_MENU_CONTENT });
     }
-  };
+  });
+
   return (
     <HeaderContainer
-      onTransitionEnd={transitionEnd}
-      menuOpen={state.menuOpen}
+      onTransitionEnd={handleTransitionEnd}
+      menuOpen={menuOpen}
       desktopStyles={desktopStyles}
     >
       {/***
@@ -137,18 +143,18 @@ const Header = ({ desktopStyles }) => {
         renderDesktopMenuButton={renderDesktopMenuButton}
         renderSocialButtonGroup={renderSocialButtonGroup}
       ></Navbar>
-      <DesktopMenu transitionEnd={state.transitionEnd} />
+      <DesktopMenu transitionEnd={transitionEnd} />
       <DesktopMenuLogoButton
         styles={menuLogoButtonStyles}
-        menuOpen={state.menuOpen}
+        menuOpen={menuOpen}
         toggleMenu={toggleDesktopMenu}
       />
       <MobileMenuLogoButton
         styles={menuLogoButtonStyles}
-        menuOpen={state.menuOpen}
+        menuOpen={menuOpen}
         toggleMenu={toggleDesktopMenu}
       />
-      <MobileMenu menuList={defaultMenuList} menuOpen={state.menuOpen} />
+      <MobileMenu menuList={defaultMenuList} menuOpen={menuOpen} />
     </HeaderContainer>
   );
 };
