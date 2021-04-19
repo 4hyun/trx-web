@@ -13,11 +13,10 @@ import {
   menuLogoButtonStyles,
 } from "./styles";
 import reducer from "./reducer";
-import Content from "components/Navbar/Content";
 import Navbar from "components/Navbar";
 import SocialButtonGroup from "components/Header/Social";
 import DesktopMenuButton from "components/Navbar/MenuButton";
-import { MobileMenu } from "components/Menu";
+import { MobileMenu,DesktopMenu } from "components/Menu";
 import {defaultMenuList} from "components/Menu/data";
 import {
   DesktopMenuLogoButton,
@@ -138,7 +137,7 @@ const Header = ({ desktopStyles }) => {
         renderDesktopMenuButton={renderDesktopMenuButton}
         renderSocialButtonGroup={renderSocialButtonGroup}
       ></Navbar>
-      <Content transitionEnd={state.transitionEnd} />
+      <DesktopMenu transitionEnd={state.transitionEnd} />
       <DesktopMenuLogoButton
         styles={menuLogoButtonStyles}
         menuOpen={state.menuOpen}

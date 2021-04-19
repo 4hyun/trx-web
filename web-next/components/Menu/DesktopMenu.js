@@ -6,7 +6,7 @@ import Accordion, { AccordionToggleIcon } from "components/Common/Accordion";
 
 const Container = styled.div`
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     display: ${(props) =>
       props.transitionEnd.afterMenuOpen ? "block" : "none"};
     width: calc(100% - ${navbarStyles.desktop.width});
@@ -44,9 +44,9 @@ const AccordionSummary = styled(Item)`
   ${tw`justify-between pr-6`}
 `;
 
-const Content = ({ transitionEnd }) => {
+export const DesktopMenu = ({ transitionEnd }) => {
   useEffect(() => {
-    console.log("Content rendered");
+    console.log("DesktopMenu rendered");
   });
   return (
     <Container transitionEnd={transitionEnd}>
@@ -74,5 +74,3 @@ const Content = ({ transitionEnd }) => {
     </Container>
   );
 };
-
-export default Content;
