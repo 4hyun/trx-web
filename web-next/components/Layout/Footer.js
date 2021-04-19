@@ -30,6 +30,8 @@ const Link = ({ href, name }) => {
   );
 };
 
+const A = styled.a``;
+
 const TRLogo = styled.img`
   opacity: 0.7;
   :hover {
@@ -42,12 +44,14 @@ const Footer = () => {
     <Wrapper>
       <Grid>
         <Column>
-          <TRLogo
-            src="https://storage.googleapis.com/trx-web-static-media/trBlackTransparentLogo.png"
-            alt="Tunaaaa Room Logo"
-            width={64.5}
-            height={65.25}
-          />
+          <A href="https://tunaaaaroom.ca">
+            <TRLogo
+              src="https://storage.googleapis.com/trx-web-static-media/trBlackTransparentLogo.png"
+              alt="Tunaaaa Room Logo"
+              width={64.5}
+              height={65.25}
+            />
+          </A>
         </Column>
         <Column>
           <Link href="/" name="Collections" />

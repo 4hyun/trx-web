@@ -4,6 +4,7 @@ import tw from "twin.macro";
 
 const Container = styled.div`
   ${tw`flex h-full`}
+  border-bottom: ${({ menuOpen }) => menuOpen && "1px solid black"};
   @media (min-width: 1024px) {
     width: ${({ width }) => width || "var(--DesktopNavbarWidth)"};
     max-width: 100px;
@@ -18,9 +19,13 @@ const Container = styled.div`
   }
 `;
 
-const Navbar = ({ renderSocialButtonGroup, renderDesktopMenuButton }) => {
+const Navbar = ({
+  renderSocialButtonGroup,
+  renderDesktopMenuButton,
+  menuOpen,
+}) => {
   return (
-    <Container>
+    <Container menuOpen={menuOpen}>
       {renderDesktopMenuButton && renderDesktopMenuButton()}
       {renderSocialButtonGroup && renderSocialButtonGroup()}
     </Container>

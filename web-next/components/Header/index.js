@@ -43,6 +43,7 @@ const HeaderContainer = styled.div`
   animation-delay: 1s;
   ${tw`relative w-screen lg:(w-full) bg-tr-white z-50`};
   height: 60px;
+
   @media (min-width: 1024px) {
     width: ${({ menuOpen }) =>
       (menuOpen && headerContainerStyles.menuOpen.open.width) ||
@@ -136,9 +137,15 @@ const Header = ({ desktopStyles }) => {
     When breakpoint is Mobile | Tablet,
     pass null */}
       <MobileMenuIGHashtagContainer>
-        <MobileMenuIGHashtagLink>#TunaaaaMoonAndBack</MobileMenuIGHashtagLink>
+        <MobileMenuIGHashtagLink
+          href="https://www.instagram.com/tunaaaa_room"
+          target="_blank"
+        >
+          #TunaaaaMoonAndBack
+        </MobileMenuIGHashtagLink>
       </MobileMenuIGHashtagContainer>
       <Navbar
+        menuOpen={menuOpen}
         width={navbarStyles.width}
         renderDesktopMenuButton={renderDesktopMenuButton}
         renderSocialButtonGroup={renderSocialButtonGroup}
