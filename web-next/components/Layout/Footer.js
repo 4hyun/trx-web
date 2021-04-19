@@ -43,7 +43,7 @@ const Footer = () => {
       <Grid>
         <Column>
           <TRLogo
-            src="/logo/trBlackTransparentLogo.png"
+            src="https://storage.googleapis.com/trx-web-static-media/trBlackTransparentLogo.png"
             alt="Tunaaaa Room Logo"
             width={64.5}
             height={65.25}

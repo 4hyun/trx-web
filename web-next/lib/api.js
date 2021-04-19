@@ -1,8 +1,4 @@
 const fetchAPI = async (query, { variables } = {}) => {
-  console.log(
-    ">>DEBUG : fetchAPI, process.env.NEXT_PUBLIC_STRAPI_API_URL",
-    process.env.NEXT_PUBLIC_STRAPI_API_URL
-  );
   const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`, {
     method: "POST",
     headers: {
@@ -22,38 +18,6 @@ const fetchAPI = async (query, { variables } = {}) => {
   }
 
   return json.data;
-};
-
-const getAllDataForHome = async (preview) => {
-  const data = await fetchAPI(
-    `
-    query Posts($where: JSON){
-      posts(sort: "date:desc", limit: 10, where: $where) {
-        title
-        slug
-        excerpt
-        date
-        coverImage {
-          url
-        }
-        author {
-          name
-          picture {
-            url
-          }
-        }
-      }
-    }
-  `,
-    {
-      variables: {
-        where: {
-          ...(preview ? {} : { status: "published" }),
-        },
-      },
-    }
-  );
-  return data?.posts;
 };
 
 export { fetchAPI };

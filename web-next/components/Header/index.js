@@ -17,6 +17,8 @@ import Content from "components/Navbar/Content";
 import Navbar from "components/Navbar";
 import SocialButtonGroup from "components/Header/Social";
 import DesktopMenuButton from "components/Navbar/MenuButton";
+import { MobileMenu } from "components/Menu";
+import {defaultMenuList} from "components/Menu/data";
 import {
   DesktopMenuLogoButton,
   MobileMenuLogoButton,
@@ -40,7 +42,7 @@ const HeaderContainer = styled.div`
   animation-duration: 0.6s;
   animation-fill-mode: both;
   animation-delay: 1s;
-  ${tw`relative w-screen lg:(w-full) bg-tr-white`};
+  ${tw`relative w-screen lg:(w-full) bg-tr-white z-50`};
   height: 60px;
   @media (min-width: 1024px) {
     width: ${({ menuOpen }) =>
@@ -147,6 +149,7 @@ const Header = ({ desktopStyles }) => {
         menuOpen={state.menuOpen}
         toggleMenu={toggleDesktopMenu}
       />
+      <MobileMenu menuList={defaultMenuList} menuOpen={state.menuOpen} />
     </HeaderContainer>
   );
 };

@@ -14,7 +14,7 @@ const Container = {
     }
   `,
   Mobile: styled.div`
-    ${tw`w-full mt-auto lg:hidden`}
+    ${tw`absolute w-full mt-auto lg:hidden z-50`}
   `,
 };
 
@@ -49,7 +49,7 @@ const STYLE_BY_MENU_STATE = {
   },
   mobile: {
     open: css`
-      ${tw`transform -translate-y-1/2 scale-75`}
+      ${tw`transform -translate-y-1/2 scale-50`}
       :hover #BG {
         fill: rgb(104, 104, 104);
       }
@@ -102,15 +102,7 @@ export const DesktopMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
 export const MobileMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
   return (
     <Container.Mobile>
-      <ButtonWrapper
-        menuOpen={menuOpen}
-        onClick={toggleMenu}
-        transitionDelay={styles.transitionDelay}
-        onTransitionEnd={(e) => {
-          e.stopPropagation();
-          console.log("different handler<ButtonWrapper>");
-        }}
-      >
+      <ButtonWrapper menuOpen={menuOpen} onClick={toggleMenu}>
         {!menuOpen ? <DesktopMenuIconOpen /> : <DesktopMenuIconClose />}
       </ButtonWrapper>
     </Container.Mobile>
