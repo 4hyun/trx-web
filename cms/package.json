@@ -10,6 +10,7 @@
     "strapi": "strapi"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "yup": "^0.27.0"
   },
   "dependencies": {

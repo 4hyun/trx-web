@@ -47,13 +47,6 @@ const Layout = ({ children: mainContent, router }) => {
   const [showLayout, setShowLayout] = useState(true);
 
   useEffect(() => {
-    // console.group("Layout.useEffect [this will run once]");
-    // console.log("router", router);
-    // console.groupEnd();
-
-    // console.group("localStorage");
-    // console.log("localStorage", localStorage);
-    // console.groupEnd();
     if (router.pathname === paths.ageGate) return setShowLayout(false);
     if (showLayout) return;
     setShowLayout(true);
