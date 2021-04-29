@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 
+/* TODO: display Footer when scrolled (once) */
 const Wrapper = styled.footer`
   ${tw`flex flex-col justify-center items-center w-full bg-tr-black bg-opacity-90 text-tr-white font-bungee select-none`}
   /* Temp Styles */
