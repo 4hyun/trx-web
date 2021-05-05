@@ -15,8 +15,7 @@ const Container = styled.div`
 `
 
 const List = styled.ul`
-  font-family: "Oswald", sans-serif;
-  font-weight: 600;
+  ${tw`font-bungee text-xl`}
   letter-spacing: -0.25px;
 `
 
@@ -37,7 +36,7 @@ const FeatureContent = styled.div`
 `
 
 const FeatureItem = styled.div`
-  ${tw`font-accent font-bold text-xl pl-2`}
+  ${tw`font-bungee text-xl pl-2`}
 `
 
 const AccordionSummary = styled(Item)`
