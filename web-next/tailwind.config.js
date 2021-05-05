@@ -12,6 +12,7 @@ module.exports = {
       },
       colors: {
         "tr-green": "#1F6D37",
+        "tr-green-light": "#8DAB68",
         "tr-black": "#232323",
         "tr-white": "#F9F9FB",
         "tr-gray": "#C4C4C4",
@@ -32,4 +33,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}

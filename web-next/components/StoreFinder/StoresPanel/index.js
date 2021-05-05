@@ -1,7 +1,8 @@
-import { useContext } from 'react'
-import styled from "styled-components";
-import StoresList from "./StoresList.js";
-import { StoreFinderContext, StoreMapDispatchContext } from "contexts";
+import { useContext } from "react"
+import styled from "styled-components"
+import tw from "twin.macro"
+import StoresList from "./StoresList.js"
+import { StoreFinderContext, StoreMapDispatchContext } from "contexts"
 
 const Container = styled.div`
   width: 100%;
@@ -26,13 +27,12 @@ const Container = styled.div`
       margin-left: 0;
     }
   }
-`;
+`
 
 const Heading = styled.h2`
-  font-family: "Bangers", sans-serif;
+  ${tw`font-bungee text-3xl`}
   font-weight: 400;
   line-height: 1;
-  font-size: 40px;
   letter-spacing: 1px;
   margin-top: 3rem;
   margin-bottom: 0;
@@ -41,10 +41,10 @@ const Heading = styled.h2`
   @media (min-width: 992px) {
     margin-left: 0;
   }
-`;
+`
 
 const StoresPanel = (props) => {
-  const { stores } = useContext(StoreFinderContext);
+  const { stores } = useContext(StoreFinderContext)
   return (
     <Container>
       <Heading>Find Stores</Heading>
@@ -57,7 +57,7 @@ const StoresPanel = (props) => {
         <StoresList></StoresList>
       </StoreMapDispatchContext.Provider>
     </Container>
-  );
-};
+  )
+}
 
-export default StoresPanel;
+export default StoresPanel
