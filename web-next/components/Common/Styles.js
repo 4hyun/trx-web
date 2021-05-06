@@ -1,26 +1,26 @@
-import { css } from "styled-components";
+import { css } from "styled-components"
 
-export const scrollbarStyles = css`
+export const createScrollbarStyles = ({ width, trackColor, handleColor, handleColorOnHover }) => css`
   /* width */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: ${width};
   }
 
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: ${trackColor};
   }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: ${handleColor};
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: ${handleColorOnHover};
   }
-`;
+`
 
 export const scrollbarHideStyles = css`
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -30,4 +30,4 @@ export const scrollbarHideStyles = css`
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-`;
+`

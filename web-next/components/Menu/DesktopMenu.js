@@ -22,7 +22,7 @@ const List = styled.ul`
 const Item = styled.li`
   ${tw`rounded-xl cursor-pointer transition-spacing`}
   ${tw`flex items-center px-2.5 pt-2.5 pb-3`}
-  ${tw`text-tr-black text-5xl leading-snug`}
+  ${tw`text-tr-black text-3xl leading-snug`}
   ${tw`hover:(bg-tr-black text-tr-white pl-6)`}
   font-weight: inherit;
   letter-spacing: inherit;
@@ -50,7 +50,7 @@ export const DesktopMenu = ({ transitionEnd }) => {
   return (
     <Container transitionEnd={transitionEnd}>
       <List>
-        <Item>Collection</Item>
+        <Item href="/">Collection</Item>
         <Item>
           <Link href="/find-store">Find Store</Link>
         </Item>

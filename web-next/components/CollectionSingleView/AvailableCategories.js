@@ -1,15 +1,22 @@
-import React from "react";
-import styled from "styled-components";
-import tw from "twin.macro";
-import { scrollbarStyles } from "components/Common/Styles";
+import React from "react"
+import styled from "styled-components"
+import tw from "twin.macro"
+import { createScrollbarStyles } from "components/Common/Styles"
 
 const Column = styled.div`
   ${tw`flex flex-col space-y-4`}
   @media (min-width: 768px) {
     margin-top: 1.5rem !important;
   }
-`;
+`
 
+const scrollbarStylesOptions = {
+  width: "10px",
+  trackColor: "#f1f1f1",
+  handleColor: "#888",
+  handleColorOnHover: "#555",
+}
+const scrollbarStyles = createScrollbarStyles(scrollbarStylesOptions)
 const ScrollContainer = styled.div`
   @media (min-width: 768px) {
     /* height: 286.5px; */
@@ -20,11 +27,11 @@ const ScrollContainer = styled.div`
   & {
     ${scrollbarStyles}
   }
-`;
+`
 
 const BlockTitle = styled.p`
   ${tw`text-tr-white font-accent font-bold text-3xl`}
-`;
+`
 
 const List = styled.div`
   ${tw`grid grid-rows-2 grid-cols-3 xs:grid-cols-4 gap-6 pb-10 `}
@@ -32,7 +39,7 @@ const List = styled.div`
   @media (min-width: 768px) {
     height: 150px;
   }
-`;
+`
 
 const CategoryWrapper = styled.div`
   ${tw`flex justify-center items-center rounded-full bg-tr-white font-accent font-bold text-sm xs:(text-base) py-2`}
@@ -40,11 +47,11 @@ const CategoryWrapper = styled.div`
     /* height: 100px; */
     ${tw`text-xl py-2`}
   }
-`;
+`
 
 const Category = ({ data }) => {
-  return <CategoryWrapper>{data.name}</CategoryWrapper>;
-};
+  return <CategoryWrapper>{data.name}</CategoryWrapper>
+}
 
 const AvailableCategories = ({ categories }) => {
   return (
@@ -58,7 +65,7 @@ const AvailableCategories = ({ categories }) => {
         </List>
       </ScrollContainer>
     </Column>
-  );
-};
+  )
+}
 
-export default AvailableCategories;
+export default AvailableCategories
