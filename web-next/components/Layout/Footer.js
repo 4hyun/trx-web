@@ -6,7 +6,7 @@ import tw from "twin.macro"
 /* TODO: display Footer when scrolled (once) */
 const StyledFooter = styled.footer`
   ${tw`flex flex-col justify-center items-center w-full`}
-  ${tw`bg-tr-black bg-opacity-90 text-tr-white font-bungee select-none`}
+  ${tw`bg-tr-black bg-opacity-95 text-tr-white font-bungee select-none`}
   /* Temp Styles */
   min-height: 200px;
 `

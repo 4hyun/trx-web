@@ -18,7 +18,8 @@ const Flavor = ({ flavor }) => {
 }
 
 const HomeContentGrid = styled.div`
-  ${tw`h-auto grid grid-cols-12 auto-rows-max xs:(auto-rows-fr) gap-y-4 lg:(grid-rows-none) px-6 lg:px-0`};
+  ${tw`grid grid-cols-12 auto-rows-max gap-y-4 lg:(grid-rows-none)`}
+  ${tw`h-auto px-6 lg:px-0`};
   /* grid-auto-columns: minmax(1fr, 1fr); */
 `
 
