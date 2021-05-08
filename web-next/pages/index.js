@@ -43,6 +43,14 @@ export default function HomePage({ flavors, preview }) {
     <>
       <Head>
         <title>Tunaaaa Room Xtracts</title>
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:title" content="Tunaaaa Room Xtracts" />
+        <meta property="og:site_name" content="Tunaaaa Room Xtracts" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="Explore Tunaaaa Room's exclusive cannabis extracts collections." />
+        <meta property="og:url" content="https://www.xtracts.tunaaaaroom.ca"></meta>
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image" content="https://storage.googleapis.com/trx-web-static-media/trx-ogimage-1200x627.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {ageCheckedValue && (
