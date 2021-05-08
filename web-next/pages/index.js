@@ -19,7 +19,7 @@ const Flavor = ({ flavor }) => {
 
 const HomeContentGrid = styled.div`
   ${tw`h-auto px-6 lg:px-0`};
-  ${tw`grid grid-cols-12 auto-rows-max gap-y-4 lg:(grid-rows-none h-screen pt-14)`}/* grid-auto-columns: minmax(1fr, 1fr); */
+  ${tw`grid grid-cols-12 auto-rows-max gap-y-4 lg:(grid-rows-none min-h-screen pt-14)`}/* grid-auto-columns: minmax(1fr, 1fr); */
 `
 
 const ScrollContainer = styled.main`

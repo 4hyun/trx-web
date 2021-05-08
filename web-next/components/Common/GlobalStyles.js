@@ -5,10 +5,14 @@ const CustomStyles = createGlobalStyle`
   :root {
     --DesktopNavbarWidth: 100px;
     --MobileNavbarHeight: 60px;
+    --FooterMinHeight: 200px;
   }
   * {  
     -webkit-tap-highlight-color: transparent;
     ${tw`antialiased`};
+  }
+  button {
+    ${"" /* TODO: apply button reset styles here */}
   }
 `
 
