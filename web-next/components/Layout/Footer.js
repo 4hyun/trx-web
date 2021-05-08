@@ -27,7 +27,17 @@ const Column = styled.div`
 `
 
 const Row = styled.div`
-  ${tw`flex justify-center w-full h-full`}
+  ${tw`flex w-full h-full`}
+`
+
+const SitemapRow = styled(Row)`
+  ${tw`h-auto`}
+  & > :not(:last-child) {
+    margin-right: 1rem;
+  }
+  & > * {
+    ${tw`leading-10! xs:leading-8!`}
+  }
 `
 
 const FormColumnOne = styled(Column)`
@@ -43,11 +53,11 @@ const FormColumnTwo = styled(Column)`
 
 const FormTitle = styled.h1``
 const FormMessage = styled.p`
-  ${tw`font-primary text-base max-w-md lg:max-w-sm`}
+  ${tw`font-primary text-sm w-10/12`}
 `
 
 const StyledLink = styled.a`
-  ${tw`cursor-pointer text-tr-white text-opacity-70 text-xs xs:text-base hover:text-opacity-100`}
+  ${tw`cursor-pointer text-tr-white text-opacity-90 text-xs xs:text-base hover:text-opacity-100`}
 `
 
 const Link = ({ href, name }) => {
@@ -61,12 +71,8 @@ const Link = ({ href, name }) => {
 const A = styled.a``
 
 const BrandLogo = styled.img`
-  height: 60px;
+  height: 3em;
   width: auto;
-  opacity: 0.7;
-  :hover {
-    opacity: 1;
-  }
 `
 
 const Footer = () => {
@@ -80,8 +86,8 @@ const Footer = () => {
         <FormColumnTwo>
           <SubscribeForm></SubscribeForm>
         </FormColumnTwo>
-        <Column>
-          <Row tw="items-start space-x-4">
+        <Column tw="col-span-full xs:col-span-1">
+          <Row tw="justify-start items-start space-x-6 flex-wrap">
             <A href="https://tunaaaaroom.ca">
               <BrandLogo src="https://storage.googleapis.com/trx-web-static-media/tro-footer-logo-72x90.png" alt="Tunaaaa Room Logo" />
             </A>
@@ -91,12 +97,14 @@ const Footer = () => {
           </Row>
         </Column>
         <Column>
-          <Link href="/" name="Collections" />
-          <Link href="/" name="Find Stores" />
+          <SitemapRow tw="flex-wrap">
+            <Link href="/" name="Collections" />
+            <Link href="/" name="Flavors" />
+            <Link href="/" name="Find Stores" />
+            <Link href="/" name="Contact" />
+          </SitemapRow>
         </Column>
-        <Column>
-          <Link href="/" name="Contact" />
-        </Column>
+        <Column></Column>
       </Grid>
     </StyledFooter>
   )
