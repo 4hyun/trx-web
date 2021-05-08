@@ -11,7 +11,7 @@ const StyledField = styled(Field)`
 `
 
 const StyledButton = styled.button`
-  ${tw`text-tr-white bg-tr-black font-primary rounded-full px-4 py-2 mr-1 font-bold`}
+  ${tw`text-tr-white bg-tr-black font-primary rounded-full px-4 py-2 mr-1 font-bold focus:(outline-none) active:(bg-tr-white text-tr-black) transition-colors`}
 `
 
 const InputGroup = styled.div`
@@ -34,7 +34,7 @@ const SubscribeForm = ({ submitLabel }) => (
       }}
       onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 500))
-        alert(JSON.stringify(values, null, 2))
+        // alert(JSON.stringify(values, null, 2))
       }}
     >
       <StyledForm>

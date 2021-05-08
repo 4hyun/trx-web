@@ -26,6 +26,10 @@ const Column = styled.div`
   ${tw`flex flex-col justify-start items-center space-y-2`}
 `
 
+const Row = styled.div`
+  ${tw`flex justify-center w-full h-full`}
+`
+
 const FormColumnOne = styled(Column)`
   ${tw`col-span-full`}
   ${tw`xl:(col-start-2 col-end-3)`}
@@ -56,7 +60,9 @@ const Link = ({ href, name }) => {
 
 const A = styled.a``
 
-const TRLogo = styled.img`
+const BrandLogo = styled.img`
+  height: 60px;
+  width: auto;
   opacity: 0.7;
   :hover {
     opacity: 1;
@@ -75,14 +81,14 @@ const Footer = () => {
           <SubscribeForm></SubscribeForm>
         </FormColumnTwo>
         <Column>
-          <A href="https://tunaaaaroom.ca">
-            <TRLogo
-              src="https://storage.googleapis.com/trx-web-static-media/trBlackTransparentLogo.png"
-              alt="Tunaaaa Room Logo"
-              width={64.5}
-              height={65.25}
-            />
-          </A>
+          <Row tw="items-start space-x-4">
+            <A href="https://tunaaaaroom.ca">
+              <BrandLogo src="https://storage.googleapis.com/trx-web-static-media/tro-footer-logo-72x90.png" alt="Tunaaaa Room Logo" />
+            </A>
+            <A href="/">
+              <BrandLogo src="https://storage.googleapis.com/trx-web-static-media/xtracts_flask-footer-logo-72x90.png" alt="Tunaaaa Room Logo" />
+            </A>
+          </Row>
         </Column>
         <Column>
           <Link href="/" name="Collections" />
