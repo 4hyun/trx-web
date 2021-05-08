@@ -1,14 +1,8 @@
-import React from "react"
-import styled from "styled-components"
-import tw from "twin.macro"
+import Video from "components/Common/Video"
 
-const Video = styled.video`
-  ${tw`w-full h-full object-cover`}
-`
-
-const MainBackgroundVideo = () => {
+const MainBackgroundVideo = ({ autoPlay, loop }) => {
   return (
-    <Video autoPlay={true} loop={true} preload="metadata">
+    <Video autoPlay={autoPlay} loop={loop} preload="metadata">
       <source src="https://storage.googleapis.com/trx-web-static-media/trx-logo-vid-desktop.mp4" type="video/mp4" />
       {/* <source src="/static/video/banner.a0aaedfdc99f.ogv" type="video/ogg" /> */}
       {/* <source src="/static/video/banner.3b4d37a6ca54.webm" type="video/webm" /> */}

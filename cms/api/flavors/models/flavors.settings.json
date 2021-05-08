@@ -36,7 +36,8 @@
       "type": "dynamiczone",
       "components": [
         "collection-card-footer-content.footer-content"
-      ]
+      ],
+      "max": 1
     },
     "available_categories": {
       "collection": "product-category"

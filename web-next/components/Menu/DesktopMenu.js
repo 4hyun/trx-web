@@ -10,7 +10,7 @@ const Container = styled.div`
   @media (min-width: 1024px) {
     display: ${(props) => (props.transitionEnd.afterMenuOpen ? "block" : "none")};
     width: calc(100% - ${navbarStyles.desktop.width});
-    ${tw`px-16 py-8 h-full float-right`}
+    ${tw`px-12 py-8 h-full float-right`}
   }
 `
 
@@ -29,14 +29,14 @@ const Item = styled.li`
 `
 
 const FeatureContent = styled.div`
-  ${tw`relative top-4`}
+  ${tw`relative top-4 flex flex-col space-y-4`}
   ${tw`rounded-xl bg-tr-black text-tr-white`}
-  ${tw`hidden px-2.5 pt-2.5 pb-3`}
+  ${tw`hidden px-2.5 py-4`}
   ${({ open }) => open && tw`flex`}
 `
 
 const FeatureItem = styled.div`
-  ${tw`font-bungee text-xl pl-2`}
+  ${tw`font-bungee text-xl pl-2 leading-10`}
 `
 
 const AccordionSummary = styled(Item)`
@@ -57,13 +57,19 @@ export const DesktopMenu = ({ transitionEnd }) => {
         <Accordion
           renderAccordionSummary={({ toggleAccordion, open, mouseOver }) => (
             <AccordionSummary onClick={toggleAccordion}>
-              Featured
+              Flavors
               <AccordionToggleIcon open={open} mouseover={mouseOver} size={"32px"} />
             </AccordionSummary>
           )}
           renderAccordionContent={({ open }) => (
             <FeatureContent open={open}>
               <FeatureItem>coming soon!</FeatureItem>
+              <FeatureItem>coming soon!</FeatureItem>
+              <FeatureItem>coming soon!</FeatureItem>
+              <FeatureItem>coming soon!</FeatureItem>
+              <FeatureItem>coming soon!</FeatureItem>
+              <FeatureItem>coming soon!</FeatureItem>
+              {/* TODO: get flavors and list them here */}
             </FeatureContent>
           )}
         />

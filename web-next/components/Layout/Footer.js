@@ -1,13 +1,13 @@
 import NextLink from "next/link"
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import tw from "twin.macro"
 /* components */
 import SubscribeForm from "@/components/Common/Form/SubscribeForm"
-
+import SocialButtonGroup from "components/Common/Social"
 /* TODO: display Footer when scrolled (once) */
 const StyledFooter = styled.footer`
-  ${tw`flex flex-col justify-center items-center w-full py-12 xl:(pt-12 pb-0)`}
+  ${tw`flex flex-col justify-center items-center w-full py-12 xl:(py-12)`}
   ${tw`bg-tr-black text-tr-white font-bungee select-none`}
   /* Temp Styles */
   min-height: var(--FooterMinHeight);
@@ -15,15 +15,25 @@ const StyledFooter = styled.footer`
 
 const Grid = styled.div`
   max-width: 1200px;
-  ${tw`grid grid-rows-2 grid-cols-3 px-4 xs:px-8 w-full gap-y-6`}
+  ${tw`grid grid-rows-2 grid-cols-3 px-6 xs:px-8 w-full gap-y-6`}
   @media (min-width:1024px) {
-    grid-template-rows: 135px 100px 1fr;
-    ${tw`lg:px-20 xl:px-8`}
+    ${tw`lg:px-20 xl:px-8 auto-rows-auto gap-y-14`}
   }
 `
 
 const Column = styled.div`
   ${tw`flex flex-col justify-start items-center space-y-2`}
+`
+
+const SocialColumn = styled.div`
+  ${tw`flex justify-end items-start`}
+`
+
+const socialButtonGroupCSS = css`
+  ${tw`flex justify-end space-x-4`}
+  & svg {
+    ${tw`hover:opacity-60 hover:cursor-pointer`}
+  }
 `
 
 const Row = styled.div`
@@ -87,7 +97,7 @@ const Footer = () => {
           <SubscribeForm></SubscribeForm>
         </FormColumnTwo>
         <Column tw="col-span-full xs:col-span-1">
-          <Row tw="justify-start items-start space-x-6 flex-wrap">
+          <Row tw="justify-start items-start space-x-6 flex-wrap xl:justify-center">
             <A href="https://tunaaaaroom.ca">
               <BrandLogo src="https://storage.googleapis.com/trx-web-static-media/tro-footer-logo-72x90.png" alt="Tunaaaa Room Logo" />
             </A>
@@ -104,7 +114,9 @@ const Footer = () => {
             <Link href="/" name="Contact" />
           </SitemapRow>
         </Column>
-        <Column></Column>
+        <SocialColumn>
+          <SocialButtonGroup stylesheet={socialButtonGroupCSS} size={"1.5rem"} />
+        </SocialColumn>
       </Grid>
     </StyledFooter>
   )

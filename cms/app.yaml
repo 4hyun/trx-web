@@ -1,0 +1,21 @@
+runtime: nodejs12
+
+instance_class: F2
+
+service: trx-cms
+
+handlers:
+  - url: /favicon\.ico
+    static_files: favicon.ico
+    upload: favicon\.ico
+
+env_variables:
+  DATABASE_NAME: trx-cms-strapi
+  DATABASE_USERNAME: hsh-admin
+  DATABASE_HOST: "cluster0.ctyy7.mongodb.net"
+  DATABASE_PASSWORD: "@#ciopqECAd2"
+  GCS_BUCKET_NAME: "trx-web"
+  GCS_SERVICE_ACCOUNT: '{"type":"service_account","project_id":"amiable-fin-302221","private_key_id":"e3b85fe11217dceab581b28c9807d0d28bcb7ae3","private_key":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9                               w0BAQEFAASCBKcwggSjAgEAAoIBAQCsV9UWoOt2g4KH\nRd3lyEznZycThG3wOWN0CZ/1lfbczRveuSOwM8sLyuBLoijQUi39xIQmtZg9A0FO\nicVmqNJuKd166Pk1mF0WiJGiJMlzWdCZqxlnw6oyb2KQldqPOoQEjrxPORNEcO3r\nG3nIEyLnbdy1Whs0jpwHnJaW5BnjbtBMV1YLQc7s0QMQtYOLdI/xJ/ysRILTt5iD\nPVbQrHOXZ7nG/n1JJ5+nmjkDe7DPxyBLHJ+Saitif7znKJ3iaVuHCY5FY7cPlqb5\nD1Fg/Ee+CrSeCMCQThTJ2BxW70yZ45Avt3mDrg8qimOdaHDQulAfbAReBO9kN8wc\nGfy0FYhXAgMBAAECggEAG/DNcjK6mecuRUIVfIhht25ozmg87qJPNmPNFCKw+BEk\nwJIhcBKli47jmD99AHEiVa8DgccVHGcnslTxtPgPzZ5p8uBMbtz50opnmfL+2f2o\nrREpOEJnmG+oeiphWbEx8A84BlwJfKIWYHR+5On9UanlC13FZVrtfuprG6F1dQKh\nCxqS3/v39AUuLxS11tHunbN+FJsGxvtxLl17eKLEA33lQOLNyrlDH2EHy9DYcxzc\nv52VWTTxXIv21KXF9P7GdEPRrfprzljESgITo4BvAd1099cH0WZpe9+q3N0+5kCq\nt38Rza4q/VzfMbdx9klCasGsXAHZ/yg7ODbzKsndIQKBgQDZPpwKc9CYawH0MlUx\n4yso+euzlfjcqNZ5e7frpiIepGrLUovQTg4ou+eTZ89gNKAlNtJ53R8pOMjOIZ1U\n+9jyFeHdxk82p8rKrDXaP4rtaIvU71pnq1h5wGJnqnGbmrOa6u7Z2LeeS+JLzU+5\nMA+s5EvOTy7un7s/pb5lJgoxBwKBgQDLFpuEAa1OHpwww0XdlU5a50hWeyahnQ5d\ns+w1Q8kIfgmQG4oOBO22nC7+D7Hl92zbaHdrx2eeWnL6ayDe3jW8Ic54YtbfwGBo\n2Lsp2MwaZ7MW+KA8gEnjvwFckqjTV9DiKHpuWmqtyn5AkOHc3Ad0j23QxiOP1pNh\nfeUpBHEqMQKBgQCbV+DevIgppUMFakRvYuDG8Ucw6InGx9htkCEpGWgGf016THF7\np4UKbasfRbkNMzRcyAHjcFHK+Tbl5zWIwnoUSb90BU05aOxi1pe/k3Z1Yy+yOOFt\nhiHDFeWH+WI5gXryyRG4pvZN9DdCOvLKGmrrF2h5gzetHH0Z+xvVWkkpWwKBgDxk\np7CU0xW1EpuJpmAjg16TArb8/lr3GouQ8sBQPRsyZ+Ob3O0YWByCy5Kv1iZd8tg4\nc7LwZIb5vNFtRCQijnY4026HbgCx87maIeZq2x9LET3Wh8gWGmMIrP37ewsGRU7L\n3MSuTKUL34mRzCjiobDu6ig4k+C1XbSTPK9667AxAoGANcIGT0hDtMf37PyFq1oa\n++2DAXxcHKY1PtktqqDTJL8+04629ufZWbX4JQMEgtkvUPVhm1Uq2DqGjmCQ0Owb\n4QD3nDSd7WrASDBjc6+L700sxud1S24B9eb3PKs65lrAbjTX/fadbvyMBlJHk9U1\nyCA3N/s6faVqv1MI2hWcQ0g: \n-----END PRIVATE KEY-----\n","client_email":"trx-web-dev@amiable-fin-302221.iam.gserviceaccount.com","client_id":"105233332709607177098","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_x509_cert_url":"https://www.googleapis.com/robot/v1/metadata/x509/trx-web-dev%40amiable-fin-302221.iam.gserviceaccount.com"}'
+  GCS_BASE_PATH: ""
+  GCS_BASE_URL: "https://storage.googleapis.com/{bucket-name}"
+  GCS_UNIFORM: "false"

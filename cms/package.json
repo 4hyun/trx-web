@@ -5,9 +5,11 @@
   "description": "A Strapi application",
   "scripts": {
     "develop": "cross-env ENV_PATH=.env.dev strapi develop",
+    "develop:admin": "cross-env ENV_PATH=.env.dev strapi develop --watch-admin",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "gcp-build": "strapi build"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
@@ -33,7 +35,7 @@
     "uuid": "1a527967-1c4c-427a-90b8-e9b472e0d9c8"
   },
   "engines": {
-    "node": ">=10.16.0 <=14.x.x",
+    "node": ">=10.0.0",
     "npm": "^6.0.0"
   },
   "license": "MIT"

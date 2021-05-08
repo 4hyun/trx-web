@@ -1,23 +1,23 @@
 const headerContainerStyles = {
   menuOpen: {
     open: {
-      width: "600px",
+      width: "500px",
     },
     close: {
-      width: "100px",
+      width: "75px",
     },
   },
   transitionDuration: ".3s",
-};
+}
 
 const navbarStyles = {
   desktop: {
-    width: "100px",
+    width: "75px",
   },
-};
+}
 
 const menuLogoButtonStyles = {
   transitionDelay: headerContainerStyles.transitionDuration,
-};
+}
 
-export { headerContainerStyles, navbarStyles, menuLogoButtonStyles };
+export { headerContainerStyles, navbarStyles, menuLogoButtonStyles }

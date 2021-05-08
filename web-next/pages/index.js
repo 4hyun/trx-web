@@ -5,6 +5,7 @@ import tw from "twin.macro"
 import { fetchAPI } from "lib/api"
 /* components */
 import { AgeGateContext } from "components/AgeGate/context"
+import HomeHero from "components/Blocks/HomeHero"
 import Collection from "components/Collection"
 import CollectionSingleView, { LayoutContainer as CollectionViewColumn } from "components/CollectionSingleView"
 import Footer from "components/Layout/Footer"
@@ -23,7 +24,7 @@ const HomeContentGrid = styled.div`
 `
 
 const ScrollContainer = styled.main`
-  ${tw`pt-10 fixed inset-0 overflow-y-scroll space-y-10`}
+  ${tw`fixed inset-0 overflow-y-scroll space-y-10`}
   top: var(--MobileNavbarHeight);
   @media (min-width: 1024px) {
     ${tw`top-0 px-0 pt-0`}
@@ -46,6 +47,7 @@ export default function HomePage({ flavors, preview }) {
       </Head>
       {ageCheckedValue && (
         <ScrollContainer>
+          <HomeHero></HomeHero>
           <HomeContentGrid>
             <Collection collection={flavors} onItemClick={handleCollectionClick} />
             <CollectionViewColumn>

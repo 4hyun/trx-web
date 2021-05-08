@@ -3,7 +3,7 @@ import tw, { css, theme, GlobalStyles as BaseStyles } from "twin.macro"
 
 const CustomStyles = createGlobalStyle`
   :root {
-    --DesktopNavbarWidth: 100px;
+    --DesktopNavbarWidth: 75px;
     --MobileNavbarHeight: 60px;
     --FooterMinHeight: 200px;
   }

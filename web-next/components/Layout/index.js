@@ -52,10 +52,10 @@ const BackgroundVideoWrapper = styled.div`
   ${tw`fixed inset-0`}
 `
 
-const FixedBackgroundVideo = () => {
+const FixedBackgroundVideo = (videoProps) => {
   return (
     <BackgroundVideoWrapper>
-      <MainBackgroundVideo></MainBackgroundVideo>
+      <MainBackgroundVideo {...videoProps} />
     </BackgroundVideoWrapper>
   )
 }
@@ -70,7 +70,7 @@ const Layout = ({ children: mainContent, router }) => {
   }, [router.pathname])
   return (
     <Wrapper showHeader={showLayout}>
-      <FixedBackgroundVideo />
+      <FixedBackgroundVideo autoPlay={true} loop={true} />
       <Container>
         {showLayout && <Header desktopStyles={styles.desktop.header.styles}></Header>}
         {mainContent}
