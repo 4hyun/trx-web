@@ -31,7 +31,7 @@ const TitleText = styled.p`
   letter-spacing: 0.15em;
 `
 
-const titleText = "#Tunaaaamoonandback"
+const titleText = "#Tunaaaa\nmoonand\nback"
 
 const videoOptions = {
   autoPlay: true,

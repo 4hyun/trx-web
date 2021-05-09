@@ -28,19 +28,16 @@ const Header = styled.div`
   font-size: ${styles.header.fontSize};
 `
 const ScrollContainer = styled.div`
+  ${scrollbarHideStyles}
   @media (min-width: 1024px) and (max-width: 1279px) {
     height: 600px;
     overflow-y: scroll;
   }
 `
 const CollectionGallery = styled.div`
+  ${scrollbarHideStyles}
   grid-auto-rows: 1fr;
   ${tw`grid grid-cols-3 gap-3 md:(grid-cols-5 gap-x-4 gap-y-6 overflow-y-auto p-2 h-auto) lg:(grid-cols-2 gap-x-4 gap-y-6 grid-rows-2 overflow-y-scroll) xl:(grid-cols-3)`}
-  @media (min-width: 768px) {
-    & {
-      ${scrollbarHideStyles}
-    }
-  }
 `
 
 const FooterContainer = styled.div`

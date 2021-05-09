@@ -10,12 +10,10 @@ import MainBackgroundVideo from "components/Common/MainBackgroundVideo"
 import Footer from "components/Layout/Footer"
 /* styles */
 import { navbarStyles } from "@/components/Layout/Header/styles"
-import { createScrollbarStyles } from "components/Common/Styles"
 
 const Wrapper = styled.div`
-  ${tw`absolute top-0 left-0 right-0 w-screen h-full`}
   @media (min-width: 1024px) {
-    ${tw`w-screen`}
+    ${tw`w-full`}
     padding-right: 0;
     padding-left: ${({ showHeader }) => (showHeader ? navbarStyles.desktop.width : "none")};
   }
@@ -24,13 +22,6 @@ const Wrapper = styled.div`
 const Container = styled.div`
   ${tw`w-full h-full auto-rows-min`}
 `
-
-const scrollbarStylesOptions = {
-  width: "10px",
-  trackColor: "#f1f1f1",
-  handleColor: "#888",
-  handleColorOnHover: "#555",
-}
 
 const BackgroundVideoWrapper = styled.div`
   ${tw`fixed inset-0`}

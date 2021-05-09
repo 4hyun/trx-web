@@ -7,16 +7,27 @@ const StyledForm = styled(Form)`
 `
 
 const StyledField = styled(Field)`
-  ${tw`px-2 py-3 text-base font-primary text-tr-black relative bg-transparent`}
+  ${tw`relative font-primary text-base text-gray-50 bg-transparent`}
+  ${tw`w-full (rounded-full border-b border-solid border-white)!`}
+  ${tw`xs:(rounded-none px-2 (border-0 border-none)!)`}
 `
 
 const StyledButton = styled.button`
-  ${tw`text-tr-white bg-tr-black font-primary rounded-full px-4 py-2 mr-1 font-bold focus:(outline-none) active:(bg-tr-white text-tr-black) transition-colors`}
+  ${tw`w-full text-tr-black bg-tr-white font-primary rounded-full font-bold focus:(outline-none) active:(text-tr-white bg-tr-black border border-tr-white) transition-colors`}
+  ${tw`xs:(text-tr-white bg-tr-black w-auto active:(bg-tr-white text-tr-black))`}
 `
 
 const InputGroup = styled.div`
-  min-width: 80%;
-  ${tw`relative flex items-center bg-tr-white rounded-full pl-4 max-w-md`}
+  & {
+    ${tw`relative flex flex-col items-center space-y-4`}
+    ${tw`xs:(flex-row bg-tr-white rounded-full pl-4 max-w-md space-y-0)`}
+  }
+  ${StyledField}, ${StyledButton} {
+    ${tw`px-4 py-3`}
+  }
+  ${StyledButton} {
+    ${tw`xs:py-2! xs:mr-1`}
+  }
   & > input {
     ${tw`border-none flex-1 focus:(outline-none)`}
   }

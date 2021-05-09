@@ -10,10 +10,6 @@ import Collection from "@/components/Collections/Collection"
 import CollectionSingleView, { LayoutContainer as CollectionViewColumn } from "@/components/Collections/CollectionSingleView"
 import Footer from "components/Layout/Footer"
 
-// const FlavorsGallery = styled.ul``;
-
-// const FlavorWrapper = styled.li``;
-
 const Flavor = ({ flavor }) => {
   return <div>{typeof flavor === "object" ? JSON.stringify(flavor) : "Flavor Data"}</div>
 }
@@ -29,6 +25,7 @@ const ScrollContainer = styled.main`
   @media (min-width: 1024px) {
     ${tw`top-0 px-0 pt-0`}
     left: var(--DesktopNavbarWidth);
+    /* width */
   }
 `
 
