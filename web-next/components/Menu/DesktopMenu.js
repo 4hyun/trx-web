@@ -2,7 +2,7 @@ import Link from "next/link"
 import React, { useEffect } from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
-import { navbarStyles } from "components/Header/styles"
+import { navbarStyles } from "@/components/Layout/Header/styles"
 import Accordion, { AccordionToggleIcon } from "components/Common/Accordion"
 
 const Container = styled.div`

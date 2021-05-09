@@ -6,8 +6,8 @@ import { fetchAPI } from "lib/api"
 /* components */
 import { AgeGateContext } from "components/AgeGate/context"
 import HomeHero from "components/Blocks/HomeHero"
-import Collection from "components/Collection"
-import CollectionSingleView, { LayoutContainer as CollectionViewColumn } from "components/CollectionSingleView"
+import Collection from "@/components/Collections/Collection"
+import CollectionSingleView, { LayoutContainer as CollectionViewColumn } from "@/components/Collections/CollectionSingleView"
 import Footer from "components/Layout/Footer"
 
 // const FlavorsGallery = styled.ul``;
@@ -24,7 +24,7 @@ const HomeContentGrid = styled.div`
 `
 
 const ScrollContainer = styled.main`
-  ${tw`fixed inset-0 overflow-y-scroll space-y-10`}
+  ${tw`absolute top-0 space-y-10`}
   top: var(--MobileNavbarHeight);
   @media (min-width: 1024px) {
     ${tw`top-0 px-0 pt-0`}
@@ -43,7 +43,7 @@ export default function HomePage({ flavors, preview }) {
     <>
       <Head>
         <title>Tunaaaa Room Xtracts</title>
-        <meta property="og:url" content={window.location.href} />
+        <meta property="og:url" content="https://xtracts.tunaaaaroom.ca" />
         <meta property="og:title" content="Tunaaaa Room Xtracts" />
         <meta property="og:site_name" content="Tunaaaa Room Xtracts" />
         <meta property="og:type" content="website" />

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import tw from "twin.macro"
-import CollectionCard from "components/CollectionCard"
+import CollectionCard from "@/components/Collections/CollectionCard"
 import IndicaSativaIndicator from "components/IndicaSativaIndicator"
 import { scrollbarHideStyles } from "components/Common/Styles"
 

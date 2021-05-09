@@ -1,3 +1,5 @@
+import tw, { css } from "twin.macro"
+
 const headerContainerStyles = {
   menuOpen: {
     open: {
@@ -13,6 +15,9 @@ const headerContainerStyles = {
 const navbarStyles = {
   desktop: {
     width: "75px",
+    styles: css`
+      ${tw`z-40`}
+    `,
   },
 }
 

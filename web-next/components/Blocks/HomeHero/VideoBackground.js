@@ -3,7 +3,7 @@ import Video from "components/Common/Video"
 
 const VideoBackground = (videoOptions) => {
   return (
-    <Video {...videoOptions}>
+    <Video {...videoOptions} muted={true}>
       <source src="/hero-vid-1.mp4" type="video/mp4" />
     </Video>
   )

@@ -30,6 +30,7 @@ module.exports = {
       transitionProperty: ["hover", "focus"],
       fill: ["hover", "focus"],
       transform: ["hover", "focus"],
+      cursor: ["hover", "focus"],
     },
   },
   plugins: [],
