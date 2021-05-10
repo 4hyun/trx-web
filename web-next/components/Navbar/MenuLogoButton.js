@@ -1,10 +1,7 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import {
-  LogoCircleWhiteOnBlack as DesktopMenuIconOpen,
-  DesktopMenuIconClose,
-} from "components/Icons";
-import tw from "twin.macro";
+import React from "react"
+import styled, { css } from "styled-components"
+import { LogoCircleWhiteOnBlack as DesktopMenuIconOpen, DesktopMenuIconClose } from "components/Icons"
+import tw from "twin.macro"
 
 const Container = {
   Desktop: styled.div`
@@ -16,7 +13,7 @@ const Container = {
   Mobile: styled.div`
     ${tw`absolute w-full mt-auto lg:hidden z-50`}
   `,
-};
+}
 
 const STYLE_BY_MENU_STATE = {
   base: css`
@@ -41,7 +38,7 @@ const STYLE_BY_MENU_STATE = {
     `,
     close: css`
       top: 50%;
-      transform: translateY(-50%);
+      transform: scale(0.75) translateY(-50%);
       :hover #Circle {
         fill: rgb(104, 104, 104);
       }
@@ -61,7 +58,7 @@ const STYLE_BY_MENU_STATE = {
       }
     `,
   },
-};
+}
 
 const ButtonWrapper = styled.div`
   ${STYLE_BY_MENU_STATE.base}
@@ -69,19 +66,18 @@ const ButtonWrapper = styled.div`
     ${({ menuOpen }) => STYLE_BY_MENU_STATE.mobile[menuOpen ? "open" : "close"]}
   }
   @media (min-width: 1024px) {
-    ${({ menuOpen }) =>
-      STYLE_BY_MENU_STATE.desktop[menuOpen ? "open" : "close"]}
+    ${({ menuOpen }) => STYLE_BY_MENU_STATE.desktop[menuOpen ? "open" : "close"]}
   }
 
   ${({ transitionDelay }) => ({ "transition-delay": transitionDelay })}
-`;
+`
 
 export const DesktopMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
   return (
     <Container.Desktop
       onTransitionEnd={(e) => {
-        e.stopPropagation();
-        console.log("different handler<Container.Desktop>");
+        e.stopPropagation()
+        console.log("different handler<Container.Desktop>")
       }}
     >
       <ButtonWrapper
@@ -89,15 +85,15 @@ export const DesktopMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
         onClick={toggleMenu}
         transitionDelay={styles.transitionDelay}
         onTransitionEnd={(e) => {
-          e.stopPropagation();
-          console.log("different handler<ButtonWrapper>");
+          e.stopPropagation()
+          console.log("different handler<ButtonWrapper>")
         }}
       >
         {!menuOpen ? <DesktopMenuIconOpen /> : <DesktopMenuIconClose />}
       </ButtonWrapper>
     </Container.Desktop>
-  );
-};
+  )
+}
 
 export const MobileMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
   return (
@@ -106,7 +102,7 @@ export const MobileMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
         {!menuOpen ? <DesktopMenuIconOpen /> : <DesktopMenuIconClose />}
       </ButtonWrapper>
     </Container.Mobile>
-  );
-};
+  )
+}
 
-export default DesktopMenuLogoButton;
+export default DesktopMenuLogoButton
