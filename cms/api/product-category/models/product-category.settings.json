@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "product_categories",
   "info": {
-    "name": "Product Category",
+    "name": "Product Categories",
     "description": ""
   },
   "options": {

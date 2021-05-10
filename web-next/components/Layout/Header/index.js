@@ -118,7 +118,7 @@ const Header = ({ desktopStyles }) => {
         </MobileMenuIGHashtagLink>
       </MobileMenuIGHashtagContainer>
       <Navbar menuOpen={menuOpen} renderDesktopMenuButton={renderDesktopMenuButton} renderSocialButtonGroup={renderSocialButtonGroup} />
-      <DesktopMenu transitionEnd={transitionEnd} />
+      <DesktopMenu transitionEnd={transitionEnd} toggleMenu={toggleDesktopMenu} />
       <DesktopMenuLogoButton styles={menuLogoButtonStyles} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
       <MobileMenuLogoButton styles={menuLogoButtonStyles} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
       <MobileMenu menuList={defaultMenuList} menuOpen={menuOpen} />

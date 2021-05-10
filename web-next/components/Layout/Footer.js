@@ -56,7 +56,7 @@ const FormColumnOne = styled(Column)`
   ${tw`items-start justify-center space-y-4`}
 `
 const FormColumnTwo = styled(Column)`
-  ${tw`col-span-full overflow-x-hidden`}
+  ${tw`col-span-full`}
   ${tw`xl:(col-start-3 col-end-4)`}
   ${tw`items-start justify-center`}
 `

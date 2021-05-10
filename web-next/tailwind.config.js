@@ -1,9 +1,16 @@
+const defaultTheme = require("tailwindcss/defaultTheme")
+
 module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: { xs: "475px", ...defaultTheme.screens },
     extend: {
-      screens: { xs: "475px" },
+      maxWidth: {
+        "1/4": "25%",
+        "1/2": "50%",
+        "3/4": "75%",
+      },
       fontFamily: {
         primary: ["ABeeZee", "sans-serif"],
         accent: ["Oswald", "sans-serif"],

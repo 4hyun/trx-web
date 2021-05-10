@@ -1,10 +1,13 @@
 import React from "react"
-import styled from "styled-components"
-import tw from "twin.macro"
+import tw, { styled } from "twin.macro"
 /* components */
 import VideoBackground from "./VideoBackground"
 import ScrollDownIndicator from "components/Common/Indicators/ScrollDownIndicator"
 import { animateScroll as scroll } from "react-scroll"
+/* utils */
+import { getPageHeight } from "lib/utils"
+import { useWindowSize } from "lib/hooks"
+const isMobile = (width) => width <= 475
 /* logo */
 import TROLogo from "../../../public/logo/trWhiteLogo.svg"
 
@@ -27,11 +30,13 @@ const OverlayFill = styled.div`
 `
 
 const TitleText = styled.p`
-  ${tw`text-tr-white font-accent font-bold text-4xl uppercase flex items-center select-none`}
-  letter-spacing: 0.15em;
+  ${tw`w-full text-tr-white font-accent font-bold text-4xl uppercase flex items-center select-none mx-10 whitespace-pre xs:whitespace-normal lg:(mx-0 ml-20) xl:(text-5xl)`}
+  & > svg {
+    ${tw`w-1/4 h-auto mx-auto self-start xs:(w-auto mx-1 self-auto)`}
+  }
 `
 
-const titleText = "#Tunaaaa\nmoonand\nback"
+const titleText = { mobile: "#Tunaaaa\nmoonand\nback", desktop: "#Tunaaaamoonandback" }
 
 const videoOptions = {
   autoPlay: true,
@@ -39,21 +44,22 @@ const videoOptions = {
 }
 
 const HomeHero = () => {
+  const { width } = useWindowSize()
+
   return (
     <Container>
       <VideoBackground {...videoOptions}></VideoBackground>
       <OverlayFill />
       <OverlayContentWrapper>
         <TitleText>
-          {titleText}
+          {isMobile(width) ? titleText.mobile : titleText.desktop}
           <TROLogo tw="ml-2" />
         </TitleText>
       </OverlayContentWrapper>
       <IndicatorWrapper>
         <ScrollDownIndicator
           onClick={() => {
-            console.log("clicked")
-            window.scroll(0, 1000)
+            scroll.scrollTo(getPageHeight())
           }}
         />
       </IndicatorWrapper>

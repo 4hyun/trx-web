@@ -19,7 +19,7 @@ const List = styled.ul`
   letter-spacing: -0.25px;
 `
 
-const Item = styled.li`
+const Item = styled.a`
   ${tw`rounded-xl cursor-pointer transition-spacing`}
   ${tw`flex items-center px-2.5 pt-2.5 pb-3`}
   ${tw`text-tr-black text-3xl leading-snug`}
@@ -43,17 +43,29 @@ const AccordionSummary = styled(Item)`
   ${tw`justify-between pr-6`}
 `
 
-export const DesktopMenu = ({ transitionEnd }) => {
-  useEffect(() => {
-    console.log("DesktopMenu rendered")
-  })
+const DELAY_CLOSE_MENU_TIME = 500
+export const DesktopMenu = ({ transitionEnd, toggleMenu }) => {
+  // useEffect(() => {
+  //   console.log("DesktopMenu rendered")
+  // })
+
+  const delayCloseMenu = () => {
+    setTimeout(() => {
+      toggleMenu()
+    }, DELAY_CLOSE_MENU_TIME)
+  }
   return (
     <Container transitionEnd={transitionEnd}>
       <List>
-        <Item href="/">Collection</Item>
-        <Item>
-          <Link href="/find-store">Find Store</Link>
-        </Item>
+        <Link href="/" passHref>
+          <Item onClick={delayCloseMenu}>Home</Item>
+        </Link>
+        <Link href="/collections" passHref>
+          <Item onClick={delayCloseMenu}>Collection</Item>
+        </Link>
+        <Link href="/find-store" passHref>
+          <Item onClick={delayCloseMenu}>Find Store</Item>
+        </Link>
         <Accordion
           renderAccordionSummary={({ toggleAccordion, open, mouseOver }) => (
             <AccordionSummary onClick={toggleAccordion}>

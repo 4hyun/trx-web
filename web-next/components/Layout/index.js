@@ -12,8 +12,8 @@ import Footer from "components/Layout/Footer"
 import { navbarStyles } from "@/components/Layout/Header/styles"
 
 const Wrapper = styled.div`
+  ${tw`w-full h-screen`}
   @media (min-width: 1024px) {
-    ${tw`w-full`}
     padding-right: 0;
     padding-left: ${({ showHeader }) => (showHeader ? navbarStyles.desktop.width : "none")};
   }
@@ -45,7 +45,7 @@ const Layout = ({ children: mainContent, router }) => {
   }, [router.pathname])
   return (
     <Wrapper showHeader={showLayout}>
-      <FixedBackgroundVideo autoPlay={true} loop={true} />
+      {router.pathname === "/age-gate" && <FixedBackgroundVideo autoPlay={true} loop={true} />}
       <Container>
         {showLayout && <Header desktopStyles={navbarStyles.desktop.styles}></Header>}
         {mainContent}
