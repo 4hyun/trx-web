@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import tw from "twin.macro";
-import { IconAngleDown } from "components/Icons";
+import React, { useState } from "react"
+import styled from "styled-components"
+import tw from "twin.macro"
+import { IconAngleDown } from "components/Icons"
 
-const Container = styled.div``;
-const AccordionSummaryContainer = styled.div``;
-const DefaultAccordionSummary = styled.div``;
-const ContentWrapper = styled.div``;
+const Container = styled.div``
+const AccordionSummaryContainer = styled.div``
+const DefaultAccordionSummary = styled.div``
+const ContentWrapper = styled.div``
 
 const styles = {
   defaultSize: "50px",
-};
+}
 
-const sizeStyles = (size) => ({ width: size, height: size });
+const sizeStyles = (size) => ({ width: size, height: size })
 
 export const AccordionToggleIcon = styled(IconAngleDown)`
   ${({ size }) => sizeStyles(size ? size : styles.defaultSize)}
@@ -22,21 +22,20 @@ export const AccordionToggleIcon = styled(IconAngleDown)`
     ${({ mouseover }) => mouseover && tw`text-tr-white fill-current`}
   }
   ${tw`transition-transform`};
-`;
+`
 
 const Accordion = (props) => {
-  const [open, setOpen] = useState(false);
-  const [mouseOver, setMouseOver] = useState(0);
+  const [open, setOpen] = useState(false)
+  const [mouseOver, setMouseOver] = useState(0)
   const toggleAccordion = () => {
-    console.log("toggleAccordion()");
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
   const onMouseOver = () => {
-    setMouseOver(1);
-  };
+    setMouseOver(1)
+  }
   const onMouseLeave = () => {
-    setMouseOver(0);
-  };
+    setMouseOver(0)
+  }
   return (
     <Container onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
       <AccordionSummaryContainer>
@@ -52,11 +51,9 @@ const Accordion = (props) => {
           </DefaultAccordionSummary>
         )}
       </AccordionSummaryContainer>
-      <ContentWrapper>
-        {props.renderAccordionContent && props.renderAccordionContent({ open })}
-      </ContentWrapper>
+      <ContentWrapper>{props.renderAccordionContent && props.renderAccordionContent({ open })}</ContentWrapper>
     </Container>
-  );
-};
+  )
+}
 
-export default Accordion;
+export default Accordion

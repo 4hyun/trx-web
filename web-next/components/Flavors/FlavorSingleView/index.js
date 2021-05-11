@@ -1,13 +1,6 @@
 import React, { useEffect } from "react"
-import styled from "styled-components"
-import tw from "twin.macro"
+import tw, { styled } from "twin.macro"
 import AvailableCategories from "./AvailableCategories"
-
-export const LayoutContainer = styled.div`
-  ${tw`flex flex-col justify-start space-y-7 col-span-full lg:(col-start-7 col-end-12)`}
-  ${"" /* top position 24 to align CollectionSingleView with CollectionGallery */}
-  ${tw`lg:(relative top-24)`}
-`
 
 const Container = styled.div`
   ${tw`rounded-3xl bg-tr-black bg-opacity-90 space-y-3 overflow-y-hidden px-5`}

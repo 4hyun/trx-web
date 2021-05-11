@@ -1,9 +1,9 @@
 import tw, { styled } from "twin.macro"
-import V2Collections from "containers/V2Collections"
+import Collections from "containers/PageCollections"
 import { fetchAPI } from "lib/api"
 
 const CollectionsPage = ({ collections, collectionCategories }) => {
-  return <V2Collections collections={collections} collectionCategories={collectionCategories}></V2Collections>
+  return <Collections collections={collections} collectionCategories={collectionCategories}></Collections>
 }
 
 export default CollectionsPage
@@ -32,8 +32,6 @@ export const getStaticProps = async ({ preview = null }) => {
     }
   )
   const { flavors, productCategories } = data
-  // console.log(("flavors", flavors))
-  console.log(("productCategories", productCategories))
   return {
     props: { collections: flavors, collectionCategories: productCategories, preview },
   }

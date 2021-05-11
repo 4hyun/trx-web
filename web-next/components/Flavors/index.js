@@ -1,12 +1,11 @@
 import PropTypes from "prop-types"
-import styled from "styled-components"
-import tw from "twin.macro"
-import CollectionCard from "@/components/Collections/CollectionCard"
-import IndicaSativaIndicator from "components/IndicaSativaIndicator"
-import { scrollbarHideStyles } from "components/Common/Styles"
+import tw, { styled } from "twin.macro"
+import FlavorCard from "@/components/Flavors/FlavorCard"
+import IndicaSativaIndicator from "@/components/IndicaSativaIndicator"
+import { scrollbarHideStyles } from "@/components/Common/Styles"
 
 const styles = {
-  borderGap: "26px",
+  borderGap: "16px",
   header: { fontSize: "2rem" },
 }
 
@@ -18,13 +17,11 @@ const Container = styled.div`
 
 const HeaderContainer = styled.div`
   @media (min-width: 768px) {
-    padding-bottom: ${styles.borderGap};
-    ${tw`border-b-2 border-tr-white`}
   }
 `
 
 const Header = styled.div`
-  ${tw`flex items-start uppercase font-accent font-bold text-tr-white leading-none tracking-wider`}
+  ${tw`flex items-start uppercase font-accent font-bold text-tr-black leading-none tracking-wider`}
   font-size: ${styles.header.fontSize};
 `
 const ScrollContainer = styled.div`
@@ -34,7 +31,7 @@ const ScrollContainer = styled.div`
     overflow-y: scroll;
   }
 `
-const CollectionGallery = styled.div`
+const FlavorList = styled.div`
   ${scrollbarHideStyles}
   grid-auto-rows: 1fr;
   ${tw`grid grid-cols-3 gap-3 md:(grid-cols-5 gap-x-4 gap-y-6 overflow-y-auto p-2 h-auto) lg:(grid-cols-2 gap-x-4 gap-y-6 grid-rows-2 overflow-y-scroll) xl:(grid-cols-3)`}
@@ -44,7 +41,6 @@ const FooterContainer = styled.div`
   ${tw`hidden`}
   @media (min-width: 768px) {
     padding-top: ${styles.borderGap};
-    ${tw`block border-t-2 border-tr-white`};
   }
 `
 
@@ -52,31 +48,31 @@ const Footer = styled.div`
   min-height: ${styles.header.fontSize};
 `
 
-const CollectionCardFooterContent = ({ renderFooterContentProp }) => {
+const CardFooterContent = ({ renderFooterContentProp }) => {
   const { indica, sativa } = renderFooterContentProp[0] || {}
   return <IndicaSativaIndicator indica={indica} sativa={sativa} />
 }
 
-const Collection = ({ collection, onItemClick }) => {
+const FlavorsPortfolio = ({ collection, onItemClick }) => {
   return (
     <Container>
       <HeaderContainer>
         <Header>Collection</Header>
       </HeaderContainer>
       <ScrollContainer>
-        <CollectionGallery>
+        <FlavorList>
           {collection.map((flavor) => {
             return (
-              <CollectionCard
+              <FlavorCard
                 key={flavor.id}
                 item={flavor}
                 renderFooterContentProp={flavor.collection_card_footer_content}
-                renderFooterContent={CollectionCardFooterContent}
+                renderFooterContent={CardFooterContent}
                 onClick={() => onItemClick(flavor)}
               />
             )
           })}
-        </CollectionGallery>
+        </FlavorList>
       </ScrollContainer>
       <FooterContainer>
         <Footer></Footer>
@@ -84,9 +80,11 @@ const Collection = ({ collection, onItemClick }) => {
     </Container>
   )
 }
-Collection.defaultProps = { collection: new Array(10) }
-Collection.propTypes = {
+FlavorsPortfolio.defaultProps = { collection: new Array(10) }
+FlavorsPortfolio.propTypes = {
   collection: PropTypes.array,
 }
 
-export default Collection
+export default FlavorsPortfolio
+export { default as CollectionCard } from "./FlavorCard"
+export { default as FlavorSingleView } from "./FlavorSingleView"

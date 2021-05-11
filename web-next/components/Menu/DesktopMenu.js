@@ -36,7 +36,7 @@ const FeatureContent = styled.div`
 `
 
 const FeatureItem = styled.div`
-  ${tw`font-bungee text-xl pl-2 leading-10`}
+  ${tw`font-bungee text-xl pl-2 leading-10 hover:cursor-pointer`}
 `
 
 const AccordionSummary = styled(Item)`
@@ -75,7 +75,9 @@ export const DesktopMenu = ({ transitionEnd, toggleMenu }) => {
           )}
           renderAccordionContent={({ open }) => (
             <FeatureContent open={open}>
-              <FeatureItem>coming soon!</FeatureItem>
+              <Link href="/flavors">
+                <FeatureItem>View All</FeatureItem>
+              </Link>
               <FeatureItem>coming soon!</FeatureItem>
               <FeatureItem>coming soon!</FeatureItem>
               <FeatureItem>coming soon!</FeatureItem>

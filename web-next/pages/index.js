@@ -1,4 +1,4 @@
-import { useState, useContext } from "react"
+import { useContext } from "react"
 import Head from "next/head"
 import styled from "styled-components"
 import tw from "twin.macro"
@@ -8,25 +8,10 @@ import { ScrollContainer } from "containers/Common"
 /* components */
 import { AgeGateContext } from "components/AgeGate/context"
 import HomeHero from "components/Blocks/HomeHero"
-import Collection from "@/components/Collections/Collection"
-import CollectionSingleView, { LayoutContainer as CollectionViewColumn } from "@/components/Collections/CollectionSingleView"
 import Footer from "components/Layout/Footer"
 
-const Flavor = ({ flavor }) => {
-  return <div>{typeof flavor === "object" ? JSON.stringify(flavor) : "Flavor Data"}</div>
-}
-
-const HomeContentGrid = styled.div`
-  ${tw`h-auto px-6 lg:px-0`};
-  ${tw`grid grid-cols-12 auto-rows-max gap-y-4 lg:(grid-rows-none min-h-screen pt-14)`}/* grid-auto-columns: minmax(1fr, 1fr); */
-`
-
-export default function HomePage({ flavors, preview }) {
-  const [selectedCollection, setSelectedCollection] = useState()
+export default function HomePage(props) {
   const { ageCheckedValue } = useContext(AgeGateContext)
-  const handleCollectionClick = (collection) => {
-    setSelectedCollection(collection)
-  }
 
   return (
     <>
@@ -45,12 +30,9 @@ export default function HomePage({ flavors, preview }) {
       {ageCheckedValue && (
         <ScrollContainer>
           <HomeHero></HomeHero>
-          <HomeContentGrid>
-            <Collection collection={flavors} onItemClick={handleCollectionClick} />
-            <CollectionViewColumn>
-              <CollectionSingleView selected={selectedCollection} tempLoadCollection={() => handleCollectionClick(flavors[0])} />
-            </CollectionViewColumn>
-          </HomeContentGrid>
+          {/* <HomeContentGrid>
+
+          </HomeContentGrid> */}
           <Footer />
         </ScrollContainer>
       )}
@@ -58,40 +40,40 @@ export default function HomePage({ flavors, preview }) {
   )
 }
 
-export const getStaticProps = async ({ preview = null }) => {
-  const data = await fetchAPI(
-    `
-    query {
-      flavors(publicationState:PREVIEW) {
-        id,
-        name,
-        main_img {
-          id,
-          formats
-        },
-        description,
-        available_categories {
-          ... on ProductCategory {
-            id,
-            name
-          }
-        }
-        collection_card_footer_content {
-            ... on ComponentCollectionCardFooterContentFooterContent {
-                indica,
-                sativa
-            }
-        }
-      }
-    }
-    `,
-    {
-      variables: {},
-    }
-  )
-  const allFlavorsData = data?.flavors
+// export const getStaticProps = async ({ preview = null }) => {
+//   const data = await fetchAPI(
+//     `
+//     query {
+//       flavors(publicationState:PREVIEW) {
+//         id,
+//         name,
+//         main_img {
+//           id,
+//           formats
+//         },
+//         description,
+//         available_categories {
+//           ... on ProductCategory {
+//             id,
+//             name
+//           }
+//         }
+//         collection_card_footer_content {
+//             ... on ComponentCollectionCardFooterContentFooterContent {
+//                 indica,
+//                 sativa
+//             }
+//         }
+//       }
+//     }
+//     `,
+//     {
+//       variables: {},
+//     }
+//   )
+//   const allFlavorsData = data?.flavors
 
-  return {
-    props: { flavors: allFlavorsData, preview },
-  }
-}
+//   return {
+//     props: { flavors: allFlavorsData, preview },
+//   }
+// }

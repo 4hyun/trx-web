@@ -1,1 +1,2 @@
-export { default as CollectionCard } from "./CollectionCard"
+export { default as Section } from "./Section"
+export { default as FilterBar } from "./FilterBar"

@@ -1,6 +1,5 @@
 import React from "react"
-import styled from "styled-components"
-import tw from "twin.macro"
+import tw, { styled } from "twin.macro"
 import { createScrollbarStyles } from "components/Common/Styles"
 
 const Column = styled.div`
@@ -53,7 +52,7 @@ const Category = ({ data }) => {
   return <CategoryWrapper>{data.name}</CategoryWrapper>
 }
 
-const AvailableCategories = ({ categories }) => {
+const AvailableProductCategories = ({ categories }) => {
   return (
     <Column>
       <BlockTitle>Available as:</BlockTitle>
@@ -68,4 +67,4 @@ const AvailableCategories = ({ categories }) => {
   )
 }
 
-export default AvailableCategories
+export default AvailableProductCategories
