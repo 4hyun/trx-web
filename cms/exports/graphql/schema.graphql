@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 input FileInfoInput {
   name: String
   alternativeText: String
@@ -1675,3 +1676,21 @@ scalar Long
 
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
+=======
+schema {
+  query: Query
+  mutation: Mutation
+}
+type User {
+  id: String!
+  name: String
+}
+type Query {
+  user (id: String): User
+}
+type Mutation {
+  addUser (
+    # Name for the User item
+    name: String!): User!
+}
+>>>>>>> 3340374bdd9871b0e7652520a5fdc5da1fbc6e13
