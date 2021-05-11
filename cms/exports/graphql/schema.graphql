@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 input FileInfoInput {
   name: String
   alternativeText: String
@@ -42,9 +41,12 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
-union FlavorsCollectionCardFooterContentDynamicZone = ComponentCollectionCardFooterContentFooterContent
+union FlavorsCollectionCardFooterContentDynamicZone =
+    ComponentCollectionCardFooterContentFooterContent
 
-"""Input type for dynamic zone collection_card_footer_content of Flavors"""
+"""
+Input type for dynamic zone collection_card_footer_content of Flavors
+"""
 scalar FlavorsCollectionCardFooterContentDynamicZoneInput
 
 type Flavors {
@@ -58,7 +60,12 @@ type Flavors {
   collection_card_footer_content: [FlavorsCollectionCardFooterContentDynamicZone]
   description: String
   published_at: DateTime
-  available_categories(sort: String, limit: Int, start: Int, where: JSON): [ProductCategory]
+  available_categories(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): [ProductCategory]
 }
 
 type FlavorsConnection {
@@ -430,9 +437,14 @@ type deleteProductCategoryPayload {
   productCategory: ProductCategory
 }
 
-union ProductsMetaDynamicZone = ComponentProductMetaDab | ComponentProductMetaExperience | ComponentProductMetaVape
+union ProductsMetaDynamicZone =
+    ComponentProductMetaDab
+  | ComponentProductMetaExperience
+  | ComponentProductMetaVape
 
-"""Input type for dynamic zone meta of Products"""
+"""
+Input type for dynamic zone meta of Products
+"""
 scalar ProductsMetaDynamicZoneInput
 
 type Products {
@@ -1234,8 +1246,18 @@ type UsersPermissionsRole {
   name: String!
   description: String
   type: String
-  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
-  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  permissions(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): [UsersPermissionsPermission]
+  users(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): [UsersPermissionsUser]
 }
 
 type UsersPermissionsRoleConnection {
@@ -1542,7 +1564,190 @@ input editComponentProductMetaVapeInput {
   vape_cat: [ID]
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Flavors | FlavorsConnection | FlavorsAggregator | FlavorsGroupBy | FlavorsConnectionId | FlavorsConnection_id | FlavorsConnectionCreatedAt | FlavorsConnectionUpdatedAt | FlavorsConnectionName | FlavorsConnectionMain_img | FlavorsConnectionFeatured_menu_img | FlavorsConnectionDescription | FlavorsConnectionPublished_at | createFlavorPayload | updateFlavorPayload | deleteFlavorPayload | MenuItems | MenuItemsConnection | MenuItemsAggregator | MenuItemsGroupBy | MenuItemsConnectionId | MenuItemsConnection_id | MenuItemsConnectionCreatedAt | MenuItemsConnectionUpdatedAt | MenuItemsConnectionLabel | MenuItemsConnectionUrl | MenuItemsConnectionIs_root | MenuItemsConnectionPublished_at | createMenuItemPayload | updateMenuItemPayload | deleteMenuItemPayload | Menu | updateMenuPayload | deleteMenuPayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnection_id | ProductCategoryConnectionCreatedAt | ProductCategoryConnectionUpdatedAt | ProductCategoryConnectionName | ProductCategoryConnectionPublished_at | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnection_id | ProductsConnectionCreatedAt | ProductsConnectionUpdatedAt | ProductsConnectionName | ProductsConnectionProduct_category | ProductsConnectionCover_img | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | Stores | StoresConnection | StoresAggregator | StoresAggregatorSum | StoresAggregatorAvg | StoresAggregatorMin | StoresAggregatorMax | StoresGroupBy | StoresConnectionId | StoresConnection_id | StoresConnectionCreatedAt | StoresConnectionUpdatedAt | StoresConnectionName | StoresConnectionBusiness_status | StoresConnectionFormatted_address | StoresConnectionPlace_id | StoresConnectionRating | StoresConnectionUser_ratings_total | StoresConnectionTrx_formatted_phone_number | StoresConnectionLng | StoresConnectionLat | StoresConnectionCompound_code | StoresConnectionRetailer | StoresConnectionPublished_at | createStorePayload | updateStorePayload | deleteStorePayload | Terpenes | TerpenesConnection | TerpenesAggregator | TerpenesGroupBy | TerpenesConnectionId | TerpenesConnection_id | TerpenesConnectionCreatedAt | TerpenesConnectionUpdatedAt | TerpenesConnectionName | TerpenesConnectionDescription | TerpenesConnectionPublished_at | createTerpenePayload | updateTerpenePayload | deleteTerpenePayload | VapeCategories | VapeCategoriesConnection | VapeCategoriesAggregator | VapeCategoriesGroupBy | VapeCategoriesConnectionId | VapeCategoriesConnection_id | VapeCategoriesConnectionCreatedAt | VapeCategoriesConnectionUpdatedAt | VapeCategoriesConnectionCategory | VapeCategoriesConnectionValue | VapeCategoriesConnectionLabel | VapeCategoriesConnectionPublished_at | createVapeCategoryPayload | updateVapeCategoryPayload | deleteVapeCategoryPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentCollectionCardFooterContentFooterContent | ComponentProductMetaDab | ComponentProductMetaExperience | ComponentProductMetaVape
+union Morph =
+    UsersPermissionsMe
+  | UsersPermissionsMeRole
+  | UsersPermissionsLoginPayload
+  | UserPermissionsPasswordPayload
+  | Flavors
+  | FlavorsConnection
+  | FlavorsAggregator
+  | FlavorsGroupBy
+  | FlavorsConnectionId
+  | FlavorsConnection_id
+  | FlavorsConnectionCreatedAt
+  | FlavorsConnectionUpdatedAt
+  | FlavorsConnectionName
+  | FlavorsConnectionMain_img
+  | FlavorsConnectionFeatured_menu_img
+  | FlavorsConnectionDescription
+  | FlavorsConnectionPublished_at
+  | createFlavorPayload
+  | updateFlavorPayload
+  | deleteFlavorPayload
+  | MenuItems
+  | MenuItemsConnection
+  | MenuItemsAggregator
+  | MenuItemsGroupBy
+  | MenuItemsConnectionId
+  | MenuItemsConnection_id
+  | MenuItemsConnectionCreatedAt
+  | MenuItemsConnectionUpdatedAt
+  | MenuItemsConnectionLabel
+  | MenuItemsConnectionUrl
+  | MenuItemsConnectionIs_root
+  | MenuItemsConnectionPublished_at
+  | createMenuItemPayload
+  | updateMenuItemPayload
+  | deleteMenuItemPayload
+  | Menu
+  | updateMenuPayload
+  | deleteMenuPayload
+  | ProductCategory
+  | ProductCategoryConnection
+  | ProductCategoryAggregator
+  | ProductCategoryGroupBy
+  | ProductCategoryConnectionId
+  | ProductCategoryConnection_id
+  | ProductCategoryConnectionCreatedAt
+  | ProductCategoryConnectionUpdatedAt
+  | ProductCategoryConnectionName
+  | ProductCategoryConnectionPublished_at
+  | createProductCategoryPayload
+  | updateProductCategoryPayload
+  | deleteProductCategoryPayload
+  | Products
+  | ProductsConnection
+  | ProductsAggregator
+  | ProductsGroupBy
+  | ProductsConnectionId
+  | ProductsConnection_id
+  | ProductsConnectionCreatedAt
+  | ProductsConnectionUpdatedAt
+  | ProductsConnectionName
+  | ProductsConnectionProduct_category
+  | ProductsConnectionCover_img
+  | ProductsConnectionPublished_at
+  | createProductPayload
+  | updateProductPayload
+  | deleteProductPayload
+  | Stores
+  | StoresConnection
+  | StoresAggregator
+  | StoresAggregatorSum
+  | StoresAggregatorAvg
+  | StoresAggregatorMin
+  | StoresAggregatorMax
+  | StoresGroupBy
+  | StoresConnectionId
+  | StoresConnection_id
+  | StoresConnectionCreatedAt
+  | StoresConnectionUpdatedAt
+  | StoresConnectionName
+  | StoresConnectionBusiness_status
+  | StoresConnectionFormatted_address
+  | StoresConnectionPlace_id
+  | StoresConnectionRating
+  | StoresConnectionUser_ratings_total
+  | StoresConnectionTrx_formatted_phone_number
+  | StoresConnectionLng
+  | StoresConnectionLat
+  | StoresConnectionCompound_code
+  | StoresConnectionRetailer
+  | StoresConnectionPublished_at
+  | createStorePayload
+  | updateStorePayload
+  | deleteStorePayload
+  | Terpenes
+  | TerpenesConnection
+  | TerpenesAggregator
+  | TerpenesGroupBy
+  | TerpenesConnectionId
+  | TerpenesConnection_id
+  | TerpenesConnectionCreatedAt
+  | TerpenesConnectionUpdatedAt
+  | TerpenesConnectionName
+  | TerpenesConnectionDescription
+  | TerpenesConnectionPublished_at
+  | createTerpenePayload
+  | updateTerpenePayload
+  | deleteTerpenePayload
+  | VapeCategories
+  | VapeCategoriesConnection
+  | VapeCategoriesAggregator
+  | VapeCategoriesGroupBy
+  | VapeCategoriesConnectionId
+  | VapeCategoriesConnection_id
+  | VapeCategoriesConnectionCreatedAt
+  | VapeCategoriesConnectionUpdatedAt
+  | VapeCategoriesConnectionCategory
+  | VapeCategoriesConnectionValue
+  | VapeCategoriesConnectionLabel
+  | VapeCategoriesConnectionPublished_at
+  | createVapeCategoryPayload
+  | updateVapeCategoryPayload
+  | deleteVapeCategoryPayload
+  | UploadFile
+  | UploadFileConnection
+  | UploadFileAggregator
+  | UploadFileAggregatorSum
+  | UploadFileAggregatorAvg
+  | UploadFileAggregatorMin
+  | UploadFileAggregatorMax
+  | UploadFileGroupBy
+  | UploadFileConnectionId
+  | UploadFileConnection_id
+  | UploadFileConnectionCreatedAt
+  | UploadFileConnectionUpdatedAt
+  | UploadFileConnectionName
+  | UploadFileConnectionAlternativeText
+  | UploadFileConnectionCaption
+  | UploadFileConnectionWidth
+  | UploadFileConnectionHeight
+  | UploadFileConnectionFormats
+  | UploadFileConnectionHash
+  | UploadFileConnectionExt
+  | UploadFileConnectionMime
+  | UploadFileConnectionSize
+  | UploadFileConnectionUrl
+  | UploadFileConnectionPreviewUrl
+  | UploadFileConnectionProvider
+  | UploadFileConnectionProvider_metadata
+  | deleteFilePayload
+  | UsersPermissionsPermission
+  | UsersPermissionsRole
+  | UsersPermissionsRoleConnection
+  | UsersPermissionsRoleAggregator
+  | UsersPermissionsRoleGroupBy
+  | UsersPermissionsRoleConnectionId
+  | UsersPermissionsRoleConnection_id
+  | UsersPermissionsRoleConnectionName
+  | UsersPermissionsRoleConnectionDescription
+  | UsersPermissionsRoleConnectionType
+  | createRolePayload
+  | updateRolePayload
+  | deleteRolePayload
+  | UsersPermissionsUser
+  | UsersPermissionsUserConnection
+  | UsersPermissionsUserAggregator
+  | UsersPermissionsUserGroupBy
+  | UsersPermissionsUserConnectionId
+  | UsersPermissionsUserConnection_id
+  | UsersPermissionsUserConnectionCreatedAt
+  | UsersPermissionsUserConnectionUpdatedAt
+  | UsersPermissionsUserConnectionUsername
+  | UsersPermissionsUserConnectionEmail
+  | UsersPermissionsUserConnectionProvider
+  | UsersPermissionsUserConnectionConfirmed
+  | UsersPermissionsUserConnectionBlocked
+  | UsersPermissionsUserConnectionRole
+  | createUserPayload
+  | updateUserPayload
+  | deleteUserPayload
+  | ComponentCollectionCardFooterContentFooterContent
+  | ComponentProductMetaDab
+  | ComponentProductMetaExperience
+  | ComponentProductMetaVape
 
 input InputID {
   id: ID!
@@ -1562,39 +1767,149 @@ type AdminUser {
 
 type Query {
   flavor(id: ID!, publicationState: PublicationState): Flavors
-  flavors(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Flavors]
-  flavorsConnection(sort: String, limit: Int, start: Int, where: JSON): FlavorsConnection
+  flavors(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Flavors]
+  flavorsConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): FlavorsConnection
   menuItem(id: ID!, publicationState: PublicationState): MenuItems
-  menuItems(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [MenuItems]
-  menuItemsConnection(sort: String, limit: Int, start: Int, where: JSON): MenuItemsConnection
+  menuItems(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [MenuItems]
+  menuItemsConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): MenuItemsConnection
   menu(publicationState: PublicationState): Menu
   productCategory(id: ID!, publicationState: PublicationState): ProductCategory
-  productCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [ProductCategory]
-  productCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): ProductCategoryConnection
+  productCategories(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [ProductCategory]
+  productCategoriesConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): ProductCategoryConnection
   product(id: ID!, publicationState: PublicationState): Products
-  products(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Products]
-  productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductsConnection
+  products(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Products]
+  productsConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): ProductsConnection
   store(id: ID!, publicationState: PublicationState): Stores
-  stores(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Stores]
-  storesConnection(sort: String, limit: Int, start: Int, where: JSON): StoresConnection
+  stores(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Stores]
+  storesConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): StoresConnection
   terpene(id: ID!, publicationState: PublicationState): Terpenes
-  terpenes(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Terpenes]
-  terpenesConnection(sort: String, limit: Int, start: Int, where: JSON): TerpenesConnection
+  terpenes(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Terpenes]
+  terpenesConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): TerpenesConnection
   vapeCategory(id: ID!, publicationState: PublicationState): VapeCategories
-  vapeCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [VapeCategories]
-  vapeCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): VapeCategoriesConnection
-  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
-  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  vapeCategories(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [VapeCategories]
+  vapeCategoriesConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): VapeCategoriesConnection
+  files(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [UploadFile]
+  filesConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): UploadFileConnection
   role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
 
   """
   Retrieve all the existing roles. You can't apply filters on this query.
   """
-  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
-  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  roles(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [UsersPermissionsRole]
+  rolesConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): UsersPermissionsRoleConnection
   user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
-  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
-  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  users(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [UsersPermissionsUser]
+  usersConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): UsersPermissionsUserConnection
   me: UsersPermissionsMe
 }
 
@@ -1607,9 +1922,15 @@ type Mutation {
   deleteMenuItem(input: deleteMenuItemInput): deleteMenuItemPayload
   updateMenu(input: updateMenuInput): updateMenuPayload
   deleteMenu: deleteMenuPayload
-  createProductCategory(input: createProductCategoryInput): createProductCategoryPayload
-  updateProductCategory(input: updateProductCategoryInput): updateProductCategoryPayload
-  deleteProductCategory(input: deleteProductCategoryInput): deleteProductCategoryPayload
+  createProductCategory(
+    input: createProductCategoryInput
+  ): createProductCategoryPayload
+  updateProductCategory(
+    input: updateProductCategoryInput
+  ): updateProductCategoryPayload
+  deleteProductCategory(
+    input: deleteProductCategoryInput
+  ): deleteProductCategoryPayload
   createProduct(input: createProductInput): createProductPayload
   updateProduct(input: updateProductInput): updateProductPayload
   deleteProduct(input: deleteProductInput): deleteProductPayload
@@ -1623,47 +1944,83 @@ type Mutation {
   updateVapeCategory(input: updateVapeCategoryInput): updateVapeCategoryPayload
   deleteVapeCategory(input: deleteVapeCategoryInput): deleteVapeCategoryPayload
 
-  """Delete one file"""
+  """
+  Delete one file
+  """
   deleteFile(input: deleteFileInput): deleteFilePayload
 
-  """Create a new role"""
+  """
+  Create a new role
+  """
   createRole(input: createRoleInput): createRolePayload
 
-  """Update an existing role"""
+  """
+  Update an existing role
+  """
   updateRole(input: updateRoleInput): updateRolePayload
 
-  """Delete an existing role"""
+  """
+  Delete an existing role
+  """
   deleteRole(input: deleteRoleInput): deleteRolePayload
 
-  """Create a new user"""
+  """
+  Create a new user
+  """
   createUser(input: createUserInput): createUserPayload
 
-  """Update an existing user"""
+  """
+  Update an existing user
+  """
   updateUser(input: updateUserInput): updateUserPayload
 
-  """Delete an existing user"""
+  """
+  Delete an existing user
+  """
   deleteUser(input: deleteUserInput): deleteUserPayload
-  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
-  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  upload(
+    refId: ID
+    ref: String
+    field: String
+    source: String
+    info: FileInfoInput
+    file: Upload!
+  ): UploadFile!
+  multipleUpload(
+    refId: ID
+    ref: String
+    field: String
+    source: String
+    files: [Upload]!
+  ): [UploadFile]!
   updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
   login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
   register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
   forgotPassword(email: String!): UserPermissionsPasswordPayload
-  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  resetPassword(
+    password: String!
+    passwordConfirmation: String!
+    code: String!
+  ): UsersPermissionsLoginPayload
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
 }
 
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
-scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+scalar JSON
+  @specifiedBy(
+    url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf"
+  )
 
 """
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
 scalar DateTime
 
-"""A time string with format: HH:mm:ss.SSS"""
+"""
+A time string with format: HH:mm:ss.SSS
+"""
 scalar Time
 
 """
@@ -1671,26 +2028,12 @@ A date string, such as 2007-12-03, compliant with the `full-date` format outline
 """
 scalar Date
 
-"""The `Long` scalar type represents 52-bit integers"""
+"""
+The `Long` scalar type represents 52-bit integers
+"""
 scalar Long
 
-"""The `Upload` scalar type represents a file upload."""
+"""
+The `Upload` scalar type represents a file upload.
+"""
 scalar Upload
-=======
-schema {
-  query: Query
-  mutation: Mutation
-}
-type User {
-  id: String!
-  name: String
-}
-type Query {
-  user (id: String): User
-}
-type Mutation {
-  addUser (
-    # Name for the User item
-    name: String!): User!
-}
->>>>>>> 3340374bdd9871b0e7652520a5fdc5da1fbc6e13
