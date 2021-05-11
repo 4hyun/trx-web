@@ -1,0 +1,1677 @@
+input FileInfoInput {
+  name: String
+  alternativeText: String
+  caption: String
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String
+  user: UsersPermissionsMe!
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+union FlavorsCollectionCardFooterContentDynamicZone = ComponentCollectionCardFooterContentFooterContent
+
+"""Input type for dynamic zone collection_card_footer_content of Flavors"""
+scalar FlavorsCollectionCardFooterContentDynamicZoneInput
+
+type Flavors {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  main_img: UploadFile
+  featured_menu_img: UploadFile
+  collection_card_footer_content: [FlavorsCollectionCardFooterContentDynamicZone]
+  description: String
+  published_at: DateTime
+  available_categories(sort: String, limit: Int, start: Int, where: JSON): [ProductCategory]
+}
+
+type FlavorsConnection {
+  values: [Flavors]
+  groupBy: FlavorsGroupBy
+  aggregate: FlavorsAggregator
+}
+
+type FlavorsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type FlavorsGroupBy {
+  id: [FlavorsConnectionId]
+  _id: [FlavorsConnection_id]
+  createdAt: [FlavorsConnectionCreatedAt]
+  updatedAt: [FlavorsConnectionUpdatedAt]
+  name: [FlavorsConnectionName]
+  main_img: [FlavorsConnectionMain_img]
+  featured_menu_img: [FlavorsConnectionFeatured_menu_img]
+  description: [FlavorsConnectionDescription]
+  published_at: [FlavorsConnectionPublished_at]
+}
+
+type FlavorsConnectionId {
+  key: ID
+  connection: FlavorsConnection
+}
+
+type FlavorsConnection_id {
+  key: ID
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionCreatedAt {
+  key: DateTime
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionUpdatedAt {
+  key: DateTime
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionName {
+  key: String
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionMain_img {
+  key: ID
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionFeatured_menu_img {
+  key: ID
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionDescription {
+  key: String
+  connection: FlavorsConnection
+}
+
+type FlavorsConnectionPublished_at {
+  key: DateTime
+  connection: FlavorsConnection
+}
+
+input FlavorInput {
+  name: String
+  main_img: ID
+  featured_menu_img: ID
+  collection_card_footer_content: [FlavorsCollectionCardFooterContentDynamicZoneInput!]
+  available_categories: [ID]
+  description: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editFlavorInput {
+  name: String
+  main_img: ID
+  featured_menu_img: ID
+  collection_card_footer_content: [FlavorsCollectionCardFooterContentDynamicZoneInput!]
+  available_categories: [ID]
+  description: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createFlavorInput {
+  data: FlavorInput
+}
+
+type createFlavorPayload {
+  flavor: Flavors
+}
+
+input updateFlavorInput {
+  where: InputID
+  data: editFlavorInput
+}
+
+type updateFlavorPayload {
+  flavor: Flavors
+}
+
+input deleteFlavorInput {
+  where: InputID
+}
+
+type deleteFlavorPayload {
+  flavor: Flavors
+}
+
+type MenuItems {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  label: String
+  url: String
+  is_root: Boolean
+  published_at: DateTime
+  menu_items(sort: String, limit: Int, start: Int, where: JSON): [MenuItems]
+}
+
+type MenuItemsConnection {
+  values: [MenuItems]
+  groupBy: MenuItemsGroupBy
+  aggregate: MenuItemsAggregator
+}
+
+type MenuItemsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type MenuItemsGroupBy {
+  id: [MenuItemsConnectionId]
+  _id: [MenuItemsConnection_id]
+  createdAt: [MenuItemsConnectionCreatedAt]
+  updatedAt: [MenuItemsConnectionUpdatedAt]
+  label: [MenuItemsConnectionLabel]
+  url: [MenuItemsConnectionUrl]
+  is_root: [MenuItemsConnectionIs_root]
+  published_at: [MenuItemsConnectionPublished_at]
+}
+
+type MenuItemsConnectionId {
+  key: ID
+  connection: MenuItemsConnection
+}
+
+type MenuItemsConnection_id {
+  key: ID
+  connection: MenuItemsConnection
+}
+
+type MenuItemsConnectionCreatedAt {
+  key: DateTime
+  connection: MenuItemsConnection
+}
+
+type MenuItemsConnectionUpdatedAt {
+  key: DateTime
+  connection: MenuItemsConnection
+}
+
+type MenuItemsConnectionLabel {
+  key: String
+  connection: MenuItemsConnection
+}
+
+type MenuItemsConnectionUrl {
+  key: String
+  connection: MenuItemsConnection
+}
+
+type MenuItemsConnectionIs_root {
+  key: Boolean
+  connection: MenuItemsConnection
+}
+
+type MenuItemsConnectionPublished_at {
+  key: DateTime
+  connection: MenuItemsConnection
+}
+
+input MenuItemInput {
+  label: String
+  url: String
+  menu_items: [ID]
+  is_root: Boolean
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editMenuItemInput {
+  label: String
+  url: String
+  menu_items: [ID]
+  is_root: Boolean
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createMenuItemInput {
+  data: MenuItemInput
+}
+
+type createMenuItemPayload {
+  menuItem: MenuItems
+}
+
+input updateMenuItemInput {
+  where: InputID
+  data: editMenuItemInput
+}
+
+type updateMenuItemPayload {
+  menuItem: MenuItems
+}
+
+input deleteMenuItemInput {
+  where: InputID
+}
+
+type deleteMenuItemPayload {
+  menuItem: MenuItems
+}
+
+type Menu {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  published_at: DateTime
+  menu_items(sort: String, limit: Int, start: Int, where: JSON): [MenuItems]
+}
+
+input MenuInput {
+  menu_items: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editMenuInput {
+  menu_items: [ID]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input updateMenuInput {
+  data: editMenuInput
+}
+
+type updateMenuPayload {
+  menu: Menu
+}
+
+type deleteMenuPayload {
+  menu: Menu
+}
+
+type ProductCategory {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  published_at: DateTime
+}
+
+type ProductCategoryConnection {
+  values: [ProductCategory]
+  groupBy: ProductCategoryGroupBy
+  aggregate: ProductCategoryAggregator
+}
+
+type ProductCategoryAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProductCategoryGroupBy {
+  id: [ProductCategoryConnectionId]
+  _id: [ProductCategoryConnection_id]
+  createdAt: [ProductCategoryConnectionCreatedAt]
+  updatedAt: [ProductCategoryConnectionUpdatedAt]
+  name: [ProductCategoryConnectionName]
+  published_at: [ProductCategoryConnectionPublished_at]
+}
+
+type ProductCategoryConnectionId {
+  key: ID
+  connection: ProductCategoryConnection
+}
+
+type ProductCategoryConnection_id {
+  key: ID
+  connection: ProductCategoryConnection
+}
+
+type ProductCategoryConnectionCreatedAt {
+  key: DateTime
+  connection: ProductCategoryConnection
+}
+
+type ProductCategoryConnectionUpdatedAt {
+  key: DateTime
+  connection: ProductCategoryConnection
+}
+
+type ProductCategoryConnectionName {
+  key: String
+  connection: ProductCategoryConnection
+}
+
+type ProductCategoryConnectionPublished_at {
+  key: DateTime
+  connection: ProductCategoryConnection
+}
+
+input ProductCategoryInput {
+  name: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductCategoryInput {
+  name: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createProductCategoryInput {
+  data: ProductCategoryInput
+}
+
+type createProductCategoryPayload {
+  productCategory: ProductCategory
+}
+
+input updateProductCategoryInput {
+  where: InputID
+  data: editProductCategoryInput
+}
+
+type updateProductCategoryPayload {
+  productCategory: ProductCategory
+}
+
+input deleteProductCategoryInput {
+  where: InputID
+}
+
+type deleteProductCategoryPayload {
+  productCategory: ProductCategory
+}
+
+union ProductsMetaDynamicZone = ComponentProductMetaDab | ComponentProductMetaExperience | ComponentProductMetaVape
+
+"""Input type for dynamic zone meta of Products"""
+scalar ProductsMetaDynamicZoneInput
+
+type Products {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  product_category: ProductCategory
+  cover_img: UploadFile
+  meta: [ProductsMetaDynamicZone]
+  published_at: DateTime
+}
+
+type ProductsConnection {
+  values: [Products]
+  groupBy: ProductsGroupBy
+  aggregate: ProductsAggregator
+}
+
+type ProductsAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ProductsGroupBy {
+  id: [ProductsConnectionId]
+  _id: [ProductsConnection_id]
+  createdAt: [ProductsConnectionCreatedAt]
+  updatedAt: [ProductsConnectionUpdatedAt]
+  name: [ProductsConnectionName]
+  product_category: [ProductsConnectionProduct_category]
+  cover_img: [ProductsConnectionCover_img]
+  published_at: [ProductsConnectionPublished_at]
+}
+
+type ProductsConnectionId {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnection_id {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnectionCreatedAt {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+type ProductsConnectionUpdatedAt {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+type ProductsConnectionName {
+  key: String
+  connection: ProductsConnection
+}
+
+type ProductsConnectionProduct_category {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnectionCover_img {
+  key: ID
+  connection: ProductsConnection
+}
+
+type ProductsConnectionPublished_at {
+  key: DateTime
+  connection: ProductsConnection
+}
+
+input ProductInput {
+  name: String
+  product_category: ID
+  cover_img: ID
+  meta: [ProductsMetaDynamicZoneInput!]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editProductInput {
+  name: String
+  product_category: ID
+  cover_img: ID
+  meta: [ProductsMetaDynamicZoneInput!]
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createProductInput {
+  data: ProductInput
+}
+
+type createProductPayload {
+  product: Products
+}
+
+input updateProductInput {
+  where: InputID
+  data: editProductInput
+}
+
+type updateProductPayload {
+  product: Products
+}
+
+input deleteProductInput {
+  where: InputID
+}
+
+type deleteProductPayload {
+  product: Products
+}
+
+type Stores {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  business_status: String
+  formatted_address: String
+  place_id: String
+  rating: Float
+  user_ratings_total: Int
+  trx_formatted_phone_number: String
+  lng: Float
+  lat: Float
+  compound_code: String
+  retailer: Boolean
+  published_at: DateTime
+}
+
+type StoresConnection {
+  values: [Stores]
+  groupBy: StoresGroupBy
+  aggregate: StoresAggregator
+}
+
+type StoresAggregator {
+  count: Int
+  totalCount: Int
+  sum: StoresAggregatorSum
+  avg: StoresAggregatorAvg
+  min: StoresAggregatorMin
+  max: StoresAggregatorMax
+}
+
+type StoresAggregatorSum {
+  rating: Float
+  user_ratings_total: Float
+  lng: Float
+  lat: Float
+}
+
+type StoresAggregatorAvg {
+  rating: Float
+  user_ratings_total: Float
+  lng: Float
+  lat: Float
+}
+
+type StoresAggregatorMin {
+  rating: Float
+  user_ratings_total: Float
+  lng: Float
+  lat: Float
+}
+
+type StoresAggregatorMax {
+  rating: Float
+  user_ratings_total: Float
+  lng: Float
+  lat: Float
+}
+
+type StoresGroupBy {
+  id: [StoresConnectionId]
+  _id: [StoresConnection_id]
+  createdAt: [StoresConnectionCreatedAt]
+  updatedAt: [StoresConnectionUpdatedAt]
+  name: [StoresConnectionName]
+  business_status: [StoresConnectionBusiness_status]
+  formatted_address: [StoresConnectionFormatted_address]
+  place_id: [StoresConnectionPlace_id]
+  rating: [StoresConnectionRating]
+  user_ratings_total: [StoresConnectionUser_ratings_total]
+  trx_formatted_phone_number: [StoresConnectionTrx_formatted_phone_number]
+  lng: [StoresConnectionLng]
+  lat: [StoresConnectionLat]
+  compound_code: [StoresConnectionCompound_code]
+  retailer: [StoresConnectionRetailer]
+  published_at: [StoresConnectionPublished_at]
+}
+
+type StoresConnectionId {
+  key: ID
+  connection: StoresConnection
+}
+
+type StoresConnection_id {
+  key: ID
+  connection: StoresConnection
+}
+
+type StoresConnectionCreatedAt {
+  key: DateTime
+  connection: StoresConnection
+}
+
+type StoresConnectionUpdatedAt {
+  key: DateTime
+  connection: StoresConnection
+}
+
+type StoresConnectionName {
+  key: String
+  connection: StoresConnection
+}
+
+type StoresConnectionBusiness_status {
+  key: String
+  connection: StoresConnection
+}
+
+type StoresConnectionFormatted_address {
+  key: String
+  connection: StoresConnection
+}
+
+type StoresConnectionPlace_id {
+  key: String
+  connection: StoresConnection
+}
+
+type StoresConnectionRating {
+  key: Float
+  connection: StoresConnection
+}
+
+type StoresConnectionUser_ratings_total {
+  key: Int
+  connection: StoresConnection
+}
+
+type StoresConnectionTrx_formatted_phone_number {
+  key: String
+  connection: StoresConnection
+}
+
+type StoresConnectionLng {
+  key: Float
+  connection: StoresConnection
+}
+
+type StoresConnectionLat {
+  key: Float
+  connection: StoresConnection
+}
+
+type StoresConnectionCompound_code {
+  key: String
+  connection: StoresConnection
+}
+
+type StoresConnectionRetailer {
+  key: Boolean
+  connection: StoresConnection
+}
+
+type StoresConnectionPublished_at {
+  key: DateTime
+  connection: StoresConnection
+}
+
+input StoreInput {
+  name: String
+  business_status: String
+  formatted_address: String
+  place_id: String
+  rating: Float
+  user_ratings_total: Int
+  trx_formatted_phone_number: String
+  lng: Float
+  lat: Float
+  compound_code: String
+  retailer: Boolean
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editStoreInput {
+  name: String
+  business_status: String
+  formatted_address: String
+  place_id: String
+  rating: Float
+  user_ratings_total: Int
+  trx_formatted_phone_number: String
+  lng: Float
+  lat: Float
+  compound_code: String
+  retailer: Boolean
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createStoreInput {
+  data: StoreInput
+}
+
+type createStorePayload {
+  store: Stores
+}
+
+input updateStoreInput {
+  where: InputID
+  data: editStoreInput
+}
+
+type updateStorePayload {
+  store: Stores
+}
+
+input deleteStoreInput {
+  where: InputID
+}
+
+type deleteStorePayload {
+  store: Stores
+}
+
+type Terpenes {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  description: String
+  published_at: DateTime
+}
+
+type TerpenesConnection {
+  values: [Terpenes]
+  groupBy: TerpenesGroupBy
+  aggregate: TerpenesAggregator
+}
+
+type TerpenesAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type TerpenesGroupBy {
+  id: [TerpenesConnectionId]
+  _id: [TerpenesConnection_id]
+  createdAt: [TerpenesConnectionCreatedAt]
+  updatedAt: [TerpenesConnectionUpdatedAt]
+  name: [TerpenesConnectionName]
+  description: [TerpenesConnectionDescription]
+  published_at: [TerpenesConnectionPublished_at]
+}
+
+type TerpenesConnectionId {
+  key: ID
+  connection: TerpenesConnection
+}
+
+type TerpenesConnection_id {
+  key: ID
+  connection: TerpenesConnection
+}
+
+type TerpenesConnectionCreatedAt {
+  key: DateTime
+  connection: TerpenesConnection
+}
+
+type TerpenesConnectionUpdatedAt {
+  key: DateTime
+  connection: TerpenesConnection
+}
+
+type TerpenesConnectionName {
+  key: String
+  connection: TerpenesConnection
+}
+
+type TerpenesConnectionDescription {
+  key: String
+  connection: TerpenesConnection
+}
+
+type TerpenesConnectionPublished_at {
+  key: DateTime
+  connection: TerpenesConnection
+}
+
+input TerpeneInput {
+  name: String
+  description: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editTerpeneInput {
+  name: String
+  description: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createTerpeneInput {
+  data: TerpeneInput
+}
+
+type createTerpenePayload {
+  terpene: Terpenes
+}
+
+input updateTerpeneInput {
+  where: InputID
+  data: editTerpeneInput
+}
+
+type updateTerpenePayload {
+  terpene: Terpenes
+}
+
+input deleteTerpeneInput {
+  where: InputID
+}
+
+type deleteTerpenePayload {
+  terpene: Terpenes
+}
+
+type VapeCategories {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  category: String!
+  value: String!
+  label: String
+  published_at: DateTime
+}
+
+type VapeCategoriesConnection {
+  values: [VapeCategories]
+  groupBy: VapeCategoriesGroupBy
+  aggregate: VapeCategoriesAggregator
+}
+
+type VapeCategoriesAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type VapeCategoriesGroupBy {
+  id: [VapeCategoriesConnectionId]
+  _id: [VapeCategoriesConnection_id]
+  createdAt: [VapeCategoriesConnectionCreatedAt]
+  updatedAt: [VapeCategoriesConnectionUpdatedAt]
+  category: [VapeCategoriesConnectionCategory]
+  value: [VapeCategoriesConnectionValue]
+  label: [VapeCategoriesConnectionLabel]
+  published_at: [VapeCategoriesConnectionPublished_at]
+}
+
+type VapeCategoriesConnectionId {
+  key: ID
+  connection: VapeCategoriesConnection
+}
+
+type VapeCategoriesConnection_id {
+  key: ID
+  connection: VapeCategoriesConnection
+}
+
+type VapeCategoriesConnectionCreatedAt {
+  key: DateTime
+  connection: VapeCategoriesConnection
+}
+
+type VapeCategoriesConnectionUpdatedAt {
+  key: DateTime
+  connection: VapeCategoriesConnection
+}
+
+type VapeCategoriesConnectionCategory {
+  key: String
+  connection: VapeCategoriesConnection
+}
+
+type VapeCategoriesConnectionValue {
+  key: String
+  connection: VapeCategoriesConnection
+}
+
+type VapeCategoriesConnectionLabel {
+  key: String
+  connection: VapeCategoriesConnection
+}
+
+type VapeCategoriesConnectionPublished_at {
+  key: DateTime
+  connection: VapeCategoriesConnection
+}
+
+input VapeCategoryInput {
+  category: String!
+  value: String!
+  label: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editVapeCategoryInput {
+  category: String
+  value: String
+  label: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createVapeCategoryInput {
+  data: VapeCategoryInput
+}
+
+type createVapeCategoryPayload {
+  vapeCategory: VapeCategories
+}
+
+input updateVapeCategoryInput {
+  where: InputID
+  data: editVapeCategoryInput
+}
+
+type updateVapeCategoryPayload {
+  vapeCategory: VapeCategories
+}
+
+input deleteVapeCategoryInput {
+  where: InputID
+}
+
+type deleteVapeCategoryPayload {
+  vapeCategory: VapeCategories
+}
+
+type UploadFile {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  _id: [UploadFileConnection_id]
+  createdAt: [UploadFileConnectionCreatedAt]
+  updatedAt: [UploadFileConnectionUpdatedAt]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnection_id {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreatedAt {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdatedAt {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input deleteFileInput {
+  where: InputID
+}
+
+type deleteFilePayload {
+  file: UploadFile
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  _id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  _id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  _id: [UsersPermissionsRoleConnection_id]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnection_id {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+  created_by: ID
+  updated_by: ID
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  _id: [UsersPermissionsUserConnection_id]
+  createdAt: [UsersPermissionsUserConnectionCreatedAt]
+  updatedAt: [UsersPermissionsUserConnectionUpdatedAt]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnection_id {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreatedAt {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdatedAt {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmationToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  created_by: ID
+  updated_by: ID
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+type ComponentCollectionCardFooterContentFooterContent {
+  id: ID!
+  _id: ID!
+  indica: Int
+  sativa: Int
+}
+
+input ComponentCollectionCardFooterContentFooterContentInput {
+  indica: Int
+  sativa: Int
+}
+
+input editComponentCollectionCardFooterContentFooterContentInput {
+  id: ID
+  indica: Int
+  sativa: Int
+}
+
+type ComponentProductMetaDab {
+  id: ID!
+  _id: ID!
+  potency_range: String
+  experience: ComponentProductMetaExperience
+}
+
+input ComponentProductMetaDabInput {
+  potency_range: String
+  experience: ComponentProductMetaExperienceInput
+}
+
+input editComponentProductMetaDabInput {
+  id: ID
+  potency_range: String
+  experience: editComponentProductMetaExperienceInput
+}
+
+type ComponentProductMetaExperience {
+  id: ID!
+  _id: ID!
+  text: String
+}
+
+input ComponentProductMetaExperienceInput {
+  text: String
+}
+
+input editComponentProductMetaExperienceInput {
+  id: ID
+  text: String
+}
+
+type ComponentProductMetaVape {
+  id: ID!
+  _id: ID!
+  flavor: Flavors
+  potency_range: String
+  terpenes(sort: String, limit: Int, start: Int, where: JSON): [Terpenes]
+  vape_cat(sort: String, limit: Int, start: Int, where: JSON): [VapeCategories]
+}
+
+input ComponentProductMetaVapeInput {
+  flavor: ID
+  potency_range: String
+  terpenes: [ID]
+  vape_cat: [ID]
+}
+
+input editComponentProductMetaVapeInput {
+  id: ID
+  flavor: ID
+  potency_range: String
+  terpenes: [ID]
+  vape_cat: [ID]
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Flavors | FlavorsConnection | FlavorsAggregator | FlavorsGroupBy | FlavorsConnectionId | FlavorsConnection_id | FlavorsConnectionCreatedAt | FlavorsConnectionUpdatedAt | FlavorsConnectionName | FlavorsConnectionMain_img | FlavorsConnectionFeatured_menu_img | FlavorsConnectionDescription | FlavorsConnectionPublished_at | createFlavorPayload | updateFlavorPayload | deleteFlavorPayload | MenuItems | MenuItemsConnection | MenuItemsAggregator | MenuItemsGroupBy | MenuItemsConnectionId | MenuItemsConnection_id | MenuItemsConnectionCreatedAt | MenuItemsConnectionUpdatedAt | MenuItemsConnectionLabel | MenuItemsConnectionUrl | MenuItemsConnectionIs_root | MenuItemsConnectionPublished_at | createMenuItemPayload | updateMenuItemPayload | deleteMenuItemPayload | Menu | updateMenuPayload | deleteMenuPayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnection_id | ProductCategoryConnectionCreatedAt | ProductCategoryConnectionUpdatedAt | ProductCategoryConnectionName | ProductCategoryConnectionPublished_at | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnection_id | ProductsConnectionCreatedAt | ProductsConnectionUpdatedAt | ProductsConnectionName | ProductsConnectionProduct_category | ProductsConnectionCover_img | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | Stores | StoresConnection | StoresAggregator | StoresAggregatorSum | StoresAggregatorAvg | StoresAggregatorMin | StoresAggregatorMax | StoresGroupBy | StoresConnectionId | StoresConnection_id | StoresConnectionCreatedAt | StoresConnectionUpdatedAt | StoresConnectionName | StoresConnectionBusiness_status | StoresConnectionFormatted_address | StoresConnectionPlace_id | StoresConnectionRating | StoresConnectionUser_ratings_total | StoresConnectionTrx_formatted_phone_number | StoresConnectionLng | StoresConnectionLat | StoresConnectionCompound_code | StoresConnectionRetailer | StoresConnectionPublished_at | createStorePayload | updateStorePayload | deleteStorePayload | Terpenes | TerpenesConnection | TerpenesAggregator | TerpenesGroupBy | TerpenesConnectionId | TerpenesConnection_id | TerpenesConnectionCreatedAt | TerpenesConnectionUpdatedAt | TerpenesConnectionName | TerpenesConnectionDescription | TerpenesConnectionPublished_at | createTerpenePayload | updateTerpenePayload | deleteTerpenePayload | VapeCategories | VapeCategoriesConnection | VapeCategoriesAggregator | VapeCategoriesGroupBy | VapeCategoriesConnectionId | VapeCategoriesConnection_id | VapeCategoriesConnectionCreatedAt | VapeCategoriesConnectionUpdatedAt | VapeCategoriesConnectionCategory | VapeCategoriesConnectionValue | VapeCategoriesConnectionLabel | VapeCategoriesConnectionPublished_at | createVapeCategoryPayload | updateVapeCategoryPayload | deleteVapeCategoryPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentCollectionCardFooterContentFooterContent | ComponentProductMetaDab | ComponentProductMetaExperience | ComponentProductMetaVape
+
+input InputID {
+  id: ID!
+}
+
+enum PublicationState {
+  LIVE
+  PREVIEW
+}
+
+type AdminUser {
+  id: ID!
+  username: String
+  firstname: String!
+  lastname: String!
+}
+
+type Query {
+  flavor(id: ID!, publicationState: PublicationState): Flavors
+  flavors(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Flavors]
+  flavorsConnection(sort: String, limit: Int, start: Int, where: JSON): FlavorsConnection
+  menuItem(id: ID!, publicationState: PublicationState): MenuItems
+  menuItems(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [MenuItems]
+  menuItemsConnection(sort: String, limit: Int, start: Int, where: JSON): MenuItemsConnection
+  menu(publicationState: PublicationState): Menu
+  productCategory(id: ID!, publicationState: PublicationState): ProductCategory
+  productCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [ProductCategory]
+  productCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): ProductCategoryConnection
+  product(id: ID!, publicationState: PublicationState): Products
+  products(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Products]
+  productsConnection(sort: String, limit: Int, start: Int, where: JSON): ProductsConnection
+  store(id: ID!, publicationState: PublicationState): Stores
+  stores(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Stores]
+  storesConnection(sort: String, limit: Int, start: Int, where: JSON): StoresConnection
+  terpene(id: ID!, publicationState: PublicationState): Terpenes
+  terpenes(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Terpenes]
+  terpenesConnection(sort: String, limit: Int, start: Int, where: JSON): TerpenesConnection
+  vapeCategory(id: ID!, publicationState: PublicationState): VapeCategories
+  vapeCategories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [VapeCategories]
+  vapeCategoriesConnection(sort: String, limit: Int, start: Int, where: JSON): VapeCategoriesConnection
+  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+type Mutation {
+  createFlavor(input: createFlavorInput): createFlavorPayload
+  updateFlavor(input: updateFlavorInput): updateFlavorPayload
+  deleteFlavor(input: deleteFlavorInput): deleteFlavorPayload
+  createMenuItem(input: createMenuItemInput): createMenuItemPayload
+  updateMenuItem(input: updateMenuItemInput): updateMenuItemPayload
+  deleteMenuItem(input: deleteMenuItemInput): deleteMenuItemPayload
+  updateMenu(input: updateMenuInput): updateMenuPayload
+  deleteMenu: deleteMenuPayload
+  createProductCategory(input: createProductCategoryInput): createProductCategoryPayload
+  updateProductCategory(input: updateProductCategoryInput): updateProductCategoryPayload
+  deleteProductCategory(input: deleteProductCategoryInput): deleteProductCategoryPayload
+  createProduct(input: createProductInput): createProductPayload
+  updateProduct(input: updateProductInput): updateProductPayload
+  deleteProduct(input: deleteProductInput): deleteProductPayload
+  createStore(input: createStoreInput): createStorePayload
+  updateStore(input: updateStoreInput): updateStorePayload
+  deleteStore(input: deleteStoreInput): deleteStorePayload
+  createTerpene(input: createTerpeneInput): createTerpenePayload
+  updateTerpene(input: updateTerpeneInput): updateTerpenePayload
+  deleteTerpene(input: deleteTerpeneInput): deleteTerpenePayload
+  createVapeCategory(input: createVapeCategoryInput): createVapeCategoryPayload
+  updateVapeCategory(input: updateVapeCategoryInput): updateVapeCategoryPayload
+  deleteVapeCategory(input: deleteVapeCategoryInput): deleteVapeCategoryPayload
+
+  """Delete one file"""
+  deleteFile(input: deleteFileInput): deleteFilePayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
