@@ -11,11 +11,11 @@ const SectionWrapper = styled.section`
   ${({ coverLeft }) => coverLeft && tw`flex-row-reverse`}
 `
 const SectionTitle = styled.h2`
-  ${tw`font-primary text-3xl font-bold tracking-widest!`}
-  ${tw`xl:(font-bungee font-normal)`}
+  ${tw`font-bungee text-2xl tracking-widest!`}
+  ${tw`xl:(font-normal)`}
 `
 
-const TextContent = tw.p`text-base`
+const TextContent = tw.p`text-base leading-relaxed`
 
 const Column = styled.div``
 const srcSetMapFn = (formatKey, formats) => {

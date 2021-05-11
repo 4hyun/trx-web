@@ -29,7 +29,7 @@ const HeaderContainer = styled.div`
   animation-duration: 0.6s;
   animation-fill-mode: both;
   animation-delay: 1s;
-  ${tw`relative w-screen lg:(w-full) bg-tr-white z-50`};
+  ${tw`relative w-screen lg:(w-full) bg-tr-white z-50 shadow-lg lg:shadow-2xl`};
   height: 60px;
 
   @media (min-width: 1024px) {

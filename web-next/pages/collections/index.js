@@ -1,6 +1,7 @@
 import tw, { styled } from "twin.macro"
-import Collections from "containers/PageCollections"
 import { fetchAPI } from "lib/api"
+/* components */
+import Collections from "containers/PageCollections"
 
 const CollectionsPage = ({ collections, collectionCategories }) => {
   return <Collections collections={collections} collectionCategories={collectionCategories}></Collections>

@@ -20,7 +20,7 @@ const Data = {
 }
 
 const Title = styled.h2`
-  ${tw`font-accent font-bold text-3xl lg:(text-5xl) text-tr-white whitespace-pre pt-3`}
+  ${tw`font-bungee text-3xl tracking-wider lg:(text-5xl) text-tr-white whitespace-pre pt-3`}
   @media (min-width: 768px) {
     padding: 24px 0px 10px;
   }

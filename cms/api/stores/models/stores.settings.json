@@ -44,6 +44,15 @@
     },
     "retailer": {
       "type": "boolean"
+    },
+    "city": {
+      "type": "string"
+    },
+    "heard_of_it": {
+      "type": "boolean"
+    },
+    "visited_store": {
+      "type": "string"
     }
   }
 }

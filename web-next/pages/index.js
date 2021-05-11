@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import Head from "next/head"
-import styled from "styled-components"
-import tw from "twin.macro"
+import tw, { styled } from "twin.macro"
 import { fetchAPI } from "lib/api"
 /* containers */
 import { ScrollContainer } from "containers/Common"

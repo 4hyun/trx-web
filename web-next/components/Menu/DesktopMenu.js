@@ -57,7 +57,7 @@ export const DesktopMenu = ({ transitionEnd, toggleMenu }) => {
   return (
     <Container transitionEnd={transitionEnd}>
       <List>
-        <Link href="/" passHref>
+        <Link href="/" replace={true} passHref>
           <Item onClick={delayCloseMenu}>Home</Item>
         </Link>
         <Link href="/collections" passHref>
@@ -66,7 +66,10 @@ export const DesktopMenu = ({ transitionEnd, toggleMenu }) => {
         <Link href="/find-store" passHref>
           <Item onClick={delayCloseMenu}>Find Store</Item>
         </Link>
-        <Accordion
+        <Link href="/flavors" passHref>
+          <Item onClick={delayCloseMenu}>Flavors</Item>
+        </Link>
+        {/* <Accordion
           renderAccordionSummary={({ toggleAccordion, open, mouseOver }) => (
             <AccordionSummary onClick={toggleAccordion}>
               Flavors
@@ -83,10 +86,9 @@ export const DesktopMenu = ({ transitionEnd, toggleMenu }) => {
               <FeatureItem>coming soon!</FeatureItem>
               <FeatureItem>coming soon!</FeatureItem>
               <FeatureItem>coming soon!</FeatureItem>
-              {/* TODO: get flavors and list them here */}
             </FeatureContent>
           )}
-        />
+        /> */}
       </List>
     </Container>
   )

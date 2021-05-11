@@ -7,9 +7,9 @@ const StyledForm = styled(Form)`
 `
 
 const StyledField = styled(Field)`
-  ${tw`relative font-primary text-base text-gray-50 bg-transparent`}
-  ${tw`w-full (rounded-full border-b border-solid border-white)!`}
-  ${tw`xs:(rounded-none px-2 (border-0 border-none)!)`}
+  ${tw`relative font-primary text-base text-gray-50! bg-transparent`}
+  ${tw`w-full (border-b border-solid border-white)!`}
+  ${tw`xs:(rounded-none px-2 (border-0 border-none text-tr-black)!)`}
 `
 
 const StyledButton = styled.button`

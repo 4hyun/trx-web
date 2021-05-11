@@ -7,7 +7,7 @@ import { paths } from "paths"
 /* components */
 import Header from "@/components/Layout/Header"
 import MainBackgroundVideo from "components/Common/MainBackgroundVideo"
-import Footer from "components/Layout/Footer"
+// import Footer from "components/Layout/Footer"
 /* styles */
 import { navbarStyles } from "@/components/Layout/Header/styles"
 
@@ -39,6 +39,7 @@ const Layout = ({ children: mainContent, router }) => {
   const [showLayout, setShowLayout] = useState(true)
 
   useEffect(() => {
+    console.log("layout useeffect")
     if (router.pathname === paths.ageGate) return setShowLayout(false)
     if (showLayout) return
     setShowLayout(true)

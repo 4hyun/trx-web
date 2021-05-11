@@ -52,7 +52,7 @@ const STYLE_BY_MENU_STATE = {
       }
     `,
     close: css`
-      ${tw`transform -translate-y-1/2 scale-75`}
+      ${tw`transform -translate-y-1/2 scale-50`}
       :hover #Circle {
         fill: rgb(104, 104, 104);
       }
