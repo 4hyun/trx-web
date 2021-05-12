@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
     }
   }, [])
   return (
-    <React.Fragment>
+    <>
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </Layout>
       </AgeGateContext.Provider>
-    </React.Fragment>
+    </>
   )
 }
 

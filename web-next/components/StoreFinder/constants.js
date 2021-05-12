@@ -1,0 +1,1 @@
+export const UPDATE_CENTER = "UPDATE_CENTER"

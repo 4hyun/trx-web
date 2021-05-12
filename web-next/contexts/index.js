@@ -1,7 +1,4 @@
-import StoreFinderContext from "./StoreFinderContext";
-import {
-  StoreMapStateContext,
-  StoreMapDispatchContext,
-} from "./StoreMapContext";
+import StoreFinderContext from "./StoreFinderContext"
+import { defaultValue as storeMapContextInitialState, StoreMapStateContext, StoreMapDispatchContext } from "./StoreMapContext"
 
-export { StoreFinderContext, StoreMapStateContext, StoreMapDispatchContext };
+export { storeMapContextInitialState, StoreFinderContext, StoreMapStateContext, StoreMapDispatchContext }

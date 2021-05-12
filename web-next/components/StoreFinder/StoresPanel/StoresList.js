@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { StoreFinderContext, StoreMapDispatchContext } from "contexts"
-import tw, { styled } from "twin.macro"
+import styled from "styled-components"
+import tw from "twin.macro"
 
 const StyledList = styled.ul`
   display: grid;
