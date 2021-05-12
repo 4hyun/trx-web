@@ -34,7 +34,7 @@ const StoreMap = (props) => {
         }}
         center={{ lat: +center.lat, lng: +center.lng }}
         onChange={() => {
-          console.log("map center changed")
+          // console.log("map center changed")
         }}
         zoom={zoom}
         options={() => ({ styles: styles })}
