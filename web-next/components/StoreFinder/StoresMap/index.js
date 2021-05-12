@@ -44,30 +44,23 @@ const StoreMap = (props) => {
         options={() => ({ styles: styles })}
       >
         {stores &&
-          stores.map(
-            ({
-              cfields: {
-                center: { lat, lng },
-              },
-              id,
-            }) => {
-              return (
-                <StyledMarker
-                  key={id}
-                  lat={+lat}
-                  lng={+lng}
-                  onClick={() => {
-                    if (!dispatch) return
-                    const action = {
-                      type: "UPDATE_CENTER",
-                      payload: { center: { lat, lng }, zoom: 12 },
-                    }
-                    dispatch(action)
-                  }}
-                />
-              )
-            }
-          )}
+          stores.map(({ lat, lng, id }) => {
+            return (
+              <StyledMarker
+                key={id}
+                lat={+lat}
+                lng={+lng}
+                onClick={() => {
+                  if (!dispatch) return
+                  const action = {
+                    type: "UPDATE_CENTER",
+                    payload: { center: { lat, lng }, zoom: 12 },
+                  }
+                  dispatch(action)
+                }}
+              />
+            )
+          })}
       </GoogleMapReact>
     </Wrapper>
   )

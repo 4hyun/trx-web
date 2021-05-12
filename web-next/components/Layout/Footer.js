@@ -109,9 +109,9 @@ const Footer = () => {
         </Column>
         <Column>
           <SitemapRow tw="flex-wrap">
-            <Link href="collections" name="Collections" />
-            <Link href="flavors" name="Flavors" />
-            <Link href="find-store" name="Find Stores" />
+            <Link href="/collections" name="Collections" />
+            <Link href="/flavors" name="Flavors" />
+            <Link href="/find-store" name="Find Stores" />
             {/* <Link href="contact" name="Contact" /> */}
           </SitemapRow>
         </Column>

@@ -87,8 +87,10 @@ const ScrollContainer = styled.div`
     background: #555;
   }
   @media (min-width: 992px) {
-    top: var(--top-lg);
-    position: absolute;
+    ${
+      "" /* top: var(--top-lg);
+    position: absolute; */
+    }
   }
 `
 
@@ -101,7 +103,7 @@ const StoresList = (props) => {
       <StyledList>
         {(storesFilteredBySearch && storesFilteredBySearch.map(() => {})) ||
           (stores &&
-            stores.map(({ id, cfields: { store_name, store_address, center } }, i) => {
+            stores.map(({ id, name, formatted_address, lat, lng }, i) => {
               return (
                 <StyledItem
                   key={id}
@@ -109,13 +111,13 @@ const StoresList = (props) => {
                     if (!dispatch) return
                     const action = {
                       type: "UPDATE_CENTER",
-                      payload: { center: center, zoom: 12 },
+                      payload: { center: { lat, lng }, zoom: 12 },
                     }
                     dispatch(action)
                   }}
                 >
-                  <StoreName>{store_name}</StoreName>
-                  <StoreAddress>{store_address}</StoreAddress>
+                  <StoreName>{name}</StoreName>
+                  <StoreAddress>{formatted_address}</StoreAddress>
                 </StyledItem>
               )
             }))}

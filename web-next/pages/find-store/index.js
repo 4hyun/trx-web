@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled, { css } from "styled-components"
 import tw from "twin.macro"
+import { fetchAPI } from "lib/api"
+import { StoreFinderContext } from "contexts"
 import StoreMap from "components/StoreFinder/StoresMap"
 import StoresPanel from "components/StoreFinder/StoresPanel"
 import Footer from "components/Layout/Footer"
@@ -29,18 +31,41 @@ const FooterWrapper = styled.div`
   ${tw`col-span-full`}
 `
 
-const FindStorePage = () => {
+const FindStorePage = ({ retailStores }) => {
+  const { stores, searchValue } = useContext(StoreFinderContext)
+
   return (
     <GridLayout>
-      <StoreMap wrapperStyles={storeMapWrapperStyles}></StoreMap>
-      <StoresPanelWrapper>
-        <StoresPanel />
-      </StoresPanelWrapper>
-      <FooterWrapper>
-        <Footer />
-      </FooterWrapper>
+      <StoreFinderContext.Provider value={{ stores: retailStores, searchValue }}>
+        <StoreMap wrapperStyles={storeMapWrapperStyles}></StoreMap>
+        <StoresPanelWrapper>
+          <StoresPanel />
+        </StoresPanelWrapper>
+        <FooterWrapper>
+          <Footer />
+        </FooterWrapper>
+      </StoreFinderContext.Provider>
     </GridLayout>
   )
 }
 
 export default FindStorePage
+
+export const getStaticProps = async ({ preview = null }) => {
+  const data = await fetchAPI(`
+  query {
+    stores(where:{retailer:true}) {
+        id,
+        retailer,
+        lng,
+        lat,
+        name,
+        formatted_address,
+        place_id,
+        trx_formatted_phone_number
+    }
+  }
+  `)
+  const retailStores = data?.stores
+  return { props: { retailStores } }
+}

@@ -44,7 +44,7 @@ const Heading = styled.h2`
 `
 
 const StoresPanel = (props) => {
-  const { stores } = useContext(StoreFinderContext)
+  // const { stores } = useContext(StoreFinderContext)
   return (
     <Container>
       <Heading>Find Stores</Heading>
