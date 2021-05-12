@@ -15,6 +15,13 @@ const StyledMarker = styled.div`
 `
 const Wrapper = styled.div`
   ${tw`w-full h-full`}
+  ${
+    "" /* TODO: movile
+
+  set height of Wrapper (Map) to be 100vh - navheight - StoresPanel heading height
+ */
+  }
+  min-height:calc(100vh - var(--MobileNavbarHeight) - var(--MobileStoreFinderPanelHeadingHeight));
   ${({ wrapperStyles }) => wrapperStyles && wrapperStyles}
 `
 

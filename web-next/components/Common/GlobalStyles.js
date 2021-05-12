@@ -7,6 +7,7 @@ const CustomStyles = createGlobalStyle`
     --DesktopNavbarWidth: 75px;
     --MobileNavbarHeight: 60px;
     --FooterMinHeight: 200px;
+    --MobileStoreFinderPanelHeadingHeight: 6rem;
   }
   * {  
     -webkit-tap-highlight-color: transparent;

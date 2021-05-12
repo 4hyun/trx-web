@@ -30,11 +30,11 @@ const Container = styled.div`
 `
 
 const Heading = styled.h2`
-  ${tw`font-bungee text-3xl`}
+  ${tw`font-bungee text-3xl flex items-center`}
+  height: var(--MobileStoreFinderPanelHeadingHeight);
   font-weight: 400;
   line-height: 1;
   letter-spacing: 1px;
-  margin-top: 3rem;
   margin-bottom: 0;
   margin-left: 32px;
   color: #fff;

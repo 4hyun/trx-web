@@ -3,14 +3,15 @@ import styled, { css } from "styled-components"
 import tw from "twin.macro"
 import StoreMap from "components/StoreFinder/StoresMap"
 import StoresPanel from "components/StoreFinder/StoresPanel"
+import Footer from "components/Layout/Footer"
 
 const GridLayout = styled.div`
-  ${tw`fixed inset-0 z-20`}
-  padding-top: var(--MobileNavbarHeight);
+  ${tw`w-full h-full grid grid-cols-12 grid-flow-row-dense`}
+  ${"" /* ${tw`fixed inset-0 z-20`} */}
+  ${"" /* margin-top: var(--MobileNavbarHeight); */}
   @media (min-width: 1024px) {
     padding-top: 0;
   }
-  ${tw`w-full h-full grid grid-cols-12 grid-flow-row-dense`}
 `
 
 const storeMapWrapperStyles = css`
@@ -24,15 +25,22 @@ const StoresPanelWrapper = styled.div`
   ${tw`lg:col-start-10 lg:col-end-13`}
 `
 
-const index = () => {
+const FooterWrapper = styled.div`
+  ${tw`col-span-full`}
+`
+
+const FindStorePage = () => {
   return (
     <GridLayout>
       <StoreMap wrapperStyles={storeMapWrapperStyles}></StoreMap>
       <StoresPanelWrapper>
         <StoresPanel />
       </StoresPanelWrapper>
+      <FooterWrapper>
+        <Footer />
+      </FooterWrapper>
     </GridLayout>
   )
 }
 
-export default index
+export default FindStorePage
