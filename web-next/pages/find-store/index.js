@@ -8,9 +8,10 @@ import StoresPanel from "components/StoreFinder/StoresPanel"
 import Footer from "components/Layout/Footer"
 
 const GridLayout = styled.div`
-  ${tw`w-full h-full grid grid-cols-12 grid-flow-row-dense`}
-  ${"" /* ${tw`fixed inset-0 z-20`} */}
-  ${"" /* margin-top: var(--MobileNavbarHeight); */}
+  ${tw`w-full grid grid-cols-12 grid-flow-row-dense`}
+  @media (min-width: 768px) {
+    grid-auto-rows: 80vh minmax(max-content, auto);
+  }
   @media (min-width: 1024px) {
     padding-top: 0;
   }
@@ -18,8 +19,8 @@ const GridLayout = styled.div`
 
 const storeMapWrapperStyles = css`
   ${tw`col-span-full`}
-  ${tw`md:col-start-4 md:col-end-13`}
-  ${tw`lg:col-start-1 lg:col-end-10`}
+  ${tw`md:(col-start-4 col-end-13 h-full)`}
+  ${tw`lg:(col-start-1 col-end-10)`}
 `
 const StoresPanelWrapper = styled.div`
   ${tw`relative col-span-full bg-tr-green-light`}
@@ -28,7 +29,7 @@ const StoresPanelWrapper = styled.div`
 `
 
 const FooterWrapper = styled.div`
-  ${tw`col-span-full`}
+  ${tw`col-span-full `}
 `
 
 const FindStorePage = ({ retailStores }) => {

@@ -3,7 +3,7 @@ import tw, { styled, css } from "twin.macro"
 const gridColumnCSS = (colspan) => `span ${colspan} / span ${colspan}`
 
 const Container = styled.div`
-  ${tw`flex flex-col justify-between bg-tr-white rounded-md hover:(ring-4 ring-hover-green-100) transform active:(translate-y-0.5 translate-x-0.5) transition transition-transform duration-75 shadow-md`}
+  ${tw`flex flex-col justify-between bg-tr-white rounded-md hover:(ring-8 ring-tr-black) transform active:(translate-y-0.5 translate-x-0.5) transition transition-transform duration-75 shadow-md`}
   height: 100%;
   @media (min-width: 768px) {
     ${tw`rounded-xl shadow-lg cursor-pointer select-none`};

@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { StoreFinderContext, StoreMapDispatchContext } from "contexts"
-import styled from "styled-components"
+import tw, { styled } from "twin.macro"
 
 const StyledList = styled.ul`
   display: grid;
@@ -13,18 +13,11 @@ const StyledList = styled.ul`
 `
 
 const StyledItem = styled.li`
-  width: 100%;
-  height: auto;
-  cursor: pointer;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  margin-bottom: 0;
   transition: padding 0.3s ease;
-  padding-left: 32px;
   color: #fff;
-  border-top: 0.5px solid #000;
+  ${tw`w-full h-auto cursor-pointer px-6 py-7 mb-0 border-t border-tr-black`}
   &:last-child {
-    border-bottom: 0.5px solid #000;
+    ${tw`border-b border-tr-black`}
   }
   @media (min-width: 992px) {
   }
@@ -44,8 +37,7 @@ const StyledItem = styled.li`
 
 const StoreName = styled.h3`
   color: #fff;
-  font-family: "Cuprum", sans-serif;
-  font-size: 24px;
+  ${tw`font-primary text-lg font-bold`}
   line-height: 1;
   margin-bottom: 0;
 `
@@ -72,19 +64,19 @@ const ScrollContainer = styled.div`
 
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
+    background: transparent;
+    border-radius: 3px;
   }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
+    ${tw`bg-tr-white`}
+    border-radius: 3px;
   }
 
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #888;
   }
   @media (min-width: 992px) {
     ${

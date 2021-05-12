@@ -14,14 +14,10 @@ const StyledMarker = styled.div`
   cursor: pointer;
 `
 const Wrapper = styled.div`
-  ${tw`w-full h-full`}
-  ${
-    "" /* TODO: movile
-
-  set height of Wrapper (Map) to be 100vh - navheight - StoresPanel heading height
- */
-  }
-  min-height:calc(100vh - var(--MobileNavbarHeight) - var(--MobileStoreFinderPanelHeadingHeight));
+  ${tw`w-full`}
+  ${"" /* mobile height */}
+  height:calc(100vh - var(--MobileNavbarHeight) - var(--MobileStoreFinderPanelHeadingHeight));
+  ${"" /* other height */}
   ${({ wrapperStyles }) => wrapperStyles && wrapperStyles}
 `
 
@@ -38,7 +34,7 @@ const StoreMap = (props) => {
         }}
         center={{ lat: +center.lat, lng: +center.lng }}
         onChange={() => {
-          console.log("center changed")
+          console.log("map center changed")
         }}
         zoom={zoom}
         options={() => ({ styles: styles })}

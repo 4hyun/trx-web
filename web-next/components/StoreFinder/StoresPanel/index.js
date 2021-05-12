@@ -5,15 +5,18 @@ import StoresList from "./StoresList.js"
 import { StoreFinderContext, StoreMapDispatchContext } from "contexts"
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  ${tw`grid`}
+  ${tw`w-full h-full overflow-hidden`}
+  ${tw`md:border-r lg:(border-l border-r-0) border-tr-black`}
   & > .StoreSearch {
     margin-left: 32px;
   }
   /* SearchBox */
   & > :nth-child(2) {
-    margin-top: 2rem;
+    @media (min-width: 1024px) {
+      margin-top: 0;
+      ${tw`-mx-8`}
+    }
   }
 
   & > :nth-child(3) {
@@ -21,8 +24,8 @@ const Container = styled.div`
   }
   @media (min-width: 768px) {
   }
-  @media (min-width: 992px) {
-    padding: 0 32px;
+  ${tw`lg:(py-0 px-8)`}
+  @media (min-width: 1024px) {
     & > .StoreSearch {
       margin-left: 0;
     }
@@ -30,17 +33,14 @@ const Container = styled.div`
 `
 
 const Heading = styled.h2`
-  ${tw`font-bungee text-3xl flex items-center`}
+  ${tw`font-bungee text-3xl flex items-center pl-8 text-white bg-tr-black`}
+  ${tw`lg:(-mx-8)`}
+  box-shadow: 0 1px 12px 5px rgba(60,70,48,0.48);
   height: var(--MobileStoreFinderPanelHeadingHeight);
   font-weight: 400;
   line-height: 1;
   letter-spacing: 1px;
   margin-bottom: 0;
-  margin-left: 32px;
-  color: #fff;
-  @media (min-width: 992px) {
-    margin-left: 0;
-  }
 `
 
 const StoresPanel = (props) => {
