@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Head from "next/head";
-import GlobalStyles from "components/Common/GlobalStyles";
-import Layout from "components/Layout/index";
-import AgeGateContext from "components/AgeGate/context";
-import { AGE_GATE_LS_KEY } from "components/AgeGate/constants";
+import React, { useEffect, useState } from "react"
+import { useRouter } from "next/router"
+import Head from "next/head"
+import GlobalStyles from "components/Common/GlobalStyles"
+import Layout from "components/Layout/index"
+import AgeGateContext from "components/AgeGate/context"
+import { AGE_GATE_LS_KEY } from "components/AgeGate/constants"
 
 function MyApp({ Component, pageProps }) {
-  const [ageCheckedValue, setAgeChecked] = useState(null);
-  const ageGateContextValue = { ageCheckedValue, setAgeChecked };
-  const router = useRouter();
+  const [ageCheckedValue, setAgeChecked] = useState(null)
+  const ageGateContextValue = { ageCheckedValue, setAgeChecked }
+  const router = useRouter()
   useEffect(() => {
     // console.log("router ", router);
     if (router.pathname === "/") {
-      const ageCheckValue = localStorage.getItem(AGE_GATE_LS_KEY);
+      const ageCheckValue = localStorage.getItem(AGE_GATE_LS_KEY)
       if (ageCheckValue) {
-        setAgeChecked(ageCheckValue);
-        return;
+        setAgeChecked(ageCheckValue)
+        return
       } else {
-        router.replace("age-gate");
+        router.replace("age-gate")
       }
     }
-  }, []);
+  }, [])
   return (
-    <>
+    <React.Fragment>
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -37,8 +37,8 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </Layout>
       </AgeGateContext.Provider>
-    </>
-  );
+    </React.Fragment>
+  )
 }
 
-export default MyApp;
+export default MyApp

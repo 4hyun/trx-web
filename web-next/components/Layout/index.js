@@ -39,7 +39,6 @@ const Layout = ({ children: mainContent, router }) => {
   const [showLayout, setShowLayout] = useState(true)
 
   useEffect(() => {
-    console.log("layout useeffect")
     if (router.pathname === paths.ageGate) return setShowLayout(false)
     if (showLayout) return
     setShowLayout(true)

@@ -1,12 +1,16 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import tw, { styled } from "twin.macro"
 import { FlavorPortfolio, FlavorSingleView } from "@/components/Flavors"
 import Footer from "components/Layout/Footer"
 
 const GridContainer = styled.div`
-  ${tw`h-auto px-6 xs:px-10 mt-12 pb-8 space-y-16 pb-10`};
+  ${tw`container h-auto px-6 xs:px-10 mt-12 pb-8 space-y-16 pb-10`};
   ${tw`md:(space-y-10)`};
-  ${tw`lg:(px-20 mt-16 pb-16 space-y-4)`}
+  ${tw`lg:(px-20 mt-16 pb-20 space-y-4)`}
+  ${tw`xl:(space-y-8)`}
+  @media (min-width:1200px) {
+    min-height: 80vh;
+  }
 `
 
 const Column = styled.div`
@@ -20,7 +24,7 @@ const Flavors = ({ flavors }) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <GridContainer>
         <FlavorPortfolio collection={flavors} onItemClick={handleCollectionClick} />
         <Column>
@@ -28,7 +32,7 @@ const Flavors = ({ flavors }) => {
         </Column>
       </GridContainer>
       <Footer />
-    </>
+    </React.Fragment>
   )
 }
 

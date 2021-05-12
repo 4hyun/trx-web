@@ -10,6 +10,7 @@ const Container = styled.div`
     padding-bottom: 2.25rem;
     min-height: 500px;
   }
+  ${tw`xl:(max-w-3/4)`}
 `
 
 const Data = {
@@ -34,7 +35,7 @@ const CollectionSingleView = ({ selected, tempLoadCollection }) => {
     if (selected.isDefaultProps) tempLoadCollection()
   }, [])
   return (
-    <>
+    <React.Fragment>
       {!selected.isDefaultProps && (
         <Container>
           <Title>{`Tunaaaa\n${selected.name}`}</Title>
@@ -42,7 +43,7 @@ const CollectionSingleView = ({ selected, tempLoadCollection }) => {
           <AvailableCategories categories={selected.available_categories} />
         </Container>
       )}
-    </>
+    </React.Fragment>
   )
 }
 

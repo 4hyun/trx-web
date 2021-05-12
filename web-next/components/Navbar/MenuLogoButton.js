@@ -77,7 +77,7 @@ export const DesktopMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
     <Container.Desktop
       onTransitionEnd={(e) => {
         e.stopPropagation()
-        console.log("different handler<Container.Desktop>")
+        // console.log("different handler<Container.Desktop>")
       }}
     >
       <ButtonWrapper
@@ -86,7 +86,7 @@ export const DesktopMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
         transitionDelay={styles.transitionDelay}
         onTransitionEnd={(e) => {
           e.stopPropagation()
-          console.log("different handler<ButtonWrapper>")
+          // console.log("different handler<ButtonWrapper>")
         }}
       >
         {!menuOpen ? <DesktopMenuIconOpen /> : <DesktopMenuIconClose />}

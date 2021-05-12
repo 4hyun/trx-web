@@ -121,7 +121,7 @@ const Header = ({ desktopStyles }) => {
       <DesktopMenu transitionEnd={transitionEnd} toggleMenu={toggleDesktopMenu} />
       <DesktopMenuLogoButton styles={menuLogoButtonStyles} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
       <MobileMenuLogoButton styles={menuLogoButtonStyles} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
-      <MobileMenu menuList={defaultMenuList} menuOpen={menuOpen} />
+      <MobileMenu menuList={defaultMenuList} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
     </HeaderContainer>
   )
 }

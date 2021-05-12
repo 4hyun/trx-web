@@ -1,3 +1,4 @@
+import React from "react"
 import { Formik, Field, Form } from "formik"
 import styled from "styled-components"
 import tw from "twin.macro"
@@ -19,7 +20,7 @@ const StyledButton = styled.button`
 
 const InputGroup = styled.div`
   & {
-    ${tw`relative flex flex-col items-center space-y-4`}
+    ${tw`relative flex flex-col items-center space-y-6`}
     ${tw`xs:(flex-row bg-tr-white rounded-full pl-4 max-w-md space-y-0)`}
   }
   ${StyledField}, ${StyledButton} {
@@ -36,7 +37,7 @@ const InputGroup = styled.div`
  * consider Yup
  * other reference: https://formik.org/docs/guides/validation */
 const SubscribeForm = ({ submitLabel }) => (
-  <>
+  <React.Fragment>
     <Formik
       initialValues={{
         firstName: "",
@@ -55,7 +56,7 @@ const SubscribeForm = ({ submitLabel }) => (
         </InputGroup>
       </StyledForm>
     </Formik>
-  </>
+  </React.Fragment>
 )
 
 export default SubscribeForm

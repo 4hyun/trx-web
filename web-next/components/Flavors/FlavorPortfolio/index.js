@@ -34,7 +34,7 @@ const ScrollContainer = styled.div`
 const FlavorList = styled.div`
   ${scrollbarHideStyles}
   grid-auto-rows: 1fr;
-  ${tw`grid grid-cols-2 gap-3 md:(grid-cols-5 gap-x-4 gap-y-6 overflow-y-auto p-4 h-auto) lg:(grid-cols-4 gap-x-4 gap-y-6 grid-rows-2 overflow-y-scroll) xl:(grid-cols-5 grid-rows-1 gap-8)`}
+  ${tw`grid grid-cols-2 gap-3 md:(grid-cols-5 gap-x-4 gap-y-6 overflow-y-auto p-4 h-auto) lg:(grid-cols-4 gap-x-4 gap-y-6 grid-rows-2 overflow-y-scroll) xl:(grid-cols-7 grid-rows-1 gap-8)`}
 `
 
 const FooterContainer = styled.div`

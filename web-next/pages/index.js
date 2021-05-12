@@ -1,7 +1,7 @@
-import { useContext } from "react"
+import React, { useContext } from "react"
 import Head from "next/head"
 import tw, { styled } from "twin.macro"
-import { fetchAPI } from "lib/api"
+// import { fetchAPI } from "lib/api"
 /* containers */
 import { ScrollContainer } from "containers/Common"
 /* components */
@@ -13,7 +13,7 @@ export default function HomePage(props) {
   const { ageCheckedValue } = useContext(AgeGateContext)
 
   return (
-    <>
+    <React.Fragment>
       <Head>
         <title>Tunaaaa Room Xtracts</title>
         <meta property="og:url" content="https://xtracts.tunaaaaroom.ca" />
@@ -27,7 +27,7 @@ export default function HomePage(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {ageCheckedValue && (
-        <ScrollContainer>
+        <ScrollContainer tw="w-full">
           <HomeHero></HomeHero>
           {/* <HomeContentGrid>
 
@@ -35,7 +35,7 @@ export default function HomePage(props) {
           <Footer />
         </ScrollContainer>
       )}
-    </>
+    </React.Fragment>
   )
 }
 

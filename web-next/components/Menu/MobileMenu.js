@@ -1,6 +1,7 @@
-import styled, { css } from "styled-components";
-import tw from "twin.macro";
-import { motion, AnimatePresence, MotionConfig } from "framer-motion";
+import Link from "next/link"
+import styled, { css } from "styled-components"
+import tw from "twin.macro"
+import { motion, AnimatePresence, MotionConfig } from "framer-motion"
 
 const styles = {
   menuOpen: css`
@@ -18,20 +19,20 @@ const styles = {
     transition-duration: 0.6s, 0.3s;
     transition-delay: 0.3s, 0;
   `,
-};
+}
 
 const MobileMenuContainer = styled.div`
   /* test styles */
   transition-property: transform, opacity;
   ${tw`absolute w-full lg:hidden bg-tr-white`}
   ${({ menuOpen }) => (menuOpen && styles.menuOpen) || styles.menuClose}
-`;
+`
 
 const MobileMenuList = styled.ul`
   ${tw`flex flex-col justify-center items-center py-12 space-y-4`}
-`;
+`
 
-const Link = styled.a`
+const MobileMenuItem = styled.a`
   ${tw`font-bungee text-tr-black text-lg relative`}
   :after {
     content: "";
@@ -47,7 +48,7 @@ const Link = styled.a`
     content: "";
     transform: scaleX(1);
   }
-`;
+`
 
 // const variants = {
 //   list: {
@@ -59,19 +60,26 @@ const Link = styled.a`
 //     visible: { opacity: 1 },
 //   },
 // };
-
-const MobileMenuItem = ({ href, label }) => <Link href={href}>{label}</Link>;
-
-export const MobileMenu = ({ menuList, menuOpen }) => {
+const DELAY_CLOSE_MENU_TIME = 500
+export const MobileMenu = ({ menuList, menuOpen, toggleMenu }) => {
+  const delayCloseMenu = () => {
+    setTimeout(() => {
+      toggleMenu()
+    }, DELAY_CLOSE_MENU_TIME)
+  }
   return (
     <MobileMenuContainer menuOpen={menuOpen}>
       <MobileMenuList>
         {menuList &&
           menuOpen &&
           menuList.map((menuItem) => (
-            <MobileMenuItem key={menuItem.id} {...menuItem} />
+            <Link key={menuItem.id} href={menuItem.href} passHref>
+              <MobileMenuItem key={menuItem.id} onClick={delayCloseMenu}>
+                {menuItem.label}
+              </MobileMenuItem>
+            </Link>
           ))}
       </MobileMenuList>
     </MobileMenuContainer>
-  );
-};
+  )
+}

@@ -7,7 +7,7 @@ import SubscribeForm from "@/components/Common/Form/SubscribeForm"
 import SocialButtonGroup from "components/Common/Social"
 /* TODO: display Footer when scrolled (once) */
 const StyledFooter = styled.footer`
-  ${tw`flex flex-col justify-center items-center w-full py-12 xl:(py-12)`}
+  ${tw`mt-auto flex flex-col justify-center items-center w-full py-12 xl:(py-12)`}
   ${tw`bg-tr-black text-tr-white font-bungee select-none`}
   /* Temp Styles */
   min-height: var(--FooterMinHeight);
@@ -26,7 +26,8 @@ const Column = styled.div`
 `
 
 const SocialColumn = styled.div`
-  ${tw`flex justify-end items-start`}
+  ${tw`flex justify-start items-start col-span-full`}
+  ${tw`xs:(col-auto justify-end)`}
 `
 
 const socialButtonGroupCSS = css`
@@ -108,10 +109,10 @@ const Footer = () => {
         </Column>
         <Column>
           <SitemapRow tw="flex-wrap">
-            <Link href="/" name="Collections" />
-            <Link href="/" name="Flavors" />
-            <Link href="/" name="Find Stores" />
-            <Link href="/" name="Contact" />
+            <Link href="collections" name="Collections" />
+            <Link href="flavors" name="Flavors" />
+            <Link href="find-store" name="Find Stores" />
+            {/* <Link href="contact" name="Contact" /> */}
           </SitemapRow>
         </Column>
         <SocialColumn>

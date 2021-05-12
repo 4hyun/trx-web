@@ -11,15 +11,15 @@ const Container = styled.div`
 `
 const Collections = ({ collections, collectionCategories }) => {
   return (
-    <>
+    <React.Fragment>
       <Container>
         <FilterBar filters={collectionCategories} />
         {collections.map((collection) => (
-          <Section collection={collection} />
+          <Section key={collection.id} collection={collection} />
         ))}
       </Container>
       <Footer />
-    </>
+    </React.Fragment>
   )
 }
 

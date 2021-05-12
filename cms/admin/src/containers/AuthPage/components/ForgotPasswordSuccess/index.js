@@ -18,7 +18,7 @@ const ForgotPasswordSuccess = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <Section textAlign="center">
         <Logo />
       </Section>
@@ -46,8 +46,7 @@ const ForgotPasswordSuccess = () => {
                     lineHeight="18px"
                   >
                     {formatMessage({
-                      id:
-                        "app.containers.AuthPage.ForgotPasswordSuccess.text.email",
+                      id: "app.containers.AuthPage.ForgotPasswordSuccess.text.email",
                     })}
                   </Text>
 
@@ -59,8 +58,7 @@ const ForgotPasswordSuccess = () => {
                         lineHeight="18px"
                       >
                         {formatMessage({
-                          id:
-                            "app.containers.AuthPage.ForgotPasswordSuccess.text.contact-admin",
+                          id: "app.containers.AuthPage.ForgotPasswordSuccess.text.contact-admin",
                         })}
                       </Text>
                     </BaselineAlignment>
@@ -84,7 +82,7 @@ const ForgotPasswordSuccess = () => {
           </Padded>
         </Padded>
       </Section>
-    </>
+    </React.Fragment>
   );
 };
 
