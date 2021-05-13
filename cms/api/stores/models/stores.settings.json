@@ -17,7 +17,7 @@
     "business_status": {
       "type": "string"
     },
-    "formatted_address": {
+    "address": {
       "type": "string"
     },
     "place_id": {
@@ -30,7 +30,7 @@
     "user_ratings_total": {
       "type": "integer"
     },
-    "trx_formatted_phone_number": {
+    "phone": {
       "type": "string"
     },
     "lng": {
@@ -52,7 +52,7 @@
       "type": "boolean"
     },
     "visited_store": {
-      "type": "string"
+      "type": "boolean"
     }
   }
 }

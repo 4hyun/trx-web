@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "product_categories",
   "info": {
-    "name": "Product Categories",
+    "name": "Collections",
     "description": ""
   },
   "options": {
@@ -12,6 +12,22 @@
   },
   "attributes": {
     "name": {
+      "type": "string"
+    },
+    "cover_media": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "desc": {
+      "type": "text"
+    },
+    "desc_note": {
       "type": "string"
     }
   }
