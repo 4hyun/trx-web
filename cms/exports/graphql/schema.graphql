@@ -41,24 +41,29 @@ type UserPermissionsPasswordPayload {
   ok: Boolean!
 }
 
+union CollectionsPageSeoDynamicZone = ComponentSharedSeo
+
+"""Input type for dynamic zone SEO of CollectionsPage"""
+scalar CollectionsPageSeoDynamicZoneInput
+
 type CollectionsPage {
   id: ID!
   _id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  SEO: ComponentSharedSeo
+  SEO: [CollectionsPageSeoDynamicZone]
   published_at: DateTime
 }
 
 input CollectionsPageInput {
-  SEO: ComponentSharedSeoInput
+  SEO: [CollectionsPageSeoDynamicZoneInput!]
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
 input editCollectionsPageInput {
-  SEO: editComponentSharedSeoInput
+  SEO: [CollectionsPageSeoDynamicZoneInput!]
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -76,24 +81,29 @@ type deleteCollectionsPagePayload {
   collectionsPage: CollectionsPage
 }
 
+union FindStoresPageSeoDynamicZone = ComponentSharedSeo
+
+"""Input type for dynamic zone SEO of FindStoresPage"""
+scalar FindStoresPageSeoDynamicZoneInput
+
 type FindStoresPage {
   id: ID!
   _id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  SEO: ComponentSharedSeo
+  SEO: [FindStoresPageSeoDynamicZone]
   published_at: DateTime
 }
 
 input FindStoresPageInput {
-  SEO: ComponentSharedSeoInput
+  SEO: [FindStoresPageSeoDynamicZoneInput!]
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
 input editFindStoresPageInput {
-  SEO: editComponentSharedSeoInput
+  SEO: [FindStoresPageSeoDynamicZoneInput!]
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -111,24 +121,29 @@ type deleteFindStoresPagePayload {
   findStoresPage: FindStoresPage
 }
 
+union FlavorsPageSeoDynamicZone = ComponentSharedSeo
+
+"""Input type for dynamic zone SEO of FlavorsPage"""
+scalar FlavorsPageSeoDynamicZoneInput
+
 type FlavorsPage {
   id: ID!
   _id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  SEO: ComponentSharedSeo
+  SEO: [FlavorsPageSeoDynamicZone]
   published_at: DateTime
 }
 
 input FlavorsPageInput {
-  SEO: ComponentSharedSeoInput
+  SEO: [FlavorsPageSeoDynamicZoneInput!]
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
 input editFlavorsPageInput {
-  SEO: editComponentSharedSeoInput
+  SEO: [FlavorsPageSeoDynamicZoneInput!]
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -282,24 +297,29 @@ type deleteFlavorPayload {
   flavor: Flavors
 }
 
+union HomePageSeoDynamicZone = ComponentSharedSeo
+
+"""Input type for dynamic zone SEO of HomePage"""
+scalar HomePageSeoDynamicZoneInput
+
 type HomePage {
   id: ID!
   _id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  SEO: ComponentSharedSeo
+  SEO: [HomePageSeoDynamicZone]
   published_at: DateTime
 }
 
 input HomePageInput {
-  SEO: ComponentSharedSeoInput
+  SEO: [HomePageSeoDynamicZoneInput!]
   published_at: DateTime
   created_by: ID
   updated_by: ID
 }
 
 input editHomePageInput {
-  SEO: editComponentSharedSeoInput
+  SEO: [HomePageSeoDynamicZoneInput!]
   published_at: DateTime
   created_by: ID
   updated_by: ID
@@ -1760,6 +1780,7 @@ type ComponentSharedSeo {
   metaDesc: String
   keywords: String
   preventIndexing: Boolean
+  SharedImage: ComponentSharedSharedImage
 }
 
 input ComponentSharedSeoInput {
@@ -1767,6 +1788,7 @@ input ComponentSharedSeoInput {
   metaDesc: String
   keywords: String
   preventIndexing: Boolean
+  SharedImage: ComponentSharedSharedImageInput
 }
 
 input editComponentSharedSeoInput {
@@ -1775,9 +1797,55 @@ input editComponentSharedSeoInput {
   metaDesc: String
   keywords: String
   preventIndexing: Boolean
+  SharedImage: editComponentSharedSharedImageInput
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | CollectionsPage | updateCollectionsPagePayload | deleteCollectionsPagePayload | FindStoresPage | updateFindStoresPagePayload | deleteFindStoresPagePayload | FlavorsPage | updateFlavorsPagePayload | deleteFlavorsPagePayload | Flavors | FlavorsConnection | FlavorsAggregator | FlavorsGroupBy | FlavorsConnectionId | FlavorsConnection_id | FlavorsConnectionCreatedAt | FlavorsConnectionUpdatedAt | FlavorsConnectionName | FlavorsConnectionMain_img | FlavorsConnectionFeatured_menu_img | FlavorsConnectionDescription | FlavorsConnectionPublished_at | createFlavorPayload | updateFlavorPayload | deleteFlavorPayload | HomePage | updateHomePagePayload | deleteHomePagePayload | MenuItems | MenuItemsConnection | MenuItemsAggregator | MenuItemsGroupBy | MenuItemsConnectionId | MenuItemsConnection_id | MenuItemsConnectionCreatedAt | MenuItemsConnectionUpdatedAt | MenuItemsConnectionLabel | MenuItemsConnectionUrl | MenuItemsConnectionIs_root | MenuItemsConnectionPublished_at | createMenuItemPayload | updateMenuItemPayload | deleteMenuItemPayload | Menu | updateMenuPayload | deleteMenuPayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnection_id | ProductCategoryConnectionCreatedAt | ProductCategoryConnectionUpdatedAt | ProductCategoryConnectionName | ProductCategoryConnectionCover_media | ProductCategoryConnectionDesc | ProductCategoryConnectionDesc_note | ProductCategoryConnectionPublished_at | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnection_id | ProductsConnectionCreatedAt | ProductsConnectionUpdatedAt | ProductsConnectionName | ProductsConnectionProduct_category | ProductsConnectionCover_img | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | Stores | StoresConnection | StoresAggregator | StoresAggregatorSum | StoresAggregatorAvg | StoresAggregatorMin | StoresAggregatorMax | StoresGroupBy | StoresConnectionId | StoresConnection_id | StoresConnectionCreatedAt | StoresConnectionUpdatedAt | StoresConnectionName | StoresConnectionBusiness_status | StoresConnectionAddress | StoresConnectionPlace_id | StoresConnectionRating | StoresConnectionUser_ratings_total | StoresConnectionPhone | StoresConnectionLng | StoresConnectionLat | StoresConnectionCompound_code | StoresConnectionRetailer | StoresConnectionCity | StoresConnectionHeard_of_it | StoresConnectionVisited_store | StoresConnectionPublished_at | createStorePayload | updateStorePayload | deleteStorePayload | Terpenes | TerpenesConnection | TerpenesAggregator | TerpenesGroupBy | TerpenesConnectionId | TerpenesConnection_id | TerpenesConnectionCreatedAt | TerpenesConnectionUpdatedAt | TerpenesConnectionName | TerpenesConnectionDescription | TerpenesConnectionPublished_at | createTerpenePayload | updateTerpenePayload | deleteTerpenePayload | VapeCategories | VapeCategoriesConnection | VapeCategoriesAggregator | VapeCategoriesGroupBy | VapeCategoriesConnectionId | VapeCategoriesConnection_id | VapeCategoriesConnectionCreatedAt | VapeCategoriesConnectionUpdatedAt | VapeCategoriesConnectionCategory | VapeCategoriesConnectionValue | VapeCategoriesConnectionLabel | VapeCategoriesConnectionPublished_at | createVapeCategoryPayload | updateVapeCategoryPayload | deleteVapeCategoryPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentCollectionCardFooterContentFooterContent | ComponentProductDab | ComponentProductExperience | ComponentProductRelatedProducts | ComponentProductVape | ComponentSharedSeo
+type ComponentSharedSharedImage {
+  id: ID!
+  _id: ID!
+  alt: String
+  media: UploadFile
+}
+
+input ComponentSharedSharedImageInput {
+  alt: String
+  media: ID
+}
+
+input editComponentSharedSharedImageInput {
+  id: ID
+  alt: String
+  media: ID
+}
+
+type ComponentSharedSiteSeo {
+  id: ID!
+  _id: ID!
+  url: String
+  site_name: String
+  type: String
+  title: String
+  description: String
+}
+
+input ComponentSharedSiteSeoInput {
+  url: String
+  site_name: String
+  type: String
+  title: String
+  description: String
+}
+
+input editComponentSharedSiteSeoInput {
+  id: ID
+  url: String
+  site_name: String
+  type: String
+  title: String
+  description: String
+}
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | CollectionsPage | updateCollectionsPagePayload | deleteCollectionsPagePayload | FindStoresPage | updateFindStoresPagePayload | deleteFindStoresPagePayload | FlavorsPage | updateFlavorsPagePayload | deleteFlavorsPagePayload | Flavors | FlavorsConnection | FlavorsAggregator | FlavorsGroupBy | FlavorsConnectionId | FlavorsConnection_id | FlavorsConnectionCreatedAt | FlavorsConnectionUpdatedAt | FlavorsConnectionName | FlavorsConnectionMain_img | FlavorsConnectionFeatured_menu_img | FlavorsConnectionDescription | FlavorsConnectionPublished_at | createFlavorPayload | updateFlavorPayload | deleteFlavorPayload | HomePage | updateHomePagePayload | deleteHomePagePayload | MenuItems | MenuItemsConnection | MenuItemsAggregator | MenuItemsGroupBy | MenuItemsConnectionId | MenuItemsConnection_id | MenuItemsConnectionCreatedAt | MenuItemsConnectionUpdatedAt | MenuItemsConnectionLabel | MenuItemsConnectionUrl | MenuItemsConnectionIs_root | MenuItemsConnectionPublished_at | createMenuItemPayload | updateMenuItemPayload | deleteMenuItemPayload | Menu | updateMenuPayload | deleteMenuPayload | ProductCategory | ProductCategoryConnection | ProductCategoryAggregator | ProductCategoryGroupBy | ProductCategoryConnectionId | ProductCategoryConnection_id | ProductCategoryConnectionCreatedAt | ProductCategoryConnectionUpdatedAt | ProductCategoryConnectionName | ProductCategoryConnectionCover_media | ProductCategoryConnectionDesc | ProductCategoryConnectionDesc_note | ProductCategoryConnectionPublished_at | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnection_id | ProductsConnectionCreatedAt | ProductsConnectionUpdatedAt | ProductsConnectionName | ProductsConnectionProduct_category | ProductsConnectionCover_img | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | Stores | StoresConnection | StoresAggregator | StoresAggregatorSum | StoresAggregatorAvg | StoresAggregatorMin | StoresAggregatorMax | StoresGroupBy | StoresConnectionId | StoresConnection_id | StoresConnectionCreatedAt | StoresConnectionUpdatedAt | StoresConnectionName | StoresConnectionBusiness_status | StoresConnectionAddress | StoresConnectionPlace_id | StoresConnectionRating | StoresConnectionUser_ratings_total | StoresConnectionPhone | StoresConnectionLng | StoresConnectionLat | StoresConnectionCompound_code | StoresConnectionRetailer | StoresConnectionCity | StoresConnectionHeard_of_it | StoresConnectionVisited_store | StoresConnectionPublished_at | createStorePayload | updateStorePayload | deleteStorePayload | Terpenes | TerpenesConnection | TerpenesAggregator | TerpenesGroupBy | TerpenesConnectionId | TerpenesConnection_id | TerpenesConnectionCreatedAt | TerpenesConnectionUpdatedAt | TerpenesConnectionName | TerpenesConnectionDescription | TerpenesConnectionPublished_at | createTerpenePayload | updateTerpenePayload | deleteTerpenePayload | VapeCategories | VapeCategoriesConnection | VapeCategoriesAggregator | VapeCategoriesGroupBy | VapeCategoriesConnectionId | VapeCategoriesConnection_id | VapeCategoriesConnectionCreatedAt | VapeCategoriesConnectionUpdatedAt | VapeCategoriesConnectionCategory | VapeCategoriesConnectionValue | VapeCategoriesConnectionLabel | VapeCategoriesConnectionPublished_at | createVapeCategoryPayload | updateVapeCategoryPayload | deleteVapeCategoryPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentCollectionCardFooterContentFooterContent | ComponentProductDab | ComponentProductExperience | ComponentProductRelatedProducts | ComponentProductVape | ComponentSharedSeo | ComponentSharedSharedImage | ComponentSharedSiteSeo
 
 input InputID {
   id: ID!
