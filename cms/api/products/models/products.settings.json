@@ -31,9 +31,9 @@
     "meta": {
       "type": "dynamiczone",
       "components": [
-        "product-meta.dab",
-        "product-meta.experience",
-        "product-meta.vape"
+        "product.dab",
+        "product.experience",
+        "product.vape"
       ]
     }
   }

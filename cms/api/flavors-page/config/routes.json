@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/flavors-page",
+      "handler": "flavors-page.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/flavors-page",
+      "handler": "flavors-page.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/flavors-page",
+      "handler": "flavors-page.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

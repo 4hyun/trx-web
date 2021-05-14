@@ -27,9 +27,9 @@ const Flavors = ({ flavors }) => {
     <React.Fragment>
       <GridContainer>
         <FlavorPortfolio collection={flavors} onItemClick={handleCollectionClick} />
-        <Column>
+        {/* <Column>
           <FlavorSingleView selected={selectedCollection} tempLoadCollection={() => handleCollectionClick(flavors[0])} />
-        </Column>
+        </Column> */}
       </GridContainer>
       <Footer />
     </React.Fragment>
