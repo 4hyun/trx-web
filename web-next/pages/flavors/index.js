@@ -19,14 +19,14 @@ export const getStaticProps = async ({ preview = null }) => {
           formats
         },
         description,
-        available_categories {
-          ... on ProductCategory {
+        available_as {
+          ... on ProductCategories {
             id,
             name
           }
         }
-        collection_card_footer_content {
-            ... on ComponentCollectionCardFooterContentFooterContent {
+        indica_sativa {
+            ... on ComponentFlavorFooterContent {
                 indica,
                 sativa
             }
