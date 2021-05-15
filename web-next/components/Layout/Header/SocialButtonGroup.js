@@ -15,4 +15,4 @@ const SocialButtonGroup = () => (
   </NavbarRow>
 )
 
-export default SocialButtonGroup
+export default memo(SocialButtonGroup)

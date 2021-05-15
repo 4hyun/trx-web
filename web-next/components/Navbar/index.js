@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
 import SocialButtonGroup from "components/Layout/Header/SocialButtonGroup"
@@ -22,19 +22,19 @@ const Container = styled.div`
   }
 `
 
-const DesktopMenuButton = React.memo(({ menuOpen }) => (
-  <NavbarRow tw="hidden lg:(flex flex-1 items-start pt-6)">
-    <MenuButton menuOpen={menuOpen} />
+const DesktopMenuButton = React.memo(({ toggleMenu }) => (
+  <NavbarRow tw="hidden lg:(flex flex-1 items-start pt-6) " onClick={toggleMenu}>
+    <MenuButton />
   </NavbarRow>
 ))
 
 const Navbar = ({ menuOpen, toggleMenu }) => {
   return (
     <Container menuOpen={menuOpen}>
-      <DesktopMenuButton menuOpen={menuOpen} />
+      <DesktopMenuButton toggleMenu={toggleMenu} />
       <SocialButtonGroup />
     </Container>
   )
 }
 
-export default Navbar
+export default memo(Navbar)

@@ -60,14 +60,14 @@ const MobileMenuIGHashtagContainer = styled.div`
 const Header = ({ desktopStyles }) => {
   const [{ menuOpen, transitionEnd }, dispatch] = useReducer(reducer, initState)
 
-  const toggleDesktopMenu = () => {
+  const toggleDesktopMenu = useCallback(() => {
     if (menuOpen) {
       dispatch({ type: CLOSE_DESKTOP_MENU })
       dispatch({ type: HIDE_MENU_CONTENT })
       return
     }
     return dispatch({ type: OPEN_DESKTOP_MENU })
-  }
+  })
 
   const handleTransitionEnd = useCallback((e) => {
     if (menuOpen) {
@@ -87,8 +87,7 @@ const Header = ({ desktopStyles }) => {
           #TunaaaaMoonAndBack
         </MobileMenuIGHashtagLink>
       </MobileMenuIGHashtagContainer>
-      {/* <Navbar menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} /> */}
-      <Navbar />
+      <Navbar menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
       <DesktopMenu transitionEnd={transitionEnd} toggleMenu={toggleDesktopMenu} />
       <DesktopMenuLogoButton styles={menuLogoButtonStyles} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
       <MobileMenuLogoButton styles={menuLogoButtonStyles} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
