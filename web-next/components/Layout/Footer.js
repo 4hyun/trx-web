@@ -1,5 +1,5 @@
+import React, {memo} from "react"
 import NextLink from "next/link"
-import React from "react"
 import styled, { css } from "styled-components"
 import tw from "twin.macro"
 /* components */
@@ -123,4 +123,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default memo(Footer)
