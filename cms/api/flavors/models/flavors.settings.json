@@ -32,18 +32,21 @@
       "plugin": "upload",
       "required": false
     },
-    "collection_card_footer_content": {
+    "indica_sativa": {
       "type": "dynamiczone",
       "components": [
-        "collection-card-footer-content.footer-content"
+        "flavor.footer-content"
       ],
       "max": 1
     },
-    "available_categories": {
-      "collection": "product-category"
+    "collection_in": {
+      "model": "collections"
     },
     "description": {
       "type": "text"
+    },
+    "available_as": {
+      "collection": "product-categories"
     }
   }
 }

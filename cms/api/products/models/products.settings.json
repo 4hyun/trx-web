@@ -14,9 +14,6 @@
     "name": {
       "type": "string"
     },
-    "product_category": {
-      "model": "product-category"
-    },
     "cover_img": {
       "model": "file",
       "via": "related",
