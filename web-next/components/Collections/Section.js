@@ -27,31 +27,31 @@ const sizes = `(max-width: 475px) 40vw, 400px`
 /* Cover is aligned right by default */
 const Section = ({ collection, coverLeft }) => {
   const { width } = useWindowSize()
-  const { description, name, main_img } = collection
+  const { desc, name, cover_media } = collection
   const srcSet = useMemo(
     () =>
-      Object.keys(main_img.formats)
-        .map((formatKey) => srcSetMapFn(formatKey, main_img.formats))
+      Object.keys(cover_media.formats)
+        .map((formatKey) => srcSetMapFn(formatKey, cover_media.formats))
         .join(),
     [collection]
   )
   return (
-    <Element name={collection.id}>
       <SectionWrapper coverLeft={coverLeft}>
         <Column tw="flex-1 self-center space-y-4">
           <SectionTitle>{name}</SectionTitle>
           {width < 475 && (
             <Column tw="flex-initial xl:ml-36 h-auto float-right">
-              {srcSet && <SectionCover src={main_img.url} srcSet={srcSet} sizes={sizes} />}
+              {srcSet && <SectionCover src={cover_media.url} srcSet={srcSet} sizes={sizes} />}
             </Column>
           )}
-          <TextContent>{description}</TextContent>
+          <TextContent>{desc}</TextContent>
         </Column>
         {width > 475 && (
-          <Column tw="flex-initial xl:ml-36 h-auto max-w-1/2">{srcSet && <SectionCover src={main_img.url} srcSet={srcSet} sizes={sizes} />}</Column>
+          <Column tw="flex-initial xl:ml-36 h-auto max-w-1/2">
+            {srcSet && <SectionCover src={cover_media.url} srcSet={srcSet} sizes={sizes} />}
+          </Column>
         )}
       </SectionWrapper>
-    </Element>
   )
 }
 

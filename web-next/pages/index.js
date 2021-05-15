@@ -1,7 +1,5 @@
 import React, { useContext } from "react"
 import Head from "next/head"
-import tw, { styled } from "twin.macro"
-// import { fetchAPI } from "lib/api"
 /* containers */
 import { ScrollContainer } from "containers/Common"
 /* components */
@@ -29,9 +27,7 @@ export default function HomePage(props) {
       {ageCheckedValue && (
         <ScrollContainer tw="w-full">
           <HomeHero></HomeHero>
-          {/* <HomeContentGrid>
-
-          </HomeContentGrid> */}
+          {/* <HomeContentGrid></HomeContentGrid> */}
           <Footer />
         </ScrollContainer>
       )}

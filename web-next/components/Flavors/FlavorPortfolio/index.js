@@ -66,7 +66,7 @@ const FlavorsPortfolio = ({ collection, onItemClick }) => {
               <FlavorCard
                 key={flavor.id}
                 item={flavor}
-                renderFooterContentProp={flavor.collection_card_footer_content}
+                renderFooterContentProp={flavor.indica_sativa}
                 renderFooterContent={CardFooterContent}
                 onClick={() => onItemClick(flavor)}
               />

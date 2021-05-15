@@ -1,12 +1,10 @@
-import React, { useReducer, useCallback } from "react"
-import styled, { css, keyframes } from "styled-components"
+import React, { memo, useReducer, useCallback } from "react"
+import styled, { keyframes } from "styled-components"
 import tw from "twin.macro"
 import { OPEN_DESKTOP_MENU, CLOSE_DESKTOP_MENU, SHOW_MENU_CONTENT, HIDE_MENU_CONTENT } from "./constants"
-import { headerContainerStyles, navbarStyles, menuLogoButtonStyles } from "./styles"
+import { headerContainerStyles, menuLogoButtonStyles } from "./styles"
 import reducer from "./reducer"
 import Navbar from "components/Navbar"
-import SocialButtonGroup from "components/Common/Social"
-import DesktopMenuButton from "components/Navbar/MenuButton"
 import { MobileMenu, DesktopMenu } from "components/Menu"
 import { defaultMenuList } from "components/Menu/data"
 import { DesktopMenuLogoButton, MobileMenuLogoButton } from "components/Navbar/MenuLogoButton"
@@ -14,7 +12,7 @@ import { DesktopMenuLogoButton, MobileMenuLogoButton } from "components/Navbar/M
 const headerFadeIn = keyframes`
   from {
     opacity:0;
-  }@/components/Common/Social
+  }
   to {
     opacity: 1;
   }
@@ -45,22 +43,6 @@ const HeaderContainer = styled.div`
   }
 `
 
-const navbarElementSharedStyles = css`
-  & svg {
-    ${tw`hover:opacity-60 hover:cursor-pointer`}
-  }
-`
-
-const socialButtonGroupCSS = css`
-  width: 38px;
-  ${tw`flex flex-col space-y-4`}
-  ${navbarElementSharedStyles}
-`
-
-const NavbarRow = styled.div`
-  ${navbarElementSharedStyles}
-`
-
 const initState = {
   menuOpen: false,
   transitionEnd: {
@@ -78,26 +60,14 @@ const MobileMenuIGHashtagContainer = styled.div`
 const Header = ({ desktopStyles }) => {
   const [{ menuOpen, transitionEnd }, dispatch] = useReducer(reducer, initState)
 
-  const toggleDesktopMenu = useCallback(() => {
+  const toggleDesktopMenu = () => {
     if (menuOpen) {
       dispatch({ type: CLOSE_DESKTOP_MENU })
       dispatch({ type: HIDE_MENU_CONTENT })
       return
     }
     return dispatch({ type: OPEN_DESKTOP_MENU })
-  })
-
-  const renderSocialButtonGroup = useCallback(() => (
-    <NavbarRow tw="hidden lg:(flex flex-1 items-end pb-6)">
-      <SocialButtonGroup stylesheet={socialButtonGroupCSS} />
-    </NavbarRow>
-  ))
-
-  const renderDesktopMenuButton = useCallback(() => (
-    <NavbarRow tw="hidden lg:(flex flex-1 items-start pt-6)" onClick={toggleDesktopMenu}>
-      <DesktopMenuButton />
-    </NavbarRow>
-  ))
+  }
 
   const handleTransitionEnd = useCallback((e) => {
     if (menuOpen) {
@@ -117,7 +87,8 @@ const Header = ({ desktopStyles }) => {
           #TunaaaaMoonAndBack
         </MobileMenuIGHashtagLink>
       </MobileMenuIGHashtagContainer>
-      <Navbar menuOpen={menuOpen} renderDesktopMenuButton={renderDesktopMenuButton} renderSocialButtonGroup={renderSocialButtonGroup} />
+      {/* <Navbar menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} /> */}
+      <Navbar />
       <DesktopMenu transitionEnd={transitionEnd} toggleMenu={toggleDesktopMenu} />
       <DesktopMenuLogoButton styles={menuLogoButtonStyles} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
       <MobileMenuLogoButton styles={menuLogoButtonStyles} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />

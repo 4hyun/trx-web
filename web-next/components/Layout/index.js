@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { withRouter } from "next/router"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import tw from "twin.macro"
+import { AGE_GATE_LS_KEY } from "components/AgeGate/constants"
+/* context */
+import AgeGateContext from "components/AgeGate/context"
 /* paths */
 import { paths } from "paths"
 /* components */
 import Header from "@/components/Layout/Header"
 import MainBackgroundVideo from "components/Common/MainBackgroundVideo"
-// import Footer from "components/Layout/Footer"
 /* styles */
 import { navbarStyles } from "@/components/Layout/Header/styles"
 
@@ -15,7 +17,7 @@ const Wrapper = styled.div`
   ${tw`w-full h-screen`}
   @media (min-width: 1024px) {
     padding-right: 0;
-    padding-left: ${({ showHeader }) => (showHeader ? navbarStyles.desktop.width : "none")};
+    padding-left: ${({ paddingLeft }) => (paddingLeft ? navbarStyles.desktop.width : "none")};
   }
 `
 
@@ -36,19 +38,38 @@ const FixedBackgroundVideo = (videoProps) => {
 }
 
 const Layout = ({ children: mainContent, router }) => {
-  const [showLayout, setShowLayout] = useState(true)
+  const [ageCheckedValue, setAgeChecked] = useState(null)
+  const [showHeader, setShowHeader] = useState(true)
+  const ageGateContextValue = { ageCheckedValue, setAgeChecked }
+  useEffect(() => {
+    // console.log("router ", router);
+    if (router.pathname === "/") {
+      // console.log('>>DEBUG: <MyApp/> router.pathname === "/"')
+      const ageCheckValue = localStorage.getItem(AGE_GATE_LS_KEY)
+      if (ageCheckValue) {
+        setAgeChecked(ageCheckValue)
+        return
+      } else {
+        router.replace("age-gate")
+      }
+    }
+  }, [router.pathname])
 
   useEffect(() => {
-    if (router.pathname === paths.ageGate) return setShowLayout(false)
-    if (showLayout) return
-    setShowLayout(true)
+    // console.log(">>DEBUG : <Layout/> useEffect() ")
+    if (router.pathname === paths.ageGate) return setShowHeader(false)
+    if (showHeader) return
+    setShowHeader(true)
   }, [router.pathname])
+
   return (
-    <Wrapper showHeader={showLayout}>
+    <Wrapper paddingLeft={showHeader}>
       {router.pathname === "/age-gate" && <FixedBackgroundVideo autoPlay={true} loop={true} />}
       <Container>
-        {showLayout && <Header desktopStyles={navbarStyles.desktop.styles}></Header>}
-        {mainContent}
+        <AgeGateContext.Provider value={ageGateContextValue}>
+          {showHeader && <Header desktopStyles={navbarStyles.desktop.styles}></Header>}
+          {mainContent}
+        </AgeGateContext.Provider>
       </Container>
     </Wrapper>
   )

@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react"
+import React, { useContext, useReducer, useEffect } from "react"
 import styled, { css } from "styled-components"
 import tw from "twin.macro"
 import { fetchAPI } from "lib/api"
@@ -36,6 +36,7 @@ const FooterWrapper = styled.div`
 const FindStorePage = ({ retailStores }) => {
   const { stores, searchValue } = useContext(StoreFinderContext)
   const [storeMapState, dispatch] = useReducer(reducer, storeMapContextInitialState)
+  useEffect(() => { console.log("FindStorePage rendered")},[])
 
   return (
     <GridLayout>
@@ -65,9 +66,9 @@ export const getStaticProps = async ({ preview = null }) => {
         lng,
         lat,
         name,
-        formatted_address,
+        address,
         place_id,
-        trx_formatted_phone_number
+        phone
     }
   }
   `)

@@ -9,18 +9,15 @@ const Container = styled.div`
   ${tw`md:(space-y-8 max-w-screen-xl)`};
   ${tw`lg:(px-20 mt-16 pb-16)`}
 `
-const Collections = ({ collections, collectionCategories }) => {
-  return (
-    <React.Fragment>
-      <Container>
-        <FilterBar filters={collectionCategories} />
-        {collections.map((collection) => (
-          <Section key={collection.id} collection={collection} />
-        ))}
-      </Container>
-      <Footer />
-    </React.Fragment>
-  )
-}
-
+const Collections = ({ collections, collectionCategories }) => (
+  <React.Fragment>
+    <Container>
+      <FilterBar filters={collectionCategories} />
+      {collections.map((collection) => (
+        <Section key={collection.id} collection={collection} />
+      ))}
+    </Container>
+    <Footer />
+  </React.Fragment>
+)
 export default Collections

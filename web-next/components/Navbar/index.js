@@ -1,6 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
+import SocialButtonGroup from "components/Layout/Header/SocialButtonGroup"
+import MenuButton from "./MenuButton"
+import NavbarRow from "./NavbarRow"
 
 const Container = styled.div`
   ${tw`flex h-full`}
@@ -19,11 +22,17 @@ const Container = styled.div`
   }
 `
 
-const Navbar = ({ renderSocialButtonGroup, renderDesktopMenuButton, menuOpen }) => {
+const DesktopMenuButton = React.memo(({ menuOpen }) => (
+  <NavbarRow tw="hidden lg:(flex flex-1 items-start pt-6)">
+    <MenuButton menuOpen={menuOpen} />
+  </NavbarRow>
+))
+
+const Navbar = ({ menuOpen, toggleMenu }) => {
   return (
     <Container menuOpen={menuOpen}>
-      {renderDesktopMenuButton && renderDesktopMenuButton()}
-      {renderSocialButtonGroup && renderSocialButtonGroup()}
+      <DesktopMenuButton menuOpen={menuOpen} />
+      <SocialButtonGroup />
     </Container>
   )
 }

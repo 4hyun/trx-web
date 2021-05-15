@@ -1,6 +1,5 @@
 import { FacebookIcon, TwitterIcon, InstagramIcon } from "components/Icons"
 import styled from "styled-components"
-import tw from "twin.macro"
 
 const SocialWrapper = styled.div`
   ${({ stylesheet }) => stylesheet && stylesheet}

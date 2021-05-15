@@ -13,18 +13,14 @@ export const getStaticProps = async ({ preview = null }) => {
   const data = await fetchAPI(
     `
     query {
-      flavors(publicationState:LIVE) {
+      collections(publicationState:LIVE) {
         id,
         name,
-        description,
-        main_img { 
+        desc,
+        cover_media { 
           formats,
           url
         }
-      }
-      productCategories {
-        id,
-        name
       }
     }
     `,
@@ -32,8 +28,8 @@ export const getStaticProps = async ({ preview = null }) => {
       variables: {},
     }
   )
-  const { flavors, productCategories } = data
+  const { collections } = data
   return {
-    props: { collections: flavors, collectionCategories: productCategories, preview },
+    props: { collections, collectionCategories: collections.map(({name})=>name), preview },
   }
 }

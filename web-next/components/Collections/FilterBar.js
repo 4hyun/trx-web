@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import tw, { styled, css } from "twin.macro"
 import { animateScroll as scroll } from "react-scroll"
 
@@ -19,19 +20,27 @@ const FilterItem = styled.li`
 
 const Wrapper = tw.ul`flex flex-wrap justify-center mb-14 -mx-8 lg:(space-x-12 mb-0)`
 
-const FilterBar = ({ filters, setFilter }) => (
-  <Wrapper>
-    {filters.map((filter) => (
-      <FilterItem
-        key={filter.id}
-        onClick={() => {
-          scroll.scrollTo("")
-        }}
-      >
-        {filter.name}
-      </FilterItem>
-    ))}
-  </Wrapper>
-)
+const FilterBar = ({ filters, setFilter }) => {
+  console.log('>>DEBUG : filters.length :', filters.length)
+  return (
+    <Wrapper>
+      {filters.map((collectionName) => {
+        return (
+          <FilterItem
+            key={collectionName}
+            onClick={() => {
+              const scrollToElement = collectionName.toLowerCase().replaceAll(' ','-')
+              console.log(`scorll to ${scrollToElement}`)
+              scroll.scrollTo(scrollToElement)
+
+            }}
+          >
+            {collectionName}
+          </FilterItem>
+        )
+      })}
+    </Wrapper>
+  )
+}
 
 export default FilterBar

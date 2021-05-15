@@ -57,7 +57,7 @@ export const DesktopMenu = ({ transitionEnd, toggleMenu }) => {
   return (
     <Container transitionEnd={transitionEnd}>
       <List>
-        <Link href="/" passHref>
+        <Link href="/" replace={true} passHref>
           <Item onClick={delayCloseMenu}>Home</Item>
         </Link>
         <Link href="/collections" passHref>
