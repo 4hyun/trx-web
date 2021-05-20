@@ -1,15 +1,14 @@
-import tw, { styled } from "twin.macro"
-import { fetchAPI } from "lib/api"
+import { fetchAPI } from 'lib/api'
 /* components */
-import Collections from "containers/PageCollections"
+import Collections from 'containers/PageCollections'
 
-const CollectionsPage = ({ collections, collectionCategories }) => {
-  return <Collections collections={collections} collectionCategories={collectionCategories}></Collections>
-}
+const CollectionsPage = ({ collections }) => (
+  <Collections collections={collections} />
+)
 
 export default CollectionsPage
 
-export const getStaticProps = async ({ preview = null }) => {
+export const getStaticProps = async () => {
   const data = await fetchAPI(
     `
     query {
@@ -23,13 +22,10 @@ export const getStaticProps = async ({ preview = null }) => {
         }
       }
     }
-    `,
-    {
-      variables: {},
-    }
+    `
   )
   const { collections } = data
   return {
-    props: { collections, collectionCategories: collections.map(({name})=>name), preview },
+    props: { collections },
   }
 }

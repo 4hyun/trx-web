@@ -1,8 +1,8 @@
-import { useContext } from "react"
-import styled from "styled-components"
-import tw from "twin.macro"
-import StoresList from "./StoresList.js"
-import { StoreFinderContext, StoreMapDispatchContext } from "contexts"
+import { useContext } from 'react'
+import styled from 'styled-components'
+import tw from 'twin.macro'
+import { StoreFinderContext, StoreMapDispatchContext } from 'contexts'
+import StoresList from './StoresList.js'
 
 const Container = styled.div`
   ${tw`grid`}
@@ -43,21 +43,19 @@ const Heading = styled.h2`
   margin-bottom: 0;
 `
 
-const StoresPanel = (props) => {
+const StoresPanel = ({ dispatch }) => (
   // const { stores } = useContext(StoreFinderContext)
-  return (
-    <Container>
-      <Heading>Find Stores</Heading>
-      {/* <StoresSearch
+  <Container>
+    <Heading>Find Stores</Heading>
+    {/* <StoresSearch
         className="StoreSearch"
         allStores={stores}
         onChange={(value) => setInputValue(value)}
       ></StoresSearch> */}
-      <StoreMapDispatchContext.Provider value={props.dispatch}>
-        <StoresList></StoresList>
-      </StoreMapDispatchContext.Provider>
-    </Container>
-  )
-}
+    <StoreMapDispatchContext.Provider value={dispatch}>
+      <StoresList />
+    </StoreMapDispatchContext.Provider>
+  </Container>
+)
 
 export default StoresPanel

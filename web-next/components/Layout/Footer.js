@@ -71,13 +71,11 @@ const StyledLink = styled.a`
   ${tw`cursor-pointer text-tr-white text-opacity-90 text-xs xs:text-base hover:text-opacity-100`}
 `
 
-const Link = ({ href, name }) => {
-  return (
+const Link = ({ href, name }) => (
     <NextLink href={href} passHref>
       <StyledLink>{name}</StyledLink>
     </NextLink>
   )
-}
 
 const A = styled.a``
 
@@ -86,8 +84,7 @@ const BrandLogo = styled.img`
   width: auto;
 `
 
-const Footer = () => {
-  return (
+const Footer = () => (
     <StyledFooter>
       <Grid>
         <FormColumnOne>
@@ -95,7 +92,7 @@ const Footer = () => {
           <FormMessage>Get notified of the latest cannabis news, deals, events updates and more!</FormMessage>
         </FormColumnOne>
         <FormColumnTwo>
-          <SubscribeForm></SubscribeForm>
+          <SubscribeForm />
         </FormColumnTwo>
         <Column tw="col-span-full xs:col-span-1">
           <Row tw="justify-start items-start space-x-6 flex-wrap xl:justify-center">
@@ -116,11 +113,10 @@ const Footer = () => {
           </SitemapRow>
         </Column>
         <SocialColumn>
-          <SocialButtonGroup stylesheet={socialButtonGroupCSS} size={"1.5rem"} />
+          <SocialButtonGroup stylesheet={socialButtonGroupCSS} size="1.5rem" />
         </SocialColumn>
       </Grid>
     </StyledFooter>
   )
-}
 
 export default memo(Footer)

@@ -1,9 +1,11 @@
 {
-  "exclude": ["node_modules", ".next"],
+  "exclude": ["node_modules", ".next", "public", "package.lock.json", "out"],
   "compilerOptions": {
+    "module": "es6",
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"]
+      "@/components/*": ["components/*"],
+      "components/*": ["components/*"]
     }
   }
 }

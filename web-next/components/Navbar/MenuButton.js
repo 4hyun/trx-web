@@ -3,9 +3,9 @@ import { TRXMenuIconClose, TRXMenuIconOpen } from "components/Icons";
 
 export const DesktopMenuButton = ({ menuOpen }) =>
   menuOpen ? (
-    <TRXMenuIconOpen></TRXMenuIconOpen>
+    <TRXMenuIconOpen />
   ) : (
-    <TRXMenuIconClose></TRXMenuIconClose>
+    <TRXMenuIconClose />
   );
 
 export default DesktopMenuButton;

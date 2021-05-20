@@ -1,1 +1,5 @@
 safile.json
+node_modules
+.env
+env.yaml
+*.zip

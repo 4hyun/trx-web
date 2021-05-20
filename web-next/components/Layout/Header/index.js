@@ -1,13 +1,13 @@
 import React, { memo, useReducer, useCallback } from "react"
 import styled, { keyframes } from "styled-components"
 import tw from "twin.macro"
-import { OPEN_DESKTOP_MENU, CLOSE_DESKTOP_MENU, SHOW_MENU_CONTENT, HIDE_MENU_CONTENT } from "./constants"
-import { headerContainerStyles, menuLogoButtonStyles } from "./styles"
-import reducer from "./reducer"
 import Navbar from "components/Navbar"
 import { MobileMenu, DesktopMenu } from "components/Menu"
 import { defaultMenuList } from "components/Menu/data"
 import { DesktopMenuLogoButton, MobileMenuLogoButton } from "components/Navbar/MenuLogoButton"
+import reducer from "./reducer"
+import { headerContainerStyles, menuLogoButtonStyles } from "./styles"
+import { OPEN_DESKTOP_MENU, CLOSE_DESKTOP_MENU, SHOW_MENU_CONTENT, HIDE_MENU_CONTENT } from "./constants"
 
 const headerFadeIn = keyframes`
   from {
@@ -77,7 +77,7 @@ const Header = ({ desktopStyles }) => {
 
   return (
     <HeaderContainer onTransitionEnd={handleTransitionEnd} menuOpen={menuOpen} desktopStyles={desktopStyles}>
-      {/***
+      {/** *
     TODO: Add condition to socialButtonGroup prop.
     
     When breakpoint is Mobile | Tablet,

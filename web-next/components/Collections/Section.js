@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react"
-import tw, { styled } from "twin.macro"
-import { Element } from "react-scroll"
+import { useMemo } from 'react'
+import tw, { styled } from 'twin.macro'
 /* components */
-import SectionCover from "./SectionCover"
-/* hooks */
-import { useWindowSize } from "lib/hooks"
+import { useWindowSize } from 'lib/hooks'
+import SectionCover from './SectionCover'
+/* utils */
+import { parseScrollContainerID } from '@/components/Collections/utils'
 
 const SectionWrapper = styled.section`
   ${tw`flex`}
@@ -36,22 +36,30 @@ const Section = ({ collection, coverLeft }) => {
     [collection]
   )
   return (
-      <SectionWrapper coverLeft={coverLeft}>
-        <Column tw="flex-1 self-center space-y-4">
-          <SectionTitle>{name}</SectionTitle>
-          {width < 475 && (
-            <Column tw="flex-initial xl:ml-36 h-auto float-right">
-              {srcSet && <SectionCover src={cover_media.url} srcSet={srcSet} sizes={sizes} />}
-            </Column>
-          )}
-          <TextContent>{desc}</TextContent>
-        </Column>
-        {width > 475 && (
-          <Column tw="flex-initial xl:ml-36 h-auto max-w-1/2">
-            {srcSet && <SectionCover src={cover_media.url} srcSet={srcSet} sizes={sizes} />}
+    <SectionWrapper coverLeft={coverLeft} id={parseScrollContainerID(name)}>
+      <Column tw="flex-1 self-center space-y-4">
+        <SectionTitle>{name}</SectionTitle>
+        {width < 475 && (
+          <Column tw="flex-initial xl:ml-36 h-auto float-right">
+            {srcSet && (
+              <SectionCover
+                src={cover_media.url}
+                srcSet={srcSet}
+                sizes={sizes}
+              />
+            )}
           </Column>
         )}
-      </SectionWrapper>
+        <TextContent>{desc}</TextContent>
+      </Column>
+      {width > 475 && (
+        <Column tw="flex-initial xl:ml-36 h-auto max-w-1/2">
+          {srcSet && (
+            <SectionCover src={cover_media.url} srcSet={srcSet} sizes={sizes} />
+          )}
+        </Column>
+      )}
+    </SectionWrapper>
   )
 }
 

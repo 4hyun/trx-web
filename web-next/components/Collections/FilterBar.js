@@ -1,6 +1,7 @@
-import { useMemo } from "react"
-import tw, { styled, css } from "twin.macro"
-import { animateScroll as scroll } from "react-scroll"
+import tw, { styled, css } from 'twin.macro'
+/* ./utils */
+import { parseScrollContainerID } from './utils'
+import { scrollTo } from 'lib/utils'
 
 const hoverButtonStyles = css`
   ${tw`lg:(px-2.5 py-1)`}
@@ -20,27 +21,22 @@ const FilterItem = styled.li`
 
 const Wrapper = tw.ul`flex flex-wrap justify-center mb-14 -mx-8 lg:(space-x-12 mb-0)`
 
-const FilterBar = ({ filters, setFilter }) => {
-  console.log('>>DEBUG : filters.length :', filters.length)
-  return (
-    <Wrapper>
-      {filters.map((collectionName) => {
-        return (
-          <FilterItem
-            key={collectionName}
-            onClick={() => {
-              const scrollToElement = collectionName.toLowerCase().replaceAll(' ','-')
-              console.log(`scorll to ${scrollToElement}`)
-              scroll.scrollTo(scrollToElement)
-
-            }}
-          >
-            {collectionName}
-          </FilterItem>
-        )
-      })}
-    </Wrapper>
-  )
-}
+const FilterBar = ({ collections }) => (
+  <Wrapper>
+    {collections.map(({ name }) => (
+      <FilterItem
+        key={name}
+        onClick={() => {
+          const { y } = document
+            .getElementById(parseScrollContainerID(name))
+            .getBoundingClientRect()
+          scrollTo({ top: y, behavior: 'smooth' })
+        }}
+      >
+        {name}
+      </FilterItem>
+    ))}
+  </Wrapper>
+)
 
 export default FilterBar

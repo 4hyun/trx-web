@@ -1,7 +1,7 @@
-import React, { useState } from "react"
-import tw, { styled } from "twin.macro"
-import { FlavorPortfolio, FlavorSingleView } from "@/components/Flavors"
-import Footer from "components/Layout/Footer"
+import React, { useState } from 'react'
+import tw, { styled } from 'twin.macro'
+import { FlavorPortfolio, FlavorSingleView } from '@/components/Flavors'
+import Footer from '@/components/Layout/Footer'
 
 const GridContainer = styled.div`
   min-height: 80vh;
@@ -22,15 +22,18 @@ const Flavors = ({ flavors }) => {
   }
 
   return (
-    <React.Fragment>
+    <>
       <GridContainer>
-        <FlavorPortfolio collection={flavors} onItemClick={handleCollectionClick} />
+        <FlavorPortfolio
+          collection={flavors}
+          onItemClick={handleCollectionClick}
+        />
         {/* <Column>
           <FlavorSingleView selected={selectedCollection} tempLoadCollection={() => handleCollectionClick(flavors[0])} />
         </Column> */}
       </GridContainer>
       <Footer />
-    </React.Fragment>
+    </>
   )
 }
 

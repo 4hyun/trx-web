@@ -29,13 +29,11 @@ const BackgroundVideoWrapper = styled.div`
   ${tw`fixed inset-0`}
 `
 
-const FixedBackgroundVideo = (videoProps) => {
-  return (
+const FixedBackgroundVideo = (videoProps) => (
     <BackgroundVideoWrapper>
       <MainBackgroundVideo {...videoProps} />
     </BackgroundVideoWrapper>
   )
-}
 
 const Layout = ({ children: mainContent, router }) => {
   const [ageCheckedValue, setAgeChecked] = useState(null)
@@ -48,7 +46,7 @@ const Layout = ({ children: mainContent, router }) => {
       const ageCheckValue = localStorage.getItem(AGE_GATE_LS_KEY)
       if (ageCheckValue) {
         setAgeChecked(ageCheckValue)
-        return
+        
       } else {
         router.replace("age-gate")
       }
@@ -64,10 +62,10 @@ const Layout = ({ children: mainContent, router }) => {
 
   return (
     <Wrapper paddingLeft={showHeader}>
-      {router.pathname === "/age-gate" && <FixedBackgroundVideo autoPlay={true} loop={true} />}
+      {router.pathname === "/age-gate" && <FixedBackgroundVideo autoPlay loop />}
       <Container>
         <AgeGateContext.Provider value={ageGateContextValue}>
-          {showHeader && <Header desktopStyles={navbarStyles.desktop.styles}></Header>}
+          {showHeader && <Header desktopStyles={navbarStyles.desktop.styles} />}
           {mainContent}
         </AgeGateContext.Provider>
       </Container>

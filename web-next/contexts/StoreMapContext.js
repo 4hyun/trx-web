@@ -1,5 +1,5 @@
-import React from "react"
-import mapStyle from "components/StoreFinder/StoresMap/mapStyle.json"
+import React from 'react'
+import mapStyle from 'components/StoreFinder/StoresMap/mapStyle.json'
 
 const defaultValue = {
   center: {
@@ -7,6 +7,7 @@ const defaultValue = {
     lng: -113.48928774950261,
   },
   zoom: 12,
+  selected: null,
   styles: mapStyle,
 }
 

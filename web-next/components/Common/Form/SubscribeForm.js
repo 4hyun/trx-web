@@ -1,7 +1,11 @@
-import React from "react"
-import { Formik, Field, Form } from "formik"
-import styled from "styled-components"
-import tw from "twin.macro"
+import React from 'react'
+import { Formik, Field, Form } from 'formik'
+import styled from 'styled-components'
+import tw from 'twin.macro'
+import { subscribeNewsletterUrl } from 'constants/index.js'
+import { callCloudFunction } from 'lib/api'
+/* ./utils. */
+import { formatRow } from './utils'
 
 const StyledForm = styled(Form)`
   ${tw`w-full`}
@@ -19,6 +23,17 @@ const StyledButton = styled.button`
 `
 
 const InputGroup = styled.div`
+  /* Change the white to any color */
+  &,
+  & * {
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+      border-radius: 50px;
+    }
+  }
   & {
     ${tw`relative flex flex-col items-center space-y-6`}
     ${tw`xs:(flex-row bg-tr-white rounded-full pl-4 max-w-md space-y-0)`}
@@ -36,27 +51,53 @@ const InputGroup = styled.div`
 /** TODO: add validation
  * consider Yup
  * other reference: https://formik.org/docs/guides/validation */
+
+const SuccessMessage = styled.span`
+  ${tw`w-full flex justify-center`}
+`
+
+const clearForm = (clearFn = () => {}) => {
+  const wait = 3000
+  setTimeout(clearFn, wait)
+}
+
 const SubscribeForm = ({ submitLabel }) => (
-  <React.Fragment>
+  <>
     <Formik
       initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
+        email: '',
       }}
-      onSubmit={async (values) => {
-        await new Promise((r) => setTimeout(r, 500))
-        // alert(JSON.stringify(values, null, 2))
+      onSubmit={async (values, { setStatus, resetForm }) => {
+        const fieldValues = Object.values(values)
+        const rowData = formatRow(fieldValues)
+        const { status } = await callCloudFunction(
+          subscribeNewsletterUrl,
+          rowData
+        )
+        setStatus(status)
+        if (status === 200) clearForm(resetForm)
       }}
     >
-      <StyledForm>
-        <InputGroup>
-          <StyledField id="email" name="email" placeholder="enter your email" type="email" />
-          <StyledButton type="submit">{submitLabel || "Subscribe"}</StyledButton>
-        </InputGroup>
-      </StyledForm>
+      {(props) => (
+        <StyledForm onSubmit={props.handleSubmit}>
+          <InputGroup>
+            <StyledField
+              id="email"
+              name="email"
+              placeholder="enter your email"
+              type="email"
+            />
+            <StyledButton type="submit">
+              {props.isSubmitting ? 'sending..' : submitLabel || 'Subscribe'}
+            </StyledButton>
+          </InputGroup>
+          {props.status === 200 && (
+            <SuccessMessage>Thank you, we will keep you posted!</SuccessMessage>
+          )}
+        </StyledForm>
+      )}
     </Formik>
-  </React.Fragment>
+  </>
 )
 
 export default SubscribeForm

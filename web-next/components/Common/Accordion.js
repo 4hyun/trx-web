@@ -15,7 +15,7 @@ const styles = {
 const sizeStyles = (size) => ({ width: size, height: size })
 
 export const AccordionToggleIcon = styled(IconAngleDown)`
-  ${({ size }) => sizeStyles(size ? size : styles.defaultSize)}
+  ${({ size }) => sizeStyles(size || styles.defaultSize)}
   ${({ open }) => open && tw`transform rotate-180`};
   &,
   & path {

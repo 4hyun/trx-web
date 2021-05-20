@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+
 const defaultValue = {
   ageCheckedValue: null,
   setAgeChecked: () => {},

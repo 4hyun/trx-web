@@ -56,25 +56,23 @@ const messages = [
 /* TODO: refactor functions to "lib" */
 
 const messagesMap = messages.reduce((map, _message) => {
-  let { title, message, actions } = _message;
+  const { title, message, actions } = _message;
   map[_message.m_id] = { title, message, actions };
   return map;
 }, {});
 
 const handleMessageActionError = (action_error) => {
   console.log("action.error : ", action_error);
-  return;
+  
 };
 
-export const getMessageById = (id) => {
-  return messagesMap[id];
-};
+export const getMessageById = (id) => messagesMap[id];
 
 // May use async logic in the future (eg. server side age verification)
 export const getAgeCheckValue = async () => {
   try {
-    let { localStorage } = window;
-    let ageCheckValue = localStorage.getItem(AGE_GATE_LS_KEY);
+    const { localStorage } = window;
+    const ageCheckValue = localStorage.getItem(AGE_GATE_LS_KEY);
     return ageCheckValue;
   } catch (error) {
     console.warn("[Error] getAgeCheckValue", error);
@@ -83,8 +81,8 @@ export const getAgeCheckValue = async () => {
 
 export const setAgeCheckValue = async () => {
   try {
-    let { localStorage } = window;
-    let newAgeCheckValue = new Date().getTime();
+    const { localStorage } = window;
+    const newAgeCheckValue = new Date().getTime();
     localStorage.setItem(AGE_GATE_LS_KEY, newAgeCheckValue);
     return newAgeCheckValue;
   } catch (error) {
@@ -93,7 +91,7 @@ export const setAgeCheckValue = async () => {
 };
 
 export const handleMessageAction = async (action, cbBeforeNextMessage) => {
-  let {
+  const {
     a_id,
     next: { m_id, pass },
     error: action_error,
@@ -103,7 +101,7 @@ export const handleMessageAction = async (action, cbBeforeNextMessage) => {
     if (cbBeforeNextMessage) {
       response = await cbBeforeNextMessage();
     }
-    let nextMessage = getMessageById(m_id);
+    const nextMessage = getMessageById(m_id);
     return nextMessage;
   } catch (error) {
     if (action_error) handleMessageActionError(action_error);

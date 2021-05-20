@@ -1,6 +1,6 @@
-import React from "react"
-import { createGlobalStyle } from "styled-components"
-import tw, { css, theme, GlobalStyles as BaseStyles } from "twin.macro"
+import React from 'react'
+import { createGlobalStyle } from 'styled-components'
+import tw, { css, theme, GlobalStyles as BaseStyles } from 'twin.macro'
 
 const CustomStyles = createGlobalStyle`
   :root {
@@ -8,13 +8,14 @@ const CustomStyles = createGlobalStyle`
     --MobileNavbarHeight: 60px;
     --FooterMinHeight: 200px;
     --MobileStoreFinderPanelHeadingHeight: 6rem;
+    --tr-white: #F9F9FB;
   }
   * {  
     -webkit-tap-highlight-color: transparent;
     ${tw`antialiased`};
   }
   button {
-    ${"" /* TODO: apply button reset styles here */}
+    ${'' /* TODO: apply button reset styles here */}
   }
   body {
     ::-webkit-scrollbar {
@@ -40,10 +41,10 @@ const CustomStyles = createGlobalStyle`
 `
 
 const GlobalStyles = () => (
-  <React.Fragment>
+  <>
     <BaseStyles />
     <CustomStyles />
-  </React.Fragment>
+  </>
 )
 
 export default GlobalStyles

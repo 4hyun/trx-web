@@ -35,7 +35,7 @@ const CollectionSingleView = ({ selected, tempLoadCollection }) => {
     if (selected.isDefaultProps) tempLoadCollection()
   }, [])
   return (
-    <React.Fragment>
+    <>
       {!selected.isDefaultProps && (
         <Container>
           <Title>{`Tunaaaa\n${selected.name}`}</Title>
@@ -43,7 +43,7 @@ const CollectionSingleView = ({ selected, tempLoadCollection }) => {
           <AvailableCategories categories={selected.available_categories} />
         </Container>
       )}
-    </React.Fragment>
+    </>
   )
 }
 

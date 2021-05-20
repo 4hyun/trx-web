@@ -46,7 +46,7 @@ const Button = styled.button`
 `
 
 const processNewAgeCheck = async () => {
-  let ageCheckValue = await setAgeCheckValue()
+  const ageCheckValue = await setAgeCheckValue()
   return ageCheckValue
 }
 
@@ -54,20 +54,20 @@ const cbBeforeNextMessage = (actionId) => async () => {
   switch (actionId) {
     case 1: {
       // console.log("cbBeforeNextMessage triggered");
-      let ageCheckValue = processNewAgeCheck()
+      const ageCheckValue = processNewAgeCheck()
       return ageCheckValue
     }
     case 2: {
-      return
+      
     }
     case 3: {
-      return
+      
     }
     case 4: {
-      return
+      
     }
     case 5: {
-      return
+      
     }
   }
 }
@@ -85,14 +85,14 @@ const AgeGatePage = () => {
       }
       return enterHome()
     }
-    let message = await handleMessageAction(action, cbBeforeNextMessage(action.a_id))
+    const message = await handleMessageAction(action, cbBeforeNextMessage(action.a_id))
     setMessage(message)
   })
   const enterHome = () => {
     router.replace("/")
   }
   useEffect(async () => {
-    let ageCheckValue = await getAgeCheckValue()
+    const ageCheckValue = await getAgeCheckValue()
     if (ageCheckValue) {
       setAgeCheckValue(ageCheckValue)
       return router.replace("/")

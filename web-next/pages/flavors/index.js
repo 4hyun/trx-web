@@ -1,9 +1,7 @@
-import Flavors from "containers/PageFlavors"
-import { fetchAPI } from "lib/api"
+import Flavors from 'containers/PageFlavors'
+import { fetchAPI } from 'lib/api'
 
-const FlavorsPage = ({ flavors }) => {
-  return <Flavors flavors={flavors}></Flavors>
-}
+const FlavorsPage = ({ flavors }) => <Flavors flavors={flavors} />
 
 export default FlavorsPage
 

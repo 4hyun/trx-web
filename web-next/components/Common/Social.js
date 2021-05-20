@@ -11,8 +11,7 @@ const A = styled.a`
   }
 `
 
-const SocialButtonGroup = ({ onClick, stylesheet, size }) => {
-  return (
+const SocialButtonGroup = ({ onClick, stylesheet, size }) => (
     <SocialWrapper onClick={onClick} stylesheet={stylesheet}>
       {/* <A href="" target="_blank">
         <FacebookIcon size={size} />
@@ -25,6 +24,5 @@ const SocialButtonGroup = ({ onClick, stylesheet, size }) => {
       </A>
     </SocialWrapper>
   )
-}
 
 export default SocialButtonGroup

@@ -1,8 +1,8 @@
 import PropTypes from "prop-types"
 import tw, { styled } from "twin.macro"
-import FlavorCard from "../FlavorCard"
 import IndicaSativaIndicator from "@/components/IndicaSativaIndicator"
 import { scrollbarHideStyles } from "@/components/Common/Styles"
+import FlavorCard from "../FlavorCard"
 
 const styles = {
   borderGap: "16px",
@@ -54,16 +54,14 @@ const CardFooterContent = ({ renderFooterContentProp }) => {
   return <IndicaSativaIndicator indica={indica} sativa={sativa} />
 }
 
-const FlavorsPortfolio = ({ collection, onItemClick }) => {
-  return (
+const FlavorsPortfolio = ({ collection, onItemClick }) => (
     <Container>
       <HeaderContainer>
         <Header>Flavors</Header>
       </HeaderContainer>
       <ScrollContainer>
         <FlavorList>
-          {collection.map((flavor) => {
-            return (
+          {collection.map((flavor) => (
               <FlavorCard
                 key={flavor.id}
                 item={flavor}
@@ -71,16 +69,14 @@ const FlavorsPortfolio = ({ collection, onItemClick }) => {
                 renderFooterContent={CardFooterContent}
                 onClick={() => onItemClick(flavor)}
               />
-            )
-          })}
+            ))}
         </FlavorList>
       </ScrollContainer>
       <FooterContainer>
-        <Footer></Footer>
+        <Footer />
       </FooterContainer>
     </Container>
   )
-}
 FlavorsPortfolio.defaultProps = { collection: new Array(10) }
 FlavorsPortfolio.propTypes = {
   collection: PropTypes.array,

@@ -28,13 +28,11 @@ const DesktopMenuButton = React.memo(({ toggleMenu }) => (
   </NavbarRow>
 ))
 
-const Navbar = ({ menuOpen, toggleMenu }) => {
-  return (
+const Navbar = ({ menuOpen, toggleMenu }) => (
     <Container menuOpen={menuOpen}>
       <DesktopMenuButton toggleMenu={toggleMenu} />
       <SocialButtonGroup />
     </Container>
   )
-}
 
 export default memo(Navbar)

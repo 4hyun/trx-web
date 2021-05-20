@@ -16,7 +16,7 @@ const StyledInput = styled.input`
 
 const StoresSearch = (props) => {
   const { onChange } = props
-  let { data, fuseConfigs } = props
+  const { data, fuseConfigs } = props
   let fuse
   const defaultFuseConfigs = {
     /**

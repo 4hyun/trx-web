@@ -1,15 +1,16 @@
 import React from "react"
 import tw, { styled } from "twin.macro"
 /* components */
-import VideoBackground from "./VideoBackground"
 import ScrollDownIndicator from "components/Common/Indicators/ScrollDownIndicator"
 import { animateScroll as scroll } from "react-scroll"
 /* utils */
 import { getPageHeight } from "lib/utils"
 import { useWindowSize } from "lib/hooks"
-const isMobile = (width) => width <= 475
+import VideoBackground from "./VideoBackground"
 /* logo */
 import TROLogo from "../../../public/logo/trWhiteLogo.svg"
+
+const isMobile = (width) => width <= 475
 
 const IndicatorWrapper = styled.div`
   ${tw`absolute left-0 right-0 bottom-0 h-1/4 flex items-center justify-center`}
@@ -48,7 +49,7 @@ const HomeHero = () => {
 
   return (
     <Container>
-      <VideoBackground {...videoOptions}></VideoBackground>
+      <VideoBackground {...videoOptions} />
       <OverlayFill />
       <OverlayContentWrapper>
         <TitleText>

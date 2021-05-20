@@ -48,12 +48,9 @@ const CategoryWrapper = styled.div`
   }
 `
 
-const Category = ({ data }) => {
-  return <CategoryWrapper>{data.name}</CategoryWrapper>
-}
+const Category = ({ data }) => <CategoryWrapper>{data.name}</CategoryWrapper>
 
-const AvailableProductCategories = ({ categories }) => {
-  return (
+const AvailableProductCategories = ({ categories }) => (
     <Column>
       <BlockTitle>Available as:</BlockTitle>
       <ScrollContainer>
@@ -65,6 +62,5 @@ const AvailableProductCategories = ({ categories }) => {
       </ScrollContainer>
     </Column>
   )
-}
 
 export default AvailableProductCategories

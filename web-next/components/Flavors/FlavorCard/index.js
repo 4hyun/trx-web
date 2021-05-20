@@ -8,7 +8,7 @@ const Container = styled.div`
   height: 100%;
   @media (min-width: 768px) {
     ${tw`rounded-xl shadow-lg cursor-pointer select-none`};
-    grid-column: ${({ colspan }) => gridColumnCSS(colspan ? colspan : 1)};
+    grid-column: ${({ colspan }) => gridColumnCSS(colspan || 1)};
     -webkit-tap-highlight-color: transparent;
   }
   background: ${({ background }) => background && `url('${background}')`};
@@ -53,14 +53,12 @@ const mockImageUrl = "/mock/product-1.png"
 // const MainImage = styled.img`
 //   ${tw`h-full w-auto mx-0`}
 // `
-const FlavorCard = ({ colspan, item, renderFooterContent, renderFooterContentProp, onClick }) => {
-  return (
+const FlavorCard = ({ colspan, item, renderFooterContent, renderFooterContentProp, onClick }) => (
     <Container colspan={colspan} onClick={onClick} background={item.main_img ? item.main_img?.formats?.medium?.url : mockImageUrl}>
       <CardHeader>{`Tunaaaa\n${item.name}`}</CardHeader>
       <CardBody>{/* <MainImage src={item.main_img ? item.main_img?.formats?.medium?.url : mockImageUrl} /> */}</CardBody>
       <CardFooter>{renderFooterContent && renderFooterContent({ renderFooterContentProp })}</CardFooter>
     </Container>
   )
-}
 
 export default memo(FlavorCard)

@@ -13,8 +13,8 @@ const Seo = () => {
       <link rel="canonical" href={url} />
       {preventIndexing && (
         <>
-          <meta name="robots" content="noindex"></meta>
-          <meta name="googlebot" content="noindex"></meta>
+          <meta name="robots" content="noindex" />
+          <meta name="googlebot" content="noindex" />
         </>
       )}
     </Head>

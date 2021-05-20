@@ -1,6 +1,6 @@
 module.exports = {
   trailingSlash: true,
-  exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
+  async exportPathMap (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
     return {
       "/": { page: "/" },
       "/collections": { page: "/collections" },

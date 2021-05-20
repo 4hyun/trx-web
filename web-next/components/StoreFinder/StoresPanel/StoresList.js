@@ -1,7 +1,7 @@
-import { useContext } from "react"
-import { StoreFinderContext, StoreMapDispatchContext } from "contexts"
-import styled from "styled-components"
-import tw from "twin.macro"
+import { useContext } from 'react'
+import { StoreFinderContext, StoreMapDispatchContext } from 'contexts'
+import styled from 'styled-components'
+import tw from 'twin.macro'
 
 const StyledList = styled.ul`
   display: grid;
@@ -81,7 +81,7 @@ const ScrollContainer = styled.div`
   }
   @media (min-width: 992px) {
     ${
-      "" /* top: var(--top-lg);
+      '' /* top: var(--top-lg);
     position: absolute; */
     }
   }
@@ -96,24 +96,22 @@ const StoresList = (props) => {
       <StyledList>
         {(storesFilteredBySearch && storesFilteredBySearch.map(() => {})) ||
           (stores &&
-            stores.map(({ id, name, formatted_address, lat, lng }, i) => {
-              return (
-                <StyledItem
-                  key={id}
-                  onClick={() => {
-                    if (!dispatch) return
-                    const action = {
-                      type: "UPDATE_CENTER",
-                      payload: { center: { lat, lng }, zoom: 12 },
-                    }
-                    dispatch(action)
-                  }}
-                >
-                  <StoreName>{name}</StoreName>
-                  <StoreAddress>{formatted_address}</StoreAddress>
-                </StyledItem>
-              )
-            }))}
+            stores.map(({ id, name, formatted_address, lat, lng }, i) => (
+              <StyledItem
+                key={id}
+                onClick={() => {
+                  if (!dispatch) return
+                  const action = {
+                    type: 'UPDATE_CENTER',
+                    payload: { center: { lat, lng }, zoom: 12, selected: id },
+                  }
+                  dispatch(action)
+                }}
+              >
+                <StoreName>{name}</StoreName>
+                <StoreAddress>{formatted_address}</StoreAddress>
+              </StyledItem>
+            )))}
       </StyledList>
     </ScrollContainer>
   )

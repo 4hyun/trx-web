@@ -17,7 +17,7 @@ const Leaf = ({ leafType }) =>
   leafType === "i" ? <IndicaLeaf /> : <SativaLeaf />;
 
 const IndicaSativaIndicator = ({ indica, sativa }) => {
-  let leaves = [];
+  const leaves = [];
   for (let i = indica; i > 0; i--) {
     leaves.push("i");
   }

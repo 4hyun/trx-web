@@ -72,8 +72,7 @@ const ButtonWrapper = styled.div`
   ${({ transitionDelay }) => ({ "transition-delay": transitionDelay })}
 `
 
-export const DesktopMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
-  return (
+export const DesktopMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => (
     <Container.Desktop
       onTransitionEnd={(e) => {
         e.stopPropagation()
@@ -93,16 +92,13 @@ export const DesktopMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
       </ButtonWrapper>
     </Container.Desktop>
   )
-}
 
-export const MobileMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => {
-  return (
+export const MobileMenuLogoButton = ({ styles, menuOpen, toggleMenu }) => (
     <Container.Mobile>
       <ButtonWrapper menuOpen={menuOpen} onClick={toggleMenu}>
         {!menuOpen ? <DesktopMenuIconOpen /> : <DesktopMenuIconClose />}
       </ButtonWrapper>
     </Container.Mobile>
   )
-}
 
 export default DesktopMenuLogoButton

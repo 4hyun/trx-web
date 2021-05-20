@@ -14,14 +14,14 @@ const reducer = (state, action) => {
       return { ...state, menuOpen: !state.menuOpen };
     }
     case SHOW_MENU_CONTENT: {
-      let transitionEnd = {
+      const transitionEnd = {
         afterMenuOpen: true,
         afterMenuClose: false,
       };
       return { ...state, transitionEnd };
     }
     case HIDE_MENU_CONTENT: {
-      let transitionEnd = {
+      const transitionEnd = {
         afterMenuOpen: false,
         afterMenuClose: true,
       };

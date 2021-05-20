@@ -1,0 +1,28 @@
+{
+  "name": "xtracts-gcf-forms",
+  "version": "1.0.0",
+  "description": "Form Service built on GCF and Node for xtracts.tunaaaa.ca",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx functions-framework",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sa Hwang",
+  "license": "ISC",
+  "dependencies": {
+    "googleapis": "^73.0.0",
+    "nodemailer": "^6.6.0"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^1.7.1",
+    "dotenv": "^9.0.2",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "prettier": "2.3.0",
+    "prettier-eslint": "^12.0.0"
+  }
+}
