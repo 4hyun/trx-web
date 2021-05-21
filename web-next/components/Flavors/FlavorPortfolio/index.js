@@ -1,12 +1,12 @@
-import PropTypes from "prop-types"
-import tw, { styled } from "twin.macro"
-import IndicaSativaIndicator from "@/components/IndicaSativaIndicator"
-import { scrollbarHideStyles } from "@/components/Common/Styles"
-import FlavorCard from "../FlavorCard"
+import PropTypes from 'prop-types'
+import tw, { styled } from 'twin.macro'
+import IndicaSativaIndicator from '@/components/IndicaSativaIndicator'
+import { scrollbarHideStyles } from '@/components/Common/Styles'
+import FlavorCard from '../FlavorCard'
 
 const styles = {
-  borderGap: "16px",
-  header: { fontSize: "2rem" },
+  borderGap: '16px',
+  header: { fontSize: '2rem' },
 }
 
 /* TODO: possibly rename to LayoutContainer to 
@@ -28,7 +28,7 @@ const Header = styled.div`
 const ScrollContainer = styled.div`
   ${scrollbarHideStyles}
   @media (min-width: 1024px) and (max-width: 1279px) {
-    ${"" /* height: 600px; */}
+    ${'' /* height: 600px; */}
     overflow-y: scroll;
   }
 `
@@ -55,28 +55,28 @@ const CardFooterContent = ({ renderFooterContentProp }) => {
 }
 
 const FlavorsPortfolio = ({ collection, onItemClick }) => (
-    <Container>
-      <HeaderContainer>
-        <Header>Flavors</Header>
-      </HeaderContainer>
-      <ScrollContainer>
-        <FlavorList>
-          {collection.map((flavor) => (
-              <FlavorCard
-                key={flavor.id}
-                item={flavor}
-                renderFooterContentProp={flavor.indica_sativa}
-                renderFooterContent={CardFooterContent}
-                onClick={() => onItemClick(flavor)}
-              />
-            ))}
-        </FlavorList>
-      </ScrollContainer>
-      <FooterContainer>
-        <Footer />
-      </FooterContainer>
-    </Container>
-  )
+  <Container>
+    <HeaderContainer>
+      <Header>Flavors</Header>
+    </HeaderContainer>
+    <ScrollContainer>
+      <FlavorList>
+        {collection.map((flavor) => (
+          <FlavorCard
+            key={flavor.id}
+            item={flavor}
+            renderFooterContentProp={flavor.indica_sativa}
+            renderFooterContent={CardFooterContent}
+            onClick={() => onItemClick(flavor)}
+          />
+        ))}
+      </FlavorList>
+    </ScrollContainer>
+    <FooterContainer>
+      <Footer />
+    </FooterContainer>
+  </Container>
+)
 FlavorsPortfolio.defaultProps = { collection: new Array(10) }
 FlavorsPortfolio.propTypes = {
   collection: PropTypes.array,

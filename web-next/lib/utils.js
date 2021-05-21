@@ -9,3 +9,8 @@ const defaultScrollOptions = { behavior: 'smooth' }
 export const scrollTo = (options = {}) => {
   window.scrollTo({ ...defaultScrollOptions, ...options })
 }
+
+export const srcSetMapFn = (formatKey, formats) => {
+  const { url, width } = formats[formatKey]
+  return `${url} ${width}w, `
+}

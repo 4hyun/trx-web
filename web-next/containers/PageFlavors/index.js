@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import tw, { styled } from 'twin.macro'
-import { FlavorPortfolio, FlavorSingleView } from '@/components/Flavors'
+import { FlavorPortfolio, FlavorDetailWindow } from '@/components/Flavors'
 import Footer from '@/components/Layout/Footer'
 
 const GridContainer = styled.div`
@@ -16,8 +16,9 @@ const Column = styled.div`
 `
 
 const Flavors = ({ flavors }) => {
-  const [selectedCollection, setSelectedCollection] = useState()
-  const handleCollectionClick = (collection) => {
+  const [selectedCollection, setSelectedCollection] = useState(null)
+  const removeSelected = () => setSelectedCollection(null)
+  const handleFlavorCardClick = (collection) => {
     setSelectedCollection(collection)
   }
 
@@ -26,12 +27,15 @@ const Flavors = ({ flavors }) => {
       <GridContainer>
         <FlavorPortfolio
           collection={flavors}
-          onItemClick={handleCollectionClick}
+          onItemClick={handleFlavorCardClick}
         />
         {/* <Column>
           <FlavorSingleView selected={selectedCollection} tempLoadCollection={() => handleCollectionClick(flavors[0])} />
         </Column> */}
       </GridContainer>
+      {selectedCollection && (
+        <FlavorDetailWindow flavor={selectedCollection} hide={removeSelected} />
+      )}
       <Footer />
     </>
   )
