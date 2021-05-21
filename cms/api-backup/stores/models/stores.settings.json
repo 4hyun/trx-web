@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stores",
+  "info": {
+    "name": "Stores",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "business_status": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "place_id": {
+      "type": "string",
+      "unique": true
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "user_ratings_total": {
+      "type": "integer"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "lng": {
+      "type": "float"
+    },
+    "lat": {
+      "type": "float"
+    },
+    "compound_code": {
+      "type": "string"
+    },
+    "retailer": {
+      "type": "boolean"
+    },
+    "city": {
+      "type": "string"
+    },
+    "heard_of_it": {
+      "type": "boolean"
+    },
+    "visited_store": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "flavors_pages",
+  "info": {
+    "name": "Flavors Page"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "SEO": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.seo"
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vape_categories",
+  "info": {
+    "name": "Vape Categories",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "category": {
+      "type": "string",
+      "regex": "(unit)",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}

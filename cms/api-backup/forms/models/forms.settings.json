@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forms",
+  "info": {
+    "name": "Forms",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Fields": {
+      "type": "component",
+      "repeatable": true,
+      "component": "form.field",
+      "required": false,
+      "max": 10,
+      "min": 1
+    },
+    "form_groups": {
+      "type": "dynamiczone",
+      "components": [
+        "form.checkbox-group"
+      ],
+      "max": 5
+    },
+    "email_to": {
+      "type": "component",
+      "repeatable": false,
+      "component": "form.email"
+    },
+    "email_from": {
+      "type": "component",
+      "repeatable": false,
+      "component": "form.email"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "action": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

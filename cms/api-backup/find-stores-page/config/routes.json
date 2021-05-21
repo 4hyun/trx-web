@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/find-stores-page",
+      "handler": "find-stores-page.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/find-stores-page",
+      "handler": "find-stores-page.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/find-stores-page",
+      "handler": "find-stores-page.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

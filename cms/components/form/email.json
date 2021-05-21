@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_form_emails",
+  "info": {
+    "name": "Email",
+    "icon": "mail-bulk"
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "email"
+    }
+  }
+}
