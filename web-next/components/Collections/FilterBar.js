@@ -1,7 +1,7 @@
 import tw, { styled, css } from 'twin.macro'
 /* ./utils */
-import { parseScrollContainerID } from './utils'
 import { scrollTo } from 'lib/utils'
+import { parseScrollContainerID } from './utils'
 
 const hoverButtonStyles = css`
   ${tw`lg:(px-2.5 py-1)`}

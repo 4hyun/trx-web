@@ -17,6 +17,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
+    'import/no-unresolved': 0,
     // 'import/no-unresolved': 0,
   },
   settings: {
@@ -27,6 +28,7 @@ module.exports = {
           ['@/components', './components'],
           ['lib', './lib'],
         ],
+        extensions: ['.ts', '.js', '.jsx', '.json'],
       },
     },
   },

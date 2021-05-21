@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from "react"
-import { withRouter } from "next/router"
-import styled from "styled-components"
-import tw from "twin.macro"
-import { AGE_GATE_LS_KEY } from "components/AgeGate/constants"
+import React, { useEffect, useState } from 'react'
+import { withRouter } from 'next/router'
+import styled from 'styled-components'
+import tw from 'twin.macro'
+import { AGE_GATE_LS_KEY } from 'components/AgeGate/constants'
 /* context */
-import AgeGateContext from "components/AgeGate/context"
+import AgeGateContext from 'components/AgeGate/context'
 /* paths */
-import { paths } from "paths"
+import { paths } from 'paths'
 /* components */
-import Header from "@/components/Layout/Header"
-import MainBackgroundVideo from "components/Common/MainBackgroundVideo"
+import Header from '@/components/Layout/Header'
+import MainBackgroundVideo from '@/components/Common/MainBackgroundVideo'
+import ScrollTopButton from '@/components/Common/ScrollTopButton'
 /* styles */
-import { navbarStyles } from "@/components/Layout/Header/styles"
+import { navbarStyles } from '@/components/Layout/Header/styles'
 
 const Wrapper = styled.div`
   ${tw`w-full h-screen`}
   @media (min-width: 1024px) {
     padding-right: 0;
-    padding-left: ${({ paddingLeft }) => (paddingLeft ? navbarStyles.desktop.width : "none")};
+    padding-left: ${({ paddingLeft }) =>
+      paddingLeft ? navbarStyles.desktop.width : 'none'};
   }
 `
 
@@ -30,10 +32,10 @@ const BackgroundVideoWrapper = styled.div`
 `
 
 const FixedBackgroundVideo = (videoProps) => (
-    <BackgroundVideoWrapper>
-      <MainBackgroundVideo {...videoProps} />
-    </BackgroundVideoWrapper>
-  )
+  <BackgroundVideoWrapper>
+    <MainBackgroundVideo {...videoProps} />
+  </BackgroundVideoWrapper>
+)
 
 const Layout = ({ children: mainContent, router }) => {
   const [ageCheckedValue, setAgeChecked] = useState(null)
@@ -41,14 +43,13 @@ const Layout = ({ children: mainContent, router }) => {
   const ageGateContextValue = { ageCheckedValue, setAgeChecked }
   useEffect(() => {
     // console.log("router ", router);
-    if (router.pathname === "/") {
+    if (router.pathname === '/') {
       // console.log('>>DEBUG: <MyApp/> router.pathname === "/"')
       const ageCheckValue = localStorage.getItem(AGE_GATE_LS_KEY)
       if (ageCheckValue) {
         setAgeChecked(ageCheckValue)
-        
       } else {
-        router.replace("age-gate")
+        router.replace('age-gate')
       }
     }
   }, [router.pathname])
@@ -56,19 +57,23 @@ const Layout = ({ children: mainContent, router }) => {
   useEffect(() => {
     // console.log(">>DEBUG : <Layout/> useEffect() ")
     if (router.pathname === paths.ageGate) return setShowHeader(false)
-    if (showHeader) return
+    if (showHeader) return null
     setShowHeader(true)
+    return null
   }, [router.pathname])
 
   return (
     <Wrapper paddingLeft={showHeader}>
-      {router.pathname === "/age-gate" && <FixedBackgroundVideo autoPlay loop />}
+      {router.pathname === '/age-gate' && (
+        <FixedBackgroundVideo autoPlay loop />
+      )}
       <Container>
         <AgeGateContext.Provider value={ageGateContextValue}>
           {showHeader && <Header desktopStyles={navbarStyles.desktop.styles} />}
           {mainContent}
         </AgeGateContext.Provider>
       </Container>
+      <ScrollTopButton />
     </Wrapper>
   )
 }

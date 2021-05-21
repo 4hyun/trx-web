@@ -2,9 +2,9 @@ import { useMemo } from 'react'
 import tw, { styled } from 'twin.macro'
 /* components */
 import { useWindowSize } from 'lib/hooks'
+import { parseScrollContainerID } from '@/components/Collections/utils'
 import SectionCover from './SectionCover'
 /* utils */
-import { parseScrollContainerID } from '@/components/Collections/utils'
 
 const SectionWrapper = styled.section`
   ${tw`flex`}

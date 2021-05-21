@@ -1,14 +1,13 @@
-import React from "react"
-import tw, { styled } from "twin.macro"
+import React from 'react'
+import tw, { styled } from 'twin.macro'
 /* components */
-import ScrollDownIndicator from "components/Common/Indicators/ScrollDownIndicator"
-import { animateScroll as scroll } from "react-scroll"
+import ScrollDownIndicator from 'components/Common/Indicators/ScrollDownIndicator'
 /* utils */
-import { getPageHeight } from "lib/utils"
-import { useWindowSize } from "lib/hooks"
-import VideoBackground from "./VideoBackground"
+import { getPageHeight, scrollTo } from 'lib/utils'
+import { useWindowSize } from 'lib/hooks'
+import VideoBackground from './VideoBackground'
 /* logo */
-import TROLogo from "../../../public/logo/trWhiteLogo.svg"
+import TROLogo from '../../../public/logo/trWhiteLogo.svg'
 
 const isMobile = (width) => width <= 475
 
@@ -37,7 +36,10 @@ const TitleText = styled.p`
   }
 `
 
-const titleText = { mobile: "#Tunaaaa\nmoonand\nback", desktop: "#Tunaaaamoonandback" }
+const titleText = {
+  mobile: '#Tunaaaa\nmoonand\nback',
+  desktop: '#Tunaaaamoonandback',
+}
 
 const videoOptions = {
   autoPlay: true,
@@ -60,7 +62,10 @@ const HomeHero = () => {
       <IndicatorWrapper>
         <ScrollDownIndicator
           onClick={() => {
-            scroll.scrollTo(getPageHeight())
+            const options = {
+              top: getPageHeight(),
+            }
+            scrollTo(options)
           }}
         />
       </IndicatorWrapper>
