@@ -1,13 +1,21 @@
-import React, { memo, useReducer, useCallback } from "react"
-import styled, { keyframes } from "styled-components"
-import tw from "twin.macro"
-import Navbar from "components/Navbar"
-import { MobileMenu, DesktopMenu } from "components/Menu"
-import { defaultMenuList } from "components/Menu/data"
-import { DesktopMenuLogoButton, MobileMenuLogoButton } from "components/Navbar/MenuLogoButton"
-import reducer from "./reducer"
-import { headerContainerStyles, menuLogoButtonStyles } from "./styles"
-import { OPEN_DESKTOP_MENU, CLOSE_DESKTOP_MENU, SHOW_MENU_CONTENT, HIDE_MENU_CONTENT } from "./constants"
+import React, { memo, useReducer, useCallback } from 'react'
+import styled, { keyframes } from 'styled-components'
+import tw from 'twin.macro'
+import Navbar from 'components/Navbar'
+import { MobileMenu, DesktopMenu } from 'components/Menu'
+import { defaultMenuList } from 'components/Menu/data'
+import {
+  DesktopMenuLogoButton,
+  MobileMenuLogoButton,
+} from 'components/Navbar/MenuLogoButton'
+import reducer from './reducer'
+import { headerContainerStyles, menuLogoButtonStyles } from './styles'
+import {
+  OPEN_DESKTOP_MENU,
+  CLOSE_DESKTOP_MENU,
+  SHOW_MENU_CONTENT,
+  HIDE_MENU_CONTENT,
+} from './constants'
 
 const headerFadeIn = keyframes`
   from {
@@ -23,15 +31,18 @@ const HeaderContainer = styled.div`
   & * {
     ${tw`select-none`}
   }
+  z-index: 140;
   animation-name: ${headerFadeIn};
   animation-duration: 0.6s;
   animation-fill-mode: both;
   animation-delay: 1s;
-  ${tw`relative w-screen lg:(w-full) bg-tr-white z-50 shadow-lg lg:shadow-2xl`};
+  ${tw`relative w-screen lg:(w-full) bg-tr-white shadow-lg lg:shadow-2xl`};
   height: 60px;
 
   @media (min-width: 1024px) {
-    width: ${({ menuOpen }) => (menuOpen && headerContainerStyles.menuOpen.open.width) || headerContainerStyles.menuOpen.close.width};
+    width: ${({ menuOpen }) =>
+      (menuOpen && headerContainerStyles.menuOpen.open.width) ||
+      headerContainerStyles.menuOpen.close.width};
     /* TODO: refactor to transition transform:scale */
     transition: width ${headerContainerStyles.transitionDuration};
     height: 100vh;
@@ -76,22 +87,44 @@ const Header = ({ desktopStyles }) => {
   })
 
   return (
-    <HeaderContainer onTransitionEnd={handleTransitionEnd} menuOpen={menuOpen} desktopStyles={desktopStyles}>
+    <HeaderContainer
+      onTransitionEnd={handleTransitionEnd}
+      menuOpen={menuOpen}
+      desktopStyles={desktopStyles}
+    >
       {/** *
     TODO: Add condition to socialButtonGroup prop.
     
     When breakpoint is Mobile | Tablet,
     pass null */}
       <MobileMenuIGHashtagContainer>
-        <MobileMenuIGHashtagLink href="https://www.instagram.com/tunaaaa_room" target="_blank">
+        <MobileMenuIGHashtagLink
+          href="https://www.instagram.com/tunaaaa_room"
+          target="_blank"
+        >
           #TunaaaaMoonAndBack
         </MobileMenuIGHashtagLink>
       </MobileMenuIGHashtagContainer>
       <Navbar menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
-      <DesktopMenu transitionEnd={transitionEnd} toggleMenu={toggleDesktopMenu} />
-      <DesktopMenuLogoButton styles={menuLogoButtonStyles} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
-      <MobileMenuLogoButton styles={menuLogoButtonStyles} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
-      <MobileMenu menuList={defaultMenuList} menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
+      <DesktopMenu
+        transitionEnd={transitionEnd}
+        toggleMenu={toggleDesktopMenu}
+      />
+      <DesktopMenuLogoButton
+        styles={menuLogoButtonStyles}
+        menuOpen={menuOpen}
+        toggleMenu={toggleDesktopMenu}
+      />
+      <MobileMenuLogoButton
+        styles={menuLogoButtonStyles}
+        menuOpen={menuOpen}
+        toggleMenu={toggleDesktopMenu}
+      />
+      <MobileMenu
+        menuList={defaultMenuList}
+        menuOpen={menuOpen}
+        toggleMenu={toggleDesktopMenu}
+      />
     </HeaderContainer>
   )
 }
