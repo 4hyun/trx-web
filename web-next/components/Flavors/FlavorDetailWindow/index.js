@@ -1,6 +1,8 @@
 import { useMemo } from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
+/* hooks */
+import useLockBodyScroll from 'lib/hooks/useLockBodyScroll'
 /* utils */
 import { srcSetMapFn } from 'lib/utils'
 /* components */
@@ -28,6 +30,7 @@ const ArrowBackIcon = styled(ArrowBack)`
 
 const sizes = `(max-width: 475px) 40vw, 400px`
 const FlavorDetailWindow = ({ flavor, hide }) => {
+  useLockBodyScroll()
   const {
     name,
     description,
