@@ -1,7 +1,7 @@
-import React from "react"
-import Head from "next/head"
-import GlobalStyles from "components/Common/GlobalStyles"
-import Layout from "components/Layout/index"
+import React from 'react'
+import Head from 'next/head'
+import GlobalStyles from 'components/Common/GlobalStyles'
+import Layout from 'components/Layout/index'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -14,9 +14,9 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <GlobalStyles />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   )
 }
