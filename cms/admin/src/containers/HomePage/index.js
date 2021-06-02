@@ -19,18 +19,18 @@ import { Block, Container, P, Wave, Separator } from "./components";
 // import SocialLink from './SocialLink';
 /* original import line [END] */
 
-const FIRST_BLOCK_LINKS = [
-  {
-    link: "https://strapi.io/documentation/developer-docs/latest/getting-started/quick-start.html#_4-create-a-category-content-type",
-    contentId: "app.components.BlockLink.documentation.content",
-    titleId: "app.components.BlockLink.documentation",
-  },
-  {
-    link: "https://github.com/strapi/foodadvisor",
-    contentId: "app.components.BlockLink.code.content",
-    titleId: "app.components.BlockLink.code",
-  },
-];
+// const FIRST_BLOCK_LINKS = [
+//   {
+//     link: "https://strapi.io/documentation/developer-docs/latest/getting-started/quick-start.html#_4-create-a-category-content-type",
+//     contentId: "app.components.BlockLink.documentation.content",
+//     titleId: "app.components.BlockLink.documentation",
+//   },
+//   {
+//     link: "https://github.com/strapi/foodadvisor",
+//     contentId: "app.components.BlockLink.code.content",
+//     titleId: "app.components.BlockLink.code",
+//   },
+// ];
 
 // const SOCIAL_LINKS = [
 //   {
