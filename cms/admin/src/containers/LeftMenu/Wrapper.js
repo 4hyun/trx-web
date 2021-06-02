@@ -4,8 +4,8 @@
  *
  */
 
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -13,9 +13,8 @@ const Wrapper = styled.div`
   top: 0;
   left: 0;
   height: 100vh;
-  width: ${(props) => props.theme.main.sizes.leftMenu.width};
-  background-color: ${(props) =>
-    props.theme.main.colors.leftMenu["tr-green-dark"]};
+  width: ${props => props.theme.main.sizes.leftMenu.width};
+  background: ${props => props.theme.main.colors.strapi.leftMenuContainerWrapper};
 
   /* scrollbar overrides */
   * {
@@ -29,19 +28,15 @@ const Wrapper = styled.div`
     }
 
     ::-webkit-scrollbar-thumb {
-      background-color: ${(props) =>
-        props.theme.main.colors.leftMenu["title-color"]};
+      background-color: ${props => props.theme.main.colors.leftMenu['title-color']};
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background-color: ${(props) =>
-        props.theme.main.colors.leftMenu["link-color"]};
+      background-color: ${props => props.theme.main.colors.leftMenu['link-color']};
     }
 
     /* firefox */
-    scrollbar-color: ${(props) =>
-        props.theme.main.colors.leftMenu["title-color"]}
-      transparent;
+    scrollbar-color: ${props => props.theme.main.colors.leftMenu['title-color']} transparent;
   }
 `;
 

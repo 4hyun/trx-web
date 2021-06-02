@@ -22,6 +22,14 @@ const Wrapper = styled.div`
   }
 `;
 
+const A = styled.a`
+  color: ${({ theme }) => theme.main.colors.strapi["gray-light"]};
+  &:hover {
+    color: ${({ theme }) => theme.main.colors.strapi["gray-light"]};
+    text-decoration: underline;
+  }
+`;
+
 Wrapper.defaultProps = {
   theme: {
     main: {
@@ -41,3 +49,4 @@ Wrapper.propTypes = {
 };
 
 export default Wrapper;
+export { A };

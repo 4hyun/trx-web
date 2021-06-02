@@ -1,24 +1,24 @@
-import React from "react";
-import { Padded, Text } from "@buffetjs/core";
-import { useIntl } from "react-intl";
-import { useHistory } from "react-router-dom";
-import { BaselineAlignment } from "strapi-helper-plugin";
-import Button from "../../../../components/FullWidthButton";
-import Box from "../Box";
-import Logo from "../Logo";
-import Section from "../Section";
-import Envelope from "./Envelope";
+import React from 'react';
+import { Padded, Text } from '@buffetjs/core';
+import { useIntl } from 'react-intl';
+import { useHistory } from 'react-router-dom';
+import { BaselineAlignment } from 'strapi-helper-plugin';
+import Button from '../../../../components/FullWidthButton';
+import Box from '../Box';
+import Logo from '../Logo';
+import Section from '../Section';
+import Envelope from './Envelope';
 
 const ForgotPasswordSuccess = () => {
   const { formatMessage } = useIntl();
   const { push } = useHistory();
 
   const handleClick = () => {
-    push("/auth/login");
+    push('/auth/login');
   };
 
   return (
-    <React.Fragment>
+    <>
       <Section textAlign="center">
         <Logo />
       </Section>
@@ -32,33 +32,23 @@ const ForgotPasswordSuccess = () => {
 
               <Padded top size="smd">
                 <Text fontWeight="bold" lineHeight="24px" fontSize="xl">
-                  {formatMessage({
-                    id: "app.containers.AuthPage.ForgotPasswordSuccess.title",
-                  })}
+                  {formatMessage({ id: 'app.containers.AuthPage.ForgotPasswordSuccess.title' })}
                 </Text>
               </Padded>
 
               <Padded right left size="lg">
                 <Padded top size="smd">
-                  <Text
-                    fontSize="md"
-                    style={{ textAlign: "center" }}
-                    lineHeight="18px"
-                  >
+                  <Text fontSize="md" style={{ textAlign: 'center' }} lineHeight="18px">
                     {formatMessage({
-                      id: "app.containers.AuthPage.ForgotPasswordSuccess.text.email",
+                      id: 'app.containers.AuthPage.ForgotPasswordSuccess.text.email',
                     })}
                   </Text>
 
                   <Padded top>
                     <BaselineAlignment top size="7px">
-                      <Text
-                        fontSize="md"
-                        style={{ textAlign: "center" }}
-                        lineHeight="18px"
-                      >
+                      <Text fontSize="md" style={{ textAlign: 'center' }} lineHeight="18px">
                         {formatMessage({
-                          id: "app.containers.AuthPage.ForgotPasswordSuccess.text.contact-admin",
+                          id: 'app.containers.AuthPage.ForgotPasswordSuccess.text.contact-admin',
                         })}
                       </Text>
                     </BaselineAlignment>
@@ -69,20 +59,18 @@ const ForgotPasswordSuccess = () => {
               <Padded top size="md">
                 <Button
                   type="button"
-                  textcolor="#fff"
-                  background="#3d3d3d"
+                  color="primary"
                   textTransform="uppercase"
-                  hoverbackground="#747474"
                   onClick={handleClick}
                 >
-                  {formatMessage({ id: "Auth.link.signin" })}
+                  {formatMessage({ id: 'Auth.link.signin' })}
                 </Button>
               </Padded>
             </Box>
           </Padded>
         </Padded>
       </Section>
-    </React.Fragment>
+    </>
   );
 };
 

@@ -1,14 +1,14 @@
-import React from "react";
-import { useIntl } from "react-intl";
-import { Padded } from "@buffetjs/core";
-import PropTypes from "prop-types";
-import { BaselineAlignment } from "strapi-helper-plugin";
-import Button from "../../../../components/FullWidthButton";
-import AuthLink from "../AuthLink";
-import Input from "../Input";
-import Logo from "../Logo";
-import Section from "../Section";
-import Box from "../Box";
+import React from 'react';
+import { useIntl } from 'react-intl';
+import { Padded } from '@buffetjs/core';
+import PropTypes from 'prop-types';
+import { BaselineAlignment } from 'strapi-helper-plugin';
+import Button from '../../../../components/FullWidthButton';
+import AuthLink from '../AuthLink';
+import Input from '../Input';
+import Logo from '../Logo';
+import Section from '../Section';
+import Box from '../Box';
 
 const ForgotPassword = ({ formErrors, modifiedData, onChange, onSubmit }) => {
   const { formatMessage } = useIntl();
@@ -37,14 +37,8 @@ const ForgotPassword = ({ formErrors, modifiedData, onChange, onSubmit }) => {
                 />
                 <BaselineAlignment top size="3px" />
                 <Padded top>
-                  <Button
-                    type="submit"
-                    textcolor="#fff"
-                    background="#3d3d3d"
-                    hoverbackground="#747474"
-                    textTransform="uppercase"
-                  >
-                    {formatMessage({ id: "Auth.form.button.forgot-password" })}
+                  <Button type="submit" color="primary" textTransform="uppercase">
+                    {formatMessage({ id: 'Auth.form.button.forgot-password' })}
                   </Button>
                 </Padded>
               </form>
@@ -58,7 +52,7 @@ const ForgotPassword = ({ formErrors, modifiedData, onChange, onSubmit }) => {
 };
 
 ForgotPassword.defaultProps = {
-  onSubmit: (e) => e.preventDefault(),
+  onSubmit: e => e.preventDefault(),
 };
 
 ForgotPassword.propTypes = {

@@ -29,6 +29,7 @@ const LeftMenuLinkContent = ({
   label,
   location,
   notificationsCount,
+  search,
 }) => {
   const isLinkActive = startsWith(
     location.pathname.replace("/admin", "").concat("/"),
@@ -69,6 +70,7 @@ const LeftMenuLinkContent = ({
       className={isLinkActive ? "linkActive" : ""}
       to={{
         pathname: destination,
+        search,
       }}
     >
       <LeftMenuIcon icon={iconName} backgroundColor={"#1a5636"} />
@@ -80,6 +82,9 @@ const LeftMenuLinkContent = ({
   );
 };
 
+LeftMenuLinkContent.defaultProps = {
+  search: null,
+};
 LeftMenuLinkContent.propTypes = {
   destination: PropTypes.string.isRequired,
   iconName: PropTypes.string.isRequired,
@@ -88,6 +93,7 @@ LeftMenuLinkContent.propTypes = {
     pathname: PropTypes.string,
   }).isRequired,
   notificationsCount: PropTypes.number.isRequired,
+  search: PropTypes.string,
 };
 
 export default withRouter(LeftMenuLinkContent);

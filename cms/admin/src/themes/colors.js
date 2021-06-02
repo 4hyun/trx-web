@@ -44,13 +44,14 @@ const colors = {
   strapi: {
     "gray-light": "#eff3f6",
     gray: "#535f76",
-    "blue-darker": "#18202e",
+    "blue-darker": "#ffe",
     "blue-dark": "#151c2e",
     blue: "#0097f7",
     "tr-link-hover": "#e19c18",
     "tr-link-color": "#8dab68",
     "green-primary": "#1F6D37",
     "green-light": "#8dab68",
+    leftMenuContainerWrapper: "#152d2a"
   },
 };
 

@@ -53,6 +53,9 @@
     },
     "visited_store": {
       "type": "boolean"
+    },
+    "email": {
+      "type": "email"
     }
   }
 }
