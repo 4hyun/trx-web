@@ -1,6 +1,6 @@
 import tw, { css } from 'twin.macro'
 
-const headerContainerStyles = {
+const navbarContainerStyles = {
   menuOpen: {
     open: {
       width: '500px',
@@ -22,7 +22,7 @@ const navbarStyles = {
 }
 
 const menuLogoButtonStyles = {
-  transitionDelay: headerContainerStyles.transitionDuration,
+  transitionDelay: navbarContainerStyles.transitionDuration,
 }
 
-export { headerContainerStyles, navbarStyles, menuLogoButtonStyles }
+export { navbarContainerStyles, navbarStyles, menuLogoButtonStyles }

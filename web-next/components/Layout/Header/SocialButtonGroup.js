@@ -1,8 +1,8 @@
-import { memo } from "react"
-import tw, { css } from "twin.macro"
-import BaseSocialButtonGroup from "components/Common/Social"
-import NavbarRow from "components/Navbar/NavbarRow"
-import navbarElementSharedStyles from "components/Navbar/styles"
+import { memo } from 'react'
+import tw, { css } from 'twin.macro'
+import BaseSocialButtonGroup from 'components/Common/Social'
+import Row from '@/components/DesktopSideNavbar/Row'
+import navbarElementSharedStyles from '@/components/DesktopSideNavbar/styles'
 
 const socialButtonGroupCSS = css`
   width: 38px;
@@ -10,9 +10,9 @@ const socialButtonGroupCSS = css`
   ${navbarElementSharedStyles}
 `
 const SocialButtonGroup = () => (
-  <NavbarRow tw="hidden lg:(flex flex-1 items-end pb-6)">
+  <Row tw="hidden lg:(flex flex-1 items-end pb-6)">
     <BaseSocialButtonGroup stylesheet={socialButtonGroupCSS} />
-  </NavbarRow>
+  </Row>
 )
 
 export default memo(SocialButtonGroup)

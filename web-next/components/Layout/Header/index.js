@@ -1,15 +1,15 @@
 import React, { useReducer, useCallback } from 'react'
 import styled, { keyframes } from 'styled-components'
 import tw from 'twin.macro'
-import Navbar from 'components/Navbar'
+import DesktopSideNavbar from 'components/DesktopSideNavbar'
 import { MobileMenu, DesktopMenu } from 'components/Menu'
 import { defaultMenuList } from 'components/Menu/data'
 import {
   DesktopMenuLogoButton,
   MobileMenuLogoButton,
-} from 'components/Navbar/MenuLogoButton'
+} from '@/components/DesktopSideNavbar/MenuLogoButton'
 import reducer from './reducer'
-import { headerContainerStyles, menuLogoButtonStyles } from './styles'
+import { navbarContainerStyles, menuLogoButtonStyles } from './styles'
 import {
   OPEN_DESKTOP_MENU,
   CLOSE_DESKTOP_MENU,
@@ -17,7 +17,7 @@ import {
   HIDE_MENU_CONTENT,
 } from './constants'
 
-const headerFadeIn = keyframes`
+const navbarFadeIn = keyframes`
   from {
     opacity:0;
   }
@@ -26,13 +26,13 @@ const headerFadeIn = keyframes`
   }
 `
 
-const HeaderContainer = styled.div`
+const NavbarContainer = styled.nav`
   &,
   & * {
     ${tw`select-none`}
   }
   z-index: 140;
-  animation-name: ${headerFadeIn};
+  animation-name: ${navbarFadeIn};
   animation-duration: 0.6s;
   animation-fill-mode: both;
   animation-delay: 1s;
@@ -41,10 +41,10 @@ const HeaderContainer = styled.div`
 
   @media (min-width: 1024px) {
     width: ${({ menuOpen }) =>
-      (menuOpen && headerContainerStyles.menuOpen.open.width) ||
-      headerContainerStyles.menuOpen.close.width};
+      (menuOpen && navbarContainerStyles.menuOpen.open.width) ||
+      navbarContainerStyles.menuOpen.close.width};
     /* TODO: refactor to transition transform:scale */
-    transition: width ${headerContainerStyles.transitionDuration};
+    transition: width ${navbarContainerStyles.transitionDuration};
     height: 100vh;
     position: fixed;
     left: 0;
@@ -87,7 +87,7 @@ const Header = ({ desktopStyles }) => {
   })
 
   return (
-    <HeaderContainer
+    <NavbarContainer
       onTransitionEnd={handleTransitionEnd}
       menuOpen={menuOpen}
       desktopStyles={desktopStyles}
@@ -105,7 +105,7 @@ const Header = ({ desktopStyles }) => {
           #TunaaaaMoonAndBack
         </MobileMenuIGHashtagLink>
       </MobileMenuIGHashtagContainer>
-      <Navbar menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
+      <DesktopSideNavbar menuOpen={menuOpen} toggleMenu={toggleDesktopMenu} />
       <DesktopMenu
         transitionEnd={transitionEnd}
         toggleMenu={toggleDesktopMenu}
@@ -125,7 +125,7 @@ const Header = ({ desktopStyles }) => {
         menuOpen={menuOpen}
         toggleMenu={toggleDesktopMenu}
       />
-    </HeaderContainer>
+    </NavbarContainer>
   )
 }
 
