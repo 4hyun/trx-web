@@ -15,7 +15,8 @@
       "type": "dynamiczone",
       "components": [
         "shared.seo"
-      ]
+      ],
+      "max": 1
     }
   }
 }

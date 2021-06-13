@@ -51,7 +51,7 @@ const colors = {
     "tr-link-color": "#8dab68",
     "green-primary": "#1F6D37",
     "green-light": "#8dab68",
-    leftMenuContainerWrapper: "#152d2a"
+    leftMenuContainerWrapper: "#152d2a",
   },
 };
 
