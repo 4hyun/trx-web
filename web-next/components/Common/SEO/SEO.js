@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useContext } from 'react'
-import SEOContext from './context'
+import { SEOContext } from './context'
 
 const SEO = () => {
   const { title, description, url, shareImage, keywords, preventIndexing } =
