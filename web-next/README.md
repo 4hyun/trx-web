@@ -32,3 +32,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## SEO template
+
+```html
+<title>Xtracts Dispensary | Edmonton</title>
+<meta property="og:title" content="Xtracts Dispensary Edmonton" />
+<meta name="twitter:title" content="Xtracts Dispensary Edmonton" />
+<meta property="og:description" content="Xtracts Dispensary · Edmonton, AB" />
+<meta name="twitter:description" content="Xtracts Dispensary · Edmonton, AB" />
+<meta property="og:image" content="https://link-to-image" />
+<meta name="twitter:image:src" content="https://link-to-image" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:locale" content="en-US" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="og:url" content="https://page-url" />
+<meta property="fb:app_id" content="712919282610465" />
+<meta name="twitter:site" content="https://xtracts.tunaaaaroom.ca" />
+<meta name="twitter:creator" content="@tunaaaaroom" />
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="" />
+<meta name="rating" content="" />
+```
