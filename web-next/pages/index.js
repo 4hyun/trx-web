@@ -2,8 +2,10 @@ import React, { useContext } from 'react'
 import Head from 'next/head'
 /* containers */
 import { ScrollContainer } from 'containers/Common'
-/* components */
+/* contexts */
 import { AgeGateContext } from 'components/AgeGate/context'
+import { SEOContext, SEO } from 'components/Common/SEO'
+/* components */
 import HomeHero from 'components/Blocks/HomeHero'
 import Footer from 'components/Layout/Footer'
 
@@ -14,6 +16,11 @@ export default function HomePage(props) {
     <>
       <Head>
         <title>Tunaaaa Room Xtracts</title>
+        <meta
+          name="description"
+          content="Explore Tunaaaa Room's exclusive cannabis extracts collections."
+        />
+        <meta name="author" content="Tunaaaaroom Xtracts" />
         <meta property="og:url" content="https://xtracts.tunaaaaroom.ca" />
         <meta property="og:title" content="Tunaaaa Room Xtracts" />
         <meta property="og:site_name" content="Tunaaaa Room Xtracts" />

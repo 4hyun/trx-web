@@ -11,6 +11,7 @@ const Button = styled.button`
 `
 
 const scrollOption = { top: 0 }
+
 const ScrollTopButton = () => {
   const scrollY = useScrollPosition(60)
   return (
