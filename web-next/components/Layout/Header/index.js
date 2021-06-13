@@ -1,4 +1,4 @@
-import React, { memo, useReducer, useCallback } from 'react'
+import React, { useReducer, useCallback } from 'react'
 import styled, { keyframes } from 'styled-components'
 import tw from 'twin.macro'
 import Navbar from 'components/Navbar'
