@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "labels",
+  "info": {
+    "name": "Label"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product": {
+      "model": "products"
+    },
+    "label_f": {
+      "type": "dynamiczone",
+      "components": [
+        "label.label"
+      ],
+      "max": 1,
+      "min": 1,
+      "required": true
+    },
+    "label_b": {
+      "type": "dynamiczone",
+      "components": [
+        "label.label"
+      ],
+      "max": 1,
+      "min": 1,
+      "required": true
+    }
+  }
+}
