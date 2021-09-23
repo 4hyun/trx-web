@@ -13,6 +13,7 @@ import { useModels } from "../../hooks";
 
 import useFetch from "./hooks";
 import { Block, Container, P, Wave, Separator } from "./components";
+import XtractsAppSection from "../../components/trx/DashboardContent/XtractsAppSection";
 /* DEV: uncomment original import lines below to include needed components */
 // import { ALink, Block, Container, LinkWrapper, P, Wave, Separator } from './components';
 // import BlogPost from './BlogPost';
@@ -131,6 +132,7 @@ const HomePage = ({ history: { push } }) => {
               >
                 {(msg) => <h2 id="mainHeader">{msg}</h2>}
               </FormattedMessage>
+              <XtractsAppSection />
               <Separator style={{ marginTop: 37, marginBottom: 36 }} />
             </Block>
           </div>

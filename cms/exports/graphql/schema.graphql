@@ -567,6 +567,125 @@ type deleteFormPayload {
   form: Forms
 }
 
+type HealthMessage {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  message: String
+  title: String
+  locale: String
+  published_at: DateTime
+  localizations(sort: String, limit: Int, start: Int, where: JSON): [HealthMessage]
+}
+
+type HealthMessageConnection {
+  values: [HealthMessage]
+  groupBy: HealthMessageGroupBy
+  aggregate: HealthMessageAggregator
+}
+
+type HealthMessageAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type HealthMessageGroupBy {
+  id: [HealthMessageConnectionId]
+  _id: [HealthMessageConnection_id]
+  createdAt: [HealthMessageConnectionCreatedAt]
+  updatedAt: [HealthMessageConnectionUpdatedAt]
+  message: [HealthMessageConnectionMessage]
+  title: [HealthMessageConnectionTitle]
+  locale: [HealthMessageConnectionLocale]
+  published_at: [HealthMessageConnectionPublished_at]
+}
+
+type HealthMessageConnectionId {
+  key: ID
+  connection: HealthMessageConnection
+}
+
+type HealthMessageConnection_id {
+  key: ID
+  connection: HealthMessageConnection
+}
+
+type HealthMessageConnectionCreatedAt {
+  key: DateTime
+  connection: HealthMessageConnection
+}
+
+type HealthMessageConnectionUpdatedAt {
+  key: DateTime
+  connection: HealthMessageConnection
+}
+
+type HealthMessageConnectionMessage {
+  key: String
+  connection: HealthMessageConnection
+}
+
+type HealthMessageConnectionTitle {
+  key: String
+  connection: HealthMessageConnection
+}
+
+type HealthMessageConnectionLocale {
+  key: String
+  connection: HealthMessageConnection
+}
+
+type HealthMessageConnectionPublished_at {
+  key: DateTime
+  connection: HealthMessageConnection
+}
+
+input HealthMessageInput {
+  message: String
+  title: String
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editHealthMessageInput {
+  message: String
+  title: String
+  localizations: [ID]
+  locale: String
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createHealthMessageInput {
+  data: HealthMessageInput
+}
+
+type createHealthMessagePayload {
+  healthMessage: HealthMessage
+}
+
+input updateHealthMessageInput {
+  where: InputID
+  data: editHealthMessageInput
+}
+
+type updateHealthMessagePayload {
+  healthMessage: HealthMessage
+}
+
+input deleteHealthMessageInput {
+  where: InputID
+}
+
+type deleteHealthMessagePayload {
+  healthMessage: HealthMessage
+}
+
 union HomePageSeoDynamicZone = ComponentSharedSeo
 
 """Input type for dynamic zone SEO of HomePage"""
@@ -605,6 +724,120 @@ type updateHomePagePayload {
 
 type deleteHomePagePayload {
   homePage: HomePage
+}
+
+union LabelLabelFDynamicZone = ComponentLabelLabel
+
+"""Input type for dynamic zone label_f of Label"""
+scalar LabelLabelFDynamicZoneInput
+
+union LabelLabelBDynamicZone = ComponentLabelLabel
+
+"""Input type for dynamic zone label_b of Label"""
+scalar LabelLabelBDynamicZoneInput
+
+type Label {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  product: Products
+  label_f: [LabelLabelFDynamicZone]!
+  label_b: [LabelLabelBDynamicZone]!
+  published_at: DateTime
+}
+
+type LabelConnection {
+  values: [Label]
+  groupBy: LabelGroupBy
+  aggregate: LabelAggregator
+}
+
+type LabelAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type LabelGroupBy {
+  id: [LabelConnectionId]
+  _id: [LabelConnection_id]
+  createdAt: [LabelConnectionCreatedAt]
+  updatedAt: [LabelConnectionUpdatedAt]
+  product: [LabelConnectionProduct]
+  published_at: [LabelConnectionPublished_at]
+}
+
+type LabelConnectionId {
+  key: ID
+  connection: LabelConnection
+}
+
+type LabelConnection_id {
+  key: ID
+  connection: LabelConnection
+}
+
+type LabelConnectionCreatedAt {
+  key: DateTime
+  connection: LabelConnection
+}
+
+type LabelConnectionUpdatedAt {
+  key: DateTime
+  connection: LabelConnection
+}
+
+type LabelConnectionProduct {
+  key: ID
+  connection: LabelConnection
+}
+
+type LabelConnectionPublished_at {
+  key: DateTime
+  connection: LabelConnection
+}
+
+input LabelInput {
+  product: ID
+  label_f: [LabelLabelFDynamicZoneInput!]!
+  label_b: [LabelLabelBDynamicZoneInput!]!
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input editLabelInput {
+  product: ID
+  label_f: [LabelLabelFDynamicZoneInput!]!
+  label_b: [LabelLabelBDynamicZoneInput!]!
+  published_at: DateTime
+  created_by: ID
+  updated_by: ID
+}
+
+input createLabelInput {
+  data: LabelInput
+}
+
+type createLabelPayload {
+  label: Label
+}
+
+input updateLabelInput {
+  where: InputID
+  data: editLabelInput
+}
+
+type updateLabelPayload {
+  label: Label
+}
+
+input deleteLabelInput {
+  where: InputID
+}
+
+type deleteLabelPayload {
+  label: Label
 }
 
 type MenuItems {
@@ -1462,6 +1695,29 @@ type deleteVapeCategoryPayload {
   vapeCategory: VapeCategories
 }
 
+type I18NLocale {
+  id: ID!
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  code: String
+}
+
+input LocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
+input editLocaleInput {
+  name: String
+  code: String
+  created_by: ID
+  updated_by: ID
+}
+
 type UploadFile {
   id: ID!
   _id: ID!
@@ -2040,6 +2296,52 @@ input editComponentFormFieldInput {
   eid: String
 }
 
+type ComponentLabelHealthMessageA {
+  id: ID!
+  _id: ID!
+}
+
+input ComponentLabelHealthMessageAInput {
+  _: String
+}
+
+input editComponentLabelHealthMessageAInput {
+  id: ID
+}
+
+type ComponentLabelLabel {
+  id: ID!
+  _id: ID!
+  name: String
+  thc_total: String
+  thc: String
+  cbd: String
+  cbd_total: String
+  package_content: String
+  health_message: HealthMessage
+}
+
+input ComponentLabelLabelInput {
+  name: String
+  thc_total: String
+  thc: String
+  cbd: String
+  cbd_total: String
+  package_content: String
+  health_message: ID
+}
+
+input editComponentLabelLabelInput {
+  id: ID
+  name: String
+  thc_total: String
+  thc: String
+  cbd: String
+  cbd_total: String
+  package_content: String
+  health_message: ID
+}
+
 type ComponentProductDab {
   id: ID!
   _id: ID!
@@ -2187,7 +2489,7 @@ input editComponentSharedSiteSeoInput {
   description: String
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | CollectionsPage | updateCollectionsPagePayload | deleteCollectionsPagePayload | Collections | CollectionsConnection | CollectionsAggregator | CollectionsGroupBy | CollectionsConnectionId | CollectionsConnection_id | CollectionsConnectionCreatedAt | CollectionsConnectionUpdatedAt | CollectionsConnectionName | CollectionsConnectionCover_media | CollectionsConnectionDesc | CollectionsConnectionDesc_note | CollectionsConnectionPublished_at | createCollectionPayload | updateCollectionPayload | deleteCollectionPayload | FindStoresPage | updateFindStoresPagePayload | deleteFindStoresPagePayload | FlavorsPage | updateFlavorsPagePayload | deleteFlavorsPagePayload | Flavors | FlavorsConnection | FlavorsAggregator | FlavorsGroupBy | FlavorsConnectionId | FlavorsConnection_id | FlavorsConnectionCreatedAt | FlavorsConnectionUpdatedAt | FlavorsConnectionName | FlavorsConnectionMain_img | FlavorsConnectionFeatured_menu_img | FlavorsConnectionCollection_in | FlavorsConnectionDescription | FlavorsConnectionPublished_at | createFlavorPayload | updateFlavorPayload | deleteFlavorPayload | Forms | FormsConnection | FormsAggregator | FormsGroupBy | FormsConnectionId | FormsConnection_id | FormsConnectionCreatedAt | FormsConnectionUpdatedAt | FormsConnectionEmail_to | FormsConnectionEmail_from | FormsConnectionName | FormsConnectionAction | FormsConnectionPublished_at | createFormPayload | updateFormPayload | deleteFormPayload | HomePage | updateHomePagePayload | deleteHomePagePayload | MenuItems | MenuItemsConnection | MenuItemsAggregator | MenuItemsGroupBy | MenuItemsConnectionId | MenuItemsConnection_id | MenuItemsConnectionCreatedAt | MenuItemsConnectionUpdatedAt | MenuItemsConnectionLabel | MenuItemsConnectionUrl | MenuItemsConnectionIs_root | MenuItemsConnectionPublished_at | createMenuItemPayload | updateMenuItemPayload | deleteMenuItemPayload | Menu | updateMenuPayload | deleteMenuPayload | ProductCategories | ProductCategoriesConnection | ProductCategoriesAggregator | ProductCategoriesGroupBy | ProductCategoriesConnectionId | ProductCategoriesConnection_id | ProductCategoriesConnectionCreatedAt | ProductCategoriesConnectionUpdatedAt | ProductCategoriesConnectionName | ProductCategoriesConnectionIntro | ProductCategoriesConnectionPublished_at | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnection_id | ProductsConnectionCreatedAt | ProductsConnectionUpdatedAt | ProductsConnectionName | ProductsConnectionCover_img | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | Stores | StoresConnection | StoresAggregator | StoresAggregatorSum | StoresAggregatorAvg | StoresAggregatorMin | StoresAggregatorMax | StoresGroupBy | StoresConnectionId | StoresConnection_id | StoresConnectionCreatedAt | StoresConnectionUpdatedAt | StoresConnectionName | StoresConnectionBusiness_status | StoresConnectionAddress | StoresConnectionPlace_id | StoresConnectionRating | StoresConnectionUser_ratings_total | StoresConnectionPhone | StoresConnectionLng | StoresConnectionLat | StoresConnectionCompound_code | StoresConnectionRetailer | StoresConnectionCity | StoresConnectionHeard_of_it | StoresConnectionVisited_store | StoresConnectionEmail | StoresConnectionPublished_at | createStorePayload | updateStorePayload | deleteStorePayload | Terpenes | TerpenesConnection | TerpenesAggregator | TerpenesGroupBy | TerpenesConnectionId | TerpenesConnection_id | TerpenesConnectionCreatedAt | TerpenesConnectionUpdatedAt | TerpenesConnectionName | TerpenesConnectionDescription | TerpenesConnectionPublished_at | createTerpenePayload | updateTerpenePayload | deleteTerpenePayload | VapeCategories | VapeCategoriesConnection | VapeCategoriesAggregator | VapeCategoriesGroupBy | VapeCategoriesConnectionId | VapeCategoriesConnection_id | VapeCategoriesConnectionCreatedAt | VapeCategoriesConnectionUpdatedAt | VapeCategoriesConnectionCategory | VapeCategoriesConnectionValue | VapeCategoriesConnectionLabel | VapeCategoriesConnectionPublished_at | createVapeCategoryPayload | updateVapeCategoryPayload | deleteVapeCategoryPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentFlavorFooterContent | ComponentFormCheckboxGroup | ComponentFormCheckbox | ComponentFormEmail | ComponentFormField | ComponentProductDab | ComponentProductExperience | ComponentProductRelatedProducts | ComponentProductVape | ComponentSharedSeo | ComponentSharedSharedImage | ComponentSharedSiteSeo
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | CollectionsPage | updateCollectionsPagePayload | deleteCollectionsPagePayload | Collections | CollectionsConnection | CollectionsAggregator | CollectionsGroupBy | CollectionsConnectionId | CollectionsConnection_id | CollectionsConnectionCreatedAt | CollectionsConnectionUpdatedAt | CollectionsConnectionName | CollectionsConnectionCover_media | CollectionsConnectionDesc | CollectionsConnectionDesc_note | CollectionsConnectionPublished_at | createCollectionPayload | updateCollectionPayload | deleteCollectionPayload | FindStoresPage | updateFindStoresPagePayload | deleteFindStoresPagePayload | FlavorsPage | updateFlavorsPagePayload | deleteFlavorsPagePayload | Flavors | FlavorsConnection | FlavorsAggregator | FlavorsGroupBy | FlavorsConnectionId | FlavorsConnection_id | FlavorsConnectionCreatedAt | FlavorsConnectionUpdatedAt | FlavorsConnectionName | FlavorsConnectionMain_img | FlavorsConnectionFeatured_menu_img | FlavorsConnectionCollection_in | FlavorsConnectionDescription | FlavorsConnectionPublished_at | createFlavorPayload | updateFlavorPayload | deleteFlavorPayload | Forms | FormsConnection | FormsAggregator | FormsGroupBy | FormsConnectionId | FormsConnection_id | FormsConnectionCreatedAt | FormsConnectionUpdatedAt | FormsConnectionEmail_to | FormsConnectionEmail_from | FormsConnectionName | FormsConnectionAction | FormsConnectionPublished_at | createFormPayload | updateFormPayload | deleteFormPayload | HealthMessage | HealthMessageConnection | HealthMessageAggregator | HealthMessageGroupBy | HealthMessageConnectionId | HealthMessageConnection_id | HealthMessageConnectionCreatedAt | HealthMessageConnectionUpdatedAt | HealthMessageConnectionMessage | HealthMessageConnectionTitle | HealthMessageConnectionLocale | HealthMessageConnectionPublished_at | createHealthMessagePayload | updateHealthMessagePayload | deleteHealthMessagePayload | HomePage | updateHomePagePayload | deleteHomePagePayload | Label | LabelConnection | LabelAggregator | LabelGroupBy | LabelConnectionId | LabelConnection_id | LabelConnectionCreatedAt | LabelConnectionUpdatedAt | LabelConnectionProduct | LabelConnectionPublished_at | createLabelPayload | updateLabelPayload | deleteLabelPayload | MenuItems | MenuItemsConnection | MenuItemsAggregator | MenuItemsGroupBy | MenuItemsConnectionId | MenuItemsConnection_id | MenuItemsConnectionCreatedAt | MenuItemsConnectionUpdatedAt | MenuItemsConnectionLabel | MenuItemsConnectionUrl | MenuItemsConnectionIs_root | MenuItemsConnectionPublished_at | createMenuItemPayload | updateMenuItemPayload | deleteMenuItemPayload | Menu | updateMenuPayload | deleteMenuPayload | ProductCategories | ProductCategoriesConnection | ProductCategoriesAggregator | ProductCategoriesGroupBy | ProductCategoriesConnectionId | ProductCategoriesConnection_id | ProductCategoriesConnectionCreatedAt | ProductCategoriesConnectionUpdatedAt | ProductCategoriesConnectionName | ProductCategoriesConnectionIntro | ProductCategoriesConnectionPublished_at | createProductCategoryPayload | updateProductCategoryPayload | deleteProductCategoryPayload | Products | ProductsConnection | ProductsAggregator | ProductsGroupBy | ProductsConnectionId | ProductsConnection_id | ProductsConnectionCreatedAt | ProductsConnectionUpdatedAt | ProductsConnectionName | ProductsConnectionCover_img | ProductsConnectionPublished_at | createProductPayload | updateProductPayload | deleteProductPayload | Stores | StoresConnection | StoresAggregator | StoresAggregatorSum | StoresAggregatorAvg | StoresAggregatorMin | StoresAggregatorMax | StoresGroupBy | StoresConnectionId | StoresConnection_id | StoresConnectionCreatedAt | StoresConnectionUpdatedAt | StoresConnectionName | StoresConnectionBusiness_status | StoresConnectionAddress | StoresConnectionPlace_id | StoresConnectionRating | StoresConnectionUser_ratings_total | StoresConnectionPhone | StoresConnectionLng | StoresConnectionLat | StoresConnectionCompound_code | StoresConnectionRetailer | StoresConnectionCity | StoresConnectionHeard_of_it | StoresConnectionVisited_store | StoresConnectionEmail | StoresConnectionPublished_at | createStorePayload | updateStorePayload | deleteStorePayload | Terpenes | TerpenesConnection | TerpenesAggregator | TerpenesGroupBy | TerpenesConnectionId | TerpenesConnection_id | TerpenesConnectionCreatedAt | TerpenesConnectionUpdatedAt | TerpenesConnectionName | TerpenesConnectionDescription | TerpenesConnectionPublished_at | createTerpenePayload | updateTerpenePayload | deleteTerpenePayload | VapeCategories | VapeCategoriesConnection | VapeCategoriesAggregator | VapeCategoriesGroupBy | VapeCategoriesConnectionId | VapeCategoriesConnection_id | VapeCategoriesConnectionCreatedAt | VapeCategoriesConnectionUpdatedAt | VapeCategoriesConnectionCategory | VapeCategoriesConnectionValue | VapeCategoriesConnectionLabel | VapeCategoriesConnectionPublished_at | createVapeCategoryPayload | updateVapeCategoryPayload | deleteVapeCategoryPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentFlavorFooterContent | ComponentFormCheckboxGroup | ComponentFormCheckbox | ComponentFormEmail | ComponentFormField | ComponentLabelHealthMessageA | ComponentLabelLabel | ComponentProductDab | ComponentProductExperience | ComponentProductRelatedProducts | ComponentProductVape | ComponentSharedSeo | ComponentSharedSharedImage | ComponentSharedSiteSeo
 
 input InputID {
   id: ID!
@@ -2218,7 +2520,13 @@ type Query {
   form(id: ID!, publicationState: PublicationState): Forms
   forms(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Forms]
   formsConnection(sort: String, limit: Int, start: Int, where: JSON): FormsConnection
+  healthMessage(id: ID!, publicationState: PublicationState): HealthMessage
+  healthMessages(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState, locale: String): [HealthMessage]
+  healthMessagesConnection(sort: String, limit: Int, start: Int, where: JSON, locale: String): HealthMessageConnection
   homePage(publicationState: PublicationState): HomePage
+  label(id: ID!, publicationState: PublicationState): Label
+  labels(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Label]
+  labelsConnection(sort: String, limit: Int, start: Int, where: JSON): LabelConnection
   menuItem(id: ID!, publicationState: PublicationState): MenuItems
   menuItems(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [MenuItems]
   menuItemsConnection(sort: String, limit: Int, start: Int, where: JSON): MenuItemsConnection
@@ -2269,8 +2577,14 @@ type Mutation {
   createForm(input: createFormInput): createFormPayload
   updateForm(input: updateFormInput): updateFormPayload
   deleteForm(input: deleteFormInput): deleteFormPayload
+  createHealthMessage(input: createHealthMessageInput): createHealthMessagePayload
+  updateHealthMessage(input: updateHealthMessageInput): updateHealthMessagePayload
+  deleteHealthMessage(input: deleteHealthMessageInput): deleteHealthMessagePayload
   updateHomePage(input: updateHomePageInput): updateHomePagePayload
   deleteHomePage: deleteHomePagePayload
+  createLabel(input: createLabelInput): createLabelPayload
+  updateLabel(input: updateLabelInput): updateLabelPayload
+  deleteLabel(input: deleteLabelInput): deleteLabelPayload
   createMenuItem(input: createMenuItemInput): createMenuItemPayload
   updateMenuItem(input: updateMenuItemInput): updateMenuItemPayload
   deleteMenuItem(input: deleteMenuItemInput): deleteMenuItemPayload
@@ -2312,6 +2626,7 @@ type Mutation {
 
   """Delete an existing user"""
   deleteUser(input: deleteUserInput): deleteUserPayload
+  createHealthMessageLocalization(input: updateHealthMessageInput!): HealthMessage!
   upload(refId: ID, ref: String, field: String, source: String, info: FileInfoInput, file: Upload!): UploadFile!
   multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
   updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
