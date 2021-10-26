@@ -70,6 +70,45 @@ export default {
           }
         }
       }
-`
+    `,
+    collectionsPage:`
+      query {
+        collections(publicationState:LIVE) {
+          id,
+          name,
+          desc,
+          cover_media { 
+            formats,
+            url
+          }
+        }
+        collectionsPage {
+          id,
+          SEO {
+            ${fragments.ComponentSharedSeo}
+          }
+        }
+      }
+    `,
+    findStoresPage:`
+      query {
+        stores(where:{retailer:true}) {
+          id,
+          retailer,
+          lng,
+          lat,
+          name,
+          address,
+          place_id,
+          phone
+        }
+        findStoresPage {
+          id,
+          SEO {
+            ${fragments.ComponentSharedSeo}
+          }
+        }
+      }
+    `
   },
 }

@@ -20,6 +20,6 @@ export const getStaticProps = async ({ preview = null }) => {
   } = data
 
   return {
-    props: { flavors, seoValues, preview },
+    props: { flavors, seoValues: seoValues[0], preview },
   }
 }

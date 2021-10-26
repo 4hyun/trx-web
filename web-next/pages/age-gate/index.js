@@ -66,20 +66,30 @@ const cbBeforeNextMessage = (actionId) => async () => {
       return ageCheckValue
     }
     case 2: {
+      break
     }
     case 3: {
+      break
     }
     case 4: {
+      break
     }
     case 5: {
+      break
     }
+    default:
+      break
   }
 }
 
-const AgeGatePage = ({seoValues}) => {
+const AgeGatePage = ({ seoValues }) => {
   const router = useRouter()
-  const [ageCheckValue, setAgeCheckValue] = useAgeGate()
+  // TODO: fix lint error
+  // const [ageCheckValue, setAgeCheckValue] = useAgeGate()
   const [currentMessage, setMessage] = useState(null)
+  const enterHome = () => {
+    router.replace('/')
+  }
   const handleActionButtonClick = useCallback(async (action) => {
     if (action.next.pass) {
       try {
@@ -95,16 +105,14 @@ const AgeGatePage = ({seoValues}) => {
     )
     setMessage(message)
   })
-  const enterHome = () => {
-    router.replace('/')
-  }
+  // TODO: validate use of async in useEffect hook. Does this even have a purpose?
   useEffect(async () => {
-    const ageCheckValue = await getAgeCheckValue()
-    if (ageCheckValue) {
-      setAgeCheckValue(ageCheckValue)
+    const currentAgeCheckValue = await getAgeCheckValue()
+    if (currentAgeCheckValue) {
+      setAgeCheckValue(currentAgeCheckValue)
       return router.replace('/')
     }
-    if (!ageCheckValue && !currentMessage) {
+    if (!currentAgeCheckValue && !currentMessage) {
       setMessage(getMessageById(1))
     }
   }, [])
@@ -147,6 +155,6 @@ export const getStaticProps = async ({ preview = null }) => {
   const data = await fetchAPI(queries.pages.ageGatePage)
   const { SEO: seoValues } = data.ageGatePage
   return {
-    props: { seoValues },
+    props: { seoValues: seoValues[0] },
   }
 }

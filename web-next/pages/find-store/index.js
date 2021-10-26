@@ -2,6 +2,8 @@ import React, { useContext, useReducer, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import tw from 'twin.macro'
 import { fetchAPI } from 'lib/api'
+import SEO from 'components/SEO'
+import queries from 'api/graphql/queries'
 import {
   StoreFinderContext,
   StoreMapStateContext,
@@ -37,7 +39,7 @@ const FooterWrapper = styled.div`
   ${tw`col-span-full `}
 `
 
-const FindStorePage = ({ retailStores }) => {
+const FindStorePage = ({ retailStores,seoValues }) => {
   const { stores, searchValue } = useContext(StoreFinderContext)
   const [storeMapState, dispatch] = useReducer(
     reducer,
@@ -48,41 +50,37 @@ const FindStorePage = ({ retailStores }) => {
   }, [])
 
   return (
-    <GridLayout>
-      <StoreMapStateContext.Provider value={storeMapState}>
-        <StoreFinderContext.Provider
-          value={{ stores: retailStores, searchValue }}
-        >
-          <StoreMap wrapperStyles={storeMapWrapperStyles} dispatch={dispatch} />
-          <StoresPanelWrapper>
-            <StoresPanel dispatch={dispatch} />
-          </StoresPanelWrapper>
-          <FooterWrapper>
-            <Footer />
-          </FooterWrapper>
-        </StoreFinderContext.Provider>
-      </StoreMapStateContext.Provider>
-    </GridLayout>
+    <>
+      <SEO seoValues={seoValues} />
+      <GridLayout>
+        <StoreMapStateContext.Provider value={storeMapState}>
+          <StoreFinderContext.Provider
+            value={{ stores: retailStores, searchValue }}
+          >
+            <StoreMap
+              wrapperStyles={storeMapWrapperStyles}
+              dispatch={dispatch}
+            />
+            <StoresPanelWrapper>
+              <StoresPanel dispatch={dispatch} />
+            </StoresPanelWrapper>
+            <FooterWrapper>
+              <Footer />
+            </FooterWrapper>
+          </StoreFinderContext.Provider>
+        </StoreMapStateContext.Provider>
+      </GridLayout>
+    </>
   )
 }
 
 export default FindStorePage
 
 export const getStaticProps = async ({ preview = null }) => {
-  const data = await fetchAPI(`
-  query {
-    stores(where:{retailer:true}) {
-        id,
-        retailer,
-        lng,
-        lat,
-        name,
-        address,
-        place_id,
-        phone
-    }
-  }
-  `)
-  const retailStores = data?.stores
-  return { props: { retailStores } }
+  const data = await fetchAPI(queries.pages.findStoresPage)
+  const {
+    stores: retailStores,
+    findStoresPage: { SEO: seoValues },
+  } = data
+  return { props: { retailStores, seoValues: seoValues[0] } }
 }

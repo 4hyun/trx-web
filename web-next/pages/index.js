@@ -32,6 +32,6 @@ export const getStaticProps = async ({ preview = null }) => {
   const data = await fetchAPI(queries.pages.homePage)
   const { SEO: seoValues } = data.homePage
   return {
-    props: { seoValues },
+    props: { seoValues: seoValues[0] },
   }
 }
