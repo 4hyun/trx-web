@@ -1,10 +1,18 @@
-import React, { useState, useEffect, useCallback } from "react"
-import { useAgeGate } from "components/AgeGate/context"
-import { useRouter } from "next/router"
-import styled from "styled-components"
-import tw from "twin.macro"
-import { LogoCircleWhiteTransparent } from "components/Icons"
-import messages, { handleMessageAction, getAgeCheckValue, getMessageById, setAgeCheckValue } from "components/AgeGate/messages"
+import React, { useState, useEffect, useCallback } from 'react'
+import { useAgeGate } from 'components/AgeGate/context'
+import { useRouter } from 'next/router'
+import styled from 'styled-components'
+import tw from 'twin.macro'
+import { LogoCircleWhiteTransparent } from 'components/Icons'
+import messages, {
+  handleMessageAction,
+  getAgeCheckValue,
+  getMessageById,
+  setAgeCheckValue,
+} from 'components/AgeGate/messages'
+import { fetchAPI } from 'lib/api'
+import SEO from 'components/SEO'
+import queries from 'api/graphql/queries'
 
 const Logo = styled(LogoCircleWhiteTransparent)`
   width: 96px;
@@ -58,21 +66,17 @@ const cbBeforeNextMessage = (actionId) => async () => {
       return ageCheckValue
     }
     case 2: {
-      
     }
     case 3: {
-      
     }
     case 4: {
-      
     }
     case 5: {
-      
     }
   }
 }
 
-const AgeGatePage = () => {
+const AgeGatePage = ({seoValues}) => {
   const router = useRouter()
   const [ageCheckValue, setAgeCheckValue] = useAgeGate()
   const [currentMessage, setMessage] = useState(null)
@@ -85,47 +89,64 @@ const AgeGatePage = () => {
       }
       return enterHome()
     }
-    const message = await handleMessageAction(action, cbBeforeNextMessage(action.a_id))
+    const message = await handleMessageAction(
+      action,
+      cbBeforeNextMessage(action.a_id)
+    )
     setMessage(message)
   })
   const enterHome = () => {
-    router.replace("/")
+    router.replace('/')
   }
   useEffect(async () => {
     const ageCheckValue = await getAgeCheckValue()
     if (ageCheckValue) {
       setAgeCheckValue(ageCheckValue)
-      return router.replace("/")
+      return router.replace('/')
     }
     if (!ageCheckValue && !currentMessage) {
       setMessage(getMessageById(1))
     }
   }, [])
   return (
-    <Content>
-      <GridLayout>
-        {currentMessage && (
-          <MessageContainer>
-            <MessageHeader>
-              <Logo />
-            </MessageHeader>
-            <Message>{currentMessage.message}</Message>
-            <MessageFooter>
-              {currentMessage && currentMessage.actions.length > 0 && (
-                <ButtonGroup>
-                  {currentMessage.actions.map((action) => (
-                    <Button key={action.a_id} onClick={() => handleActionButtonClick(action)}>
-                      {action.label}
-                    </Button>
-                  ))}
-                </ButtonGroup>
-              )}
-            </MessageFooter>
-          </MessageContainer>
-        )}
-      </GridLayout>
-    </Content>
+    <>
+      <SEO seoValues={seoValues} />
+      <Content>
+        <GridLayout>
+          {currentMessage && (
+            <MessageContainer>
+              <MessageHeader>
+                <Logo />
+              </MessageHeader>
+              <Message>{currentMessage.message}</Message>
+              <MessageFooter>
+                {currentMessage && currentMessage.actions.length > 0 && (
+                  <ButtonGroup>
+                    {currentMessage.actions.map((action) => (
+                      <Button
+                        key={action.a_id}
+                        onClick={() => handleActionButtonClick(action)}
+                      >
+                        {action.label}
+                      </Button>
+                    ))}
+                  </ButtonGroup>
+                )}
+              </MessageFooter>
+            </MessageContainer>
+          )}
+        </GridLayout>
+      </Content>
+    </>
   )
 }
 
 export default AgeGatePage
+
+export const getStaticProps = async ({ preview = null }) => {
+  const data = await fetchAPI(queries.pages.ageGatePage)
+  const { SEO: seoValues } = data.ageGatePage
+  return {
+    props: { seoValues },
+  }
+}

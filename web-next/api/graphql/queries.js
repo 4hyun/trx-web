@@ -62,5 +62,14 @@ export default {
         }
       }
     `,
+    ageGatePage:`
+      query {
+        ageGatePage {
+          SEO {
+            ${fragments.ComponentSharedSeo}
+          }
+        }
+      }
+`
   },
 }

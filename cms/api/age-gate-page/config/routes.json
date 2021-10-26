@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/age-gate-page",
+      "handler": "age-gate-page.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/age-gate-page",
+      "handler": "age-gate-page.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/age-gate-page",
+      "handler": "age-gate-page.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

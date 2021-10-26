@@ -1,7 +1,7 @@
 import sharedSEODefaults from './constants'
 
 const valuesOrDefaults = (SEOValues, defaults = sharedSEODefaults) => {
-  const { metaTitle, metaDisc, author, type, urlpath, image } = SEOValues
+  const { metaTitle, metaDisc, author, type, urlpath, image, preventIndexing } = SEOValues
   return {
     title: metaTitle || defaults.title,
     locale: defaults.locale,
@@ -13,6 +13,7 @@ const valuesOrDefaults = (SEOValues, defaults = sharedSEODefaults) => {
     image: image?.url,
     imageWidth: image?.width,
     imageHeight: image?.height,
+    preventIndexing
   }
 }
 
