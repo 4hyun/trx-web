@@ -1,44 +1,25 @@
 import Flavors from 'containers/PageFlavors'
+import SEO from 'components/SEO'
 import { fetchAPI } from 'lib/api'
+import queries from 'api/graphql/queries'
 
-const FlavorsPage = ({ flavors }) => <Flavors flavors={flavors} />
+const FlavorsPage = ({ flavors, seoValues }) => (
+  <>
+    <SEO seoValues={seoValues} />
+    <Flavors flavors={flavors} />
+  </>
+)
 
 export default FlavorsPage
 
 export const getStaticProps = async ({ preview = null }) => {
-  const data = await fetchAPI(
-    `
-    query {
-      flavors {
-        id,
-        name,
-        main_img {
-          id,
-          formats
-        },
-        description,
-        available_as {
-          ... on ProductCategories {
-            id,
-            name
-          }
-        }
-        indica_sativa {
-            ... on ComponentFlavorFooterContent {
-                indica,
-                sativa
-            }
-        }
-      }
-    }
-    `,
-    {
-      variables: {},
-    }
-  )
-  const flavors = data?.flavors
+  const data = await fetchAPI(queries.pages.flavorsPage)
+  const {
+    flavors,
+    flavorsPage: { SEO: seoValues },
+  } = data
 
   return {
-    props: { flavors, preview },
+    props: { flavors, seoValues, preview },
   }
 }

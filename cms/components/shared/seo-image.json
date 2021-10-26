@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_shared_shared_images",
+  "collectionName": "components_shared_seo_images",
   "info": {
-    "name": "SharedImage",
+    "name": "SeoImage",
     "icon": "file-image",
     "description": ""
   },
@@ -13,11 +13,10 @@
     "media": {
       "model": "file",
       "via": "related",
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "plugin": "upload",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
     }
   }
 }

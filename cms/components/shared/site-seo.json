@@ -2,11 +2,12 @@
   "collectionName": "components_shared_site_seos",
   "info": {
     "name": "SiteSeo",
-    "icon": "plus-circle"
+    "icon": "plus-circle",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "url": {
+    "baseurl": {
       "type": "string"
     },
     "site_name": {
@@ -15,10 +16,7 @@
     "type": {
       "type": "string"
     },
-    "title": {
-      "type": "string"
-    },
-    "description": {
+    "base_title": {
       "type": "string"
     }
   }
