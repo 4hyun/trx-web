@@ -152,10 +152,10 @@ const AgeGatePage = ({ seoValues }) => {
 export default AgeGatePage
 
 export const getStaticProps = async ({ preview = null }) => {
-  const data = await fetchAPI(queries.pages.ageGatePage)
+  const data = await fetchAPI(queries.pages.homePage)
   // DEV: on Age Gate Page, seoValues is a map not an array
-  const { SEO: seoValues } = data.ageGatePage
+  const { SEO: seoValues } = data.homePage
   return {
-    props: { seoValues },
+    props: { seoValues: seoValues[0] },
   }
 }
