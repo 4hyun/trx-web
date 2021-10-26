@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { useAgeGate } from 'components/AgeGate/context'
+// import { useAgeGate } from 'components/AgeGate/context'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import tw from 'twin.macro'
@@ -153,8 +153,9 @@ export default AgeGatePage
 
 export const getStaticProps = async ({ preview = null }) => {
   const data = await fetchAPI(queries.pages.ageGatePage)
+  // DEV: on Age Gate Page, seoValues is a map not an array
   const { SEO: seoValues } = data.ageGatePage
   return {
-    props: { seoValues: seoValues[0] },
+    props: { seoValues },
   }
 }

@@ -1,3 +1,3 @@
 User-agent: *
 
-Sitemap: https://xtracts.tunaaaaroom.ca/sitemap.xml
+Sitemap: https://tunaaaaroomxtracts.ca/sitemap.xml

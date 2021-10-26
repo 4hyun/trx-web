@@ -25,7 +25,12 @@ const SEO = ({ seoValues }) => {
           <meta property="og:image:width" content={seo.imageWidth} />
         </>
       )}
-      {seo.preventIndexing && <meta name="robots" content="noindex"/>}
+      {seo.preventIndexing && (
+        <>
+          <meta name="robots" content="noindex" />
+          <meta name="googlebot" content="noindex" />
+        </>
+      )}
       {/* <meta
         property="og:image"
         content="https://storage.googleapis.com/trx-web-static-media/trx-ogimage-1200x627.png"

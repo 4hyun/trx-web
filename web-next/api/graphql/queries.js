@@ -65,6 +65,7 @@ export default {
     ageGatePage:`
       query {
         ageGatePage {
+          id,
           SEO {
             ${fragments.ComponentSharedSeo}
           }

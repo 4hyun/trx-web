@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-<loc>https://xtracts.tunaaaaroom.ca/</loc>
-</url>
-<url>
-<loc>https://xtracts.tunaaaaroom.ca/collections/</loc>
-</url>
-<url>
-<loc>https://xtracts.tunaaaaroom.ca/flavors/</loc>
-</url>
-<url>
-<loc>https://xtracts.tunaaaaroom.ca/find-store/</loc>
-</url>
+  <url>
+    <loc>https://tunaaaaroomxtracts.ca/</loc>
+  </url>
+  <url>
+    <loc>https://tunaaaaroomxtracts.ca/collections/</loc>
+  </url>
+  <url>
+    <loc>https://tunaaaaroomxtracts.ca/flavors/</loc>
+  </url>
+  <url>
+    <loc>https://tunaaaaroomxtracts.ca/find-store/</loc>
+  </url>
 
 </urlset>
