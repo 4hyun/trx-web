@@ -2,7 +2,7 @@ import tw, { styled } from 'twin.macro'
 
 const Background = styled.div`
   ${tw`z-30`}
-  padding-top: var(--MobileNavbarHeight);
+  ${'' /* padding-top: var(--MobileNavbarHeight); */}
   @media (min-width: 1024px) {
     margin-left: var(--DesktopNavbarWidth);
   }
