@@ -1,5 +1,5 @@
-import { FacebookIcon, TwitterIcon, InstagramIcon } from "components/Icons"
-import styled from "styled-components"
+import { FacebookIcon, TwitterIcon, InstagramIcon } from 'components/Icons'
+import styled from 'styled-components'
 
 const SocialWrapper = styled.div`
   ${({ stylesheet }) => stylesheet && stylesheet}
@@ -12,17 +12,17 @@ const A = styled.a`
 `
 
 const SocialButtonGroup = ({ onClick, stylesheet, size }) => (
-    <SocialWrapper onClick={onClick} stylesheet={stylesheet}>
-      {/* <A href="" target="_blank">
+  <SocialWrapper onClick={onClick} stylesheet={stylesheet}>
+    {/* <A href="" target="_blank">
         <FacebookIcon size={size} />
       </A>
       <A href="" target="_blank">
         <TwitterIcon size={size} />
       </A> */}
-      <A href="https://www.instagram.com/tunaaaa_room" target="_blank">
+    {/* <A href="https://www.instagram.com/tunaaaa_room" target="_blank">
         <InstagramIcon size={size} />
-      </A>
-    </SocialWrapper>
-  )
+      </A> */}
+  </SocialWrapper>
+)
 
 export default SocialButtonGroup

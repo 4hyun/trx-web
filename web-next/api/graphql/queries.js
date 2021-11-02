@@ -49,10 +49,10 @@ export default {
             }
           }
           indica_sativa {
-              ... on ComponentFlavorFooterContent {
-                  indica,
-                  sativa
-              }
+            ... on ComponentFlavorFooterContent {
+              indica,
+              sativa
+            }
           }
         }
         flavorsPage {
