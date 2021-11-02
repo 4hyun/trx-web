@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import tw, { styled } from 'twin.macro'
-import { FlavorPortfolio, FlavorDetailWindow } from '@/components/Flavors'
+import { FlavorList, FlavorDetailWindow } from '@/components/Flavors'
 import Footer from '@/components/Layout/Footer'
 
 const GridContainer = styled.div`
@@ -25,10 +25,7 @@ const Flavors = ({ flavors }) => {
   return (
     <>
       <GridContainer>
-        <FlavorPortfolio
-          collection={flavors}
-          onItemClick={handleFlavorCardClick}
-        />
+        <FlavorList collection={flavors} onItemClick={handleFlavorCardClick} />
         {/* <Column>
           <FlavorSingleView selected={selectedCollection} tempLoadCollection={() => handleCollectionClick(flavors[0])} />
         </Column> */}
