@@ -12,7 +12,9 @@ import messages, {
 } from 'components/AgeGate/messages'
 import { fetchAPI } from 'lib/api'
 import SEO from 'components/SEO'
+import DOBSelect from 'components/AgeGate/DOBSelect'
 import queries from 'api/graphql/queries'
+import { DOB_STATUS } from './constants'
 
 const Logo = styled(LogoCircleWhiteTransparent)`
   width: 96px;
@@ -87,10 +89,23 @@ const AgeGatePage = ({ seoValues }) => {
   // TODO: fix lint error
   // const [ageCheckValue, setAgeCheckValue] = useAgeGate()
   const [currentMessage, setMessage] = useState(null)
+  const [checkDOB, setCheckDOB] = useState(null)
+  const [DOBStatus, setDOBStatus] = useState(DOB_STATUS.required)
   const enterHome = () => {
     router.replace('/')
   }
+  const initCheckDOB = useCallback(() => {
+    setCheckDOB(true)
+  })
   const handleActionButtonClick = useCallback(async (action) => {
+    // handle a_id === 1 ("are you of age?" = 'Yes')
+    if (action.a_id === 1) {
+      console.log('>> action id === 1')
+      if (DOBStatus !== DOB_STATUS.checked) {
+        initCheckDOB()
+        return
+      }
+    }
     if (action.next.pass) {
       try {
         setAgeCheckValue(getAgeCheckValue())
@@ -107,6 +122,9 @@ const AgeGatePage = ({ seoValues }) => {
   })
   // TODO: validate use of async in useEffect hook. Does this even have a purpose?
   useEffect(async () => {
+    /* TODO : check DOBStatus session value*/
+    /* TODO : create DOBStatus manager*/
+
     const currentAgeCheckValue = await getAgeCheckValue()
     if (currentAgeCheckValue) {
       setAgeCheckValue(currentAgeCheckValue)
@@ -120,6 +138,7 @@ const AgeGatePage = ({ seoValues }) => {
     <>
       <SEO seoValues={seoValues} />
       <Content>
+        {true && <DOBSelect></DOBSelect>}
         <GridLayout>
           {currentMessage && (
             <MessageContainer>

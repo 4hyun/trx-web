@@ -14,3 +14,11 @@ export const srcSetMapFn = (formatKey, formats) => {
   const { url, width } = formats[formatKey]
   return `${url} ${width}w, `
 }
+
+export const range = (end, start = 1) => {
+  const result = []
+  for (let i = start; i <= end; i += 1) {
+    result.push(i)
+  }
+  return result
+}
