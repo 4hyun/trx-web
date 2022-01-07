@@ -1,5 +1,6 @@
-import { memo } from "react"
-import tw, { styled, css } from "twin.macro"
+import { memo, useCallback } from 'react'
+import PropTypes from 'prop-types'
+import tw, { styled, css } from 'twin.macro'
 
 const gridColumnCSS = (colspan) => `span ${colspan} / span ${colspan}`
 
@@ -18,8 +19,13 @@ const Container = styled.div`
     ${tw`absolute left-0 w-full`}
     top:-40%;
     height: 210%;
-    content: "";
-    background: linear-gradient(162deg, rgb(65 3 121 / 38%) 19%, rgb(18 18 234 / 0%) 31%, rgb(225 225 225 / 65%) 83.5%);
+    content: '';
+    background: linear-gradient(
+      162deg,
+      rgb(65 3 121 / 38%) 19%,
+      rgb(18 18 234 / 0%) 31%,
+      rgb(225 225 225 / 65%) 83.5%
+    );
   }
 `
 
@@ -33,7 +39,7 @@ const CardHeader = styled.div`
   ${commonStyles.background}
   ${tw`rounded-t-3xl p-4 pb-2 font-accent font-bold text-3xl leading-none text-tr-white whitespace-pre-wrap`}
   ${tw`sm:(px-2.5 pt-2.5)`}
-  ${"" /* ${tw`md:(whitespace-pre-wrap)`} */}
+  ${'' /* ${tw`md:(whitespace-pre-wrap)`} */}
   ${tw`lg:(pl-3 text-2xl leading-none tracking-wide)`}
 `
 const CardBody = styled.div`
@@ -49,16 +55,39 @@ const CardFooter = styled.div`
   ${tw`rounded-b-3xl px-2.5`}
 `
 
-const mockImageUrl = "/mock/product-1.png"
+const mockImageUrl = '/mock/product-1.png'
 // const MainImage = styled.img`
 //   ${tw`h-full w-auto mx-0`}
 // `
-const FlavorCard = ({ colspan, item, renderFooterContent, renderFooterContentProp, onClick }) => (
-    <Container colspan={colspan} onClick={onClick} background={item.main_img ? item.main_img?.formats?.medium?.url : mockImageUrl}>
-      <CardHeader>{`Tunaaaa\n${item.name}`}</CardHeader>
-      <CardBody>{/* <MainImage src={item.main_img ? item.main_img?.formats?.medium?.url : mockImageUrl} /> */}</CardBody>
-      <CardFooter>{renderFooterContent && renderFooterContent({ renderFooterContentProp })}</CardFooter>
+const FlavorCard = ({
+  colspan,
+  flavor,
+  renderFooterContent,
+  renderFooterContentProp,
+  openFlavorModal,
+}) => {
+  const handleClick = useCallback(() => openFlavorModal(flavor), [flavor])
+
+  return (
+    <Container
+      colspan={colspan}
+      onClick={handleClick}
+      background={
+        flavor.main_img ? flavor.main_img?.formats?.medium?.url : mockImageUrl
+      }
+    >
+      <CardHeader>{`Tunaaaa\n${flavor.name}`}</CardHeader>
+      <CardBody>
+        {/* <MainImage src={flavor.main_img ? flavor.main_img?.formats?.medium?.url : mockImageUrl} /> */}
+      </CardBody>
+      <CardFooter>
+        {renderFooterContent &&
+          renderFooterContent({ renderFooterContentProp })}
+      </CardFooter>
     </Container>
   )
+}
+
+FlavorCard.propTypes = { openFlavorModal: PropTypes.func }
 
 export default memo(FlavorCard)

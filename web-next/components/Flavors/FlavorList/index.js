@@ -35,7 +35,7 @@ const ScrollContainer = styled.div`
 const FlavorList = styled.div`
   ${scrollbarHideStyles}
   grid-auto-rows: 1fr;
-  ${tw`grid grid-cols-2 gap-5 md:(grid-cols-5 gap-x-4 gap-y-6 overflow-y-auto p-4 h-auto) lg:(grid-cols-4 gap-x-4 gap-y-6 grid-rows-2 overflow-y-scroll) xl:(grid-cols-7 grid-rows-1 gap-8)`}
+  ${tw`grid grid-cols-2 gap-5 md:(grid-cols-5 gap-x-4 gap-y-6 overflow-y-auto p-4 h-auto) lg:(grid-cols-4 gap-x-4 gap-y-6 grid-rows-2 overflow-y-scroll) xl:(grid-cols-5 grid-rows-1 gap-8)`}
 `
 
 const FooterContainer = styled.div`
@@ -54,7 +54,7 @@ const CardFooterContent = ({ renderFooterContentProp }) => {
   return <IndicaSativaIndicator indica={indica} sativa={sativa} />
 }
 
-const FlavorsPortfolio = ({ collection, onItemClick }) => (
+const FlavorsList = ({ collection, openFlavorModal }) => (
   <Container>
     <HeaderContainer>
       <Header>Flavors</Header>
@@ -64,10 +64,10 @@ const FlavorsPortfolio = ({ collection, onItemClick }) => (
         {collection.map((flavor) => (
           <FlavorCard
             key={flavor.id}
-            item={flavor}
+            flavor={flavor}
             renderFooterContentProp={flavor.indica_sativa}
             renderFooterContent={CardFooterContent}
-            onClick={() => onItemClick(flavor)}
+            openFlavorModal={openFlavorModal}
           />
         ))}
       </FlavorList>
@@ -77,9 +77,9 @@ const FlavorsPortfolio = ({ collection, onItemClick }) => (
     </FooterContainer>
   </Container>
 )
-FlavorsPortfolio.defaultProps = { collection: new Array(10) }
-FlavorsPortfolio.propTypes = {
+FlavorsList.defaultProps = { collection: new Array(10) }
+FlavorsList.propTypes = {
   collection: PropTypes.array,
 }
 
-export default FlavorsPortfolio
+export default FlavorsList

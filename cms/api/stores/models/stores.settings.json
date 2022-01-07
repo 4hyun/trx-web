@@ -56,6 +56,9 @@
     },
     "email": {
       "type": "email"
+    },
+    "notes": {
+      "type": "richtext"
     }
   }
 }

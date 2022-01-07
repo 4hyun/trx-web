@@ -11,27 +11,27 @@ const GridContainer = styled.div`
   ${tw`xl:(space-y-8)`}
 `
 
-const Column = styled.div`
-  ${tw`flex flex-col justify-start space-y-7 col-span-full lg:(col-start-7 col-end-12)`}
-`
+// const Column = styled.div`
+//   ${tw`flex flex-col justify-start space-y-7 col-span-full lg:(col-start-7 col-end-12)`}
+// `
 
 const Flavors = ({ flavors }) => {
-  const [selectedCollection, setSelectedCollection] = useState(null)
-  const removeSelected = () => setSelectedCollection(null)
-  const handleFlavorCardClick = (collection) => {
-    setSelectedCollection(collection)
+  const [selectedFlavor, setFlavor] = useState(null)
+  const removeSelected = () => setFlavor(null)
+  const openFlavorModal = (collection) => {
+    setFlavor(collection)
   }
 
   return (
     <>
       <GridContainer>
-        <FlavorList collection={flavors} onItemClick={handleFlavorCardClick} />
+        <FlavorList collection={flavors} openFlavorModal={openFlavorModal} />
         {/* <Column>
           <FlavorSingleView selected={selectedCollection} tempLoadCollection={() => handleCollectionClick(flavors[0])} />
         </Column> */}
       </GridContainer>
-      {selectedCollection && (
-        <FlavorDetailWindow flavor={selectedCollection} hide={removeSelected} />
+      {selectedFlavor && (
+        <FlavorDetailWindow flavor={selectedFlavor} hide={removeSelected} />
       )}
       <Footer />
     </>

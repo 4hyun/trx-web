@@ -7,16 +7,16 @@ import useLockBodyScroll from 'lib/hooks/useLockBodyScroll'
 import { srcSetMapFn } from 'lib/utils'
 /* components */
 import { ArrowBack } from '@/components/Icons'
-import Background from './Background'
+import Backdrop from './Backdrop'
 import Window from './Window'
 
 /* shared styles */
 import { borderRadiusLeft } from './styles'
 
-const Row = tw.div`flex h-full`
-const CoverWrapper = tw.div`flex-1`
-const Cover = styled.img`
-  ${tw`w-full h-full object-cover`}${borderRadiusLeft}
+const Row = tw.div`flex h-full w-full`
+const ImageWrapper = tw.div`flex-1`
+const Image = styled.img`
+  ${tw`w-full h-full object-cover object-center`}${borderRadiusLeft}
 `
 const GridColumn = styled.div`
   ${tw`flex-1 grid auto-rows-auto gap-y-2 px-4 pb-2`}
@@ -44,12 +44,12 @@ const FlavorDetailWindow = ({ flavor, hide }) => {
     [flavor]
   )
   return (
-    <Background>
+    <Backdrop>
       <Window>
         <Row>
-          <CoverWrapper>
-            <Cover src={formats.url} srcSet={srcSet} sizes={sizes} />
-          </CoverWrapper>
+          <ImageWrapper>
+            <Image src={formats.url} srcSet={srcSet} sizes={sizes} />
+          </ImageWrapper>
           <GridColumn>
             <FlavorHeader>{name}</FlavorHeader>
             <Description>{description}</Description>
@@ -57,7 +57,7 @@ const FlavorDetailWindow = ({ flavor, hide }) => {
         </Row>
         <ArrowBackIcon onClick={hide} />
       </Window>
-    </Background>
+    </Backdrop>
   )
 }
 
