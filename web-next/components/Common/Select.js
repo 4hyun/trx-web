@@ -47,7 +47,9 @@ const ToggleIcon = styled(ChevronCompactDown)`
 `
 const ToggleCss = css``
 
-const ToggleRoot = styled.div``
+const ToggleRoot = styled.div`
+  ${tw`cursor-pointer`}
+`
 const Toggle = ({ opened, toggle }) => {
   return (
     <ToggleRoot>

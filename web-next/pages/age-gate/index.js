@@ -49,10 +49,13 @@ const Message = styled.p`
 
 const ButtonGroup = tw.div`flex w-full space-x-6`
 const Button = styled.button`
-  ${tw`bg-tr-white px-4 py-1 rounded-md lg:(px-6 pt-3 pb-3 rounded-2xl)`}
-  ${tw`font-accent font-bold text-tr-black text-2xl tracking-tight whitespace-pre lg:(text-5xl tracking-normal)`}
+  ${tw`bg-tr-white px-4 py-1 rounded-md lg:(px-5 pt-3 pb-3 rounded-none)`}
+  ${tw`uppercase font-accent-2 text-tr-black text-2xl tracking-tight whitespace-pre lg:(text-5xl tracking-wide text-opacity-40)`}
+:hover {
+    ${tw`text-opacity-100`}
+  }
   ${tw`focus:outline-none`}
-  ${tw`transform hover:-translate-y-2 transition-transform outline-none`}
+  ${tw`transform hover:-translate-y-2 focus:translate-y-0 outline-none`}
 `
 
 const processNewAgeCheck = async () => {
@@ -89,13 +92,13 @@ const AgeGatePage = ({ seoValues }) => {
   // TODO: fix lint error
   // const [ageCheckValue, setAgeCheckValue] = useAgeGate()
   const [currentMessage, setMessage] = useState(null)
-  const [checkDOB, setCheckDOB] = useState(null)
+  const [checkingDOB, setCheckingDOB] = useState(null)
   const [DOBStatus, setDOBStatus] = useState(DOB_STATUS.required)
   const enterHome = () => {
     router.replace('/')
   }
   const initCheckDOB = useCallback(() => {
-    setCheckDOB(true)
+    setCheckingDOB(true)
   })
   const handleActionButtonClick = useCallback(async (action) => {
     // handle a_id === 1 ("are you of age?" = 'Yes')
@@ -134,11 +137,17 @@ const AgeGatePage = ({ seoValues }) => {
       setMessage(getMessageById(1))
     }
   }, [])
+
+  const handleVerifySuccess = () => {
+    setCheckingDOB(false)
+    setMessage(getMessageById(2))
+  }
+
   return (
     <>
       <SEO seoValues={seoValues} />
       <Content>
-        {true && <DOBSelect></DOBSelect>}
+        {checkingDOB && <DOBSelect handleVerifySuccess={handleVerifySuccess} />}
         <GridLayout>
           {currentMessage && (
             <MessageContainer>
