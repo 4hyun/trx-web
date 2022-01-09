@@ -20,19 +20,25 @@ const Container = styled.div`
 
 const NUM_ITEMS_VISIBLE = 5
 const ListBoxRoot = styled.ul`
-  ${tw`absolute bg-white z-20 w-full top-full left-0 box-border!`}
-  height: ${({ itemHeight }) => `${itemHeight * NUM_ITEMS_VISIBLE}px`};
+  ${tw`absolute bg-white z-20 w-full top-full left-0 box-border! overflow-scroll`}
+  max-height: ${({ itemHeight }) => `${itemHeight * NUM_ITEMS_VISIBLE}px`};
 `
 
-const ListBox = ({ children }) => {
-  return <ListBoxRoot>{children}</ListBoxRoot>
+const ListBox = ({ children, itemHeight }) => {
+  return <ListBoxRoot itemHeight={itemHeight}>{children}</ListBoxRoot>
 }
 
+const ItemHoverStyle = css`
+  ${tw`bg-gray-200`}
+`
 const Item = styled.div`
   ${tw`flex items-center box-border!`}
   height: ${({ height }) => `${height}px`};
-  ${({ selected }) => selected && tw`bg-gray-200`};
+  ${({ selected }) => selected && ItemHoverStyle};
   ${SharedPadding}
+  :hover {
+    ${ItemHoverStyle}
+  }
 `
 
 const ToggleIcon = styled(ChevronCompactDown)`
@@ -81,6 +87,7 @@ const Select = ({
       if (!selectedValue) {
         updateOwnValue(v)
       }
+      toggleShow(false)
     },
     [selectedValue]
   )

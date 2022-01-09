@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { AGE_GATE_LS_KEY } from "./constants";
 
 const messages = [
