@@ -161,6 +161,7 @@ const DOBSelect = ({ handleVerifySuccess }) => {
   const validateDOB = (y, m, d) => {
     return y && m && d
   }
+  /* TODO: replace logic of returning parsed-for-display(current) value, to raw value. Then use parser function to display the string in template. */
   const DOBString = useMemo(() => {
     const { y, m, d } = DOBVal
     const DOBStringValue = `${y || ''}${m ? ` - ${m}` : ''}${
@@ -188,12 +189,8 @@ const DOBSelect = ({ handleVerifySuccess }) => {
   const saveDOB = () => {
     // console.log('saveDOB()')
     // localStorage.setItem(AGE_GATE_DOB_LS_KEY, DOBString.value.replace(/ /g, ''))
-    // console.log(
-    //   'age gate dob session value: ',
-    //   localStorage.getItem(AGE_GATE_DOB_LS_KEY)
-    // )
-    AgeGateManager.setDOB()
-    AgeGateManager.setProvince()
+    AgeGateManager.setDOB(DOBString.value.replace(/ /g, ''))
+    AgeGateManager.setProvince(province.value)
     handleVerifySuccess()
   }
   const saveProvince = () => {
