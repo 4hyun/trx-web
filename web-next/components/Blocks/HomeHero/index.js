@@ -9,7 +9,7 @@ import VideoBackground from './VideoBackground'
 /* logo */
 import TROLogo from '../../../public/logo/trWhiteLogo.svg'
 
-const isMobile = (width) => width <= 475
+const isMobile = (width) => width <= 500
 
 const IndicatorWrapper = styled.div`
   ${tw`absolute left-0 right-0 bottom-0 h-1/4 flex items-center justify-center`}

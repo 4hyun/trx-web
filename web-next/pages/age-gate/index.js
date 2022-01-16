@@ -47,10 +47,11 @@ const Message = styled.p`
   }
 `
 
+/* TODO: refactor mobile screen "remember me" and "go without it" button to a modal "yes" or "no" */
 const ButtonGroup = tw.div`flex w-full space-x-6`
 const Button = styled.button`
   ${tw`bg-tr-white px-4 py-1 rounded-md lg:(px-5 pt-3 pb-3 rounded-none)`}
-  ${tw`uppercase font-accent-2 text-tr-black text-2xl tracking-tight whitespace-pre lg:(text-5xl tracking-wide text-opacity-40)`}
+  ${tw`uppercase font-accent-2 text-tr-black text-2xl tracking-tight md:whitespace-pre lg:(text-5xl tracking-wide text-opacity-40)`}
 :hover {
     ${tw`text-opacity-100`}
   }

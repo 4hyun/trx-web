@@ -24,6 +24,7 @@ const FixedLayout = styled.div`
 `
 
 const Container = styled.div`
+  ${tw`mx-6 lg:(mx-0)`}
   ${tw`relative flex flex-col bg-black p-4 rounded-md gap-y-4 lg:w-1/5`}
 `
 
@@ -115,7 +116,7 @@ const DaySelect = () => {
 const Message = styled.p`
   ${tw`uppercase text-tr-white font-accent-2`}
   font-size:24px;
-  line-height: 52px;
+  line-height: auto;
   @media (min-width: 768px) {
     font-size: 24px;
     line-height: 32px;
