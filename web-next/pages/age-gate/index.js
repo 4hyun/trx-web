@@ -14,7 +14,7 @@ import { fetchAPI } from 'lib/api'
 import SEO from 'components/SEO'
 import DOBSelect from 'components/AgeGate/DOBSelect'
 import queries from 'api/graphql/queries'
-import { DOB_STATUS } from './constants'
+import { DOB_STATUS } from 'components/AgeGate/constants'
 
 const Logo = styled(LogoCircleWhiteTransparent)`
   width: 96px;

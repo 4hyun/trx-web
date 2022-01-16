@@ -6,6 +6,7 @@
   "scripts": {
     "develop": "cross-env ENV_PATH=.env strapi develop",
     "develop:admin": "cross-env ENV_PATH=.env strapi develop --watch-admin",
+    "develop:prod": "cross-env ENV_PATH=.env.prod strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
