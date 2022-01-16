@@ -1,24 +1,18 @@
-import {
-  useEffect,
-  useState,
-  useMemo,
-  useContext,
-  useCallback,
-  useLayoutEffect,
-} from 'react'
+import { useEffect, useState, useMemo, useContext } from 'react'
+import moment from 'moment'
 import tw, { css } from 'twin.macro'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Select from 'components/Common/Select'
 import { range } from 'lib/utils'
-import { initialDOB, DOBContext } from './context'
-import useDOBSelectControls from './useDOBSelectControls'
 import {
-  AGE_GATE_DOB_LS_KEY,
+  // AGE_GATE_DOB_LS_KEY,
   AGE_GATE_PROV_LS_KEY,
 } from 'components/AgeGate/constants'
+import { initialDOB, DOBContext } from './context'
+import useDOBSelectControls from './useDOBSelectControls'
+
 import { PROVINCES, ageRestrictionByProv } from './constants'
-import moment from 'moment'
 
 const sharedSelectCss = css`
   ${tw`w-full`}
@@ -163,12 +157,10 @@ const DOBSelect = ({ handleVerifySuccess }) => {
       moment().subtract(ageRestrictionByProv[prov], 'years')
     )
   }
-  const validateDOB = (y, m, d, DOBStringValue) => {
-    console.log('validateDOB, y && m && d', y && m && d)
+  const validateDOB = (y, m, d) => {
     return y && m && d
   }
   const DOBString = useMemo(() => {
-    console.log('DOBString calculated.')
     const { y, m, d } = DOBVal
     const DOBStringValue = `${y || ''}${m ? ` - ${m}` : ''}${
       d ? ` - ${d}` : ''
@@ -183,7 +175,7 @@ const DOBSelect = ({ handleVerifySuccess }) => {
   /* WIP: testing useLayoutEffect.  */
   /* FEAT: record validateAgeByProvSuccess */
   useEffect(() => {
-    console.log('DOBString.isValidDOB changed: ', DOBString.isValidDOB)
+    // console.log('DOBString.isValidDOB changed: ', DOBString.isValidDOB)
     setValidateAgeByProvSuccess(DOBString.isValidDOB)
   }, [DOBString.isValidDOB])
   const ariaDisabledForDOB = useMemo(
@@ -192,12 +184,12 @@ const DOBSelect = ({ handleVerifySuccess }) => {
   )
   /* TODO: saveDOB to LS after YMD user input collected. */
   const saveDOB = () => {
-    console.log('saveDOB()')
-    localStorage.setItem(AGE_GATE_DOB_LS_KEY, DOBString.value.replace(/ /g, ''))
-    console.log(
-      'age gate dob session value: ',
-      localStorage.getItem(AGE_GATE_DOB_LS_KEY)
-    )
+    // console.log('saveDOB()')
+    // localStorage.setItem(AGE_GATE_DOB_LS_KEY, DOBString.value.replace(/ /g, ''))
+    // console.log(
+    //   'age gate dob session value: ',
+    //   localStorage.getItem(AGE_GATE_DOB_LS_KEY)
+    // )
     handleVerifySuccess()
   }
   const saveProvince = () => {

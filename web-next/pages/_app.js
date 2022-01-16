@@ -2,8 +2,10 @@ import React from 'react'
 import Head from 'next/head'
 import GlobalStyles from 'components/Common/GlobalStyles'
 import Layout from 'components/Layout/index'
+import { useDevSettings } from 'lib/hooks'
 
 function MyApp({ Component, pageProps }) {
+  useDevSettings()
   return (
     <>
       <Head>
