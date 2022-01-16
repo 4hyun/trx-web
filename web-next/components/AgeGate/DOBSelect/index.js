@@ -13,6 +13,7 @@ import { initialDOB, DOBContext } from './context'
 import useDOBSelectControls from './useDOBSelectControls'
 
 import { PROVINCES, ageRestrictionByProv } from './constants'
+import AgeGateManager from 'lib/agegate-manager'
 
 const sharedSelectCss = css`
   ${tw`w-full`}
@@ -182,7 +183,8 @@ const DOBSelect = ({ handleVerifySuccess }) => {
     () => ymdKey !== null && DOBVal[ymdKey] === null,
     [DOBVal, ymdKey]
   )
-  /* TODO: saveDOB to LS after YMD user input collected. */
+  /* TODO: use AgeGateManager to persist values to LS */
+
   const saveDOB = () => {
     // console.log('saveDOB()')
     // localStorage.setItem(AGE_GATE_DOB_LS_KEY, DOBString.value.replace(/ /g, ''))
@@ -190,6 +192,8 @@ const DOBSelect = ({ handleVerifySuccess }) => {
     //   'age gate dob session value: ',
     //   localStorage.getItem(AGE_GATE_DOB_LS_KEY)
     // )
+    AgeGateManager.setDOB()
+    AgeGateManager.setProvince()
     handleVerifySuccess()
   }
   const saveProvince = () => {
