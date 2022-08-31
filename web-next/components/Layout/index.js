@@ -13,6 +13,7 @@ import MainBackgroundVideo from '@/components/Common/MainBackgroundVideo'
 import ScrollTopButton from '@/components/Common/ScrollTopButton'
 /* styles */
 import { navbarStyles } from '@/components/Layout/Header/styles'
+import createMockBypass from '../AgeGate/mock-bypass'
 
 const Wrapper = styled.div`
   ${tw`w-full h-screen`}
@@ -42,9 +43,13 @@ const Layout = ({ children: mainContent, router }) => {
   const [showHeader, setShowHeader] = useState(true)
   const ageGateContextValue = { ageCheckedValue, setAgeChecked }
   useEffect(() => {
-    // console.log("router ", router);
     if (router.pathname === '/') {
-      // console.log('>>DEBUG: <MyApp/> router.pathname === "/"')
+      /* apply age-gate bypass based on flag  */
+      console.log(
+        'process.env.NEXT_PUBLIC_BYPASS_AGEGATE: ',
+        process.env.NEXT_PUBLIC_BYPASS_AGEGATE
+      )
+      if (process.env.NEXT_PUBLIC_BYPASS_AGEGATE === 'true') createMockBypass()
       const ageCheckValue = localStorage.getItem(AGE_GATE_LS_KEY)
       if (ageCheckValue) {
         setAgeChecked(ageCheckValue)
