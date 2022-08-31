@@ -1,10 +1,10 @@
-import React, {memo} from "react"
-import NextLink from "next/link"
-import styled, { css } from "styled-components"
-import tw from "twin.macro"
+import React, { memo } from 'react'
+import NextLink from 'next/link'
+import styled, { css } from 'styled-components'
+import tw from 'twin.macro'
 /* components */
-import SubscribeForm from "@/components/Common/Form/SubscribeForm"
-import SocialButtonGroup from "components/Common/Social"
+import SubscribeForm from '@/components/Common/Form/SubscribeForm'
+import SocialButtonGroup from 'components/Common/Social'
 /* TODO: display Footer when scrolled (once) */
 const StyledFooter = styled.footer`
   ${tw`mt-auto flex flex-col justify-center items-center w-full py-12 xl:(py-12)`}
@@ -72,10 +72,10 @@ const StyledLink = styled.a`
 `
 
 const Link = ({ href, name }) => (
-    <NextLink href={href} passHref>
-      <StyledLink>{name}</StyledLink>
-    </NextLink>
-  )
+  <NextLink href={href} passHref>
+    <StyledLink>{name}</StyledLink>
+  </NextLink>
+)
 
 const A = styled.a``
 
@@ -85,38 +85,41 @@ const BrandLogo = styled.img`
 `
 
 const Footer = () => (
-    <StyledFooter>
-      <Grid>
-        <FormColumnOne>
-          <FormTitle>Subscribe for Free</FormTitle>
-          <FormMessage>Get notified of the latest cannabis news, deals, events updates and more!</FormMessage>
-        </FormColumnOne>
-        <FormColumnTwo>
-          <SubscribeForm />
-        </FormColumnTwo>
-        <Column tw="col-span-full xs:col-span-1">
-          <Row tw="justify-start items-start space-x-6 flex-wrap xl:justify-center">
+  <StyledFooter>
+    <Grid>
+      <FormColumnOne>
+        <FormTitle>Subscribe for Free</FormTitle>
+        <FormMessage>
+          Get notified of the latest cannabis news, deals, events updates and
+          more!
+        </FormMessage>
+      </FormColumnOne>
+      <FormColumnTwo>
+        <SubscribeForm />
+      </FormColumnTwo>
+      <Column tw="col-span-full xs:col-span-1">
+        {/*           <Row tw="justify-start items-start space-x-6 flex-wrap xl:justify-center">
             <A href="https://tunaaaaroom.ca">
               <BrandLogo src="https://storage.googleapis.com/trx-web-static-media/tro-footer-logo-72x90.png" alt="Tunaaaa Room Logo" />
             </A>
             <A href="/">
               <BrandLogo src="https://storage.googleapis.com/trx-web-static-media/xtracts_flask-footer-logo-72x90.png" alt="Tunaaaa Room Logo" />
             </A>
-          </Row>
-        </Column>
-        <Column>
-          <SitemapRow tw="flex-wrap">
-            <Link href="/collections" name="Collections" />
-            <Link href="/flavors" name="Flavors" />
-            <Link href="/find-store" name="Find Stores" />
-            {/* <Link href="contact" name="Contact" /> */}
-          </SitemapRow>
-        </Column>
-        <SocialColumn>
-          <SocialButtonGroup stylesheet={socialButtonGroupCSS} size="1.5rem" />
-        </SocialColumn>
-      </Grid>
-    </StyledFooter>
-  )
+          </Row> */}
+      </Column>
+      <Column>
+        <SitemapRow tw="flex-wrap">
+          <Link href="/collections" name="Collections" />
+          <Link href="/flavors" name="Flavors" />
+          <Link href="/find-store" name="Find Stores" />
+          {/* <Link href="contact" name="Contact" /> */}
+        </SitemapRow>
+      </Column>
+      <SocialColumn>
+        <SocialButtonGroup stylesheet={socialButtonGroupCSS} size="1.5rem" />
+      </SocialColumn>
+    </Grid>
+  </StyledFooter>
+)
 
 export default memo(Footer)
