@@ -1,8 +1,14 @@
-import Video from 'components/Common/Video'
-import { useState } from 'react'
+import Video from '@/components/Common/Video/Video'
+import { useEffect, useState } from 'react'
+import useVideoError from './Video/hooks/useVideoError'
+
+const VIDEO_FALLBACK_IMAGE_URL = '/layout-video-fallback-backgroundx2.png'
 
 const MainBackgroundVideo = ({ autoPlay, loop }) => {
-  const [loadErrored, setLoadErrored] = useState(null)
+  const { loadErrored, setLoadErrored, unsetLoadErrored } = useVideoError()
+  useEffect(() => {
+    return () => unsetLoadErrored()
+  }, [])
   return (
     <Video
       autoPlay={autoPlay}
@@ -10,6 +16,7 @@ const MainBackgroundVideo = ({ autoPlay, loop }) => {
       preload="metadata"
       muted
       loadErrored={loadErrored}
+      fallbackImageUrl={VIDEO_FALLBACK_IMAGE_URL}
     >
       <source
         src="https://storage.googleapis.com/trx-web-static-media/trx-logo-vid-desktop.mp4"
@@ -19,7 +26,7 @@ const MainBackgroundVideo = ({ autoPlay, loop }) => {
         }}
         onError={() => {
           console.log('video load error!')
-          setLoadErrored(true)
+          setLoadErrored()
         }}
       />
       <source src="/layout-video-fallback-background.png" type="media/png" />
