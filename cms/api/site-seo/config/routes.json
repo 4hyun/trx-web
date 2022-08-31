@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/site-seo",
+      "handler": "site-seo.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/site-seo",
+      "handler": "site-seo.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/site-seo",
+      "handler": "site-seo.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

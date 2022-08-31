@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_site_seos",
+  "info": {
+    "name": "SiteSeo",
+    "icon": "plus-circle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "baseurl": {
+      "type": "string"
+    },
+    "site_name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "base_title": {
+      "type": "string"
+    }
+  }
+}

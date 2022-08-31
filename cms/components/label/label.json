@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_style_a_front_labels",
+  "info": {
+    "name": "StyleAFront",
+    "icon": "sticky-note",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "thc_total": {
+      "type": "string"
+    },
+    "thc": {
+      "type": "string"
+    },
+    "cbd": {
+      "type": "string"
+    },
+    "cbd_total": {
+      "type": "string"
+    },
+    "package_content": {
+      "type": "string"
+    },
+    "health_message": {
+      "model": "health-message"
+    }
+  }
+}

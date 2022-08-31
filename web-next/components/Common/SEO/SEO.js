@@ -22,7 +22,7 @@ const SEO = () => {
         content={description}
         key="og:description"
       />
-      <meta property="og:image" content={shareImage} key="og:image" />
+      <meta property="og:image" content={shareImage || ''} key="og:image" />
       <link rel="canonical" href={url} />
       {preventIndexing && (
         <>
