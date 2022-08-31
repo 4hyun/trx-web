@@ -1,6 +1,5 @@
 import React from 'react'
 import tw, { styled } from 'twin.macro'
-/* components */
 import { Section, FilterBar } from '@/components/Collections'
 import Footer from '@/components/Layout/Footer'
 
@@ -20,4 +19,5 @@ const Collections = ({ collections }) => (
     <Footer />
   </>
 )
+
 export default Collections
